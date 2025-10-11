@@ -25,7 +25,7 @@ export default function AboutUsSection() {
 
         {/* ✅ ② 左揃え & 幅を少し広げた会社紹介文 */}
         <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-left">
-          SOMA株式会社は "Solutions for Outbound Market Ambitions"
+          SOMA株式会社は &quot;Solutions for Outbound Market Ambitions&quot;
           （海外市場志向へのソリューション）を企業理念として設立されました。
           この名前には、企業やブランドが国境を越え、
           世界市場での成功を目指すためのパートナーとなるという
