@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function AboutUsSection() {
@@ -106,9 +107,11 @@ export default function AboutUsSection() {
             className="bg-white rounded-xl shadow-md p-4 max-w-xs"
             whileHover={{ scale: 1.05 }}
           >
-            <img
+            <Image
               src="/images/naito.jpg"
               alt="CEO"
+              width={400}
+              height={192}
               className="w-full h-48 object-contain bg-white rounded-lg mb-4"
             />
             <h4 className="font-semibold text-xl">内藤 拓馬</h4>
@@ -126,9 +129,11 @@ export default function AboutUsSection() {
             className="bg-white rounded-xl shadow-md p-4 max-w-xs"
             whileHover={{ scale: 1.05 }}
           >
-            <img
+            <Image
               src="/images/inoue.jpg"
               alt="COO"
+              width={400}
+              height={192}
               className="w-full h-48 object-contain bg-white rounded-lg mb-4"
             />
             <h4 className="font-semibold text-xl">井上 龍也</h4>
@@ -144,9 +149,11 @@ export default function AboutUsSection() {
             className="bg-white rounded-xl shadow-md p-4 max-w-xs"
             whileHover={{ scale: 1.05 }}
           >
-            <img
+            <Image
               src="/images/takata.jpg"
               alt="CMO"
+              width={400}
+              height={192}
               className="w-full h-48 object-contain bg-white rounded-lg mb-4"
             />
             <h4 className="font-semibold text-xl">高田 翔</h4>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 
@@ -46,9 +47,11 @@ export default function ProjectsSection() {
               className="relative flex-shrink-0 mx-6 rounded-xl overflow-hidden shadow-xl"
               style={{ width: "500px", height: "auto" }}
             >
-              <img
+              <Image
                 src={item.src}
                 alt={`project-${i}`}
+                width={500}
+                height={300}
                 className="w-full h-auto object-contain"
               />
               {/* 右下の金額ラベル */}

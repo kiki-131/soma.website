@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "./Header";
@@ -52,25 +53,17 @@ export default function HomePage() {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2 }}
-      className="overflow-hidden w-50 h-80 md:w-56 md:h-[32rem] rounded-3xl shadow-2xl"
+      className="relative overflow-hidden w-50 h-80 md:w-56 md:h-[32rem] rounded-3xl shadow-2xl"
     >
-      <img
-        src="/images/top1.jpg"
-        alt="トップ画像1"
-        className="object-cover w-full h-full"
-      />
+      <Image src="/images/top1.jpg" alt="トップ画像1" fill className="object-cover" />
     </motion.div>
     <motion.div
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2, delay: 0.3 }}
-      className="overflow-hidden w-50 h-80 md:w-56 md:h-[32rem] rounded-3xl shadow-2xl"
+      className="relative overflow-hidden w-50 h-80 md:w-56 md:h-[32rem] rounded-3xl shadow-2xl"
     >
-      <img
-        src="/images/top2.jpg"
-        alt="トップ画像2"
-        className="object-cover w-full h-full"
-      />
+      <Image src="/images/top2.jpg" alt="トップ画像2" fill className="object-cover" />
     </motion.div>
   </div>
 </div>

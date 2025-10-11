@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FaTwitter, FaInstagram } from "react-icons/fa";
 
 export default function Header({ scrollToSection }) {
@@ -8,7 +9,13 @@ export default function Header({ scrollToSection }) {
       <div className="max-w-7xl mx-auto px-6 py-0 flex items-center justify-between">
         {/* 左側：ロゴ */}
         <div className="flex items-center">
-          <img src="/images/logo.png" alt="SOMA Logo" className="h-20 w-auto" />
+          <Image
+            src="/images/logo.png"
+            alt="SOMA Logo"
+            width={80}
+            height={80}
+            className="h-20 w-auto"
+          />
         </div>
 
         {/* 右側：ナビ + SNS + ボタン */}
