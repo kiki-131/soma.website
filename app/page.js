@@ -27,44 +27,48 @@ export default function HomePage() {
       {/* ✅ ヘッダー（変更なし） */}
       <Header scrollToSection={scrollToSection} />
 {/* トップセクション */}
-<div className="relative w-full h-[calc(100vh-80px)] bg-white flex flex-col md:flex-row items-end justify-between px-8 md:px-16 overflow-hidden">
-  {/* 左側：テキスト */}
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1.2 }}
-    className="flex flex-col max-w-xl -translate-y-4"
-  >   <h1 className="text-7xl md:text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
-      SOMA
-    </h1>
-    <h1 className="text-4xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
-      海外進出支援
-    </h1>
-    <p className="text-sm md:text-sm text-gray-600 leading-relaxed">
-      アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、
-      <br className="hidden md:block" />
-      海外進出のテストマーケティングを支援しています。
-    </p>
-  </motion.div>
-
-  {/* 右側：角丸画像2枚 */}
-  <div className="flex flex-col md:flex-row gap-8 justify-center items-end mb-12 md:mb-0">
+<div className="relative w-full h-[calc(100vh-80px)] bg-white flex items-center justify-center overflow-hidden">
+  {/* 固定幅コンテナ: 内部は固定幅でレイアウト（ウィンドウ幅を変更しても変わらない） */}
+  <div className="w-[1100px] max-w-[1100px] h-full flex items-end justify-between px-0">
+    {/* 左側：固定幅テキスト */}
     <motion.div
-      initial={{ opacity: 0, y: -50 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2 }}
-      className="relative overflow-hidden w-50 h-80 md:w-56 md:h-[32rem] rounded-3xl shadow-2xl"
+      className="flex flex-col w-[500px] -translate-y-4"
     >
-      <Image src="/images/top1.jpg" alt="トップ画像1" fill className="object-cover" />
+      <h1 className="text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
+        SOMA
+      </h1>
+      <h1 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
+        海外進出支援
+      </h1>
+      <p className="text-sm text-gray-600 leading-relaxed">
+        アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、
+        <br className="hidden md:block" />
+        海外進出のテストマーケティングを支援しています。
+      </p>
     </motion.div>
-    <motion.div
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.2, delay: 0.3 }}
-      className="relative overflow-hidden w-50 h-80 md:w-56 md:h-[32rem] rounded-3xl shadow-2xl"
-    >
-      <Image src="/images/top2.jpg" alt="トップ画像2" fill className="object-cover" />
-    </motion.div>
+
+    {/* 右側：固定幅画像群 */}
+    <div className="flex flex-col md:flex-row gap-8 justify-center items-end mb-12 md:mb-0 w-[560px]">
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        className="relative overflow-hidden w-[260px] h-[520px] rounded-3xl shadow-2xl"
+      >
+        <Image src="/images/top1.jpg" alt="トップ画像1" fill className="object-cover" />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, delay: 0.3 }}
+        className="relative overflow-hidden w-[260px] h-[520px] rounded-3xl shadow-2xl"
+      >
+        <Image src="/images/top2.jpg" alt="トップ画像2" fill className="object-cover" />
+      </motion.div>
+    </div>
   </div>
 </div>
       {/* ✅ 以下は既存のコンテンツ（絶対に変更なし） */}
