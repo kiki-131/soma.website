@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-const MotionImage = motion(Image);
 import { FaGlobeAsia, FaChartLine, FaHandshake, FaRocket } from "react-icons/fa";
 
 export default function ServiceSection() {
@@ -22,11 +21,11 @@ export default function ServiceSection() {
     <section className="bg-white text-gray-800 py-20 px-8 md:px-16 lg:px-32">
       <h2 className="text-4xl font-bold mb-12 text-center text-gray-800">Services</h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="flex flex-col gap-6">
         {images.map((src, i) => (
           <motion.div
             key={i}
-            className="relative w-full h-56 rounded-2xl overflow-hidden shadow-md"
+            className="w-full rounded-2xl overflow-hidden shadow-md bg-gray-100"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.05 }}
@@ -35,8 +34,9 @@ export default function ServiceSection() {
             <Image
               src={src}
               alt={`service-${i + 1}`}
-              fill
-              className="object-cover"
+              width={1200}
+              height={800}
+              className="w-full h-auto object-contain"
             />
           </motion.div>
         ))}
