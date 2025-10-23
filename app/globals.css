@@ -32,3 +32,8 @@ body {
 body {
   @apply bg-gray-100 text-gray-800;
 }
+
+/* Services section image crop: move images up by 7% to crop bottom */
+.service-image img {
+  transform: translateY(-7%);
+}

@@ -25,7 +25,7 @@ export default function ServiceSection() {
         {images.map((src, i) => (
           <motion.div
             key={i}
-            className="w-full overflow-hidden"
+            className="w-full overflow-hidden service-image"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.05 }}
