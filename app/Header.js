@@ -15,6 +15,8 @@ export default function Header({ scrollToSection }) {
             width={80}
             height={80}
             className="h-20 w-auto"
+            priority
+            unoptimized
           />
         </div>
 
