@@ -36,7 +36,7 @@ export default function ServiceSection() {
               alt={`service-${i + 1}`}
               fill
               className="object-cover"
-              style={{ transform: "translateY(-7%)" }}
+              style={{ transform: "translateY(-2%)" }}
             />
           </motion.div>
         ))}
