@@ -37,7 +37,7 @@ export default function ServiceSection() {
               width={1200}
               height={800}
               className="w-full h-auto object-cover block"
-              style={{ transform: "translateY(-2%)" }}
+              style={{ transform: "translateY(-7%)" }}
             />
           </motion.div>
         ))}
