@@ -10,7 +10,7 @@ export default function Header({ scrollToSection }) {
         {/* 左側：ロゴ */}
         <div className="flex items-center">
           <Image
-            src="/images/logo.png"
+            src="/images/logo.jpg"
             alt="SOMA Logo"
             width={80}
             height={80}
