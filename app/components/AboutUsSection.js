@@ -64,11 +64,8 @@ export default function AboutUsSection() {
           </h3>
           <ul className="text-gray-700 list-disc list-inside space-y-2">
             <li>会社名：SOMA株式会社</li>
-            <li>代表者：内藤 拓馬</li>
-            <li>設立：2019年9月</li>
-            <li>所在地：神奈川県横浜市</li>
-            <li>事業内容：マーケティング、クラウドファンディング業務受託</li>
-            <li>社員数：20名（業務委託含む）</li>
+            <li>事業内容：海外展開支援・メタバース関連</li>
+            <li>ミッション：誰もが手軽に海外展開できる世界を創る</li>
           </ul>
         </motion.div>
 
@@ -79,12 +76,8 @@ export default function AboutUsSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <h3 className="text-2xl font-bold mb-4 text-gray-800">
-            History
-          </h3>
+          <h3 className="text-2xl font-bold mb-4 text-gray-800">History</h3>
           <ul className="text-gray-700 list-disc list-inside space-y-2">
-            <li>2019年：サウスオブマーケットLLC設立</li>
-            <li>2025年：SOMA株式会社へ社名変更</li>
             <li>2026年：海外展開をDXで実現するBtoBプラットフォーム「METAEXPO JAPAN」開始予定</li>
           </ul>
         </motion.div>
@@ -108,7 +101,7 @@ export default function AboutUsSection() {
             whileHover={{ scale: 1.05 }}
           >
             <Image
-              src="/images/service/スライド1.PNG"
+              src="/images/naito.jpg"
               alt="CEO"
               width={400}
               height={192}
@@ -130,7 +123,7 @@ export default function AboutUsSection() {
             whileHover={{ scale: 1.05 }}
           >
             <Image
-              src="/images/service/スライド2.PNG"
+              src="/images/inoue.jpg"
               alt="COO"
               width={400}
               height={192}
@@ -150,7 +143,7 @@ export default function AboutUsSection() {
             whileHover={{ scale: 1.05 }}
           >
             <Image
-              src="/images/service/スライド3.PNG"
+              src="/images/takata.jpg"
               alt="CMO"
               width={400}
               height={192}

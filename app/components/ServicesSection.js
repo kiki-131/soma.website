@@ -5,16 +5,16 @@ import { FaGlobeAsia, FaChartLine, FaHandshake, FaRocket } from "react-icons/fa"
 
 export default function ServiceSection() {
   const images = [
-    "/images/service/スライド1.PNG",
-    "/images/service/スライド2.PNG",
-    "/images/service/スライド3.PNG",
-    "/images/service/スライド4.PNG",
-    "/images/service/スライド5.PNG",
-    "/images/service/スライド6.PNG",
-    "/images/service/スライド7.PNG",
-    "/images/service/スライド8.PNG",
-    "/images/service/スライド9.PNG",
-    "/images/service/スライド10.PNG",
+  "/images/service/slide1.png",
+  "/images/service/slide2.png",
+  "/images/service/slide3.png",
+  "/images/service/slide4.png",
+  "/images/service/slide5.png",
+  "/images/service/slide6.png",
+  "/images/service/slide7.png",
+  "/images/service/slide8.png",
+  "/images/service/slide9.png",
+  "/images/service/slide10.png",
   ];
 
   return (
