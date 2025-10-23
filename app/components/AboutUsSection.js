@@ -108,7 +108,7 @@ export default function AboutUsSection() {
             whileHover={{ scale: 1.05 }}
           >
             <Image
-              src="/images/naito.jpg"
+              src="/images/service/スライド1.PNG"
               alt="CEO"
               width={400}
               height={192}
@@ -130,7 +130,7 @@ export default function AboutUsSection() {
             whileHover={{ scale: 1.05 }}
           >
             <Image
-              src="/images/inoue.jpg"
+              src="/images/service/スライド2.PNG"
               alt="COO"
               width={400}
               height={192}
@@ -150,7 +150,7 @@ export default function AboutUsSection() {
             whileHover={{ scale: 1.05 }}
           >
             <Image
-              src="/images/takata.jpg"
+              src="/images/service/スライド3.PNG"
               alt="CMO"
               width={400}
               height={192}
