@@ -25,7 +25,7 @@ export default function ServiceSection() {
         {images.map((src, i) => (
           <motion.div
             key={i}
-            className="w-full rounded-2xl overflow-hidden shadow-md bg-gray-100"
+            className="w-full overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.05 }}
@@ -36,7 +36,8 @@ export default function ServiceSection() {
               alt={`service-${i + 1}`}
               width={1200}
               height={800}
-              className="w-full h-auto object-contain"
+              className="w-full h-auto object-cover block"
+              style={{ transform: "translateY(-2%)" }}
             />
           </motion.div>
         ))}
