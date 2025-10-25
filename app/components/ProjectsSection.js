@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 
 const images = [
   { src: "/images/project1.jpg", amount: "4,173,860円" },
@@ -12,20 +11,6 @@ const images = [
 ];
 
 export default function ProjectsSection() {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    const animate = async () => {
-      while (true) {
-        await controls.start({
-          x: "-50%",
-          transition: { duration: 100, ease: "linear" },
-        });
-        controls.set({ x: 0 });
-      }
-    };
-    animate();
-  }, [controls]);
 
   return (
     <section
@@ -33,13 +18,20 @@ export default function ProjectsSection() {
       className="relative bg-gray-200 py-20 px-8 md:px-16 overflow-hidden"
     >
       {/* 上部のProjectsタイトル */}
-      <h2 className="text-4xl font-bold mb-8 text-center text-gray-800">Projects</h2>
+      <h2 className="text-4xl font-bold mb-4 text-center text-gray-800">Projects</h2>
+
+      <p
+        className="text-center text-base text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed"
+        style={{ wordBreak: "keep-all" }}
+      >
+        これまでに100件以上の支援実績を持つ経験豊富なチームが、貴社の海外進出をスムーズにサポートします。
+      </p>
 
       <div className="relative w-full overflow-hidden">
         <motion.div
           className="flex"
-          animate={controls}
-          style={{ width: `${images.length * 200}%` }}
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
         >
           {images.concat(images).map((item, i) => (
             <div
