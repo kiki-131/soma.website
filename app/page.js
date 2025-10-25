@@ -36,7 +36,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2 }}
-        className="absolute left-0 top-1/4 w-[500px] -translate-y-4"
+        className="absolute left-0 top-[40%] w-[500px]"
       >
         <h1 className="text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
           SOMA
