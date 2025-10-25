@@ -32,42 +32,45 @@ export default function HomePage() {
   <div className="w-full max-w-[1100px] h-full relative px-4 md:px-0">
     {/* デスクトップでは絶対配置で固定の位置関係にする */}
     <div className="hidden md:block relative h-full">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2 }}
-        className="absolute left-0 top-[40%] w-[500px]"
-      >
-        <h1 className="text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
-          SOMA
-        </h1>
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
-          海外進出支援
-        </h1>
-        <p className="text-sm text-gray-600 leading-relaxed">
-          アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、
-          <br />
-          海外進出のテストマーケティングを支援しています。
-        </p>
-      </motion.div>
-
-      <div className="absolute right-0 bottom-12 w-[560px] flex gap-8 justify-end">
+      {/* Composite hero block pinned to top of hero area */}
+      <div className="absolute top-0 left-0 right-0 h-full flex items-start justify-between px-0">
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
-          className="relative overflow-hidden w-[260px] h-[520px] rounded-3xl shadow-2xl"
+          className="relative w-[500px] top-[50%]"
         >
-          <Image src="/images/top1.jpg" alt="トップ画像1" fill className="object-cover" />
+          <h1 className="text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
+            SOMA
+          </h1>
+          <h1 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
+            海外進出支援
+          </h1>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、
+            <br />
+            海外進出のテストマーケティングを支援しています。
+          </p>
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.3 }}
-          className="relative overflow-hidden w-[260px] h-[520px] rounded-3xl shadow-2xl"
-        >
-          <Image src="/images/top2.jpg" alt="トップ画像2" fill className="object-cover" />
-        </motion.div>
+
+        <div className="flex items-center gap-8 pr-8">
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            className="relative overflow-hidden w-[260px] h-[520px] rounded-3xl shadow-2xl"
+          >
+            <Image src="/images/top1.jpg" alt="トップ画像1" fill className="object-cover" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.3 }}
+            className="relative overflow-hidden w-[260px] h-[520px] rounded-3xl shadow-2xl"
+          >
+            <Image src="/images/top2.jpg" alt="トップ画像2" fill className="object-cover" />
+          </motion.div>
+        </div>
       </div>
     </div>
 
