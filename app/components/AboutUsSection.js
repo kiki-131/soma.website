@@ -60,12 +60,13 @@ export default function AboutUsSection() {
           transition={{ duration: 1 }}
         >
           <h3 className="text-2xl font-bold mb-4 text-gray-800">
-            Company Overview
+            事業内容
           </h3>
           <ul className="text-gray-700 list-disc list-inside space-y-2">
-            <li>会社名：SOMA株式会社</li>
-            <li>事業内容：海外展開支援・メタバース関連</li>
-            <li>ミッション：誰もが手軽に海外展開できる世界を創る</li>
+            <li>海外進出コンサルティング</li>
+            <li>クラウドファンディング業務委託</li>
+            <li>EC運営代行</li>
+            <li>デジタルマーケティング</li>
           </ul>
         </motion.div>
 
@@ -76,9 +77,10 @@ export default function AboutUsSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <h3 className="text-2xl font-bold mb-4 text-gray-800">History</h3>
+          <h3 className="text-2xl font-bold mb-4 text-gray-800">沿革</h3>
           <ul className="text-gray-700 list-disc list-inside space-y-2">
-            <li>2026年：海外展開をDXで実現するBtoBプラットフォーム「METAEXPO JAPAN」開始予定</li>
+            <li>2025年：SOMA株式会社に社名変更</li>
+            <li>2026年：海外展開をDXで実現する、B to B のプラットフォーム「METAEXPO JAPAN」開業（予定）</li>
           </ul>
         </motion.div>
       </div>
