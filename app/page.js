@@ -32,13 +32,13 @@ export default function HomePage() {
   <div className="w-full max-w-[1100px] h-full relative px-4 md:px-0">
     {/* デスクトップでは絶対配置で固定の位置関係にする */}
     <div className="hidden md:block relative h-full">
-      {/* Composite hero block pinned to top of hero area */}
-  <div className="absolute top-0 left-0 right-0 h-full flex items-center justify-between px-0">
+      {/* Composite hero block pinned to bottom of hero area so text sits at images' left-bottom */}
+    <div className="absolute top-0 left-0 right-0 h-full flex items-end justify-between px-0">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
-          className="absolute left-0 top-[30%] w-[500px]"
+          className="absolute left-0 bottom-12 w-[500px]"
         >
           <h1 className="text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
             SOMA
@@ -53,7 +53,7 @@ export default function HomePage() {
           </p>
         </motion.div>
 
-        <div className="flex items-center gap-8 pr-8">
+  <div className="flex items-end gap-8 pr-8">
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
