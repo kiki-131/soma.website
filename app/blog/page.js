@@ -13,7 +13,7 @@ export default function BlogPage() {
         const res = await fetch(
           `https://${process.env.NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/blogs`,
           {
-            headers: { "X-API-KEY": process.env.NEXT_PUBLIC_MICROCMS_API_KEY },
+            headers: { "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_MICROCMS_API_KEY },
           }
         );
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
