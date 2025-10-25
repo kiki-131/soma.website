@@ -25,7 +25,7 @@ export default function ServiceSection() {
         {images.map((src, i) => (
           <motion.div
             key={i}
-            className="relative w-full overflow-hidden service-image h-64 md:h-[420px] flex justify-center"
+            className="relative w-full overflow-hidden service-image h-64 md:h-[420px] flex justify-center bg-white rounded-xl shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.05 }}
@@ -35,7 +35,7 @@ export default function ServiceSection() {
               src={src}
               alt={`service-${i + 1}`}
               fill
-              className="object-cover w-full h-full"
+              className="object-contain object-center w-full h-full"
               sizes="(max-width: 768px) 100vw, 900px"
             />
           </motion.div>
