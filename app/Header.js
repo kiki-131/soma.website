@@ -9,15 +9,21 @@ export default function Header({ scrollToSection }) {
       <div className="max-w-7xl mx-auto px-6 py-0 flex items-center justify-between">
         {/* 左側：ロゴ */}
         <div className="flex items-center">
-          <Image
-            src="/images/logo.jpg"
-            alt="SOMA Logo"
-            width={80}
-            height={80}
-            className="h-20 w-auto"
-            priority
-            unoptimized
-          />
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="トップへ戻る"
+            className="focus:outline-none"
+          >
+            <Image
+              src="/images/logo.jpg"
+              alt="SOMA Logo"
+              width={80}
+              height={80}
+              className="h-20 w-auto cursor-pointer"
+              priority
+              unoptimized
+            />
+          </button>
         </div>
 
         {/* 右側：ナビ + SNS + ボタン */}
