@@ -71,26 +71,26 @@ export default function HomePage() {
       </div>
     </div>
 
-    {/* モバイル: stacked layout（幅狭いときは縦積み） */}
-    <div className="md:hidden flex flex-col items-center justify-end h-full gap-6">
+    {/* モバイル: 左下にテキスト、右下に画像を寄せる（縦並びしない） */}
+    <div className="md:hidden relative h-full">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2 }}
-        className="flex flex-col items-center w-full px-6"
+        className="absolute left-4 bottom-6 w-2/3"
       >
-        <h1 className="text-5xl font-extrabold text-gray-900 mb-4 leading-tight text-center">SOMA</h1>
-        <h2 className="text-2xl font-extrabold text-gray-900 mb-4 leading-tight text-center">海外進出支援</h2>
-        <p className="text-sm text-gray-600 leading-relaxed text-center">
+        <h1 className="text-4xl font-extrabold text-gray-900 mb-2 leading-tight">SOMA</h1>
+        <h2 className="text-lg font-semibold text-gray-900 mb-2">海外進出支援</h2>
+        <p className="text-sm text-gray-600 leading-relaxed">
           アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、海外進出のテストマーケティングを支援しています。
         </p>
       </motion.div>
 
-      <div className="flex gap-4 mb-8 px-4">
-        <div className="relative w-44 h-32 rounded-2xl overflow-hidden shadow-2xl">
+      <div className="absolute right-4 bottom-4 flex gap-3">
+        <div className="relative w-28 h-20 rounded-2xl overflow-hidden shadow-2xl">
           <Image src="/images/top1.jpg" alt="トップ画像1" fill className="object-cover" />
         </div>
-        <div className="relative w-44 h-32 rounded-2xl overflow-hidden shadow-2xl">
+        <div className="relative w-28 h-20 rounded-2xl overflow-hidden shadow-2xl">
           <Image src="/images/top2.jpg" alt="トップ画像2" fill className="object-cover" />
         </div>
       </div>
