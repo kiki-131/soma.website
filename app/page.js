@@ -29,7 +29,7 @@ export default function HomePage() {
 {/* トップセクション */}
 <div className="relative w-full h-[calc(100vh-80px)] bg-white flex items-center justify-center overflow-hidden">
   {/* 固定幅コンテナ: 内部は固定幅でレイアウト（ウィンドウ幅を変更しても変わらない） */}
-  <div className="w-[1100px] max-w-[1100px] h-full relative px-0">
+  <div className="w-full max-w-[1100px] h-full relative px-4 md:px-0">
     {/* デスクトップでは絶対配置で固定の位置関係にする */}
     <div className="hidden md:block relative h-full">
       <motion.div
