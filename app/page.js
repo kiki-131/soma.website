@@ -38,13 +38,13 @@ export default function HomePage() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
-          className="absolute left-0 bottom-12 w-[500px] z-30"
+          className="absolute left-0 bottom-12 w-[420px] z-30"
         >
           {/* Brand as H2 to avoid duplicate H1 */}
           <h2 className="text-3xl font-bold text-gray-900 mb-2 leading-tight">SOMA</h2>
 
           {/* Single H1 for the page */}
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+          <h1 className="font-extrabold text-gray-900 mb-4 leading-tight whitespace-nowrap text-[clamp(28px,5vw,44px)]">
             海外クラファン × 海外進出支援
           </h1>
 
@@ -86,7 +86,7 @@ export default function HomePage() {
       >
         {/* Mobile: single H1, brand as H2 */}
         <h2 className="text-2xl font-bold text-gray-900 mb-1">SOMA</h2>
-        <h1 className="text-2xl font-extrabold text-gray-900 mb-2">海外クラファン × 海外進出支援</h1>
+        <h1 className="font-extrabold text-gray-900 mb-2 leading-tight whitespace-nowrap text-[clamp(18px,6vw,28px)]">海外クラファン × 海外進出支援</h1>
         <p className="text-sm text-gray-600 leading-relaxed">
           アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、海外進出のテストマーケティングを支援しています。
         </p>
