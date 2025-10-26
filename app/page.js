@@ -44,7 +44,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-2 leading-tight">SOMA</h2>
 
           {/* Single H1 for the page */}
-          <h1 className="font-extrabold text-gray-900 mb-4 leading-tight whitespace-nowrap text-[clamp(28px,5vw,44px)]">
+          <h1 className="font-extrabold text-gray-900 mb-4 leading-tight whitespace-nowrap text-[clamp(20px,3.2vw,36px)]">
             海外クラファン × 海外進出支援
           </h1>
 
