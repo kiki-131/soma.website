@@ -43,15 +43,14 @@ export default function HomePage() {
           {/* Brand as H2 to avoid duplicate H1 */}
           <h2 className="text-3xl font-bold text-gray-900 mb-2 leading-tight">SOMA</h2>
 
-          {/* Single H1 for the page */}
-          <h1 className="font-extrabold text-gray-900 mb-4 leading-tight whitespace-nowrap text-[clamp(20px,3.2vw,36px)]">
-            海外クラファン × 海外進出支援
+          {/* Single H1 for the page - split into two explicit lines */}
+          <h1 className="font-extrabold text-gray-900 mb-4 leading-tight text-[clamp(36px,6vw,64px)]">
+            <span className="block">海外クラファン</span>
+            <span className="block">×海外進出支援</span>
           </h1>
 
           <p className="text-sm text-gray-600 leading-relaxed">
-            アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、
-            <br />
-            海外進出のテストマーケティングを支援しています。
+            アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、海外進出のテストマーケティングを支援しています。
           </p>
         </motion.div>
 
@@ -86,7 +85,13 @@ export default function HomePage() {
       >
         {/* Mobile: single H1, brand as H2 */}
         <h2 className="text-2xl font-bold text-gray-900 mb-1">SOMA</h2>
-        <h1 className="font-extrabold text-gray-900 mb-2 leading-tight whitespace-nowrap text-[clamp(18px,6vw,28px)]">海外クラファン × 海外進出支援</h1>
+        <h1 className="font-extrabold text-gray-900 mb-2 leading-tight text-[clamp(20px,6vw,38px)]">
+          <span className="block">海外クラファン</span>
+          <span className="block">×海外進出支援</span>
+        </h1>
+        <p className="text-sm text-gray-600 leading-relaxed">
+          アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、海外進出のテストマーケティングを支援しています。
+        </p>
         <p className="text-sm text-gray-600 leading-relaxed">
           アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、海外進出のテストマーケティングを支援しています。
         </p>
