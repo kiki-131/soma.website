@@ -43,15 +43,33 @@ export default function HomePage() {
           {/* Brand as H2 to avoid duplicate H1 */}
           <h2 className="text-3xl font-bold text-gray-900 mb-2 leading-tight">SOMA</h2>
 
-          {/* Single H1 for the page - split into two explicit lines */}
+          {/* Top H1 */}
           <h1 className="font-extrabold text-gray-900 mb-4 leading-tight text-[clamp(32px,6vw,56px)]">
-            <span className="block">海外クラファン</span>
-            <span className="block">×海外進出支援</span>
+            海外クラウドファンディング代行／海外進出の実践支援
           </h1>
 
-          <p className="text-sm text-gray-600 leading-relaxed">
-            アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、海外進出のテストマーケティングを支援しています。
+          {/* Subcopy */}
+          <p className="text-sm text-gray-600 leading-relaxed mb-6">
+            Kickstarter・Indiegogo・zeczecでの戦略設計〜LP〜広告〜物流〜法規まで、一気通貫で伴走。まずは無料相談30分。
           </p>
+
+          {/* CTA buttons */}
+          <div className="flex flex-wrap gap-4">
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="px-6 py-3 rounded-full text-white font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
+            >
+              無料相談を予約する
+            </button>
+            <a
+              href="/success-stories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-full text-blue-700 font-semibold border border-blue-200 bg-white hover:bg-blue-50 transition"
+            >
+              成功事例集をダウンロード
+            </a>
+          </div>
         </motion.div>
 
         <div className="absolute right-0 bottom-12 flex items-end gap-8 pr-8 z-10">
@@ -85,16 +103,26 @@ export default function HomePage() {
       >
         {/* Mobile: single H1, brand as H2 */}
         <h2 className="text-2xl font-bold text-gray-900 mb-1">SOMA</h2>
-  <h1 className="font-extrabold text-gray-900 mb-2 leading-tight text-[clamp(18px,6vw,34px)]">
-          <span className="block">海外クラファン</span>
-          <span className="block">×海外進出支援</span>
-        </h1>
-        <p className="text-sm text-gray-600 leading-relaxed">
-          アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、海外進出のテストマーケティングを支援しています。
+        <h1 className="font-extrabold text-gray-900 mb-2 leading-tight text-[clamp(18px,6vw,34px)]">海外クラウドファンディング代行／海外進出の実践支援</h1>
+        <p className="text-sm text-gray-600 leading-relaxed mb-4">
+          Kickstarter・Indiegogo・zeczecでの戦略設計〜LP〜広告〜物流〜法規まで、一気通貫で伴走。まずは無料相談30分。
         </p>
-        <p className="text-sm text-gray-600 leading-relaxed">
-          アメリカや台湾、マレーシアでの海外クラウドファンディングを通し、海外進出のテストマーケティングを支援しています。
-        </p>
+        <div className="flex gap-3">
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="px-4 py-2 rounded-full text-white font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
+          >
+            無料相談を予約する
+          </button>
+          <a
+            href="/success-stories"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 rounded-full text-blue-700 font-semibold border border-blue-200 bg-white hover:bg-blue-50 transition"
+          >
+            成功事例集をダウンロード
+          </a>
+        </div>
       </motion.div>
 
       <div className="absolute right-4 bottom-4 flex gap-3">

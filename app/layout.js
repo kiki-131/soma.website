@@ -15,7 +15,7 @@ export const metadata = {
   title:
     "海外クラウドファンディング代行｜Kickstarter/Indiegogo/zeczec支援｜SOMA株式会社",
   description:
-    "Kickstarter・Indiegogo・zeczecでの海外進出を一気通貫で支援。戦略設計/ストーリー制作/広告/物流/法規まで。無料相談受付中。",
+    "海外クラウドファンディングで海外進出を実現。実績多数。戦略・クリエイティブ・広告・物流・法規まで一気通貫。無料相談受付中。",
 };
 
 export default function RootLayout({ children }) {
