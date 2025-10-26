@@ -13,8 +13,6 @@ export default function ServiceSection() {
   "/images/service/slide6.png",
   "/images/service/slide7.png",
   "/images/service/slide8.png",
-  "/images/service/slide9.png",
-  "/images/service/slide10.png",
   ];
 
   return (
