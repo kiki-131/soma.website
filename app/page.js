@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "./Header";
@@ -137,14 +138,14 @@ export default function HomePage() {
           </div>
           <div className="space-y-2 text-gray-700">
             <ul className="flex flex-wrap gap-4">
-              <li><a href="/blog" className="hover:underline">Blog</a></li>
+              <li><Link href="/blog" className="hover:underline">Blog</Link></li>
               <li><a href="#Projects" className="hover:underline">Projects</a></li>
               <li><a href="#Services" className="hover:underline">Services</a></li>
             </ul>
             <ul className="flex flex-wrap gap-4">
               <li><a href="#about-us" className="hover:underline">About us</a></li>
               <li><a href="#contact" className="hover:underline">Contact</a></li>
-              <li><a href="/privacy" className="hover:underline">プライバシーポリシー</a></li>
+              <li><Link href="/privacy" className="hover:underline">プライバシーポリシー</Link></li>
             </ul>
           </div>
         </div>
