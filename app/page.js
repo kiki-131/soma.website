@@ -61,14 +61,6 @@ export default function HomePage() {
             >
               無料相談を予約する
             </button>
-            <a
-              href="/success-stories"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 rounded-full text-blue-700 font-semibold border border-blue-200 bg-white hover:bg-blue-50 transition"
-            >
-              成功事例集をダウンロード
-            </a>
           </div>
         </motion.div>
 
@@ -114,14 +106,6 @@ export default function HomePage() {
           >
             無料相談を予約する
           </button>
-          <a
-            href="/success-stories"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-full text-blue-700 font-semibold border border-blue-200 bg-white hover:bg-blue-50 transition"
-          >
-            成功事例集をダウンロード
-          </a>
         </div>
       </motion.div>
 
@@ -143,6 +127,20 @@ export default function HomePage() {
       </section>
       <section id="about-us"><AboutUsSection /></section>
       <ContactForm />
+      {/* Footer sitemap */}
+      <footer className="bg-gray-50 mt-12 py-10">
+        <div className="max-w-7xl mx-auto px-6">
+          <h3 className="text-lg font-semibold mb-4">サイトマップ</h3>
+          <ul className="flex flex-wrap gap-4 text-gray-700">
+            <li><a href="/" className="hover:underline">トップ</a></li>
+            <li><a href="/blog" className="hover:underline">Blog</a></li>
+            <li><a href="#Projects" className="hover:underline">Projects</a></li>
+            <li><a href="#Services" className="hover:underline">Services</a></li>
+            <li><a href="#about-us" className="hover:underline">About us</a></li>
+            <li><a href="#contact" className="hover:underline">Contact</a></li>
+          </ul>
+        </div>
+      </footer>
     </>
   );
 }

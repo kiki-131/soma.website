@@ -74,13 +74,16 @@ export default function Header({ scrollToSection }) {
           {/* モバイル用：ブログリンク（ナビは非表示のためここで見せる） */}
           <a href="/blog" target="_blank" rel="noopener noreferrer" className="md:hidden text-gray-700 hover:text-blue-400 transition-colors">Blog</a>
 
-          {/* 右端ボタン */}
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="px-6 py-2 rounded-full text-white font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
-          >
-            Contact us
-          </button>
+          {/* Contact button with small label above */}
+          <div className="flex flex-col items-end">
+            <span className="text-xs text-gray-500 mb-1">無料相談はこちら</span>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="px-6 py-2 rounded-full text-white font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
+            >
+              Contact us
+            </button>
+          </div>
         </div>
       </div>
     </header>
