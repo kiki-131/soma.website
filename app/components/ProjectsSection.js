@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const images = [
   { src: "/images/project1.jpg", amount: "4,173,860円" },
@@ -11,6 +12,23 @@ const images = [
 ];
 
 export default function ProjectsSection() {
+  const trackRef = useRef(null);
+  const [singleWidth, setSingleWidth] = useState(0);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    // total scrollWidth contains two copies; single set width is half
+    const total = el.scrollWidth;
+    setSingleWidth(total / 2);
+    // Recompute on resize
+    const onResize = () => {
+      const t = el.scrollWidth;
+      setSingleWidth(t / 2);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   return (
     <section
@@ -29,8 +47,9 @@ export default function ProjectsSection() {
 
       <div className="relative w-full overflow-hidden">
         <motion.div
+          ref={trackRef}
           className="flex"
-          animate={{ x: ["0%", "-50%"] }}
+          animate={singleWidth ? { x: [0, -singleWidth] } : { x: 0 }}
           transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
         >
           {images.concat(images).map((item, i) => (
