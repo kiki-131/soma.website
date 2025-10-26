@@ -45,8 +45,7 @@ export default function HomePage() {
 
           {/* Single H1 for the page - split into two explicit lines */}
           <h1 className="font-extrabold text-gray-900 mb-4 leading-tight text-[clamp(32px,6vw,56px)]">
-            <span className="block">海外クラウドファンディング代行</span>
-            <span className="block">×海外進出支援</span>
+            海外クラファン×海外進出支援
           </h1>
 
           {/* Subcopy */}
@@ -104,10 +103,7 @@ export default function HomePage() {
       >
         {/* Mobile: single H1, brand as H2 */}
         <h2 className="text-2xl font-bold text-gray-900 mb-1">SOMA</h2>
-        <h1 className="font-extrabold text-gray-900 mb-2 leading-tight text-[clamp(18px,6vw,34px)]">
-          <span className="block">海外クラウドファンディング代行</span>
-          <span className="block">×海外進出支援</span>
-        </h1>
+        <h1 className="font-extrabold text-gray-900 mb-2 leading-tight text-[clamp(18px,6vw,34px)]">海外クラファン×海外進出支援</h1>
         <p className="text-sm text-gray-600 leading-relaxed mb-4">
           Kickstarter・Indiegogo・zeczecでの戦略設計〜LP〜広告〜物流〜法規まで、一気通貫で伴走。まずは無料相談30分。
         </p>
