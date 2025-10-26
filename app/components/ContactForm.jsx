@@ -13,6 +13,7 @@ export default function ContactForm() {
   const [agree, setAgree] = useState(false); // 個人情報同意チェック
   const [isConfirm, setIsConfirm] = useState(false); // 確認画面フラグ
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false); // モーダル開閉
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,21 +23,42 @@ export default function ContactForm() {
     }));
   };
 
-  const handleSubmit = () => {
-    // 送信処理（送信先: info@soma-jp.net）
-    console.log("送信データ:", formData);
-    alert("送信しました！ありがとうございました。");
+  const handleSubmit = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    try {
+      // サーバーの API に送信
+      const res = await fetch('/api/sendMail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const json = await res.json().catch(() => ({}));
 
-    // フォームリセット
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      message: "",
-    });
-    setAgree(false);
-    setIsConfirm(false);
+      if (!res.ok || json.ok === false) {
+        console.error('send failed', json);
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        return;
+      }
+
+      alert('送信しました！ありがとうございました。');
+
+      // フォームリセット
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        message: "",
+      });
+      setAgree(false);
+      setIsConfirm(false);
+    } catch (err) {
+      console.error(err);
+      alert('送信中にエラーが発生しました。');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -175,9 +197,10 @@ export default function ContactForm() {
               </button>
               <button
                 onClick={handleSubmit}
-                className="flex-1 bg-gradient-to-r from-blue-500 to-red-500 text-white py-2 px-4 rounded-lg hover:from-blue-600 hover:to-red-600 transition"
+                disabled={isSubmitting}
+                className={`flex-1 bg-gradient-to-r from-blue-500 to-red-500 text-white py-2 px-4 rounded-lg hover:from-blue-600 hover:to-red-600 transition ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
-                送信する
+                {isSubmitting ? '送信中...' : '送信する'}
               </button>
             </div>
           </>
