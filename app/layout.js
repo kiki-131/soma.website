@@ -26,6 +26,8 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
           rel="stylesheet"
         />
+  {/* Google Search Console verification */}
+  <meta name="google-site-verification" content="dUDQ3flZLVkugl6GHITZ9JnXfFbxcbNCcggPtVkpppQ" />
   {/* Canonical URL for SEO */}
   <link rel="canonical" href="https://www.soma-jp.net/" />
       </head>
