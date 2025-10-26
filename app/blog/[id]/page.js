@@ -35,7 +35,7 @@ export default async function BlogDetail({ params }) {
           className="w-full h-72 object-cover rounded-lg mb-6"
         />
       )}
-      <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: post.body }} />
+  <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: post.content || post.body || "" }} />
     </article>
   );
 }
