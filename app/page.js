@@ -130,15 +130,23 @@ export default function HomePage() {
       {/* Footer sitemap */}
       <footer className="bg-gray-50 mt-12 py-10">
         <div className="max-w-7xl mx-auto px-6">
-          <h3 className="text-lg font-semibold mb-4">サイトマップ</h3>
-          <ul className="flex flex-wrap gap-4 text-gray-700">
-            <li><a href="/" className="hover:underline">トップ</a></li>
-            <li><a href="/blog" className="hover:underline">Blog</a></li>
-            <li><a href="#Projects" className="hover:underline">Projects</a></li>
-            <li><a href="#Services" className="hover:underline">Services</a></li>
-            <li><a href="#about-us" className="hover:underline">About us</a></li>
-            <li><a href="#contact" className="hover:underline">Contact</a></li>
-          </ul>
+          {/* Replace text heading with logo (approx. 2x header logo height) */}
+          <div className="mb-4">
+            {/* header logo in header used h-20 (~80px) so use h-28 (~112px) here (smaller than previous) */}
+            <Image src="/images/logo.jpg" alt="SOMA Logo" width={112} height={112} className="h-28 w-auto" />
+          </div>
+          <div className="space-y-2 text-gray-700">
+            <ul className="flex flex-wrap gap-4">
+              <li><a href="/blog" className="hover:underline">Blog</a></li>
+              <li><a href="#Projects" className="hover:underline">Projects</a></li>
+              <li><a href="#Services" className="hover:underline">Services</a></li>
+            </ul>
+            <ul className="flex flex-wrap gap-4">
+              <li><a href="#about-us" className="hover:underline">About us</a></li>
+              <li><a href="#contact" className="hover:underline">Contact</a></li>
+              <li><a href="/privacy" className="hover:underline">プライバシーポリシー</a></li>
+            </ul>
+          </div>
         </div>
       </footer>
     </>

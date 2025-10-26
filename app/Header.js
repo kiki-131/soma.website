@@ -75,7 +75,7 @@ export default function Header({ scrollToSection }) {
           <a href="/blog" target="_blank" rel="noopener noreferrer" className="md:hidden text-gray-700 hover:text-blue-400 transition-colors">Blog</a>
 
           {/* Contact button with small label above */}
-          <div className="flex flex-col items-end">
+          <div className="flex flex-col items-center">
             <span className="text-xs text-gray-500 mb-1">無料相談はこちら</span>
             <button
               onClick={() => scrollToSection("contact")}
