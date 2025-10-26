@@ -6,19 +6,23 @@ export default async function BlogPage() {
   let posts = [];
 
   try {
-    const res = await fetch(
-      `https://${service}.microcms.io/api/v1/blogs`,
-      {
+    if (!service || !key) {
+      console.warn("microCMS service or API key is missing. Skipping fetch.");
+    } else {
+      const res = await fetch(`https://${service}.microcms.io/api/v1/blogs`, {
         headers: { "X-MICROCMS-API-KEY": key },
         // no-store to always fetch fresh content; change if you want caching
         cache: "no-store",
+      });
+
+      if (!res.ok) {
+        // don't throw — handle gracefully and log details for debugging
+        console.error(`microCMS list fetch failed: ${res.status} ${res.statusText}`);
+      } else {
+        const data = await res.json();
+        posts = data.contents || [];
       }
-    );
-    if (!res.ok) {
-      throw new Error(`${res.status} ${res.statusText}`);
     }
-    const data = await res.json();
-    posts = data.contents || [];
   } catch (e) {
     // log on server — user sees friendly message
     console.error("Failed to fetch blog list:", e);

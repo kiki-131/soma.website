@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { FaTwitter, FaInstagram } from "react-icons/fa";
 
 export default function Header({ scrollToSection }) {
@@ -26,7 +27,7 @@ export default function Header({ scrollToSection }) {
           </button>
         </div>
 
-        {/* 右側：ナビ + SNS + ボタン */}
+          {/* 右側：ナビ + SNS + ボタン */}
         <div className="flex items-center space-x-6">
           {/* ナビゲーション */}
           <nav className="hidden md:flex space-x-8">
@@ -48,6 +49,7 @@ export default function Header({ scrollToSection }) {
             >
               About us
             </button>
+            <Link href="/blog" className="text-gray-700 hover:text-blue-400 transition-colors">Blog</Link>
           </nav>
 
           {/* SNSアイコン（React Icons） */}
@@ -69,6 +71,9 @@ export default function Header({ scrollToSection }) {
               <FaInstagram size={24} />
             </a>
           </div>
+
+          {/* モバイル用：ブログリンク（ナビは非表示のためここで見せる） */}
+          <Link href="/blog" className="md:hidden text-gray-700 hover:text-blue-400 transition-colors">Blog</Link>
 
           {/* 右端ボタン */}
           <button
