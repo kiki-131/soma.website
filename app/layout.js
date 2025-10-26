@@ -30,6 +30,11 @@ export default function RootLayout({ children }) {
   <meta name="google-site-verification" content="dUDQ3flZLVkugl6GHITZ9JnXfFbxcbNCcggPtVkpppQ" />
   {/* Canonical URL for SEO */}
   <link rel="canonical" href="https://www.soma-jp.net/" />
+  {/* hreflang alternates: ja is canonical; en and zh-Hant placeholders for future translations */}
+  <link rel="alternate" href="https://www.soma-jp.net/" hreflang="ja" />
+  <link rel="alternate" href="https://www.soma-jp.net/en/" hreflang="en" />
+  <link rel="alternate" href="https://www.soma-jp.net/zh-hant/" hreflang="zh-Hant" />
+  <link rel="alternate" href="https://www.soma-jp.net/" hreflang="x-default" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
