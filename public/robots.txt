@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://soma-jp.net/sitemap.xml
+Sitemap: https://www.soma-jp.net/sitemap.xml

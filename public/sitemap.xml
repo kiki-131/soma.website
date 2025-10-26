@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://soma-jp.net/</loc>
+    <loc>https://www.soma-jp.net/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://soma-jp.net/projects</loc>
+    <loc>https://www.soma-jp.net/projects</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://soma-jp.net/services</loc>
+    <loc>https://www.soma-jp.net/services</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://soma-jp.net/about-us</loc>
+    <loc>https://www.soma-jp.net/about-us</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://soma-jp.net/blog</loc>
+    <loc>https://www.soma-jp.net/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
