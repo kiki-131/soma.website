@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { FaTwitter, FaInstagram } from "react-icons/fa";
 
 export default function Header({ scrollToSection }) {
@@ -49,7 +48,7 @@ export default function Header({ scrollToSection }) {
             >
               About us
             </button>
-            <Link href="/blog" className="text-gray-700 hover:text-blue-400 transition-colors">Blog</Link>
+            <a href="/blog" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-400 transition-colors">Blog</a>
           </nav>
 
           {/* SNSアイコン（React Icons） */}
@@ -73,7 +72,7 @@ export default function Header({ scrollToSection }) {
           </div>
 
           {/* モバイル用：ブログリンク（ナビは非表示のためここで見せる） */}
-          <Link href="/blog" className="md:hidden text-gray-700 hover:text-blue-400 transition-colors">Blog</Link>
+          <a href="/blog" target="_blank" rel="noopener noreferrer" className="md:hidden text-gray-700 hover:text-blue-400 transition-colors">Blog</a>
 
           {/* 右端ボタン */}
           <button
