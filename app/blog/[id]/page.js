@@ -1,36 +1,28 @@
-"use client";
+export default async function BlogDetail({ params }) {
+  const { id } = params;
+  const service = process.env.NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN;
+  const key = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
+  let post = null;
 
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-
-export default function BlogDetail() {
-  const { id } = useParams();
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch(
-          `https://${process.env.NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/blogs/${id}`,
-          {
-            headers: { "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_MICROCMS_API_KEY },
-          }
-        );
-        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-        const data = await res.json();
-        setPost(data);
-      } catch (e) {
-        console.error("Failed to fetch blog post:", e);
-      } finally {
-        setLoading(false);
+  try {
+    const res = await fetch(
+      `https://${service}.microcms.io/api/v1/blogs/${id}`,
+      {
+        headers: { "X-MICROCMS-API-KEY": key },
+        cache: "no-store",
       }
+    );
+    if (!res.ok) {
+      throw new Error(`${res.status} ${res.statusText}`);
     }
-    if (id) fetchData();
-  }, [id]);
+    post = await res.json();
+  } catch (e) {
+    console.error("Failed to fetch blog post:", e);
+  }
 
-  if (loading) return <p className="text-center mt-20">Loading...</p>;
-  if (!post) return <p className="text-center mt-20">Post not found.</p>;
+  if (!post) {
+    return <p className="text-center mt-20">Post not found.</p>;
+  }
 
   return (
     <article className="max-w-3xl mx-auto py-16 px-4">
@@ -43,10 +35,7 @@ export default function BlogDetail() {
           className="w-full h-72 object-cover rounded-lg mb-6"
         />
       )}
-      <div
-        className="prose prose-lg max-w-none"
-        dangerouslySetInnerHTML={{ __html: post.body }}
-      />
+      <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: post.body }} />
     </article>
   );
 }
