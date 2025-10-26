@@ -23,7 +23,7 @@ export default function ContactForm() {
   };
 
   const handleSubmit = () => {
-    // 送信処理（ここではメール送信先 japa.0204@hotmail.co.jp）
+    // 送信処理（送信先: info@soma-jp.net）
     console.log("送信データ:", formData);
     alert("送信しました！ありがとうございました。");
 
