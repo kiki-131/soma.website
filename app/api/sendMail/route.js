@@ -26,29 +26,34 @@ export async function POST(req) {
       <p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>
     `;
 
-    // If Zoho SMTP credentials are provided, use SMTP via nodemailer
-    const ZOHO_SMTP_USER = process.env.ZOHO_SMTP_USER;
-    if (ZOHO_SMTP_USER) {
+    // If SMTP credentials are provided (either ZOHO_* or SMTP_*), use SMTP via nodemailer
+    const smtpUser = process.env.ZOHO_SMTP_USER || process.env.SMTP_USER || process.env.SMTP_USERNAME;
+    if (smtpUser) {
+      const smtpHost = process.env.ZOHO_SMTP_HOST || process.env.SMTP_HOST || 'smtp.lolipop.jp';
+      const smtpPort = parseInt(process.env.ZOHO_SMTP_PORT || process.env.SMTP_PORT || '587');
+      const smtpSecure = (process.env.ZOHO_SMTP_SECURE === 'true') || (process.env.SMTP_SECURE === 'true') || false;
+      const smtpPass = process.env.ZOHO_SMTP_PASS || process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
+
       const transporter = nodemailer.createTransport({
-        host: process.env.ZOHO_SMTP_HOST || 'smtp.zoho.com',
-        port: parseInt(process.env.ZOHO_SMTP_PORT || '587'),
-        secure: process.env.ZOHO_SMTP_SECURE === 'true',
+        host: smtpHost,
+        port: smtpPort,
+        secure: smtpSecure,
         auth: {
-          user: process.env.ZOHO_SMTP_USER,
-          pass: process.env.ZOHO_SMTP_PASS,
+          user: smtpUser,
+          pass: smtpPass,
         },
       });
 
       const info = await transporter.sendMail({
-        from: process.env.MAIL_FROM || ZOHO_SMTP_USER,
-        to: process.env.MAIL_TO || ZOHO_SMTP_USER,
+        from: process.env.MAIL_FROM || smtpUser,
+        to: process.env.MAIL_TO || smtpUser,
         subject,
         text,
         html,
         replyTo: email,
       });
 
-      console.log('smtp sent', info.messageId);
+      console.log('smtp sent', info && info.messageId);
       return new Response(JSON.stringify({ ok: true }), { status: 200 });
     }
 
