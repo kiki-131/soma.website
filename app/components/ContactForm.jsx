@@ -37,7 +37,8 @@ export default function ContactForm() {
 
       if (!res.ok || json.ok === false) {
         console.error('send failed', json);
-        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        const serverMsg = json && json.error ? json.error : '送信に失敗しました。時間をおいて再度お試しください。';
+        alert(serverMsg);
         return;
       }
 
@@ -155,9 +156,9 @@ export default function ContactForm() {
               <button
                 type="button"
                 onClick={() => setIsConfirm(true)}
-                disabled={!formData.name || !formData.email || !agree}
+                disabled={!formData.name || !formData.email || !formData.message || !agree}
                 className={`w-full py-2 px-4 rounded-lg text-white font-medium transition-colors ${
-                  !formData.name || !formData.email || !agree
+                  !formData.name || !formData.email || !formData.message || !agree
                     ? "bg-gray-400 cursor-not-allowed"
                     : "bg-gradient-to-r from-blue-500 to-red-500 hover:from-blue-600 hover:to-red-600"
                 }`}
