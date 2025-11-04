@@ -37,7 +37,20 @@ export default function ContactForm() {
 
       if (!res.ok || json.ok === false) {
         console.error('send failed', json);
-        const serverMsg = json && json.error ? json.error : '送信に失敗しました。時間をおいて再度お試しください。';
+        // サーバー側のエラーコードに基づきユーザー向けメッセージを出す
+        const code = json && json.error;
+        let serverMsg = '送信に失敗しました。時間をおいて再度お試しください。';
+        if (code === 'smtp_auth_failed') {
+          serverMsg = 'メールの認証に失敗しました。送信設定を確認してください（管理者に連絡してください）。';
+        } else if (code === 'smtp_send_failed') {
+          serverMsg = 'メールの送信に失敗しました。後ほど再試行してください。';
+        } else if (code === 'smtp credentials missing' || code === 'mailer not configured') {
+          serverMsg = 'メール送信の設定が正しくありません。管理者に連絡してください。';
+        } else if (typeof code === 'string') {
+          // サーバーが文字列メッセージを返す場合はそれを補助メッセージとして表示
+          serverMsg = `${serverMsg} (${code})`;
+        }
+
         alert(serverMsg);
         return;
       }

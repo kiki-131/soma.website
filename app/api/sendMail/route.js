@@ -1,11 +1,25 @@
 // app/api/sendMail/route.js
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 import nodemailer from 'nodemailer';
 
 export async function POST(req) {
   try {
     // フォームデータの取得
     const body = await req.json();
+    // Safe debug: log received payload shape (do not log actual message content)
+    try {
+      console.log('/api/sendMail received', {
+        keys: Object.keys(body || {}),
+        nameLen: body && body.name ? String(body.name).length : 0,
+        emailLen: body && body.email ? String(body.email).length : 0,
+        messageLen: body && body.message ? String(body.message).length : 0,
+      });
+    } catch (e) {
+      // ignore
+    }
     const { name, email, company, phone, message } = body || {};
 
     if (!name || !email || !message) {
@@ -32,29 +46,112 @@ export async function POST(req) {
       const smtpHost = process.env.ZOHO_SMTP_HOST || process.env.SMTP_HOST || 'smtp.lolipop.jp';
       const smtpPort = parseInt(process.env.ZOHO_SMTP_PORT || process.env.SMTP_PORT || '587');
       const smtpSecure = (process.env.ZOHO_SMTP_SECURE === 'true') || (process.env.SMTP_SECURE === 'true') || false;
-      const smtpPass = process.env.ZOHO_SMTP_PASS || process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
+        const smtpPass = process.env.ZOHO_SMTP_PASS || process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
 
-      const transporter = nodemailer.createTransport({
-        host: smtpHost,
-        port: smtpPort,
-        secure: smtpSecure,
-        auth: {
-          user: smtpUser,
-          pass: smtpPass,
-        },
-      });
+        if (!smtpPass) {
+          console.error('SMTP password missing in environment variables');
+          return new Response(JSON.stringify({ ok: false, error: 'smtp credentials missing' }), { status: 500 });
+        }
 
-      const info = await transporter.sendMail({
-        from: process.env.MAIL_FROM || smtpUser,
-        to: process.env.MAIL_TO || smtpUser,
-        subject,
-        text,
-        html,
-        replyTo: email,
-      });
+        // Safe debug: log which SMTP settings are being used, but do NOT log the password itself.
+        try {
+          console.log('SMTP config', {
+            host: smtpHost,
+            port: smtpPort,
+            secure: smtpSecure,
+            user: smtpUser,
+            passPresent: !!smtpPass,
+            passLength: smtpPass ? smtpPass.length : 0,
+          });
+        } catch (e) {
+          // ignore logging failures
+        }
 
-      console.log('smtp sent', info && info.messageId);
-      return new Response(JSON.stringify({ ok: true }), { status: 200 });
+        const createTransport = (opts = {}) =>
+          nodemailer.createTransport(Object.assign({
+            host: smtpHost,
+            port: smtpPort,
+            secure: smtpSecure,
+            auth: { user: smtpUser, pass: smtpPass },
+          }, opts));
+
+        // Primary transporter
+        let transporter = createTransport();
+
+        // Verify connection configuration before sending to provide clearer errors
+        try {
+          await transporter.verify();
+        } catch (verifyErr) {
+          // Don't log sensitive values; log codes and responses only
+          console.error('SMTP verify failed', { code: verifyErr && verifyErr.code, response: verifyErr && verifyErr.response });
+
+          // Try a fallback: some servers prefer LOGIN authMethod or different TLS options.
+          try {
+            console.log('Attempting fallback verify: authMethod=LOGIN, tls.rejectUnauthorized=false');
+            const fallback = createTransport({ authMethod: 'LOGIN', tls: { rejectUnauthorized: false } });
+            await fallback.verify();
+            transporter = fallback; // swap to fallback if verify succeeds
+            console.log('Fallback verify OK (using authMethod=LOGIN)');
+          } catch (fbErr) {
+            console.error('Fallback verify failed', { code: fbErr && fbErr.code, response: fbErr && fbErr.response });
+
+            // If SendGrid is configured, attempt to send via SendGrid as a fallback.
+            const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
+            if (SENDGRID_API_KEY) {
+              console.log('Attempting SendGrid fallback because SMTP failed');
+              try {
+                const SENDGRID_FROM = process.env.SENDGRID_FROM || process.env.MAIL_FROM || 'no-reply@example.com';
+                const SENDGRID_TO = process.env.SENDGRID_TO || process.env.MAIL_TO || smtpUser;
+                const payload = {
+                  personalizations: [{ to: [{ email: SENDGRID_TO }], subject }],
+                  from: { email: SENDGRID_FROM },
+                  reply_to: { email },
+                  content: [
+                    { type: 'text/plain', value: text },
+                    { type: 'text/html', value: html },
+                  ],
+                };
+
+                const sgRes = await fetch('https://api.sendgrid.com/v3/mail/send', {
+                  method: 'POST',
+                  headers: { Authorization: `Bearer ${SENDGRID_API_KEY}`, 'Content-Type': 'application/json' },
+                  body: JSON.stringify(payload),
+                });
+
+                if (!sgRes.ok) {
+                  const errText = await sgRes.text();
+                  console.error('SendGrid fallback error', sgRes.status, errText);
+                  return new Response(JSON.stringify({ ok: false, error: 'smtp_auth_failed' }), { status: 500 });
+                }
+
+                console.log('SendGrid fallback sent');
+                return new Response(JSON.stringify({ ok: true, via: 'sendgrid' }), { status: 200 });
+              } catch (sgErr) {
+                console.error('SendGrid fallback failed', sgErr);
+                return new Response(JSON.stringify({ ok: false, error: 'smtp_auth_failed' }), { status: 500 });
+              }
+            }
+
+            return new Response(JSON.stringify({ ok: false, error: 'smtp_auth_failed' }), { status: 500 });
+          }
+        }
+
+        try {
+          const info = await transporter.sendMail({
+            from: process.env.MAIL_FROM || smtpUser,
+            to: process.env.MAIL_TO || smtpUser,
+            subject,
+            text,
+            html,
+            replyTo: email,
+          });
+
+          console.log('smtp sent', info && info.messageId);
+          return new Response(JSON.stringify({ ok: true }), { status: 200 });
+        } catch (sendErr) {
+          console.error('smtp send error', { code: sendErr && sendErr.code, response: sendErr && sendErr.response });
+          return new Response(JSON.stringify({ ok: false, error: 'smtp_send_failed' }), { status: 500 });
+        }
     }
 
     // Fallback to SendGrid if configured

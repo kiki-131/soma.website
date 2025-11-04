@@ -1,0 +1,35 @@
+{
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.next/**": true,
+    "**/dist/**": true,
+    "**/.vercel/**": true,
+    "**/.turbo/**": true,
+    "**/public/images/**": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/.vercel": true
+  },
+  "search.followSymlinks": false,
+  "search.useIgnoreFiles": true,
+  "search.useGlobalIgnoreFiles": true,
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
+  "extensions.ignoreRecommendations": true,
+  "git.autofetch": false,
+  "git.enableSmartCommit": false,
+  "workbench.startupEditor": "none",
+  "telemetry.telemetryLevel": "off",
+  "eslint.run": "onSave",
+  "eslint.quiet": true
+  ,
+  "editor.minimap.enabled": false,
+  "workbench.editor.enablePreview": true,
+  "editor.largeFileOptimizations": true
+}
