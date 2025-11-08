@@ -1,0 +1,13 @@
+{
+  "name": "soma-mailer",
+  "version": "1.0.0",
+  "description": "Small mailer service to send emails via SMTP for soma.website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.4"
+  }
+}
