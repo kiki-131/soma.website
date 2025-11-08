@@ -4,7 +4,8 @@
   "description": "Small mailer service to send emails via SMTP for soma.website",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "echo \"no build step for mailer\""
   },
   "dependencies": {
     "express": "^4.18.2",
