@@ -28,6 +28,13 @@ function createTransporter() {
 
 app.get('/health', (req, res) => res.json({ ok: true }));
 
+// Render uses /healthz by default for internal health checks in some configs.
+// Add an alias so both /health and /healthz return 200 OK.
+app.get('/healthz', (req, res) => res.json({ ok: true }));
+
+// Optional root path to help debugging from a browser
+app.get('/', (req, res) => res.send('soma-mailer: ok'));
+
 app.post('/send', async (req, res) => {
   try {
     // simple header-based auth to avoid public abuse
