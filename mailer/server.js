@@ -77,16 +77,61 @@ app.post('/send', async (req, res) => {
       // continue to attempt send, but log
     }
 
-    const info = await transporter.sendMail({
-      from: process.env.MAIL_FROM || process.env.SMTP_USER,
-      to: process.env.MAIL_TO || process.env.SMTP_USER,
-      subject,
-      text,
-      html,
-      replyTo: email,
-    });
+    // Attempt SMTP send first; if it fails and Postmark is configured,
+    // fall back to Postmark's HTTP API which often succeeds from cloud hosts.
+    try {
+      const info = await transporter.sendMail({
+        from: process.env.MAIL_FROM || process.env.SMTP_USER,
+        to: process.env.MAIL_TO || process.env.SMTP_USER,
+        subject,
+        text,
+        html,
+        replyTo: email,
+      });
 
-    return res.json({ ok: true, messageId: info && info.messageId });
+      return res.json({ ok: true, messageId: info && info.messageId, via: 'smtp' });
+    } catch (sendErr) {
+      console.error('send error', sendErr && sendErr.message ? sendErr.message : sendErr);
+
+      // Postmark fallback
+      const POSTMARK_TOKEN = process.env.POSTMARK_SERVER_TOKEN || process.env.POSTMARK_API_KEY;
+      if (POSTMARK_TOKEN) {
+        try {
+          console.log('Attempting Postmark fallback');
+          const pmRes = await fetch('https://api.postmarkapp.com/email', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'X-Postmark-Server-Token': POSTMARK_TOKEN,
+            },
+            body: JSON.stringify({
+              From: process.env.MAIL_FROM || process.env.SMTP_USER,
+              To: process.env.MAIL_TO || process.env.SMTP_USER,
+              Subject: subject,
+              HtmlBody: html,
+              TextBody: text,
+              ReplyTo: email,
+            }),
+          });
+
+          if (!pmRes.ok) {
+            const txt = await pmRes.text().catch(() => '<unreadable>');
+            console.error('Postmark error', pmRes.status, txt);
+            return res.status(500).json({ ok: false, error: 'postmark_failed', status: pmRes.status, body: txt });
+          }
+
+          const pmJson = await pmRes.json().catch(() => ({}));
+          console.log('Postmark sent', pmJson.MessageID || pmJson);
+          return res.json({ ok: true, via: 'postmark', meta: pmJson });
+        } catch (pmErr) {
+          console.error('Postmark fallback failed', pmErr);
+          return res.status(500).json({ ok: false, error: 'smtp_send_failed', detail: String(sendErr) });
+        }
+      }
+
+      return res.status(500).json({ ok: false, error: 'smtp_send_failed', detail: String(sendErr) });
+    }
   } catch (err) {
     console.error('send error', err && err.message ? err.message : err);
     return res.status(500).json({ ok: false, error: 'send_failed', detail: String(err) });
