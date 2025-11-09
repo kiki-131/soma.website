@@ -193,7 +193,7 @@ export async function POST(req) {
     // Fallback to SendGrid if configured
     const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
     const SENDGRID_FROM = process.env.SENDGRID_FROM || 'no-reply@your-domain.com';
-      const SENDGRID_TO = process.env.SENDGRID_TO || process.env.MAIL_TO || 'info@soma-jp.net';
+    const SENDGRID_TO = process.env.SENDGRID_TO || process.env.MAIL_TO || 'info@soma-jp.net';
 
     if (!SENDGRID_API_KEY) {
       console.error('no mailer configured');
