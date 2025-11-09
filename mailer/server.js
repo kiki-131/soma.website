@@ -17,12 +17,18 @@ function createTransporter() {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
 
+  // Set short timeouts so an unreachable SMTP server fails fast instead of
+  // causing the entire /send request to hang until the client times out.
+  // connectionTimeout/greetingTimeout/socketTimeout are supported by nodemailer
+  // and help detect network problems quickly.
   return nodemailer.createTransport({
     host,
     port,
     secure,
     auth: { user, pass },
-    // keep default TLS options; can be extended if needed
+    connectionTimeout: parseInt(process.env.SMTP_CONNECTION_TIMEOUT || '10000', 10),
+    greetingTimeout: parseInt(process.env.SMTP_GREETING_TIMEOUT || '10000', 10),
+    socketTimeout: parseInt(process.env.SMTP_SOCKET_TIMEOUT || '20000', 10),
   });
 }
 
@@ -37,6 +43,10 @@ app.get('/', (req, res) => res.send('soma-mailer: ok'));
 
 app.post('/send', async (req, res) => {
   try {
+    // Immediate request logging to help debug arrival and timing
+    try {
+      console.log('/send POST received', { ip: req.ip || req.connection && req.connection.remoteAddress, keys: Object.keys(req.body || {}) });
+    } catch (e) {}
     // simple header-based auth to avoid public abuse
     const header = req.get('x-mailer-secret') || '';
     if (!SECRET || header !== SECRET) {
