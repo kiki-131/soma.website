@@ -47,6 +47,13 @@ app.post('/send', async (req, res) => {
     try {
       console.log('/send POST received', { ip: req.ip || req.connection && req.connection.remoteAddress, keys: Object.keys(req.body || {}) });
     } catch (e) {}
+    // Useful quick-debug bypass: if MAILER_DEBUG=true, accept requests and
+    // return success without attempting SMTP. Set this in Render for a
+    // quick integration test when SMTP may be unavailable.
+    if (process.env.MAILER_DEBUG === 'true') {
+      console.log('MAILER_DEBUG active: skipping SMTP send and returning ok');
+      return res.json({ ok: true, debug: true });
+    }
     // simple header-based auth to avoid public abuse
     const header = req.get('x-mailer-secret') || '';
     if (!SECRET || header !== SECRET) {
