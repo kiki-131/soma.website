@@ -93,6 +93,22 @@ app.post('/send', async (req, res) => {
   }
 });
 
+// Probe endpoint to check SMTP connectivity from the running instance.
+// Returns 200 + JSON { ok: true, verified: true } when transporter.verify() succeeds.
+// Useful for diagnosing network / auth issues from Render without sending an email.
+app.get('/probe', async (req, res) => {
+  try {
+    // create a transporter with the same factory used for /send
+    const transporter = createTransporter();
+    // attempt a quick verify (subject to transporter timeouts set above)
+    await transporter.verify();
+    return res.json({ ok: true, verified: true });
+  } catch (err) {
+    console.error('probe verify failed', err && err.code ? err.code : String(err));
+    return res.status(500).json({ ok: false, verified: false, error: String(err && err.message ? err.message : err) });
+  }
+});
+
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
