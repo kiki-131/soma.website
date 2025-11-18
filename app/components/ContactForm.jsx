@@ -14,12 +14,52 @@ export default function ContactForm() {
   const [isConfirm, setIsConfirm] = useState(false); // 確認画面フラグ
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false); // モーダル開閉
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedTopics, setSelectedTopics] = useState([]); // 選択された問い合わせ項目
+
+  // 問い合わせ項目のリスト
+  const inquiryTopics = [
+    "海外クラウドファンディングについて相談したい",
+    "料金・プランについて知りたい",
+    "過去の実績を詳しく知りたい",
+    "海外進出の戦略について相談したい",
+    "物流・配送について相談したい",
+    "その他"
+  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+    }));
+  };
+
+  // チェックボックスの選択処理
+  const handleTopicToggle = (topic) => {
+    setSelectedTopics((prev) => {
+      const newTopics = prev.includes(topic)
+        ? prev.filter((t) => t !== topic)
+        : [...prev, topic];
+      
+      // メッセージ欄を自動更新
+      updateMessageFromTopics(newTopics);
+      return newTopics;
+    });
+  };
+
+  // 選択された項目をメッセージ欄に反映
+  const updateMessageFromTopics = (topics) => {
+    if (topics.length === 0) {
+      setFormData((prev) => ({ ...prev, message: "" }));
+      return;
+    }
+    
+    const topicText = topics.map((t, i) => `${i + 1}. ${t}`).join("\n");
+    const additionalText = "\n\n【詳細・ご要望など】\n";
+    
+    setFormData((prev) => ({
+      ...prev,
+      message: topicText + additionalText,
     }));
   };
 
@@ -55,7 +95,7 @@ export default function ContactForm() {
         return;
       }
 
-      alert('送信しました！ありがとうございました。');
+      alert('送信しました!ありがとうございました。');
 
       // フォームリセット
       setFormData({
@@ -67,6 +107,7 @@ export default function ContactForm() {
       });
       setAgree(false);
       setIsConfirm(false);
+      setSelectedTopics([]);
     } catch (err) {
       console.error(err);
       alert('送信中にエラーが発生しました。');
@@ -132,14 +173,36 @@ export default function ContactForm() {
                 />
               </div>
 
-              {/* お問い合わせ内容 */}
+              {/* お問い合わせ内容（チェックボックス） */}
               <div>
-                <label className="block mb-1 font-medium">お問い合わせ内容</label>
+                <label className="block mb-2 font-medium">お問い合わせ内容（複数選択可）</label>
+                <div className="space-y-2 mb-4">
+                  {inquiryTopics.map((topic) => (
+                    <label key={topic} className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={selectedTopics.includes(topic)}
+                        onChange={() => handleTopicToggle(topic)}
+                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                      />
+                      <span className="text-sm">{topic}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* メッセージ欄（自動入力+追記可能） */}
+              <div>
+                <label className="block mb-1 font-medium">
+                  詳細・ご要望など
+                  <span className="text-sm text-gray-500 ml-2">（上記で選択した内容が自動入力されます）</span>
+                </label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows="5"
+                  rows="8"
+                  placeholder="選択した内容に加えて、詳しい情報やご要望があればご記入ください"
                   className="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-300"
                 />
               </div>
