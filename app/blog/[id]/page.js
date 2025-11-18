@@ -32,7 +32,7 @@ export default async function BlogDetail({ params }) {
         <img
           src={post.eyecatch.url}
           alt={post.title}
-          className="w-full h-72 object-cover rounded-lg mb-6"
+          className="w-full h-auto object-contain rounded-lg mb-6"
         />
       )}
   <div className="blog-content text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: post.content || post.body || "" }} />
