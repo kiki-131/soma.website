@@ -25,7 +25,7 @@ export default async function BlogDetail({ params }) {
   }
 
   return (
-    <article className="max-w-3xl mx-auto py-16 px-4">
+    <article className="w-full max-w-4xl mx-auto py-16 px-6 sm:px-8 lg:px-12">
       <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
       {post.eyecatch?.url && (
         // eslint-disable-next-line @next/next/no-img-element
@@ -35,7 +35,7 @@ export default async function BlogDetail({ params }) {
           className="w-full h-72 object-cover rounded-lg mb-6"
         />
       )}
-  <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: post.content || post.body || "" }} />
+  <div className="blog-content text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: post.content || post.body || "" }} />
     </article>
   );
 }
