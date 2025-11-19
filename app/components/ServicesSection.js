@@ -74,7 +74,7 @@ export default function ServiceSection() {
     }
   ];
 
-  const CardItem = ({ item, index, isChallenge, isSolution }) => (
+  const CardItem = ({ item, index, isChallenge }) => (
     <motion.div
       className="relative flex flex-col items-center text-center p-8"
       initial={{ opacity: 0, y: 30 }}
@@ -85,10 +85,6 @@ export default function ServiceSection() {
       {/* 課題の場合のみ薄い赤の丸角背景 */}
       {isChallenge && (
         <div className="absolute inset-0 bg-red-50 rounded-[32px] opacity-50 -z-10" />
-      )}
-      {/* ソリューションの場合のみ薄い水色の丸い背景 */}
-      {isSolution && (
-        <div className="absolute inset-0 bg-blue-50 rounded-full opacity-40 -z-10 scale-110" />
       )}
       <div className="relative w-48 h-48 mb-4 group">
         <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-gray-800 group-hover:border-blue-600 transition-colors duration-300">
@@ -180,7 +176,47 @@ export default function ServiceSection() {
           </div>
 
           {/* ソリューション */}
-          <div className="max-w-7xl mx-auto">
+          <div className="relative max-w-7xl mx-auto">
+            {/* ソリューション用の波型背景 */}
+            <div className="absolute inset-0 pointer-events-none overflow-visible -z-10">
+              <svg
+                className="absolute bottom-0 left-0 w-full h-auto"
+                viewBox="0 0 1440 400"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0,250 C240,300 480,200 720,250 C960,300 1200,200 1440,250 L1440,400 L0,400 Z"
+                  fill="#0066FF"
+                  opacity="0.6"
+                />
+                <ellipse
+                  cx="250"
+                  cy="150"
+                  rx="180"
+                  ry="180"
+                  fill="#E6F0FF"
+                  opacity="0.5"
+                />
+                <ellipse
+                  cx="720"
+                  cy="100"
+                  rx="200"
+                  ry="200"
+                  fill="#E6F0FF"
+                  opacity="0.4"
+                />
+                <ellipse
+                  cx="1200"
+                  cy="150"
+                  rx="180"
+                  ry="180"
+                  fill="#E6F0FF"
+                  opacity="0.5"
+                />
+              </svg>
+            </div>
+            
             <motion.h2
               className="text-4xl font-bold mb-4 text-center text-gray-800"
               initial={{ opacity: 0, y: -20 }}
@@ -201,7 +237,7 @@ export default function ServiceSection() {
             </motion.p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {solutions.map((item, i) => (
-                <CardItem key={i} item={item} index={i} isSolution={true} />
+                <CardItem key={i} item={item} index={i} />
               ))}
             </div>
           </div>
