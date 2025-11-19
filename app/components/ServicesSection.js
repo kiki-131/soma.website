@@ -103,7 +103,7 @@ export default function ServiceSection() {
       {/* パート1: 課題とソリューション (波形背景) */}
       <section className="relative bg-white py-20 px-8 overflow-visible">
         {/* 波形SVG背景 (Optemo風) */}
-        <div className="absolute inset-0 pointer-events-none overflow-visible">
+        <div className="absolute inset-0 pointer-events-none overflow-visible -z-10">
           <svg
             className="absolute bottom-0 w-full h-auto"
             viewBox="0 0 1440 600"
@@ -136,7 +136,10 @@ export default function ServiceSection() {
         
         <div className="relative z-10">
           {/* 課題 */}
-          <div className="max-w-7xl mx-auto mb-32">
+          <div className="relative max-w-7xl mx-auto mb-32">
+            {/* 薄い赤の角丸背景 */}
+            <div className="absolute inset-0 -m-12 bg-red-50 rounded-[60px] opacity-40 -z-10" />
+            
             <motion.h2
               className="text-4xl font-bold mb-4 text-center text-gray-800"
               initial={{ opacity: 0, y: -20 }}
@@ -263,7 +266,7 @@ export default function ServiceSection() {
           {/* ハニカム構造 (ダイヤモンド型配置) */}
           <div className="relative max-w-6xl mx-auto py-16">
             {/* ダイヤモンド型背景 */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible -z-10">
               <div className="w-[1000px] h-[1000px] bg-gradient-to-br from-blue-100 via-blue-50 to-purple-100 opacity-60 transform rotate-45 rounded-[80px]" />
             </div>
             
