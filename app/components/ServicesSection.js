@@ -13,12 +13,12 @@ export default function ServiceSection() {
     },
     {
       title: "現地パートナー探し",
-      description: "信頼できる現地パートナーの発掘と関係構築に時間とコストがかかる",
+      description: "現地での販売チャネルやマーケティングには現地パートナーが不可欠だが、信頼できる相手を見つけるのが難しい",
       image: "/images/service/challenge-partner.png"
     },
     {
       title: "法規制・手続き",
-      description: "各国の法規制や輸出入手続きの複雑さが参入障壁に",
+      description: "各国の法規制や輸出入手続きの複雑さが参入障壁に。思わぬ落とし穴も多い",
       image: "/images/service/challenge-legal.png"
     }
   ];
@@ -36,7 +36,7 @@ export default function ServiceSection() {
     },
     {
       title: "継続的なサポート",
-      description: "プロジェクト開始から販売後まで、全フェーズで伴走型サポート",
+      description: "成功後の展開オプションで、さらなる収益拡大を目指します",
       image: "/images/service/solution-support.png"
     }
   ];
@@ -106,6 +106,28 @@ export default function ServiceSection() {
     <>
       {/* パート1: 課題とソリューション (波形背景) */}
       <section className="relative bg-white py-20 px-8 overflow-visible">
+        {/* セクション冒頭 */}
+        <div className="relative z-10 max-w-4xl mx-auto mb-20">
+          <motion.h1
+            className="text-5xl font-bold mb-6 text-center text-gray-800"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Services
+          </motion.h1>
+          <motion.p
+            className="text-lg text-center text-gray-700 leading-relaxed"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            日本の中小企業の海外進出を、確実な成果へと導くトータルサポート。クラウドファンディングとSNSを活用し、低リスクで世界市場へ進出できます。
+          </motion.p>
+        </div>
+
         {/* 波形SVG背景 (Optemo風) */}
         <div className="absolute inset-0 pointer-events-none overflow-visible -z-10">
           <svg
