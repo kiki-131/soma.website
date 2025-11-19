@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "./Header";
 import AboutUsSection from "./components/AboutUsSection";
-import ProjectsSection from "./components/ProjectsSection";
 import ContactForm from "./components/ContactForm";
 import ServicesSection from "./components/ServicesSection";
 import "./globals.css";
@@ -121,30 +120,9 @@ export default function HomePage() {
     </div>
   </div>
 </div>
-      {/* Services Section */}
+      {/* Services Section (課題→ソリューション + Projects→サポート) */}
       <section id="Services">
         <ServicesSection />
-      </section>
-      
-      {/* Projects Section */}
-      <section id="Projects" className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex justify-center mb-12"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <div className="text-4xl text-blue-600">↓</div>
-            </motion.div>
-          </motion.div>
-          <ProjectsSection />
-        </div>
       </section>
       
       <section id="about-us"><AboutUsSection /></section>

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaArrowDown } from "react-icons/fa";
+import ProjectsSection from "./ProjectsSection";
 
 export default function ServiceSection() {
   const challenges = [
@@ -98,105 +99,112 @@ export default function ServiceSection() {
   );
 
   return (
-    <section className="bg-gradient-to-b from-white to-gray-50 py-20 px-8">
-      {/* セクション1: 課題 */}
-      <div className="max-w-7xl mx-auto mb-20">
-        <motion.h2
-          className="text-4xl font-bold mb-4 text-center text-gray-800"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          海外進出を阻む3つの壁
-        </motion.h2>
-        <motion.p
-          className="text-center text-gray-600 mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          多くの日本企業が海外進出で直面する課題
-        </motion.p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {challenges.map((item, i) => (
-            <CardItem key={i} item={item} index={i} />
-          ))}
-        </div>
-        <motion.div
-          className="flex justify-center mt-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <FaArrowDown className="text-4xl text-blue-600 animate-bounce" />
-        </motion.div>
-      </div>
+    <>
+      {/* パート1: 課題とソリューション (大きな円形背景) */}
+      <section className="relative bg-white py-20 px-8 overflow-hidden">
+        {/* 大きな円形グラデーション背景 (左上青→右下赤、画面から大きく見切れる) */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250vw] h-[250vw] rounded-full bg-gradient-to-br from-blue-400 to-red-400 opacity-15 pointer-events-none" />
+        
+        <div className="relative z-10">
+          {/* 課題 */}
+          <div className="max-w-7xl mx-auto mb-32">
+            <motion.h2
+              className="text-4xl font-bold mb-4 text-center text-gray-800"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              海外進出を阻む3つの壁
+            </motion.h2>
+            <motion.p
+              className="text-center text-gray-600 mb-12"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              多くの日本企業が海外進出で直面する課題
+            </motion.p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {challenges.map((item, i) => (
+                <CardItem key={i} item={item} index={i} />
+              ))}
+            </div>
+            <motion.div
+              className="flex justify-center mt-16"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <FaArrowDown className="text-5xl text-blue-600 animate-bounce" />
+            </motion.div>
+          </div>
 
-      {/* セクション2: ソリューション */}
-      <div className="max-w-7xl mx-auto mb-20">
-        <motion.h2
-          className="text-4xl font-bold mb-4 text-center text-gray-800"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          私たちのソリューション
-        </motion.h2>
-        <motion.p
-          className="text-center text-gray-600 mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          課題を解決する3つのアプローチ
-        </motion.p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {solutions.map((item, i) => (
-            <CardItem key={i} item={item} index={i} />
-          ))}
+          {/* ソリューション */}
+          <div className="max-w-7xl mx-auto">
+            <motion.h2
+              className="text-4xl font-bold mb-4 text-center text-gray-800"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              私たちのソリューション
+            </motion.h2>
+            <motion.p
+              className="text-center text-gray-600 mb-12"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              課題を解決する3つのアプローチ
+            </motion.p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {solutions.map((item, i) => (
+                <CardItem key={i} item={item} index={i} />
+              ))}
+            </div>
+          </div>
         </div>
-        <motion.div
-          className="flex justify-center mt-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <FaArrowDown className="text-4xl text-blue-600 animate-bounce" />
-        </motion.div>
-      </div>
+      </section>
 
-      {/* セクション4: サービス詳細 */}
-      <div className="max-w-7xl mx-auto">
-        <motion.h2
-          className="text-4xl font-bold mb-4 text-center text-gray-800"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          ワンストップでサポート
-        </motion.h2>
-        <motion.p
-          className="text-center text-gray-600 mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          企画から実行まで、すべてをお任せください
-        </motion.p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {services.map((item, i) => (
-            <CardItem key={i} item={item} index={i} />
-          ))}
+      {/* パート2: Projects + サポート詳細 */}
+      <section className="bg-white py-20">
+        {/* Projects */}
+        <div className="max-w-7xl mx-auto px-8 mb-32">
+          <ProjectsSection />
         </div>
-      </div>
-    </section>
+
+        {/* サポート詳細 */}
+        <div className="max-w-7xl mx-auto px-8">
+          <motion.h2
+            className="text-4xl font-bold mb-4 text-center text-gray-800"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            ワンストップでサポート
+          </motion.h2>
+          <motion.p
+            className="text-center text-gray-600 mb-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            企画から実行まで、すべてをお任せください
+          </motion.p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {services.map((item, i) => (
+              <CardItem key={i} item={item} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
