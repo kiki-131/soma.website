@@ -98,31 +98,16 @@ export default function ServiceSection() {
         </div>
         {/* 課題項目の左上にもやもやアイコン（螺旋） */}
         {isChallenge && (
-          <div className="absolute -top-3 -left-3 z-20">
-            <svg width="70" height="70" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              {/* 螺旋状のもやもや */}
+          <div className="absolute -top-2 -left-2 z-20">
+            <svg width="60" height="60" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+              {/* 手描き風の螺旋 */}
               <path
-                d="M 50 50 Q 50 40, 40 40 Q 30 40, 30 50 Q 30 60, 40 60 Q 50 60, 50 50 Q 50 35, 35 35 Q 20 35, 20 50 Q 20 65, 35 65 Q 50 65, 50 50"
+                d="M 40 40 C 40 35, 35 30, 30 30 C 22 30, 18 35, 18 42 C 18 50, 25 55, 32 55 C 40 55, 45 50, 45 42 C 45 32, 38 25, 28 25 C 16 25, 10 32, 10 43 C 10 55, 18 62, 30 62 C 43 62, 52 54, 52 42 C 52 28, 42 18, 28 18"
                 fill="none"
                 stroke="#000000"
-                strokeWidth="6"
+                strokeWidth="5"
                 strokeLinecap="round"
-              />
-              <path
-                d="M 50 50 Q 50 45, 45 45 Q 40 45, 40 50 Q 40 55, 45 55 Q 50 55, 50 50"
-                fill="none"
-                stroke="#000000"
-                strokeWidth="6"
-                strokeLinecap="round"
-              />
-              {/* 外側の大きな螺旋 */}
-              <path
-                d="M 50 50 Q 50 25, 25 25 Q 5 25, 5 50 Q 5 75, 25 75 Q 50 75, 50 50 Q 50 30, 30 30 Q 15 30, 15 50 Q 15 70, 30 70 Q 50 70, 50 50"
-                fill="none"
-                stroke="#000000"
-                strokeWidth="7"
-                strokeLinecap="round"
-                opacity="0.8"
+                strokeLinejoin="round"
               />
             </svg>
           </div>
