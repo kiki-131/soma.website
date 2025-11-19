@@ -201,14 +201,46 @@ export default function ServiceSection() {
       </section>
 
       {/* パート2: Projects + サポート詳細 */}
-      <section className="bg-white py-20">
+      <section className="relative bg-white py-20 overflow-hidden">
+        {/* 波形SVG背景 (下部) */}
+        <div className="absolute inset-0 pointer-events-none">
+          <svg
+            className="absolute top-0 w-full h-auto"
+            viewBox="0 0 1440 600"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,150 C240,100 480,200 720,150 C960,100 1200,200 1440,150 L1440,0 L0,0 Z"
+              fill="#F0F9FF"
+              opacity="0.7"
+            />
+            <ellipse
+              cx="200"
+              cy="450"
+              rx="180"
+              ry="180"
+              fill="#DBEAFE"
+              opacity="0.4"
+            />
+            <ellipse
+              cx="1200"
+              cy="500"
+              rx="200"
+              ry="200"
+              fill="#DBEAFE"
+              opacity="0.3"
+            />
+          </svg>
+        </div>
+
         {/* Projects */}
-        <div className="max-w-7xl mx-auto px-8 mb-32">
+        <div className="max-w-7xl mx-auto px-8 mb-32 relative z-10">
           <ProjectsSection />
         </div>
 
         {/* サポート詳細 */}
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-8 relative z-10">
           <motion.h2
             className="text-4xl font-bold mb-4 text-center text-gray-800"
             initial={{ opacity: 0, y: -20 }}
@@ -228,23 +260,23 @@ export default function ServiceSection() {
             企画から実行まで、すべてをお任せください
           </motion.p>
           
-          {/* 六角形配置 (ハニカム構造) */}
-          <div className="relative max-w-5xl mx-auto">
-            {/* 1段目: 2個 */}
-            <div className="flex justify-center gap-16 mb-12">
+          {/* ハニカム構造 (蜂の巣状のずらし配置) */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* 1段目: 3個 */}
+            <div className="flex justify-center gap-8 mb-8">
               <CardItem item={services[0]} index={0} />
               <CardItem item={services[1]} index={1} />
-            </div>
-            
-            {/* 2段目: 2個 (中央寄せ) */}
-            <div className="flex justify-center gap-16 mb-12">
               <CardItem item={services[2]} index={2} />
-              <CardItem item={services[3]} index={3} />
             </div>
             
-            {/* 3段目: 2個 */}
-            <div className="flex justify-center gap-16">
+            {/* 2段目: 2個 (左右にずらして配置) */}
+            <div className="flex justify-center gap-8 mb-8" style={{ marginLeft: '12rem' }}>
+              <CardItem item={services[3]} index={3} />
               <CardItem item={services[4]} index={4} />
+            </div>
+            
+            {/* 3段目: 1個 (中央) */}
+            <div className="flex justify-center">
               <CardItem item={services[5]} index={5} />
             </div>
           </div>
