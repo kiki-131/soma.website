@@ -271,9 +271,9 @@ export default function ServiceSection() {
           >
             <defs>
               <radialGradient id="blueToRedGradient" cx="30%" cy="30%">
-                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.6" />
-                <stop offset="50%" stopColor="#A78BFA" stopOpacity="0.5" />
-                <stop offset="100%" stopColor="#EF4444" stopOpacity="0.6" />
+                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.25" />
+                <stop offset="50%" stopColor="#A78BFA" stopOpacity="0.2" />
+                <stop offset="100%" stopColor="#EF4444" stopOpacity="0.25" />
               </radialGradient>
             </defs>
             <circle

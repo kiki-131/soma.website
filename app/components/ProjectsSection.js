@@ -33,7 +33,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="Projects"
-      className="relative bg-gray-200 py-20 px-8 md:px-16 overflow-hidden"
+      className="relative bg-transparent py-20 px-8 md:px-16 overflow-hidden"
     >
       {/* 上部のProjectsタイトル */}
       <h2 className="text-4xl font-bold mb-4 text-center text-gray-800">Projects</h2>
