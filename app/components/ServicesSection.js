@@ -74,7 +74,7 @@ export default function ServiceSection() {
     }
   ];
 
-  const CardItem = ({ item, index, isChallenge }) => (
+  const CardItem = ({ item, index, isChallenge, showTitlePlate }) => (
     <motion.div
       className="relative flex flex-col items-center text-center p-8"
       initial={{ opacity: 0, y: 30 }}
@@ -96,6 +96,21 @@ export default function ServiceSection() {
             sizes="192px"
           />
         </div>
+        {/* タイトルプレート（サポート項目用） */}
+        {showTitlePlate && (
+          <div className="absolute -top-2 -left-4 z-10">
+            <div className="relative">
+              {/* 黒い台形のプレート */}
+              <svg width="140" height="50" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 0 L130 0 L140 50 L0 50 Z" fill="#1F2937" stroke="#000" strokeWidth="2"/>
+              </svg>
+              {/* テキスト */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-white font-bold text-sm px-2">{item.title}</span>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
       <h3 className="text-xl font-bold mb-2">{item.title}</h3>
       <p className="text-sm text-gray-600 max-w-xs">{item.description}</p>
@@ -314,21 +329,21 @@ export default function ServiceSection() {
           {/* ハニカム構造 (ダイヤモンド型配置) */}
           <div className="relative max-w-5xl mx-auto py-12">
             {/* 1段目: 2個 */}
-            <div className="relative z-10 flex justify-center gap-16 mb-4">
-              <CardItem item={services[0]} index={0} />
-              <CardItem item={services[1]} index={1} />
+            <div className="relative z-10 flex justify-center gap-16 mb-2">
+              <CardItem item={services[0]} index={0} showTitlePlate={true} />
+              <CardItem item={services[1]} index={1} showTitlePlate={true} />
             </div>
             
             {/* 2段目: 2個 (左右にずらして配置) */}
-            <div className="relative z-10 flex justify-center gap-56 mb-4">
-              <CardItem item={services[2]} index={2} />
-              <CardItem item={services[3]} index={3} />
+            <div className="relative z-10 flex justify-center gap-80 mb-2">
+              <CardItem item={services[2]} index={2} showTitlePlate={true} />
+              <CardItem item={services[3]} index={3} showTitlePlate={true} />
             </div>
             
             {/* 3段目: 2個 */}
             <div className="relative z-10 flex justify-center gap-16">
-              <CardItem item={services[4]} index={4} />
-              <CardItem item={services[5]} index={5} />
+              <CardItem item={services[4]} index={4} showTitlePlate={true} />
+              <CardItem item={services[5]} index={5} showTitlePlate={true} />
             </div>
           </div>
         </div>
