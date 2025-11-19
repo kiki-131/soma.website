@@ -312,21 +312,21 @@ export default function ServiceSection() {
           </motion.p>
           
           {/* ハニカム構造 (ダイヤモンド型配置) */}
-          <div className="relative max-w-6xl mx-auto py-16">
+          <div className="relative max-w-5xl mx-auto py-12">
             {/* 1段目: 2個 */}
-            <div className="relative z-10 flex justify-center gap-24 mb-6">
+            <div className="relative z-10 flex justify-center gap-16 mb-4">
               <CardItem item={services[0]} index={0} />
               <CardItem item={services[1]} index={1} />
             </div>
             
             {/* 2段目: 2個 (左右にずらして配置) */}
-            <div className="relative z-10 flex justify-center gap-80 mb-6">
+            <div className="relative z-10 flex justify-center gap-56 mb-4">
               <CardItem item={services[2]} index={2} />
               <CardItem item={services[3]} index={3} />
             </div>
             
             {/* 3段目: 2個 */}
-            <div className="relative z-10 flex justify-center gap-24">
+            <div className="relative z-10 flex justify-center gap-16">
               <CardItem item={services[4]} index={4} />
               <CardItem item={services[5]} index={5} />
             </div>
