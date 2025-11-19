@@ -135,7 +135,7 @@ export default function ServiceSection() {
         )}
         {/* タイトルプレート（サポート項目用） */}
         {showTitlePlate && (
-          <div className="absolute -top-0.5 -left-1 md:-top-2 md:-left-4 z-10">
+          <div className="absolute -top-1.5 -left-2 md:-top-2 md:-left-4 z-10">
             <div className="relative">
               {/* 黒い台形のプレート */}
               <svg className="w-16 h-6 md:w-[140px] md:h-[50px]" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg">
