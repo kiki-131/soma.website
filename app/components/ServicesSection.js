@@ -261,24 +261,25 @@ export default function ServiceSection() {
       {/* パート2: Projects + サポート詳細 */}
       <section className="relative bg-white py-20 overflow-hidden">
         {/* 大きな丸のグラデーション背景 (青→赤) */}
-        <div className="absolute inset-0 pointer-events-none flex items-center justify-center -z-10">
+        <div className="absolute inset-0 pointer-events-none overflow-visible">
           <svg
-            className="w-full h-full"
-            viewBox="0 0 1440 1400"
-            preserveAspectRatio="xMidYMid slice"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            width="1800"
+            height="1800"
+            viewBox="0 0 1800 1800"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
               <radialGradient id="blueToRedGradient" cx="30%" cy="30%">
-                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.4" />
-                <stop offset="50%" stopColor="#8B5CF6" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#EF4444" stopOpacity="0.4" />
+                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.6" />
+                <stop offset="50%" stopColor="#A78BFA" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#EF4444" stopOpacity="0.6" />
               </radialGradient>
             </defs>
             <circle
-              cx="720"
-              cy="700"
-              r="900"
+              cx="900"
+              cy="900"
+              r="850"
               fill="url(#blueToRedGradient)"
             />
           </svg>
