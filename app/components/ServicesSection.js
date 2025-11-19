@@ -102,8 +102,8 @@ export default function ServiceSection() {
     <>
       {/* パート1: 課題とソリューション (大きな円形背景) */}
       <section className="relative bg-white py-20 px-8 overflow-hidden">
-        {/* 大きな円形グラデーション背景 (左上青→右下赤、画面から大きく見切れる) */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250vw] h-[250vw] rounded-full bg-gradient-to-br from-blue-400 to-red-400 opacity-15 pointer-events-none" />
+        {/* 大きな円形背景 (Optemo風: 薄い青、画面から大きく見切れる) */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180vw] h-[180vw] rounded-full bg-blue-50 pointer-events-none" />
         
         <div className="relative z-10">
           {/* 課題 */}
