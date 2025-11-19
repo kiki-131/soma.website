@@ -121,11 +121,32 @@ export default function HomePage() {
     </div>
   </div>
 </div>
-      {/* ✅ 以下は既存のコンテンツ（絶対に変更なし） */}
-      <section id="Projects"><ProjectsSection /></section>
+      {/* Services Section */}
       <section id="Services">
         <ServicesSection />
       </section>
+      
+      {/* Projects Section */}
+      <section id="Projects" className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex justify-center mb-12"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              <div className="text-4xl text-blue-600">↓</div>
+            </motion.div>
+          </motion.div>
+          <ProjectsSection />
+        </div>
+      </section>
+      
       <section id="about-us"><AboutUsSection /></section>
       <ContactForm />
       {/* Footer sitemap */}
