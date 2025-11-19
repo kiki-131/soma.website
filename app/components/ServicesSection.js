@@ -101,23 +101,23 @@ export default function ServiceSection() {
   return (
     <>
       {/* パート1: 課題とソリューション (波形背景) */}
-      <section className="relative bg-white py-20 px-8 overflow-hidden">
+      <section className="relative bg-white py-20 px-8 overflow-visible">
         {/* 波形SVG背景 (Optemo風) */}
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none overflow-visible">
           <svg
             className="absolute bottom-0 w-full h-auto"
-            viewBox="0 0 1440 400"
+            viewBox="0 0 1440 600"
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M0,300 C240,350 480,250 720,300 C960,350 1200,250 1440,300 L1440,400 L0,400 Z"
+              d="M0,450 C240,500 480,400 720,450 C960,500 1200,400 1440,450 L1440,600 L0,600 Z"
               fill="#0066FF"
               opacity="0.8"
             />
             <ellipse
               cx="300"
-              cy="150"
+              cy="250"
               rx="200"
               ry="200"
               fill="#E6F0FF"
@@ -125,7 +125,7 @@ export default function ServiceSection() {
             />
             <ellipse
               cx="1100"
-              cy="200"
+              cy="300"
               rx="250"
               ry="250"
               fill="#E6F0FF"
