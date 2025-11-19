@@ -283,24 +283,17 @@ export default function ServiceSection() {
               </svg>
             </div>
             
-            <motion.h2
-              className="text-4xl font-bold mb-4 text-center text-gray-800"
+            <motion.div
+              className="flex justify-center mb-12"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              私たちのソリューション
-            </motion.h2>
-            <motion.p
-              className="text-center text-gray-600 mb-12"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              課題を解決する3つのアプローチ
-            </motion.p>
+              <h2 className="text-4xl font-bold text-gray-800 border-4 border-black px-8 py-4">
+                私たちのソリューション
+              </h2>
+            </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {solutions.map((item, i) => (
                 <CardItem key={i} item={item} index={i} />
