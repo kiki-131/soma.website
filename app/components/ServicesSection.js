@@ -100,10 +100,39 @@ export default function ServiceSection() {
 
   return (
     <>
-      {/* パート1: 課題とソリューション (大きな円形背景) */}
+      {/* パート1: 課題とソリューション (波形背景) */}
       <section className="relative bg-white py-20 px-8 overflow-hidden">
-        {/* 大きな円形背景 (Optemo風: 薄い青、画面から大きく見切れる) */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180vw] h-[180vw] rounded-full bg-blue-50 pointer-events-none" />
+        {/* 波形SVG背景 (Optemo風) */}
+        <div className="absolute inset-0 pointer-events-none">
+          <svg
+            className="absolute bottom-0 w-full h-auto"
+            viewBox="0 0 1440 400"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,300 C240,350 480,250 720,300 C960,350 1200,250 1440,300 L1440,400 L0,400 Z"
+              fill="#0066FF"
+              opacity="0.8"
+            />
+            <ellipse
+              cx="300"
+              cy="150"
+              rx="200"
+              ry="200"
+              fill="#E6F0FF"
+              opacity="0.5"
+            />
+            <ellipse
+              cx="1100"
+              cy="200"
+              rx="250"
+              ry="250"
+              fill="#E6F0FF"
+              opacity="0.4"
+            />
+          </svg>
+        </div>
         
         <div className="relative z-10">
           {/* 課題 */}
