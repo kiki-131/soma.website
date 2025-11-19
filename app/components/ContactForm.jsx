@@ -121,11 +121,11 @@ export default function ContactForm() {
       <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl p-8">
         {!isConfirm ? (
           <>
-      <h2 className="text-2xl font-bold mb-6 text-center">Contact us</h2>
+      <h2 className="text-xl md:text-2xl font-bold mb-6 text-center">Contact us</h2>
             <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
               {/* 名前 */}
               <div>
-                <label className="block mb-1 font-medium">名前（必須）</label>
+                <label className="block mb-1 font-medium text-sm md:text-base">名前（必須）</label>
                 <input
                   type="text"
                   name="name"
@@ -138,7 +138,7 @@ export default function ContactForm() {
 
               {/* メール */}
               <div>
-                <label className="block mb-1 font-medium">メールアドレス（必須）</label>
+                <label className="block mb-1 font-medium text-sm md:text-base">メールアドレス（必須）</label>
                 <input
                   type="email"
                   name="email"
@@ -151,7 +151,7 @@ export default function ContactForm() {
 
               {/* 会社名 */}
               <div>
-                <label className="block mb-1 font-medium">会社名（任意）</label>
+                <label className="block mb-1 font-medium text-sm md:text-base">会社名（任意）</label>
                 <input
                   type="text"
                   name="company"
@@ -163,7 +163,7 @@ export default function ContactForm() {
 
               {/* 電話番号 */}
               <div>
-                <label className="block mb-1 font-medium">電話番号（任意）</label>
+                <label className="block mb-1 font-medium text-sm md:text-base">電話番号（任意）</label>
                 <input
                   type="tel"
                   name="phone"
@@ -175,7 +175,7 @@ export default function ContactForm() {
 
               {/* お問い合わせ内容（チェックボックス） */}
               <div>
-                <label className="block mb-2 font-medium">お問い合わせ内容（複数選択可）</label>
+                <label className="block mb-2 font-medium text-sm md:text-base">お問い合わせ内容（複数選択可）</label>
                 <div className="space-y-2 mb-4">
                   {inquiryTopics.map((topic) => (
                     <label key={topic} className="flex items-center gap-2 cursor-pointer">
@@ -193,9 +193,9 @@ export default function ContactForm() {
 
               {/* メッセージ欄（自動入力+追記可能） */}
               <div>
-                <label className="block mb-1 font-medium">
+                <label className="block mb-1 font-medium text-sm md:text-base">
                   詳細・ご要望など
-                  <span className="text-sm text-gray-500 ml-2">（上記で選択した内容が自動入力されます）</span>
+                  <span className="text-xs md:text-sm text-gray-500 ml-2">（上記で選択した内容が自動入力されます）</span>
                 </label>
                 <textarea
                   name="message"
@@ -246,8 +246,8 @@ export default function ContactForm() {
         ) : (
           <>
             {/* 確認画面 */}
-            <h2 className="text-2xl font-bold mb-6 text-center">確認画面</h2>
-            <div className="space-y-3 text-gray-700">
+            <h2 className="text-xl md:text-2xl font-bold mb-6 text-center">確認画面</h2>
+            <div className="space-y-3 text-sm md:text-base text-gray-700">
               <p>
                 <strong>名前：</strong> {formData.name}
               </p>

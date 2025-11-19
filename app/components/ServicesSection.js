@@ -76,7 +76,7 @@ export default function ServiceSection() {
 
   const CardItem = ({ item, index, isChallenge, showTitlePlate }) => (
     <motion.div
-      className="relative flex flex-col items-center text-center p-8"
+      className="relative flex flex-col items-center text-center p-1 md:p-8"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -86,8 +86,8 @@ export default function ServiceSection() {
       {isChallenge && (
         <div className="absolute inset-0 bg-red-50 rounded-[32px] opacity-50 -z-10" />
       )}
-      <div className="relative w-48 h-48 mb-4 group">
-        <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-gray-800 group-hover:border-blue-600 transition-colors duration-300">
+      <div className="relative w-16 h-16 md:w-48 md:h-48 mb-1 md:mb-4 group">
+        <div className="absolute inset-0 rounded-full overflow-hidden border-[1.5px] md:border-4 border-gray-800 group-hover:border-blue-600 transition-colors duration-300">
           <Image
             src={item.image}
             alt={item.title}
@@ -98,14 +98,14 @@ export default function ServiceSection() {
         </div>
         {/* 課題項目の左上にもやもやアイコン（一筆書き竜巻） */}
         {isChallenge && (
-          <div className="absolute -top-3 -left-3 z-20">
-            <svg width="70" height="90" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+          <div className="absolute -top-1 -left-1 md:-top-3 md:-left-3 z-20">
+            <svg className="w-6 h-7 md:w-[70px] md:h-[90px]" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
               <g transform="rotate(-28 60 75)">
                 <path
                   d="M 100 28 Q 75 20, 50 24 Q 25 28, 18 34 Q 15 38, 22 44 Q 35 52, 55 52 Q 75 52, 88 48 Q 94 46, 90 54 Q 82 62, 65 64 Q 48 66, 35 62 Q 28 60, 32 68 Q 40 76, 55 78 Q 70 80, 78 76 Q 82 74, 78 82 Q 70 90, 58 92 Q 46 94, 40 90 Q 38 88, 42 94 Q 48 100, 58 102 Q 68 104, 72 100 Q 74 98, 70 104 Q 64 110, 56 110 Q 50 110, 48 106"
                   fill="none"
                   stroke="#000000"
-                  strokeWidth="9"
+                  strokeWidth="6"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -115,42 +115,42 @@ export default function ServiceSection() {
         )}
         {/* ソリューション項目の右上に電球アイコン */}
         {!isChallenge && !showTitlePlate && (
-          <div className="absolute -top-2 -right-2 z-20">
-            <svg width="70" height="80" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+          <div className="absolute -top-0.5 -right-0.5 md:-top-2 md:-right-2 z-20">
+            <svg className="w-6 h-7 md:w-[70px] md:h-[80px]" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
               {/* 光線 */}
-              <line x1="50" y1="4" x2="50" y2="12" stroke="#FDB813" strokeWidth="6" strokeLinecap="round"/>
-              <line x1="79" y1="14" x2="72" y2="21" stroke="#FDB813" strokeWidth="6" strokeLinecap="round"/>
-              <line x1="21" y1="14" x2="28" y2="21" stroke="#FDB813" strokeWidth="6" strokeLinecap="round"/>
-              <line x1="90" y1="38" x2="81" y2="38" stroke="#FDB813" strokeWidth="6" strokeLinecap="round"/>
-              <line x1="10" y1="38" x2="19" y2="38" stroke="#FDB813" strokeWidth="6" strokeLinecap="round"/>
+              <line x1="50" y1="4" x2="50" y2="12" stroke="#FDB813" strokeWidth="4" strokeLinecap="round"/>
+              <line x1="79" y1="14" x2="72" y2="21" stroke="#FDB813" strokeWidth="4" strokeLinecap="round"/>
+              <line x1="21" y1="14" x2="28" y2="21" stroke="#FDB813" strokeWidth="4" strokeLinecap="round"/>
+              <line x1="90" y1="38" x2="81" y2="38" stroke="#FDB813" strokeWidth="4" strokeLinecap="round"/>
+              <line x1="10" y1="38" x2="19" y2="38" stroke="#FDB813" strokeWidth="4" strokeLinecap="round"/>
               {/* 電球 */}
-              <path d="M 50 18 Q 33 18, 33 33 Q 33 48, 41 56 L 41 63 L 59 63 L 59 56 Q 67 48, 67 33 Q 67 18, 50 18" fill="none" stroke="#FDB813" strokeWidth="7"/>
+              <path d="M 50 18 Q 33 18, 33 33 Q 33 48, 41 56 L 41 63 L 59 63 L 59 56 Q 67 48, 67 33 Q 67 18, 50 18" fill="none" stroke="#FDB813" strokeWidth="5"/>
               {/* コイル */}
-              <path d="M 42 30 Q 42 34, 45 34 Q 48 34, 48 30 Q 48 26, 52 26 Q 55 26, 55 30 Q 55 34, 58 34" fill="none" stroke="#FDB813" strokeWidth="3.5"/>
+              <path d="M 42 30 Q 42 34, 45 34 Q 48 34, 48 30 Q 48 26, 52 26 Q 55 26, 55 30 Q 55 34, 58 34" fill="none" stroke="#FDB813" strokeWidth="2.5"/>
               {/* 底部 */}
-              <line x1="39" y1="68" x2="61" y2="68" stroke="#FDB813" strokeWidth="7"/>
-              <line x1="41" y1="74" x2="59" y2="74" stroke="#FDB813" strokeWidth="7"/>
+              <line x1="39" y1="68" x2="61" y2="68" stroke="#FDB813" strokeWidth="5"/>
+              <line x1="41" y1="74" x2="59" y2="74" stroke="#FDB813" strokeWidth="5"/>
             </svg>
           </div>
         )}
         {/* タイトルプレート（サポート項目用） */}
         {showTitlePlate && (
-          <div className="absolute -top-2 -left-4 z-10">
+          <div className="absolute -top-0.5 -left-1 md:-top-2 md:-left-4 z-10">
             <div className="relative">
               {/* 黒い台形のプレート */}
-              <svg width="140" height="50" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-16 h-6 md:w-[140px] md:h-[50px]" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10 0 L130 0 L140 50 L0 50 Z" fill="#1F2937" stroke="#000" strokeWidth="2"/>
               </svg>
               {/* テキスト */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white font-bold text-sm px-2">{item.title}</span>
+                <span className="text-white font-bold text-[7px] md:text-sm px-1 md:px-2">{item.title}</span>
               </div>
             </div>
           </div>
         )}
       </div>
-      {!showTitlePlate && <h3 className="text-xl font-bold mb-2">{item.title}</h3>}
-      <p className="text-sm text-gray-600 max-w-xs">{item.description}</p>
+      {!showTitlePlate && <h3 className="text-[9px] md:text-xl font-bold mb-0.5 md:mb-2">{item.title}</h3>}
+      <p className="text-[7px] md:text-sm text-gray-600 max-w-xs leading-tight">{item.description}</p>
     </motion.div>
   );
 
@@ -161,7 +161,7 @@ export default function ServiceSection() {
         {/* セクション冒頭 */}
         <div className="relative z-10 max-w-4xl mx-auto mb-20">
           <motion.h1
-            className="text-5xl font-bold mb-6 text-center text-gray-800"
+            className="text-2xl md:text-4xl font-extrabold mb-4 text-center text-gray-900"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -170,7 +170,7 @@ export default function ServiceSection() {
             Services
           </motion.h1>
           <motion.p
-            className="text-lg text-center text-gray-700 leading-relaxed"
+            className="text-sm md:text-base text-center text-gray-600 leading-relaxed px-2"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -214,9 +214,9 @@ export default function ServiceSection() {
         
         <div className="relative z-10">
           {/* 課題 */}
-          <div className="relative max-w-7xl mx-auto mb-32">
+          <div className="relative max-w-7xl mx-auto mb-8 md:mb-32">
             <motion.h2
-              className="text-4xl font-bold mb-4 text-center text-gray-800"
+              className="text-xl md:text-3xl font-extrabold mb-2 text-center text-gray-900"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -225,7 +225,7 @@ export default function ServiceSection() {
               海外進出を阻む3つの壁
             </motion.h2>
             <motion.p
-              className="text-center text-gray-600 mb-12"
+              className="text-xs md:text-base text-center text-gray-600 mb-8 px-2"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -233,19 +233,19 @@ export default function ServiceSection() {
             >
               多くの日本企業が海外進出で直面する課題
             </motion.p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-12">
               {challenges.map((item, i) => (
                 <CardItem key={i} item={item} index={i} isChallenge={true} />
               ))}
             </div>
             <motion.div
-              className="flex justify-center mt-16"
+              className="flex justify-center mt-4 md:mt-16"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
             >
-              <FaArrowDown className="text-5xl text-blue-600 animate-bounce" />
+              <FaArrowDown className="text-2xl md:text-5xl text-blue-600 animate-bounce" />
             </motion.div>
           </div>
 
@@ -284,17 +284,17 @@ export default function ServiceSection() {
             </div>
             
             <motion.div
-              className="flex justify-center mb-12"
+              className="flex justify-center mb-8"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold text-gray-800 border-4 border-black px-8 py-4">
+              <h2 className="text-base md:text-3xl font-extrabold text-gray-900 border-2 md:border-4 border-black px-2 py-1 md:px-6 md:py-3">
                 私たちのソリューション
               </h2>
             </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-12">
               {solutions.map((item, i) => (
                 <CardItem key={i} item={item} index={i} />
               ))}
@@ -338,44 +338,54 @@ export default function ServiceSection() {
         {/* サポート詳細 */}
         <div className="max-w-7xl mx-auto px-8 relative z-10">
           <motion.div
-            className="flex flex-col items-center mb-16"
+            className="flex flex-col items-center mb-4 md:mb-16"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             {/* 台形のタイトル */}
-            <div className="relative mb-4">
-              <svg width="500" height="100" viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M30 0 L470 0 L500 100 L0 100 Z" fill="white" stroke="#1F2937" strokeWidth="3"/>
+            <div className="relative mb-2 md:mb-4">
+              <svg className="w-64 h-16 md:w-96 md:h-20" viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25 0 L375 0 L400 80 L0 80 Z" fill="white" stroke="#1F2937" strokeWidth="3"/>
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <h2 className="text-4xl font-bold text-gray-800">ワンストップでサポート</h2>
+                <h2 className="text-base md:text-3xl font-bold text-gray-800">ワンストップでサポート</h2>
               </div>
             </div>
-            <p className="text-center text-gray-600">
+            <p className="text-[10px] md:text-base text-center text-gray-600 px-2">
               企画から実行まで、すべてをお任せください
             </p>
           </motion.div>
           
-          {/* ハニカム構造 (ダイヤモンド型配置) */}
-          <div className="relative max-w-5xl mx-auto py-12">
-            {/* 1段目: 2個 */}
-            <div className="relative z-10 flex justify-center gap-16 mb-2">
-              <CardItem item={services[0]} index={0} showTitlePlate={true} />
-              <CardItem item={services[1]} index={1} showTitlePlate={true} />
+          {/* ハニカム構造 (デスクトップ: ダイヤモンド型配置、モバイル: 2列グリッド) */}
+          <div className="relative max-w-5xl mx-auto py-4 md:py-12">
+            {/* モバイル: 2列×3行のグリッド */}
+            <div className="grid grid-cols-2 gap-4 md:hidden">
+              {services.map((item, i) => (
+                <CardItem key={i} item={item} index={i} showTitlePlate={true} />
+              ))}
             </div>
             
-            {/* 2段目: 2個 (左右にずらして配置) */}
-            <div className="relative z-10 flex justify-center gap-80 mb-2">
-              <CardItem item={services[2]} index={2} showTitlePlate={true} />
-              <CardItem item={services[3]} index={3} showTitlePlate={true} />
-            </div>
-            
-            {/* 3段目: 2個 */}
-            <div className="relative z-10 flex justify-center gap-16">
-              <CardItem item={services[4]} index={4} showTitlePlate={true} />
-              <CardItem item={services[5]} index={5} showTitlePlate={true} />
+            {/* デスクトップ: ダイヤモンド型配置 */}
+            <div className="hidden md:block">
+              {/* 1段目: 2個 */}
+              <div className="relative z-10 flex justify-center gap-16 mb-2">
+                <CardItem item={services[0]} index={0} showTitlePlate={true} />
+                <CardItem item={services[1]} index={1} showTitlePlate={true} />
+              </div>
+              
+              {/* 2段目: 2個 (左右にずらして配置) */}
+              <div className="relative z-10 flex justify-center gap-80 mb-2">
+                <CardItem item={services[2]} index={2} showTitlePlate={true} />
+                <CardItem item={services[3]} index={3} showTitlePlate={true} />
+              </div>
+              
+              {/* 3段目: 2個 */}
+              <div className="relative z-10 flex justify-center gap-16">
+                <CardItem item={services[4]} index={4} showTitlePlate={true} />
+                <CardItem item={services[5]} index={5} showTitlePlate={true} />
+              </div>
             </div>
           </div>
         </div>

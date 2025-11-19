@@ -86,12 +86,12 @@ export default function HomePage() {
     </div>
 
     {/* モバイル: 縦並び表示 */}
-      <div className="md:hidden relative h-full flex flex-col justify-center items-center px-6 py-8">
+      <div className="md:hidden relative h-full flex flex-col justify-center items-center px-6 py-4">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2 }}
-        className="w-full text-center mb-6"
+        className="w-full text-center mb-4"
       >
         {/* SOMA 海外クラファン×海外進出支援 */}
         <h2 className="text-xl font-bold text-gray-900 mb-1">SOMA</h2>
@@ -103,7 +103,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2 }}
-        className="flex gap-4 mb-6"
+        className="flex gap-4 mb-4"
       >
         <div className="relative w-36 h-32 rounded-2xl overflow-hidden shadow-2xl">
           <Image src="/images/top1.jpg" alt="トップ画像1" fill className="object-cover" />
@@ -118,7 +118,7 @@ export default function HomePage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, delay: 0.2 }}
-        className="text-xs text-gray-600 leading-relaxed mb-6 text-center px-2"
+        className="text-xs text-gray-600 leading-relaxed mb-3 text-center px-2"
       >
         Kickstarter・Indiegogo・zeczecでの戦略設計〜LP〜広告〜物流〜法規まで、一気通貫で伴走。まずは無料相談30分。
       </motion.p>
@@ -131,7 +131,7 @@ export default function HomePage() {
       >
         <button
           onClick={() => scrollToSection("contact")}
-          className="px-6 py-3 rounded-full text-white font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
+          className="px-3 py-1.5 rounded-full text-white text-xs font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
         >
           無料相談を予約する
         </button>
