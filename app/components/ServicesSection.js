@@ -96,6 +96,39 @@ export default function ServiceSection() {
             sizes="192px"
           />
         </div>
+        {/* 課題項目の左上にワームアイコン */}
+        {isChallenge && (
+          <div className="absolute -top-3 -left-3 z-20">
+            <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(40, 40)">
+                {/* ワーム/うねうねした線のイラスト */}
+                <path
+                  d="M 20 80 Q 30 50, 50 60 T 90 50 T 110 70 T 100 100 Q 95 110, 85 105 T 70 115 T 50 105 T 30 95 Q 20 90, 20 80 Z"
+                  fill="none"
+                  stroke="#000000"
+                  strokeWidth="12"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M 20 80 Q 30 50, 50 60 T 90 50 T 110 70 T 100 100 Q 95 110, 85 105 T 70 115 T 50 105 T 30 95 Q 20 90, 20 80"
+                  fill="none"
+                  stroke="#000000"
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                />
+                {/* 内側の線 */}
+                <path
+                  d="M 25 82 Q 32 58, 50 65 T 88 55 T 105 72"
+                  fill="none"
+                  stroke="#000000"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                />
+              </g>
+            </svg>
+          </div>
+        )}
         {/* タイトルプレート（サポート項目用） */}
         {showTitlePlate && (
           <div className="absolute -top-2 -left-4 z-10">
