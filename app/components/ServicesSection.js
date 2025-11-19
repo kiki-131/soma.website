@@ -96,36 +96,34 @@ export default function ServiceSection() {
             sizes="192px"
           />
         </div>
-        {/* 課題項目の左上にワームアイコン */}
+        {/* 課題項目の左上にもやもやアイコン（螺旋） */}
         {isChallenge && (
           <div className="absolute -top-3 -left-3 z-20">
-            <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <g transform="translate(40, 40)">
-                {/* ワーム/うねうねした線のイラスト */}
-                <path
-                  d="M 20 80 Q 30 50, 50 60 T 90 50 T 110 70 T 100 100 Q 95 110, 85 105 T 70 115 T 50 105 T 30 95 Q 20 90, 20 80 Z"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="12"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M 20 80 Q 30 50, 50 60 T 90 50 T 110 70 T 100 100 Q 95 110, 85 105 T 70 115 T 50 105 T 30 95 Q 20 90, 20 80"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="10"
-                  strokeLinecap="round"
-                />
-                {/* 内側の線 */}
-                <path
-                  d="M 25 82 Q 32 58, 50 65 T 88 55 T 105 72"
-                  fill="none"
-                  stroke="#000000"
-                  strokeWidth="8"
-                  strokeLinecap="round"
-                />
-              </g>
+            <svg width="70" height="70" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              {/* 螺旋状のもやもや */}
+              <path
+                d="M 50 50 Q 50 40, 40 40 Q 30 40, 30 50 Q 30 60, 40 60 Q 50 60, 50 50 Q 50 35, 35 35 Q 20 35, 20 50 Q 20 65, 35 65 Q 50 65, 50 50"
+                fill="none"
+                stroke="#000000"
+                strokeWidth="6"
+                strokeLinecap="round"
+              />
+              <path
+                d="M 50 50 Q 50 45, 45 45 Q 40 45, 40 50 Q 40 55, 45 55 Q 50 55, 50 50"
+                fill="none"
+                stroke="#000000"
+                strokeWidth="6"
+                strokeLinecap="round"
+              />
+              {/* 外側の大きな螺旋 */}
+              <path
+                d="M 50 50 Q 50 25, 25 25 Q 5 25, 5 50 Q 5 75, 25 75 Q 50 75, 50 50 Q 50 30, 30 30 Q 15 30, 15 50 Q 15 70, 30 70 Q 50 70, 50 50"
+                fill="none"
+                stroke="#000000"
+                strokeWidth="7"
+                strokeLinecap="round"
+                opacity="0.8"
+              />
             </svg>
           </div>
         )}
