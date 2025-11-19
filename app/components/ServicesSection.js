@@ -261,10 +261,10 @@ export default function ServiceSection() {
           </motion.p>
           
           {/* ハニカム構造 (ダイヤモンド型配置) */}
-          <div className="relative max-w-6xl mx-auto">
+          <div className="relative max-w-6xl mx-auto py-16">
             {/* ダイヤモンド型背景 */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-[900px] h-[900px] bg-gradient-to-br from-blue-50 to-purple-50 opacity-30 transform rotate-45 rounded-3xl" />
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible">
+              <div className="w-[1000px] h-[1000px] bg-gradient-to-br from-blue-100 via-blue-50 to-purple-100 opacity-60 transform rotate-45 rounded-[80px]" />
             </div>
             
             {/* 1段目: 2個 */}
@@ -274,7 +274,7 @@ export default function ServiceSection() {
             </div>
             
             {/* 2段目: 2個 (左右にずらして配置) */}
-            <div className="relative z-10 flex justify-center gap-64 mb-6">
+            <div className="relative z-10 flex justify-center gap-80 mb-6">
               <CardItem item={services[2]} index={2} />
               <CardItem item={services[3]} index={3} />
             </div>
