@@ -31,5 +31,17 @@
   ,
   "editor.minimap.enabled": false,
   "workbench.editor.enablePreview": true,
-  "editor.largeFileOptimizations": true
+  "editor.largeFileOptimizations": true,
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 3000,
+  "editor.semanticHighlighting.enabled": false,
+  "editor.suggest.localityBonus": true,
+  "editor.suggest.shareSuggestSelections": false,
+  "editor.quickSuggestionsDelay": 100,
+  "editor.formatOnSave": false,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 10,
+  "workbench.editor.limit.perEditorGroup": true
 }
