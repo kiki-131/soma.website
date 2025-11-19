@@ -74,7 +74,7 @@ export default function ServiceSection() {
     }
   ];
 
-  const CardItem = ({ item, index, isChallenge }) => (
+  const CardItem = ({ item, index, isChallenge, isSolution }) => (
     <motion.div
       className="relative flex flex-col items-center text-center p-8"
       initial={{ opacity: 0, y: 30 }}
@@ -85,6 +85,10 @@ export default function ServiceSection() {
       {/* 課題の場合のみ薄い赤の丸角背景 */}
       {isChallenge && (
         <div className="absolute inset-0 bg-red-50 rounded-[32px] opacity-50 -z-10" />
+      )}
+      {/* ソリューションの場合のみ薄い水色の丸い背景 */}
+      {isSolution && (
+        <div className="absolute inset-0 bg-blue-50 rounded-full opacity-40 -z-10 scale-110" />
       )}
       <div className="relative w-48 h-48 mb-4 group">
         <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-gray-800 group-hover:border-blue-600 transition-colors duration-300">
@@ -197,7 +201,7 @@ export default function ServiceSection() {
             </motion.p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {solutions.map((item, i) => (
-                <CardItem key={i} item={item} index={i} />
+                <CardItem key={i} item={item} index={i} isSolution={true} />
               ))}
             </div>
           </div>
