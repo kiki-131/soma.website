@@ -96,18 +96,45 @@ export default function ServiceSection() {
             sizes="192px"
           />
         </div>
-        {/* 課題項目の左上にもやもやアイコン（螺旋） */}
+        {/* 課題項目の左上にもやもやアイコン（竜巻型螺旋） */}
         {isChallenge && (
-          <div className="absolute -top-2 -left-2 z-20">
-            <svg width="60" height="60" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-              {/* 手描き風の螺旋 */}
+          <div className="absolute -top-3 -left-3 z-20">
+            <svg width="70" height="90" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+              {/* 竜巻型の螺旋 - 上から下に向かって細くなる */}
               <path
-                d="M 40 40 C 40 35, 35 30, 30 30 C 22 30, 18 35, 18 42 C 18 50, 25 55, 32 55 C 40 55, 45 50, 45 42 C 45 32, 38 25, 28 25 C 16 25, 10 32, 10 43 C 10 55, 18 62, 30 62 C 43 62, 52 54, 52 42 C 52 28, 42 18, 28 18"
+                d="M 15 25 C 15 15, 30 8, 50 8 C 70 8, 85 15, 85 25 C 85 35, 70 42, 50 42 C 30 42, 15 35, 15 25"
+                fill="none"
+                stroke="#000000"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+              <path
+                d="M 25 50 C 25 42, 35 36, 50 36 C 65 36, 75 42, 75 50 C 75 58, 65 64, 50 64 C 35 64, 25 58, 25 50"
+                fill="none"
+                stroke="#000000"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+              <path
+                d="M 32 75 C 32 68, 40 62, 50 62 C 60 62, 68 68, 68 75 C 68 82, 60 88, 50 88 C 40 88, 32 82, 32 75"
+                fill="none"
+                stroke="#000000"
+                strokeWidth="7"
+                strokeLinecap="round"
+              />
+              <path
+                d="M 38 98 C 38 92, 43 87, 50 87 C 57 87, 62 92, 62 98 C 62 104, 57 109, 50 109 C 43 109, 38 104, 38 98"
+                fill="none"
+                stroke="#000000"
+                strokeWidth="6"
+                strokeLinecap="round"
+              />
+              <path
+                d="M 43 118 C 43 114, 46 110, 50 110 C 54 110, 57 114, 57 118"
                 fill="none"
                 stroke="#000000"
                 strokeWidth="5"
                 strokeLinecap="round"
-                strokeLinejoin="round"
               />
             </svg>
           </div>
