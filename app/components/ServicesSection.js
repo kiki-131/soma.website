@@ -260,34 +260,26 @@ export default function ServiceSection() {
 
       {/* パート2: Projects + サポート詳細 */}
       <section className="relative bg-white py-20 overflow-hidden">
-        {/* 波形SVG背景 (下部) */}
-        <div className="absolute inset-0 pointer-events-none">
+        {/* 大きな丸のグラデーション背景 (青→赤) */}
+        <div className="absolute inset-0 pointer-events-none flex items-center justify-center -z-10">
           <svg
-            className="absolute top-0 w-full h-auto"
-            viewBox="0 0 1440 600"
-            preserveAspectRatio="none"
+            className="w-full h-full"
+            viewBox="0 0 1440 1400"
+            preserveAspectRatio="xMidYMid slice"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-              d="M0,150 C240,100 480,200 720,150 C960,100 1200,200 1440,150 L1440,0 L0,0 Z"
-              fill="#F0F9FF"
-              opacity="0.7"
-            />
-            <ellipse
-              cx="200"
-              cy="450"
-              rx="180"
-              ry="180"
-              fill="#DBEAFE"
-              opacity="0.4"
-            />
-            <ellipse
-              cx="1200"
-              cy="500"
-              rx="200"
-              ry="200"
-              fill="#DBEAFE"
-              opacity="0.3"
+            <defs>
+              <radialGradient id="blueToRedGradient" cx="30%" cy="30%">
+                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.4" />
+                <stop offset="50%" stopColor="#8B5CF6" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#EF4444" stopOpacity="0.4" />
+              </radialGradient>
+            </defs>
+            <circle
+              cx="720"
+              cy="700"
+              r="900"
+              fill="url(#blueToRedGradient)"
             />
           </svg>
         </div>
@@ -320,11 +312,6 @@ export default function ServiceSection() {
           
           {/* ハニカム構造 (ダイヤモンド型配置) */}
           <div className="relative max-w-6xl mx-auto py-16">
-            {/* ダイヤモンド型背景 */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible -z-10">
-              <div className="w-[1000px] h-[1000px] bg-gradient-to-br from-blue-100 via-blue-50 to-purple-100 opacity-60 transform rotate-45 rounded-[80px]" />
-            </div>
-            
             {/* 1段目: 2個 */}
             <div className="relative z-10 flex justify-center gap-24 mb-6">
               <CardItem item={services[0]} index={0} />
