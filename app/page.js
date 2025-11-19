@@ -85,38 +85,57 @@ export default function HomePage() {
       </div>
     </div>
 
-    {/* モバイル: 左下にテキスト、右下に画像を寄せる（縦並びしない） */}
-      <div className="md:hidden relative h-full">
+    {/* モバイル: 縦並び表示 */}
+      <div className="md:hidden relative h-full flex flex-col justify-center items-center px-6 py-8">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2 }}
-        className="absolute left-4 bottom-6 w-2/3"
+        className="w-full text-center mb-6"
       >
-        {/* Mobile: single H1, brand as H2 */}
-        <h2 className="text-2xl font-bold text-gray-900 mb-1">SOMA</h2>
-        <h1 className="font-extrabold text-gray-900 mb-2 leading-tight text-[clamp(18px,6vw,34px)]">海外クラファン×海外進出支援</h1>
-        <p className="text-sm text-gray-600 leading-relaxed mb-4">
-          Kickstarter・Indiegogo・zeczecでの戦略設計〜LP〜広告〜物流〜法規まで、一気通貫で伴走。まずは無料相談30分。
-        </p>
-        <div className="flex gap-3">
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="px-4 py-2 rounded-full text-white font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
-          >
-            無料相談を予約する
-          </button>
+        {/* SOMA 海外クラファン×海外進出支援 */}
+        <h2 className="text-xl font-bold text-gray-900 mb-1">SOMA</h2>
+        <h1 className="text-2xl font-extrabold text-gray-900 mb-4 leading-tight">海外クラファン×<br/>海外進出支援</h1>
+      </motion.div>
+
+      {/* 画像を中央配置 */}
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        className="flex gap-4 mb-6"
+      >
+        <div className="relative w-36 h-32 rounded-2xl overflow-hidden shadow-2xl">
+          <Image src="/images/top1.jpg" alt="トップ画像1" fill className="object-cover" />
+        </div>
+        <div className="relative w-36 h-32 rounded-2xl overflow-hidden shadow-2xl">
+          <Image src="/images/top2.jpg" alt="トップ画像2" fill className="object-cover" />
         </div>
       </motion.div>
 
-      <div className="absolute right-4 bottom-4 flex gap-3">
-        <div className="relative w-28 h-20 rounded-2xl overflow-hidden shadow-2xl">
-          <Image src="/images/top1.jpg" alt="トップ画像1" fill className="object-cover" />
-        </div>
-        <div className="relative w-28 h-20 rounded-2xl overflow-hidden shadow-2xl">
-          <Image src="/images/top2.jpg" alt="トップ画像2" fill className="object-cover" />
-        </div>
-      </div>
+      {/* kickstarter～のテキスト */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, delay: 0.2 }}
+        className="text-xs text-gray-600 leading-relaxed mb-6 text-center px-2"
+      >
+        Kickstarter・Indiegogo・zeczecでの戦略設計〜LP〜広告〜物流〜法規まで、一気通貫で伴走。まずは無料相談30分。
+      </motion.p>
+
+      {/* 無料相談ボタン */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, delay: 0.4 }}
+      >
+        <button
+          onClick={() => scrollToSection("contact")}
+          className="px-6 py-3 rounded-full text-white font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
+        >
+          無料相談を予約する
+        </button>
+      </motion.div>
     </div>
   </div>
 </div>
