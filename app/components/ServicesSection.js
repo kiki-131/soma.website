@@ -260,23 +260,23 @@ export default function ServiceSection() {
             企画から実行まで、すべてをお任せください
           </motion.p>
           
-          {/* ハニカム構造 (蜂の巣状のずらし配置) */}
+          {/* ハニカム構造 (ダイヤモンド型配置) */}
           <div className="relative max-w-6xl mx-auto">
-            {/* 1段目: 3個 */}
-            <div className="flex justify-center gap-8 mb-8">
+            {/* 1段目: 2個 */}
+            <div className="flex justify-center gap-32 mb-12">
               <CardItem item={services[0]} index={0} />
               <CardItem item={services[1]} index={1} />
-              <CardItem item={services[2]} index={2} />
             </div>
             
             {/* 2段目: 2個 (左右にずらして配置) */}
-            <div className="flex justify-center gap-8 mb-8" style={{ marginLeft: '12rem' }}>
+            <div className="flex justify-center gap-64 mb-12">
+              <CardItem item={services[2]} index={2} />
               <CardItem item={services[3]} index={3} />
-              <CardItem item={services[4]} index={4} />
             </div>
             
-            {/* 3段目: 1個 (中央) */}
-            <div className="flex justify-center">
+            {/* 3段目: 2個 */}
+            <div className="flex justify-center gap-32">
+              <CardItem item={services[4]} index={4} />
               <CardItem item={services[5]} index={5} />
             </div>
           </div>
