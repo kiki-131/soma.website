@@ -190,27 +190,19 @@ export default function ServiceSection() {
                   fill="#0066FF"
                   opacity="0.6"
                 />
-                <ellipse
-                  cx="250"
-                  cy="150"
-                  rx="180"
-                  ry="180"
+                {/* 大きい水色の丸 */}
+                <circle
+                  cx="320"
+                  cy="120"
+                  r="140"
                   fill="#E6F0FF"
-                  opacity="0.5"
+                  opacity="0.6"
                 />
-                <ellipse
-                  cx="720"
-                  cy="100"
-                  rx="200"
-                  ry="200"
-                  fill="#E6F0FF"
-                  opacity="0.4"
-                />
-                <ellipse
-                  cx="1200"
-                  cy="150"
-                  rx="180"
-                  ry="180"
+                {/* 小さい水色の丸 */}
+                <circle
+                  cx="1120"
+                  cy="140"
+                  r="90"
                   fill="#E6F0FF"
                   opacity="0.5"
                 />
