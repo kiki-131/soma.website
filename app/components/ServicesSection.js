@@ -112,7 +112,7 @@ export default function ServiceSection() {
           </div>
         )}
       </div>
-      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+      {!showTitlePlate && <h3 className="text-xl font-bold mb-2">{item.title}</h3>}
       <p className="text-sm text-gray-600 max-w-xs">{item.description}</p>
     </motion.div>
   );
