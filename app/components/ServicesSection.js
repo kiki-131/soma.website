@@ -262,20 +262,25 @@ export default function ServiceSection() {
           
           {/* ハニカム構造 (ダイヤモンド型配置) */}
           <div className="relative max-w-6xl mx-auto">
+            {/* ダイヤモンド型背景 */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-[900px] h-[900px] bg-gradient-to-br from-blue-50 to-purple-50 opacity-30 transform rotate-45 rounded-3xl" />
+            </div>
+            
             {/* 1段目: 2個 */}
-            <div className="flex justify-center gap-32 mb-12">
+            <div className="relative z-10 flex justify-center gap-24 mb-6">
               <CardItem item={services[0]} index={0} />
               <CardItem item={services[1]} index={1} />
             </div>
             
             {/* 2段目: 2個 (左右にずらして配置) */}
-            <div className="flex justify-center gap-64 mb-12">
+            <div className="relative z-10 flex justify-center gap-64 mb-6">
               <CardItem item={services[2]} index={2} />
               <CardItem item={services[3]} index={3} />
             </div>
             
             {/* 3段目: 2個 */}
-            <div className="flex justify-center gap-32">
+            <div className="relative z-10 flex justify-center gap-24">
               <CardItem item={services[4]} index={4} />
               <CardItem item={services[5]} index={5} />
             </div>
