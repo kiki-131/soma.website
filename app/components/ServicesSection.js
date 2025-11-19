@@ -74,14 +74,18 @@ export default function ServiceSection() {
     }
   ];
 
-  const CardItem = ({ item, index }) => (
+  const CardItem = ({ item, index, isChallenge }) => (
     <motion.div
-      className="flex flex-col items-center text-center"
+      className="relative flex flex-col items-center text-center p-8"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
     >
+      {/* 課題の場合のみ薄い赤の丸角背景 */}
+      {isChallenge && (
+        <div className="absolute inset-0 bg-red-50 rounded-[32px] opacity-50 -z-10" />
+      )}
       <div className="relative w-48 h-48 mb-4 group">
         <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-gray-800 group-hover:border-blue-600 transition-colors duration-300">
           <Image
@@ -137,9 +141,6 @@ export default function ServiceSection() {
         <div className="relative z-10">
           {/* 課題 */}
           <div className="relative max-w-7xl mx-auto mb-32">
-            {/* 薄い赤の角丸背景 */}
-            <div className="absolute inset-0 -m-12 bg-red-50 rounded-[60px] opacity-40 -z-10" />
-            
             <motion.h2
               className="text-4xl font-bold mb-4 text-center text-gray-800"
               initial={{ opacity: 0, y: -20 }}
@@ -160,7 +161,7 @@ export default function ServiceSection() {
             </motion.p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {challenges.map((item, i) => (
-                <CardItem key={i} item={item} index={i} />
+                <CardItem key={i} item={item} index={i} isChallenge={true} />
               ))}
             </div>
             <motion.div
