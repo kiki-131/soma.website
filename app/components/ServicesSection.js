@@ -96,46 +96,20 @@ export default function ServiceSection() {
             sizes="192px"
           />
         </div>
-        {/* 課題項目の左上にもやもやアイコン（竜巻型螺旋） */}
+        {/* 課題項目の左上にもやもやアイコン（一筆書き竜巻） */}
         {isChallenge && (
           <div className="absolute -top-3 -left-3 z-20">
-            <svg width="70" height="90" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
-              {/* 竜巻型の螺旋 - 上から下に向かって細くなる */}
-              <path
-                d="M 15 25 C 15 15, 30 8, 50 8 C 70 8, 85 15, 85 25 C 85 35, 70 42, 50 42 C 30 42, 15 35, 15 25"
-                fill="none"
-                stroke="#000000"
-                strokeWidth="8"
-                strokeLinecap="round"
-              />
-              <path
-                d="M 25 50 C 25 42, 35 36, 50 36 C 65 36, 75 42, 75 50 C 75 58, 65 64, 50 64 C 35 64, 25 58, 25 50"
-                fill="none"
-                stroke="#000000"
-                strokeWidth="8"
-                strokeLinecap="round"
-              />
-              <path
-                d="M 32 75 C 32 68, 40 62, 50 62 C 60 62, 68 68, 68 75 C 68 82, 60 88, 50 88 C 40 88, 32 82, 32 75"
-                fill="none"
-                stroke="#000000"
-                strokeWidth="7"
-                strokeLinecap="round"
-              />
-              <path
-                d="M 38 98 C 38 92, 43 87, 50 87 C 57 87, 62 92, 62 98 C 62 104, 57 109, 50 109 C 43 109, 38 104, 38 98"
-                fill="none"
-                stroke="#000000"
-                strokeWidth="6"
-                strokeLinecap="round"
-              />
-              <path
-                d="M 43 118 C 43 114, 46 110, 50 110 C 54 110, 57 114, 57 118"
-                fill="none"
-                stroke="#000000"
-                strokeWidth="5"
-                strokeLinecap="round"
-              />
+            <svg width="70" height="90" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+              <g transform="rotate(-28 60 75)">
+                <path
+                  d="M 100 28 Q 75 20, 50 24 Q 25 28, 18 34 Q 15 38, 22 44 Q 35 52, 55 52 Q 75 52, 88 48 Q 94 46, 90 54 Q 82 62, 65 64 Q 48 66, 35 62 Q 28 60, 32 68 Q 40 76, 55 78 Q 70 80, 78 76 Q 82 74, 78 82 Q 70 90, 58 92 Q 46 94, 40 90 Q 38 88, 42 94 Q 48 100, 58 102 Q 68 104, 72 100 Q 74 98, 70 104 Q 64 110, 56 110 Q 50 110, 48 106"
+                  fill="none"
+                  stroke="#000000"
+                  strokeWidth="9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </g>
             </svg>
           </div>
         )}
