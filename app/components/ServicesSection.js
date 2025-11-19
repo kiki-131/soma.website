@@ -219,7 +219,7 @@ export default function ServiceSection() {
             ワンストップでサポート
           </motion.h2>
           <motion.p
-            className="text-center text-gray-600 mb-12"
+            className="text-center text-gray-600 mb-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -227,10 +227,26 @@ export default function ServiceSection() {
           >
             企画から実行まで、すべてをお任せください
           </motion.p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {services.map((item, i) => (
-              <CardItem key={i} item={item} index={i} />
-            ))}
+          
+          {/* 六角形配置 (ハニカム構造) */}
+          <div className="relative max-w-5xl mx-auto">
+            {/* 1段目: 2個 */}
+            <div className="flex justify-center gap-16 mb-12">
+              <CardItem item={services[0]} index={0} />
+              <CardItem item={services[1]} index={1} />
+            </div>
+            
+            {/* 2段目: 2個 (中央寄せ) */}
+            <div className="flex justify-center gap-16 mb-12">
+              <CardItem item={services[2]} index={2} />
+              <CardItem item={services[3]} index={3} />
+            </div>
+            
+            {/* 3段目: 2個 */}
+            <div className="flex justify-center gap-16">
+              <CardItem item={services[4]} index={4} />
+              <CardItem item={services[5]} index={5} />
+            </div>
           </div>
         </div>
       </section>
