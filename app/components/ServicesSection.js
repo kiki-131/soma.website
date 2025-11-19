@@ -307,24 +307,26 @@ export default function ServiceSection() {
 
         {/* サポート詳細 */}
         <div className="max-w-7xl mx-auto px-8 relative z-10">
-          <motion.h2
-            className="text-4xl font-bold mb-4 text-center text-gray-800"
+          <motion.div
+            className="flex flex-col items-center mb-16"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            ワンストップでサポート
-          </motion.h2>
-          <motion.p
-            className="text-center text-gray-600 mb-16"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            企画から実行まで、すべてをお任せください
-          </motion.p>
+            {/* 台形のタイトル */}
+            <div className="relative mb-4">
+              <svg width="500" height="100" viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 0 L470 0 L500 100 L0 100 Z" fill="white" stroke="#1F2937" strokeWidth="3"/>
+              </svg>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <h2 className="text-4xl font-bold text-gray-800">ワンストップでサポート</h2>
+              </div>
+            </div>
+            <p className="text-center text-gray-600">
+              企画から実行まで、すべてをお任せください
+            </p>
+          </motion.div>
           
           {/* ハニカム構造 (ダイヤモンド型配置) */}
           <div className="relative max-w-5xl mx-auto py-12">
