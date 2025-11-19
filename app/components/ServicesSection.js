@@ -113,6 +113,26 @@ export default function ServiceSection() {
             </svg>
           </div>
         )}
+        {/* ソリューション項目の右上に電球アイコン */}
+        {!isChallenge && !showTitlePlate && (
+          <div className="absolute -top-2 -right-2 z-20">
+            <svg width="70" height="80" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+              {/* 光線 */}
+              <line x1="50" y1="4" x2="50" y2="12" stroke="#FDB813" strokeWidth="6" strokeLinecap="round"/>
+              <line x1="79" y1="14" x2="72" y2="21" stroke="#FDB813" strokeWidth="6" strokeLinecap="round"/>
+              <line x1="21" y1="14" x2="28" y2="21" stroke="#FDB813" strokeWidth="6" strokeLinecap="round"/>
+              <line x1="90" y1="38" x2="81" y2="38" stroke="#FDB813" strokeWidth="6" strokeLinecap="round"/>
+              <line x1="10" y1="38" x2="19" y2="38" stroke="#FDB813" strokeWidth="6" strokeLinecap="round"/>
+              {/* 電球 */}
+              <path d="M 50 18 Q 33 18, 33 33 Q 33 48, 41 56 L 41 63 L 59 63 L 59 56 Q 67 48, 67 33 Q 67 18, 50 18" fill="none" stroke="#FDB813" strokeWidth="7"/>
+              {/* コイル */}
+              <path d="M 42 30 Q 42 34, 45 34 Q 48 34, 48 30 Q 48 26, 52 26 Q 55 26, 55 30 Q 55 34, 58 34" fill="none" stroke="#FDB813" strokeWidth="3.5"/>
+              {/* 底部 */}
+              <line x1="39" y1="68" x2="61" y2="68" stroke="#FDB813" strokeWidth="7"/>
+              <line x1="41" y1="74" x2="59" y2="74" stroke="#FDB813" strokeWidth="7"/>
+            </svg>
+          </div>
+        )}
         {/* タイトルプレート（サポート項目用） */}
         {showTitlePlate && (
           <div className="absolute -top-2 -left-4 z-10">
