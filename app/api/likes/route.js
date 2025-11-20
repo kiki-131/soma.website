@@ -12,9 +12,11 @@ export async function POST(request) {
     }
 
     const service = process.env.NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN;
-    const apiKey = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
+    // サーバーサイドでは書き込み権限のあるAPIキーを使用
+    const apiKey = process.env.MICROCMS_API_KEY || process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
 
     if (!service || !apiKey) {
+      console.error("microCMS configuration missing:", { service, hasApiKey: !!apiKey });
       return NextResponse.json(
         { error: "microCMS configuration missing" },
         { status: 500 }
@@ -32,8 +34,10 @@ export async function POST(request) {
     );
 
     if (!getRes.ok) {
+      const errorText = await getRes.text();
+      console.error("Failed to fetch post:", getRes.status, errorText);
       return NextResponse.json(
-        { error: "Failed to fetch post" },
+        { error: "Failed to fetch post", details: errorText },
         { status: getRes.status }
       );
     }
@@ -58,8 +62,10 @@ export async function POST(request) {
     );
 
     if (!updateRes.ok) {
+      const errorText = await updateRes.text();
+      console.error("Failed to update likes:", updateRes.status, errorText);
       return NextResponse.json(
-        { error: "Failed to update likes" },
+        { error: "Failed to update likes", details: errorText },
         { status: updateRes.status }
       );
     }
