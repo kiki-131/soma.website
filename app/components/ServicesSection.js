@@ -423,119 +423,103 @@ export default function ServiceSection() {
             <div className="flex flex-col items-center gap-4 md:hidden">
               {/* Step 1 */}
               <div className="relative w-full max-w-xs h-24">
-                <div className="absolute inset-0 overflow-hidden rounded-full" style={{
-                  background: 'linear-gradient(135deg, #3B82F6 0%, #6366F1 100%)',
-                  maskImage: 'url(/images/service/flow.png)',
-                  WebkitMaskImage: 'url(/images/service/flow.png)',
-                  maskSize: 'contain',
-                  WebkitMaskSize: 'contain',
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskPosition: 'center',
-                  WebkitMaskPosition: 'center'
-                }}>
-                  <Image src="/images/service/flow.png" alt="" fill className="opacity-0" />
-                </div>
+                <Image 
+                  src="/images/service/flow.png" 
+                  alt="Step 1" 
+                  fill 
+                  className="object-contain"
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-white text-xs font-bold mb-1">STEP 01</span>
-                  <span className="text-white text-lg font-bold">相談する</span>
+                  <span className="text-gray-800 text-xs font-bold mb-1">STEP 01</span>
+                  <span className="text-gray-800 text-lg font-bold">相談する</span>
                 </div>
               </div>
 
               {/* Step 2 */}
               <div className="relative w-full max-w-xs h-24">
-                <div className="absolute inset-0 overflow-hidden rounded-full" style={{
-                  background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)',
-                  maskImage: 'url(/images/service/flow.png)',
-                  WebkitMaskImage: 'url(/images/service/flow.png)',
-                  maskSize: 'contain',
-                  WebkitMaskSize: 'contain',
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskPosition: 'center',
-                  WebkitMaskPosition: 'center'
-                }}>
-                  <Image src="/images/service/flow.png" alt="" fill className="opacity-0" />
-                </div>
+                <Image 
+                  src="/images/service/flow.png" 
+                  alt="Step 2" 
+                  fill 
+                  className="object-contain"
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-white text-xs font-bold mb-1">STEP 02</span>
-                  <span className="text-white text-base font-bold text-center leading-tight">プロジェクト<br/>スタート</span>
+                  <span className="text-gray-800 text-xs font-bold mb-1">STEP 02</span>
+                  <span className="text-gray-800 text-base font-bold text-center leading-tight">プロジェクト<br/>スタート</span>
                 </div>
               </div>
 
               {/* Step 3 */}
               <div className="relative w-full max-w-xs h-24">
-                <div className="absolute inset-0 overflow-hidden rounded-full" style={{
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EF4444 100%)',
-                  maskImage: 'url(/images/service/flow.png)',
-                  WebkitMaskImage: 'url(/images/service/flow.png)',
-                  maskSize: 'contain',
-                  WebkitMaskSize: 'contain',
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskPosition: 'center',
-                  WebkitMaskPosition: 'center'
-                }}>
-                  <Image src="/images/service/flow.png" alt="" fill className="opacity-0" />
+                <div className="relative w-full h-full">
+                  <Image 
+                    src="/images/service/flow.png" 
+                    alt="Step 3" 
+                    fill 
+                    className="object-contain"
+                    style={{ filter: 'brightness(0) invert(1)' }}
+                  />
+                  {/* 右端を丸くするオーバーレイ */}
+                  <div className="absolute right-0 top-0 bottom-0 w-12 bg-white rounded-r-full"></div>
                 </div>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-white text-xs font-bold mb-1">STEP 03</span>
-                  <span className="text-white text-base font-bold text-center leading-tight">支援金を<br/>手に入れる</span>
+                  <span className="text-gray-800 text-xs font-bold mb-1">STEP 03</span>
+                  <span className="text-gray-800 text-base font-bold text-center leading-tight">支援金を<br/>手に入れる</span>
                 </div>
               </div>
             </div>
 
             {/* デスクトップ: 横並び */}
-            <div className="hidden md:block">
-              <div className="relative w-full h-32 flex items-center justify-center">
-                {/* 3つのステップ用のグラデーション背景 */}
-                <svg viewBox="0 0 1200 140" className="absolute inset-0 w-full h-full">
-                  <defs>
-                    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#3B82F6" />
-                      <stop offset="50%" stopColor="#8B5CF6" />
-                      <stop offset="100%" stopColor="#EF4444" />
-                    </linearGradient>
-                    <mask id="flowMask1">
-                      <circle cx="150" cy="70" r="60" fill="white" />
-                      <polygon points="210,70 250,50 250,90" fill="white" />
-                    </mask>
-                    <mask id="flowMask2">
-                      <polygon points="250,50 290,70 250,90" fill="white" />
-                      <circle cx="450" cy="70" r="60" fill="white" />
-                      <polygon points="510,70 550,50 550,90" fill="white" />
-                    </mask>
-                    <mask id="flowMask3">
-                      <polygon points="550,50 590,70 550,90" fill="white" />
-                      <circle cx="750" cy="70" r="60" fill="white" />
-                    </mask>
-                  </defs>
-                  
-                  {/* Step 1 */}
-                  <g mask="url(#flowMask1)">
-                    <rect x="0" y="0" width="300" height="140" fill="url(#flowGradient)" />
-                  </g>
-                  
-                  {/* Step 2 */}
-                  <g mask="url(#flowMask2)">
-                    <rect x="200" y="0" width="400" height="140" fill="url(#flowGradient)" />
-                  </g>
-                  
-                  {/* Step 3 */}
-                  <g mask="url(#flowMask3)">
-                    <rect x="500" y="0" width="400" height="140" fill="url(#flowGradient)" />
-                  </g>
+            <div className="hidden md:flex items-center justify-center gap-0">
+              {/* Step 1 */}
+              <div className="relative w-80 h-32">
+                <Image 
+                  src="/images/service/flow.png" 
+                  alt="Step 1" 
+                  fill 
+                  className="object-contain"
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-gray-800 text-sm font-bold mb-2">Step 1</span>
+                  <span className="text-gray-800 text-2xl font-bold">相談する</span>
+                </div>
+              </div>
 
-                  {/* テキスト */}
-                  <text x="150" y="55" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">Step 1</text>
-                  <text x="150" y="85" textAnchor="middle" fill="white" fontSize="20" fontWeight="bold">相談する</text>
+              {/* Step 2 */}
+              <div className="relative w-80 h-32 -ml-8">
+                <Image 
+                  src="/images/service/flow.png" 
+                  alt="Step 2" 
+                  fill 
+                  className="object-contain"
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-gray-800 text-sm font-bold mb-2">Step 2</span>
+                  <span className="text-gray-800 text-2xl font-bold">プロジェクトスタート</span>
+                </div>
+              </div>
 
-                  <text x="450" y="55" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">Step 2</text>
-                  <text x="450" y="85" textAnchor="middle" fill="white" fontSize="20" fontWeight="bold">プロジェクトスタート</text>
-
-                  <text x="750" y="55" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">Step 3</text>
-                  <text x="750" y="85" textAnchor="middle" fill="white" fontSize="20" fontWeight="bold">支援金を手に入れる</text>
-                </svg>
+              {/* Step 3 */}
+              <div className="relative w-80 h-32 -ml-8">
+                <div className="relative w-full h-full">
+                  <Image 
+                    src="/images/service/flow.png" 
+                    alt="Step 3" 
+                    fill 
+                    className="object-contain"
+                    style={{ filter: 'brightness(0) invert(1)' }}
+                  />
+                  {/* 右端を丸くするオーバーレイ */}
+                  <div className="absolute right-0 top-0 bottom-0 w-20 bg-white rounded-r-full"></div>
+                </div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-gray-800 text-sm font-bold mb-2">Step 3</span>
+                  <span className="text-gray-800 text-2xl font-bold">支援金を手に入れる</span>
+                </div>
               </div>
             </div>
 
