@@ -413,47 +413,107 @@ export default function ServiceSection() {
 
           {/* ステップフロー */}
           <motion.div
-            className="max-w-5xl mx-auto mt-12 md:mt-20"
+            className="max-w-6xl mx-auto mt-12 md:mt-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="flex flex-col md:flex-row items-center justify-center gap-0 md:gap-0">
+            {/* モバイル: 縦並び */}
+            <div className="flex flex-col items-center gap-3 md:hidden">
               {/* Step 1 */}
-              <div className="relative w-full md:w-auto">
-                <div className="bg-blue-400 text-white px-8 py-6 md:px-16 md:py-8 text-center relative">
-                  <div className="text-xs md:text-lg font-semibold mb-1 md:mb-2">Step 1</div>
-                  <div className="text-base md:text-2xl font-bold">相談する</div>
-                </div>
-                {/* 矢印 (モバイル: 下向き、デスクトップ: 右向き) */}
-                <div className="flex justify-center md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:translate-x-full">
-                  <svg className="w-8 h-8 md:w-16 md:h-20 text-white rotate-90 md:rotate-0" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
-                    <polygon points="0,0 64,40 0,80" fill="currentColor"/>
-                  </svg>
-                </div>
+              <div className="relative w-full max-w-xs">
+                <svg viewBox="0 0 200 120" className="w-full h-auto">
+                  <defs>
+                    <linearGradient id="gradient1-mobile" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#60A5FA" />
+                      <stop offset="100%" stopColor="#3B82F6" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 10 20 Q 10 10, 20 10 L 160 10 Q 180 10, 190 30 L 190 90 Q 190 100, 180 100 L 100 100 L 90 110 L 100 100 L 20 100 Q 10 100, 10 90 Z" fill="url(#gradient1-mobile)" />
+                  <text x="100" y="40" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">STEP 01</text>
+                  <text x="100" y="70" textAnchor="middle" fill="white" fontSize="18" fontWeight="bold">相談する</text>
+                </svg>
               </div>
 
               {/* Step 2 */}
-              <div className="relative w-full md:w-auto md:ml-0">
-                <div className="bg-blue-500 text-white px-8 py-6 md:px-16 md:py-8 text-center relative">
-                  <div className="text-xs md:text-lg font-semibold mb-1 md:mb-2">Step 2</div>
-                  <div className="text-base md:text-2xl font-bold">プロジェクトスタート</div>
-                </div>
-                {/* 矢印 (モバイル: 下向き、デスクトップ: 右向き) */}
-                <div className="flex justify-center md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:translate-x-full">
-                  <svg className="w-8 h-8 md:w-16 md:h-20 text-white rotate-90 md:rotate-0" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
-                    <polygon points="0,0 64,40 0,80" fill="currentColor"/>
-                  </svg>
-                </div>
+              <div className="relative w-full max-w-xs">
+                <svg viewBox="0 0 200 120" className="w-full h-auto">
+                  <defs>
+                    <linearGradient id="gradient2-mobile" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#3B82F6" />
+                      <stop offset="100%" stopColor="#2563EB" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 10 20 Q 10 10, 20 10 L 160 10 Q 180 10, 190 30 L 190 90 Q 190 100, 180 100 L 100 100 L 90 110 L 100 100 L 20 100 Q 10 100, 10 90 Z" fill="url(#gradient2-mobile)" />
+                  <text x="100" y="35" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">STEP 02</text>
+                  <text x="100" y="65" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">プロジェクト</text>
+                  <text x="100" y="85" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">スタート</text>
+                </svg>
               </div>
 
               {/* Step 3 */}
-              <div className="w-full md:w-auto md:ml-0">
-                <div className="bg-blue-600 text-white px-8 py-6 md:px-16 md:py-8 text-center">
-                  <div className="text-xs md:text-lg font-semibold mb-1 md:mb-2">Step 3</div>
-                  <div className="text-base md:text-2xl font-bold">支援金を手に入れる</div>
-                </div>
+              <div className="relative w-full max-w-xs">
+                <svg viewBox="0 0 200 120" className="w-full h-auto">
+                  <defs>
+                    <linearGradient id="gradient3-mobile" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#2563EB" />
+                      <stop offset="100%" stopColor="#1D4ED8" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 10 20 Q 10 10, 20 10 L 160 10 Q 180 10, 190 30 L 190 90 Q 190 100, 180 100 L 100 100 L 90 110 L 100 100 L 20 100 Q 10 100, 10 90 Z" fill="url(#gradient3-mobile)" />
+                  <text x="100" y="35" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">STEP 03</text>
+                  <text x="100" y="65" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">支援金を</text>
+                  <text x="100" y="85" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">手に入れる</text>
+                </svg>
+              </div>
+            </div>
+
+            {/* デスクトップ: 横並び */}
+            <div className="hidden md:flex items-center justify-center gap-0">
+              {/* Step 1 */}
+              <div className="relative">
+                <svg viewBox="0 0 280 140" className="w-64 h-auto">
+                  <defs>
+                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#60A5FA" />
+                      <stop offset="100%" stopColor="#3B82F6" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 20 20 Q 10 20, 10 30 L 10 110 Q 10 120, 20 120 L 220 120 L 250 70 L 220 20 Z" fill="url(#gradient1)" />
+                  <text x="110" y="55" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">STEP 01</text>
+                  <text x="110" y="90" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold">相談する</text>
+                </svg>
+              </div>
+
+              {/* Step 2 */}
+              <div className="relative -ml-6">
+                <svg viewBox="0 0 320 140" className="w-72 h-auto">
+                  <defs>
+                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#3B82F6" />
+                      <stop offset="100%" stopColor="#2563EB" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 50 20 L 20 70 L 50 120 L 260 120 L 290 70 L 260 20 Z" fill="url(#gradient2)" />
+                  <text x="155" y="55" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">STEP 02</text>
+                  <text x="155" y="90" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold">プロジェクトスタート</text>
+                </svg>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative -ml-6">
+                <svg viewBox="0 0 320 140" className="w-72 h-auto">
+                  <defs>
+                    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#2563EB" />
+                      <stop offset="100%" stopColor="#1D4ED8" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 50 20 L 20 70 L 50 120 L 280 120 Q 290 120, 290 110 L 290 30 Q 290 20, 280 20 Z" fill="url(#gradient3)" />
+                  <text x="160" y="55" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">STEP 03</text>
+                  <text x="160" y="90" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold">支援金を手に入れる</text>
+                </svg>
               </div>
             </div>
 
