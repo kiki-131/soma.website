@@ -57,7 +57,7 @@ export default async function BlogDetail({ params }) {
         <div className="blog-content text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: post.content || post.body || "" }} />
         
         {/* いいねボタン */}
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8">
           <LikeButton postId={post.id} initialLikes={post.likes || 0} />
         </div>
       </article>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaHeart } from "react-icons/fa";
 
 export default async function BlogPage() {
   const service = process.env.NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN;
@@ -46,9 +47,15 @@ export default async function BlogPage() {
               />
             )}
             <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
-            <p className="text-gray-500 text-sm mb-2">
-              {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : ""}
-            </p>
+            <div className="flex items-center gap-4 mb-2">
+              <p className="text-gray-500 text-sm">
+                {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : ""}
+              </p>
+              <div className="flex items-center gap-1 text-gray-600">
+                <FaHeart className="text-red-500" />
+                <span className="text-sm font-semibold">{post.likes || 0}</span>
+              </div>
+            </div>
             <Link href={`/blog/${post.id}`} className="text-blue-600 hover:underline">
               → Read More
             </Link>
