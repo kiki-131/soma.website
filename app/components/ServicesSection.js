@@ -48,6 +48,11 @@ export default function ServiceSection() {
       image: "/images/service/service-planning.png"
     },
     {
+      title: "プラットフォーム登録",
+      description: "各種プラットフォームへの登録申請やアカウント管理を代行",
+      image: "/images/service/service-registration.png"
+    },
+    {
       title: "サイト作成",
       description: "魅力的なプロジェクトページや販売サイトを現地言語で制作",
       image: "/images/service/service-website.png"
@@ -66,11 +71,6 @@ export default function ServiceSection() {
       title: "発送サポート",
       description: "国際物流の手配から通関手続きまでワンストップでサポート",
       image: "/images/service/service-shipping.png"
-    },
-    {
-      title: "プラットフォーム登録",
-      description: "各種プラットフォームへの登録申請やアカウント管理を代行",
-      image: "/images/service/service-registration.png"
     }
   ];
 
