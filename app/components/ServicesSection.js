@@ -86,14 +86,14 @@ export default function ServiceSection() {
       {isChallenge && (
         <div className="absolute inset-0 bg-red-50 rounded-[32px] opacity-50 -z-10" />
       )}
-      <div className={`relative ${showTitlePlate ? 'w-16 h-16 md:w-32 md:h-32 flex-shrink-0' : 'w-16 h-16 md:w-48 md:h-48 mb-1 md:mb-4'} group`}>
+      <div className={`relative ${showTitlePlate ? 'w-20 h-20 md:w-40 md:h-40 flex-shrink-0' : 'w-16 h-16 md:w-48 md:h-48 mb-1 md:mb-4'} group`}>
         <div className="absolute inset-0 rounded-full overflow-hidden border-[1.5px] md:border-4 border-gray-800 group-hover:border-blue-600 transition-colors duration-300">
           <Image
             src={item.image}
             alt={item.title}
             fill
             className="object-cover"
-            sizes={showTitlePlate ? "128px" : "192px"}
+            sizes={showTitlePlate ? "160px" : "192px"}
           />
         </div>
         {/* 課題項目の左上にもやもやアイコン（一筆書き竜巻） */}
@@ -135,15 +135,15 @@ export default function ServiceSection() {
         )}
         {/* タイトルプレート（サポート項目用） */}
         {showTitlePlate && (
-          <div className="absolute -top-3 -left-4 md:-top-2 md:-left-4 z-10">
+          <div className="absolute -top-3 -left-4 md:-top-3 md:-left-5 z-10">
             <div className="relative">
               {/* 黒い台形のプレート */}
-              <svg className="w-16 h-6 md:w-[100px] md:h-[40px]" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-20 h-7 md:w-[130px] md:h-[45px]" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10 0 L130 0 L140 50 L0 50 Z" fill="#1F2937" stroke="#000" strokeWidth="2"/>
               </svg>
               {/* テキスト */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white font-bold text-[7px] md:text-xs px-1 md:px-2">{item.title}</span>
+                <span className="text-white font-bold text-[8px] md:text-sm px-1 md:px-2">{item.title}</span>
               </div>
             </div>
           </div>
@@ -151,7 +151,7 @@ export default function ServiceSection() {
       </div>
       {showTitlePlate ? (
         <div className="flex-1 flex items-center">
-          <p className="text-xs md:text-base text-gray-600 leading-relaxed">{item.description}</p>
+          <p className="text-sm md:text-lg text-gray-600 leading-relaxed">{item.description}</p>
         </div>
       ) : (
         <>
