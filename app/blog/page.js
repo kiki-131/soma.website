@@ -53,40 +53,67 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto py-16 px-4">
-      <h1 className="text-4xl font-bold mb-10 text-center">Blog</h1>
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-5xl mx-auto py-12 px-4">
+        <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900">Blog</h1>
 
-      {isLoading ? (
-        <p className="text-center text-gray-500">読み込み中...</p>
-      ) : posts.length === 0 ? (
-        <p className="text-center text-gray-500">No posts found.</p>
-      ) : (
-        <>
-          {currentPosts.map((post) => (
-          <div key={post.id} className="mb-10 border-b pb-6">
-            {post.eyecatch?.url && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={post.eyecatch.url}
-                alt={post.title}
-                className="w-full h-60 object-cover rounded-lg mb-4"
-              />
-            )}
-            <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
-            <div className="flex items-center gap-4 mb-2">
-              <p className="text-gray-500 text-sm">
-                {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : ""}
-              </p>
-              <div className="flex items-center gap-1 text-gray-600">
-                <FaHeart className="text-red-500" />
-                <span className="text-sm font-semibold">{post.likes || 0}</span>
-              </div>
+        {isLoading ? (
+          <p className="text-center text-gray-500">読み込み中...</p>
+        ) : posts.length === 0 ? (
+          <p className="text-center text-gray-500">No posts found.</p>
+        ) : (
+          <>
+            <div className="space-y-4">
+              {currentPosts.map((post, index) => (
+                <Link key={post.id} href={`/blog/${post.id}`}>
+                  <div className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300 overflow-hidden cursor-pointer">
+                    <div className="flex flex-col md:flex-row">
+                      {/* サムネイル画像 */}
+                      {post.eyecatch?.url && (
+                        <div className="w-full md:w-48 h-48 md:h-32 flex-shrink-0">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={post.eyecatch.url}
+                            alt={post.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
+                      
+                      {/* コンテンツ */}
+                      <div className="flex-1 p-4 md:p-5">
+                        <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors line-clamp-2">
+                          {post.title}
+                        </h2>
+                        
+                        {/* メタ情報 */}
+                        <div className="flex items-center gap-4 text-sm text-gray-500 mb-2">
+                          <time className="flex items-center gap-1">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('ja-JP') : ""}
+                          </time>
+                          
+                          <div className="flex items-center gap-1">
+                            <FaHeart className="text-red-500" />
+                            <span className="font-semibold">{post.likes || 0}</span>
+                          </div>
+                        </div>
+                        
+                        {/* 記事を読むリンク */}
+                        <div className="text-blue-600 text-sm font-medium flex items-center gap-1 mt-3">
+                          記事を読む
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
-            <Link href={`/blog/${post.id}`} className="text-blue-600 hover:underline">
-              → Read More
-            </Link>
-          </div>
-          ))}
 
           {/* ページネーション */}
           {totalPages > 1 && (
