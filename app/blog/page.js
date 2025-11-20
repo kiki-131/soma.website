@@ -115,9 +115,9 @@ export default function BlogPage() {
               ))}
             </div>
 
-          {/* ページネーション */}
-          {totalPages > 1 && (
-            <div className="flex justify-center items-center gap-2 mt-12">
+            {/* ページネーション */}
+            {totalPages > 1 && (
+              <div className="flex justify-center items-center gap-2 mt-12">
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
@@ -130,7 +130,7 @@ export default function BlogPage() {
                 前へ
               </button>
 
-              <div className="flex gap-2">
+                <div className="flex gap-2">
                 {[...Array(totalPages)].map((_, index) => {
                   const pageNumber = index + 1;
                   // 最初のページ、最後のページ、現在のページ付近のみ表示
@@ -160,10 +160,9 @@ export default function BlogPage() {
                   }
                   return null;
                 })}
-              </div>
-            )}
+                </div>
 
-              <button
+                <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
                 className={`px-4 py-2 rounded ${
@@ -174,10 +173,10 @@ export default function BlogPage() {
               >
                 次へ
               </button>
-            </div>
-          )}
-        </>
-      )}
-    </div>
+              </div>
+            )}
+          </>
+        )}
+      </div>
   );
 }
