@@ -78,7 +78,7 @@ export default function BlogPage() {
                   海外クラウドファンディング専門の支援会社で、日本メーカー・スタートアップのKickstarter／Indiegogo／zeczec出店をサポートしています。
                 </p>
                 <p className="mb-3">
-                  企画設計からLP、広告、物流・DDPまで"初めての海外クラファン"を初期費無料で伴走中。
+                  企画設計からLP、広告、物流・DDPまで&quot;初めての海外クラファン&quot;を初期費無料で伴走中。
                 </p>
               </div>
               <div className="space-y-3 text-sm">
