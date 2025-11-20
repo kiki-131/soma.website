@@ -151,7 +151,7 @@ export default function ServiceSection() {
       </div>
       {showTitlePlate ? (
         <div className="flex-1 flex items-center justify-center">
-          <p className="text-sm md:text-lg text-gray-600 leading-relaxed">{item.description}</p>
+          <p className="text-sm md:text-lg text-black leading-relaxed">{item.description}</p>
         </div>
       ) : (
         <>
@@ -313,7 +313,7 @@ export default function ServiceSection() {
 
       {/* パート2: Projects + サポート詳細 */}
       <section className="relative bg-white py-20 overflow-hidden">
-        {/* 大きな丸のグラデーション背景 (青→赤) */}
+        {/* 大きな丸の青背景 */}
         <div className="absolute inset-0 pointer-events-none overflow-visible">
           <svg
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -322,18 +322,12 @@ export default function ServiceSection() {
             viewBox="0 0 1800 1800"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <defs>
-              <radialGradient id="blueToRedGradient" cx="30%" cy="30%">
-                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.25" />
-                <stop offset="50%" stopColor="#A78BFA" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#EF4444" stopOpacity="0.25" />
-              </radialGradient>
-            </defs>
             <circle
               cx="900"
               cy="900"
               r="850"
-              fill="url(#blueToRedGradient)"
+              fill="#0066FF"
+              opacity="0.6"
             />
           </svg>
         </div>
@@ -346,53 +340,53 @@ export default function ServiceSection() {
         {/* サポート詳細 */}
         <div className="max-w-7xl mx-auto px-8 relative z-10">
           <motion.div
-            className="flex flex-col items-center mb-4 md:mb-16"
+            className="flex flex-col items-center mb-2 md:mb-6"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             {/* 台形のタイトル */}
-            <div className="relative mb-2 md:mb-4">
+            <div className="relative mb-1 md:mb-2">
               <svg className="w-64 h-16 md:w-96 md:h-20" viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg">
                 <path d="M25 0 L375 0 L400 80 L0 80 Z" fill="white" stroke="#1F2937" strokeWidth="3"/>
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <h2 className="text-base md:text-3xl font-bold text-gray-800">ワンストップでサポート</h2>
+                <h2 className="text-base md:text-3xl font-bold text-black">ワンストップでサポート</h2>
               </div>
             </div>
 
             {/* 初期費用0円セクション */}
             <motion.div
-              className="flex flex-col items-center my-4 md:my-8"
+              className="flex flex-col items-center my-2 md:my-4"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-sm md:text-2xl font-bold text-gray-700 mb-1 md:mb-2">初期費用</h3>
-              <div className="mb-2 md:mb-4">
-                <span className="text-8xl md:text-[200px] font-extrabold text-white">0</span>
-                <span className="text-5xl md:text-[120px] font-extrabold text-white">円</span>
+              <h3 className="text-sm md:text-2xl font-bold text-black mb-0 md:mb-1">初期費用</h3>
+              <div className="mb-0 md:mb-2 leading-none">
+                <span className="text-[120px] md:text-[280px] font-extrabold text-white leading-none">0</span>
+                <span className="text-5xl md:text-[120px] font-extrabold text-white leading-none">円</span>
               </div>
-              <div className="text-[9px] md:text-xs text-gray-500 text-center space-y-0.5 md:space-y-1 mb-3 md:mb-6">
+              <div className="text-[9px] md:text-xs text-black text-center space-y-0.5 md:space-y-1 mb-2 md:mb-3">
                 <p>*適用には条件がありますのでご相談ください。</p>
                 <p>*広告・プロモーション費用は別料金となります。</p>
               </div>
-              <p className="text-xs md:text-lg text-gray-700 font-semibold text-center px-4">
-                成果報酬として集まった支援金の<span className="text-blue-600 font-bold">5％～20％</span> を手数料として頂きます
+              <p className="text-xs md:text-lg text-black font-semibold text-center px-4">
+                成果報酬として集まった支援金の<span className="text-white font-bold">5％～20％</span> を手数料として頂きます
               </p>
             </motion.div>
 
-            <div className="mt-4 md:mt-6">
-              <p className="text-[10px] md:text-base text-center text-gray-600 px-2">
+            <div className="mt-2 md:mt-3">
+              <p className="text-sm md:text-xl text-center text-black px-2 font-semibold">
                 企画から実行まで、すべてをお任せください
               </p>
             </div>
           </motion.div>
           
           {/* サポート項目グリッド */}
-          <div className="relative max-w-5xl mx-auto py-4 md:py-12">
+          <div className="relative max-w-5xl mx-auto py-2 md:py-6">
             <div className="grid grid-cols-2 gap-x-4 gap-y-6 md:gap-x-12 md:gap-y-12">
               {services.map((item, i) => (
                 <CardItem key={i} item={item} index={i} showTitlePlate={true} />
