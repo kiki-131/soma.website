@@ -97,7 +97,7 @@ export default function BlogPage() {
                   className="inline-flex items-center gap-1 bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors text-sm font-medium"
                 >
                   <span className="font-bold text-base">𝕏</span>
-                  <span>@gakuto66をフォロー</span>
+                  <span>@kaigai_support7をフォロー</span>
                 </a>
               </div>
             </div>
