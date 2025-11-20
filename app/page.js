@@ -94,8 +94,8 @@ export default function HomePage() {
         className="w-full text-center mb-4"
       >
         {/* SOMA 海外クラファン×海外進出支援 */}
-        <h2 className="text-xl font-bold text-gray-900 mb-1">SOMA</h2>
-        <h1 className="text-2xl font-extrabold text-gray-900 mb-4 leading-tight">海外クラファン×<br/>海外進出支援</h1>
+        <h2 className="text-3xl font-bold text-gray-900 mb-1">SOMA</h2>
+        <h1 className="text-3xl font-extrabold text-gray-900 mb-4 leading-tight">海外クラファン×<br/>海外進出支援</h1>
       </motion.div>
 
       {/* 画像を中央配置 */}
