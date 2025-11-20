@@ -161,6 +161,7 @@ export default function BlogPage() {
                   return null;
                 })}
               </div>
+            )}
 
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
