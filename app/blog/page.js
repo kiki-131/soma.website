@@ -81,7 +81,7 @@ export default function BlogPage() {
                   企画設計からLP、広告、物流・DDPまで"初めての海外クラファン"を初期費無料で伴走中。
                 </p>
               </div>
-              <div className="space-y-2 text-sm">
+              <div className="space-y-3 text-sm">
                 <a 
                   href="https://www.soma-jp.net/" 
                   target="_blank" 
@@ -94,9 +94,10 @@ export default function BlogPage() {
                   href="https://x.com/kaigai_support7" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="block text-blue-600 hover:text-blue-800 hover:underline"
+                  className="inline-flex items-center gap-1 bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors text-sm font-medium"
                 >
-                  𝕏 @kaigai_support7をフォロー
+                  <span className="font-bold text-base">𝕏</span>
+                  <span>@gakuto66をフォロー</span>
                 </a>
               </div>
             </div>
