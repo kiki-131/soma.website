@@ -2,7 +2,7 @@ import Link from 'next/link';
 import LikeButton from '@/app/components/LikeButton';
 
 export default async function BlogDetail({ params }) {
-  const { id } = params;
+  const { id } = await params;
   const service = process.env.NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN;
   const key = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
   let post = null;
