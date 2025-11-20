@@ -76,7 +76,7 @@ export default function ServiceSection() {
 
   const CardItem = ({ item, index, isChallenge, showTitlePlate }) => (
     <motion.div
-      className="relative flex flex-col items-center text-center p-1 md:p-8"
+      className={`relative flex ${showTitlePlate ? 'flex-row items-start gap-2 md:gap-4 p-2 md:p-4' : 'flex-col items-center text-center p-1 md:p-8'}`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -86,14 +86,14 @@ export default function ServiceSection() {
       {isChallenge && (
         <div className="absolute inset-0 bg-red-50 rounded-[32px] opacity-50 -z-10" />
       )}
-      <div className="relative w-16 h-16 md:w-48 md:h-48 mb-1 md:mb-4 group">
+      <div className={`relative ${showTitlePlate ? 'w-16 h-16 md:w-32 md:h-32 flex-shrink-0' : 'w-16 h-16 md:w-48 md:h-48 mb-1 md:mb-4'} group`}>
         <div className="absolute inset-0 rounded-full overflow-hidden border-[1.5px] md:border-4 border-gray-800 group-hover:border-blue-600 transition-colors duration-300">
           <Image
             src={item.image}
             alt={item.title}
             fill
             className="object-cover"
-            sizes="192px"
+            sizes={showTitlePlate ? "128px" : "192px"}
           />
         </div>
         {/* 課題項目の左上にもやもやアイコン（一筆書き竜巻） */}
@@ -138,19 +138,27 @@ export default function ServiceSection() {
           <div className="absolute -top-3 -left-4 md:-top-2 md:-left-4 z-10">
             <div className="relative">
               {/* 黒い台形のプレート */}
-              <svg className="w-16 h-6 md:w-[140px] md:h-[50px]" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-16 h-6 md:w-[100px] md:h-[40px]" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10 0 L130 0 L140 50 L0 50 Z" fill="#1F2937" stroke="#000" strokeWidth="2"/>
               </svg>
               {/* テキスト */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white font-bold text-[7px] md:text-sm px-1 md:px-2">{item.title}</span>
+                <span className="text-white font-bold text-[7px] md:text-xs px-1 md:px-2">{item.title}</span>
               </div>
             </div>
           </div>
         )}
       </div>
-      {!showTitlePlate && <h3 className="text-[11px] md:text-xl font-bold mb-0.5 md:mb-2">{item.title}</h3>}
-      <p className={`${showTitlePlate ? 'text-xs md:text-base' : 'text-[10px] md:text-sm'} text-gray-600 max-w-xs leading-relaxed`}>{item.description}</p>
+      {showTitlePlate ? (
+        <div className="flex-1 flex items-center">
+          <p className="text-xs md:text-base text-gray-600 leading-relaxed">{item.description}</p>
+        </div>
+      ) : (
+        <>
+          {!showTitlePlate && <h3 className="text-[11px] md:text-xl font-bold mb-0.5 md:mb-2">{item.title}</h3>}
+          <p className="text-[10px] md:text-sm text-gray-600 max-w-xs leading-relaxed">{item.description}</p>
+        </>
+      )}
     </motion.div>
   );
 
