@@ -371,14 +371,9 @@ export default function ServiceSection() {
               viewport={{ once: true }}
             >
               <h3 className="text-sm md:text-2xl font-bold text-gray-700 mb-1 md:mb-2">初期費用</h3>
-              <div className="relative mb-2 md:mb-4">
-                <span className="text-5xl md:text-8xl font-extrabold text-blue-600">0</span>
-                <span className="text-3xl md:text-5xl font-extrabold text-blue-600">円</span>
-                <svg className="absolute -bottom-4 md:-bottom-6 left-1/2 -translate-x-1/2 w-full h-8 md:h-12" viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 5 15 Q 20 13, 40 16 Q 60 14, 80 15 Q 100 17, 120 14 Q 140 16, 160 15 Q 180 13, 195 15" fill="none" stroke="#FF6B6B" strokeWidth="8" strokeLinecap="round" opacity="0.6"/>
-                  <path d="M 3 17 Q 22 15, 42 18 Q 62 16, 82 17 Q 102 19, 122 16 Q 142 18, 162 17 Q 182 15, 197 17" fill="none" stroke="#FF6B6B" strokeWidth="6" strokeLinecap="round" opacity="0.4"/>
-                  <path d="M 6 13 Q 25 11, 45 14 Q 65 12, 85 13 Q 105 15, 125 12 Q 145 14, 165 13 Q 185 11, 196 13" fill="none" stroke="#FF6B6B" strokeWidth="7" strokeLinecap="round" opacity="0.5"/>
-                </svg>
+              <div className="mb-2 md:mb-4">
+                <span className="text-8xl md:text-[200px] font-extrabold text-white">0</span>
+                <span className="text-5xl md:text-[120px] font-extrabold text-white">円</span>
               </div>
               <div className="text-[9px] md:text-xs text-gray-500 text-center space-y-0.5 md:space-y-1 mb-3 md:mb-6">
                 <p>*適用には条件がありますのでご相談ください。</p>
@@ -389,15 +384,10 @@ export default function ServiceSection() {
               </p>
             </motion.div>
 
-            <div className="relative inline-block mt-4 md:mt-6">
+            <div className="mt-4 md:mt-6">
               <p className="text-[10px] md:text-base text-center text-gray-600 px-2">
                 企画から実行まで、すべてをお任せください
               </p>
-              <svg className="absolute -bottom-2 md:-bottom-3 left-1/2 -translate-x-1/2 w-[95%] h-3 md:h-5" viewBox="0 0 400 15" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 5 7 Q 50 6, 100 8 Q 150 6, 200 7 Q 250 9, 300 7 Q 350 6, 395 8" fill="none" stroke="#FF6B6B" strokeWidth="4" strokeLinecap="round" opacity="0.6"/>
-                <path d="M 3 9 Q 48 8, 98 10 Q 148 8, 198 9 Q 248 11, 298 9 Q 348 8, 397 10" fill="none" stroke="#FF6B6B" strokeWidth="3" strokeLinecap="round" opacity="0.4"/>
-                <path d="M 6 5 Q 52 4, 102 6 Q 152 4, 202 5 Q 252 7, 302 5 Q 352 4, 396 6" fill="none" stroke="#FF6B6B" strokeWidth="3.5" strokeLinecap="round" opacity="0.5"/>
-              </svg>
             </div>
           </motion.div>
           
