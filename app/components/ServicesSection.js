@@ -420,99 +420,121 @@ export default function ServiceSection() {
             viewport={{ once: true }}
           >
             {/* モバイル: 縦並び */}
-            <div className="flex flex-col items-center gap-3 md:hidden">
+            <div className="flex flex-col items-center gap-4 md:hidden">
               {/* Step 1 */}
-              <div className="relative w-full max-w-xs">
-                <svg viewBox="0 0 200 120" className="w-full h-auto">
-                  <defs>
-                    <linearGradient id="gradient1-mobile" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#60A5FA" />
-                      <stop offset="100%" stopColor="#3B82F6" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M 10 20 Q 10 10, 20 10 L 160 10 Q 180 10, 190 30 L 190 90 Q 190 100, 180 100 L 100 100 L 90 110 L 100 100 L 20 100 Q 10 100, 10 90 Z" fill="url(#gradient1-mobile)" />
-                  <text x="100" y="40" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">STEP 01</text>
-                  <text x="100" y="70" textAnchor="middle" fill="white" fontSize="18" fontWeight="bold">相談する</text>
-                </svg>
+              <div className="relative w-full max-w-xs h-24">
+                <div className="absolute inset-0 overflow-hidden rounded-full" style={{
+                  background: 'linear-gradient(135deg, #3B82F6 0%, #6366F1 100%)',
+                  maskImage: 'url(/images/service/flow.png)',
+                  WebkitMaskImage: 'url(/images/service/flow.png)',
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                  WebkitMaskPosition: 'center'
+                }}>
+                  <Image src="/images/service/flow.png" alt="" fill className="opacity-0" />
+                </div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-white text-xs font-bold mb-1">STEP 01</span>
+                  <span className="text-white text-lg font-bold">相談する</span>
+                </div>
               </div>
 
               {/* Step 2 */}
-              <div className="relative w-full max-w-xs">
-                <svg viewBox="0 0 200 120" className="w-full h-auto">
-                  <defs>
-                    <linearGradient id="gradient2-mobile" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#3B82F6" />
-                      <stop offset="100%" stopColor="#2563EB" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M 10 20 Q 10 10, 20 10 L 160 10 Q 180 10, 190 30 L 190 90 Q 190 100, 180 100 L 100 100 L 90 110 L 100 100 L 20 100 Q 10 100, 10 90 Z" fill="url(#gradient2-mobile)" />
-                  <text x="100" y="35" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">STEP 02</text>
-                  <text x="100" y="65" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">プロジェクト</text>
-                  <text x="100" y="85" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">スタート</text>
-                </svg>
+              <div className="relative w-full max-w-xs h-24">
+                <div className="absolute inset-0 overflow-hidden rounded-full" style={{
+                  background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)',
+                  maskImage: 'url(/images/service/flow.png)',
+                  WebkitMaskImage: 'url(/images/service/flow.png)',
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                  WebkitMaskPosition: 'center'
+                }}>
+                  <Image src="/images/service/flow.png" alt="" fill className="opacity-0" />
+                </div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-white text-xs font-bold mb-1">STEP 02</span>
+                  <span className="text-white text-base font-bold text-center leading-tight">プロジェクト<br/>スタート</span>
+                </div>
               </div>
 
               {/* Step 3 */}
-              <div className="relative w-full max-w-xs">
-                <svg viewBox="0 0 200 120" className="w-full h-auto">
-                  <defs>
-                    <linearGradient id="gradient3-mobile" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#2563EB" />
-                      <stop offset="100%" stopColor="#1D4ED8" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M 10 20 Q 10 10, 20 10 L 160 10 Q 180 10, 190 30 L 190 90 Q 190 100, 180 100 L 100 100 L 90 110 L 100 100 L 20 100 Q 10 100, 10 90 Z" fill="url(#gradient3-mobile)" />
-                  <text x="100" y="35" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">STEP 03</text>
-                  <text x="100" y="65" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">支援金を</text>
-                  <text x="100" y="85" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">手に入れる</text>
-                </svg>
+              <div className="relative w-full max-w-xs h-24">
+                <div className="absolute inset-0 overflow-hidden rounded-full" style={{
+                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EF4444 100%)',
+                  maskImage: 'url(/images/service/flow.png)',
+                  WebkitMaskImage: 'url(/images/service/flow.png)',
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                  WebkitMaskPosition: 'center'
+                }}>
+                  <Image src="/images/service/flow.png" alt="" fill className="opacity-0" />
+                </div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-white text-xs font-bold mb-1">STEP 03</span>
+                  <span className="text-white text-base font-bold text-center leading-tight">支援金を<br/>手に入れる</span>
+                </div>
               </div>
             </div>
 
             {/* デスクトップ: 横並び */}
-            <div className="hidden md:flex items-center justify-center gap-0">
-              {/* Step 1 */}
-              <div className="relative">
-                <svg viewBox="0 0 280 140" className="w-64 h-auto">
+            <div className="hidden md:block">
+              <div className="relative w-full h-32 flex items-center justify-center">
+                {/* 3つのステップ用のグラデーション背景 */}
+                <svg viewBox="0 0 1200 140" className="absolute inset-0 w-full h-full">
                   <defs>
-                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#60A5FA" />
-                      <stop offset="100%" stopColor="#3B82F6" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M 20 20 Q 10 20, 10 30 L 10 110 Q 10 120, 20 120 L 220 120 L 250 70 L 220 20 Z" fill="url(#gradient1)" />
-                  <text x="110" y="55" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">STEP 01</text>
-                  <text x="110" y="90" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold">相談する</text>
-                </svg>
-              </div>
-
-              {/* Step 2 */}
-              <div className="relative -ml-6">
-                <svg viewBox="0 0 320 140" className="w-72 h-auto">
-                  <defs>
-                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                       <stop offset="0%" stopColor="#3B82F6" />
-                      <stop offset="100%" stopColor="#2563EB" />
+                      <stop offset="50%" stopColor="#8B5CF6" />
+                      <stop offset="100%" stopColor="#EF4444" />
                     </linearGradient>
+                    <mask id="flowMask1">
+                      <circle cx="150" cy="70" r="60" fill="white" />
+                      <polygon points="210,70 250,50 250,90" fill="white" />
+                    </mask>
+                    <mask id="flowMask2">
+                      <polygon points="250,50 290,70 250,90" fill="white" />
+                      <circle cx="450" cy="70" r="60" fill="white" />
+                      <polygon points="510,70 550,50 550,90" fill="white" />
+                    </mask>
+                    <mask id="flowMask3">
+                      <polygon points="550,50 590,70 550,90" fill="white" />
+                      <circle cx="750" cy="70" r="60" fill="white" />
+                    </mask>
                   </defs>
-                  <path d="M 50 20 L 20 70 L 50 120 L 260 120 L 290 70 L 260 20 Z" fill="url(#gradient2)" />
-                  <text x="155" y="55" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">STEP 02</text>
-                  <text x="155" y="90" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold">プロジェクトスタート</text>
-                </svg>
-              </div>
+                  
+                  {/* Step 1 */}
+                  <g mask="url(#flowMask1)">
+                    <rect x="0" y="0" width="300" height="140" fill="url(#flowGradient)" />
+                  </g>
+                  
+                  {/* Step 2 */}
+                  <g mask="url(#flowMask2)">
+                    <rect x="200" y="0" width="400" height="140" fill="url(#flowGradient)" />
+                  </g>
+                  
+                  {/* Step 3 */}
+                  <g mask="url(#flowMask3)">
+                    <rect x="500" y="0" width="400" height="140" fill="url(#flowGradient)" />
+                  </g>
 
-              {/* Step 3 */}
-              <div className="relative -ml-6">
-                <svg viewBox="0 0 320 140" className="w-72 h-auto">
-                  <defs>
-                    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#2563EB" />
-                      <stop offset="100%" stopColor="#1D4ED8" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M 50 20 L 20 70 L 50 120 L 280 120 Q 290 120, 290 110 L 290 30 Q 290 20, 280 20 Z" fill="url(#gradient3)" />
-                  <text x="160" y="55" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">STEP 03</text>
-                  <text x="160" y="90" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold">支援金を手に入れる</text>
+                  {/* テキスト */}
+                  <text x="150" y="55" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">Step 1</text>
+                  <text x="150" y="85" textAnchor="middle" fill="white" fontSize="20" fontWeight="bold">相談する</text>
+
+                  <text x="450" y="55" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">Step 2</text>
+                  <text x="450" y="85" textAnchor="middle" fill="white" fontSize="20" fontWeight="bold">プロジェクトスタート</text>
+
+                  <text x="750" y="55" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">Step 3</text>
+                  <text x="750" y="85" textAnchor="middle" fill="white" fontSize="20" fontWeight="bold">支援金を手に入れる</text>
                 </svg>
               </div>
             </div>
