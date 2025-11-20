@@ -353,7 +353,29 @@ export default function ServiceSection() {
                 <h2 className="text-base md:text-3xl font-bold text-gray-800">ワンストップでサポート</h2>
               </div>
             </div>
-            <p className="text-[10px] md:text-base text-center text-gray-600 px-2">
+
+            {/* 初期費用0円セクション */}
+            <motion.div
+              className="flex flex-col items-center my-4 md:my-8"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-sm md:text-2xl font-bold text-gray-700 mb-1 md:mb-2">初期費用</h3>
+              <div className="text-5xl md:text-8xl font-extrabold text-blue-600 mb-2 md:mb-4">
+                0円
+              </div>
+              <div className="text-[9px] md:text-xs text-gray-500 text-center space-y-0.5 md:space-y-1 mb-3 md:mb-6">
+                <p>*適用には条件がありますのでご相談ください。</p>
+                <p>*広告・プロモーション費用は別料金となります。</p>
+              </div>
+              <p className="text-xs md:text-lg text-gray-700 font-semibold text-center px-4">
+                成果報酬として集まった支援金の<span className="text-blue-600 font-bold">5％～20％</span> を手数料として頂きます
+              </p>
+            </motion.div>
+
+            <p className="text-[10px] md:text-base text-center text-gray-600 px-2 mt-4 md:mt-6">
               企画から実行まで、すべてをお任せください
             </p>
           </motion.div>
@@ -388,6 +410,63 @@ export default function ServiceSection() {
               </div>
             </div>
           </div>
+
+          {/* ステップフロー */}
+          <motion.div
+            className="max-w-5xl mx-auto mt-12 md:mt-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex flex-col md:flex-row items-center justify-center gap-0 md:gap-0">
+              {/* Step 1 */}
+              <div className="relative w-full md:w-auto">
+                <div className="bg-blue-400 text-white px-8 py-6 md:px-16 md:py-8 text-center relative">
+                  <div className="text-xs md:text-lg font-semibold mb-1 md:mb-2">Step 1</div>
+                  <div className="text-base md:text-2xl font-bold">相談する</div>
+                </div>
+                {/* 矢印 (モバイル: 下向き、デスクトップ: 右向き) */}
+                <div className="flex justify-center md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:translate-x-full">
+                  <svg className="w-8 h-8 md:w-16 md:h-20 text-white rotate-90 md:rotate-0" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="0,0 64,40 0,80" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="relative w-full md:w-auto md:ml-0">
+                <div className="bg-blue-500 text-white px-8 py-6 md:px-16 md:py-8 text-center relative">
+                  <div className="text-xs md:text-lg font-semibold mb-1 md:mb-2">Step 2</div>
+                  <div className="text-base md:text-2xl font-bold">プロジェクトスタート</div>
+                </div>
+                {/* 矢印 (モバイル: 下向き、デスクトップ: 右向き) */}
+                <div className="flex justify-center md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:translate-x-full">
+                  <svg className="w-8 h-8 md:w-16 md:h-20 text-white rotate-90 md:rotate-0" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="0,0 64,40 0,80" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="w-full md:w-auto md:ml-0">
+                <div className="bg-blue-600 text-white px-8 py-6 md:px-16 md:py-8 text-center">
+                  <div className="text-xs md:text-lg font-semibold mb-1 md:mb-2">Step 3</div>
+                  <div className="text-base md:text-2xl font-bold">支援金を手に入れる</div>
+                </div>
+              </div>
+            </div>
+
+            <motion.p
+              className="text-xs md:text-base text-center text-gray-700 mt-6 md:mt-10 font-semibold"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              御社は業務負担・リスクを負うことなく支援金を手に入れることが出来ます。
+            </motion.p>
+          </motion.div>
         </div>
       </section>
     </>
