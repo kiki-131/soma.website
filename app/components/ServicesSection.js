@@ -150,7 +150,7 @@ export default function ServiceSection() {
         )}
       </div>
       {!showTitlePlate && <h3 className="text-[11px] md:text-xl font-bold mb-0.5 md:mb-2">{item.title}</h3>}
-      <p className="text-[10px] md:text-sm text-gray-600 max-w-xs leading-tight">{item.description}</p>
+      <p className={`${showTitlePlate ? 'text-xs md:text-base' : 'text-[10px] md:text-sm'} text-gray-600 max-w-xs leading-relaxed`}>{item.description}</p>
     </motion.div>
   );
 
@@ -380,34 +380,12 @@ export default function ServiceSection() {
             </p>
           </motion.div>
           
-          {/* ハニカム構造 (デスクトップ: ダイヤモンド型配置、モバイル: 2列グリッド) */}
+          {/* サポート項目グリッド */}
           <div className="relative max-w-5xl mx-auto py-4 md:py-12">
-            {/* モバイル: 2列×3行のグリッド */}
-            <div className="grid grid-cols-2 gap-4 md:hidden">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-6 md:gap-x-12 md:gap-y-12">
               {services.map((item, i) => (
                 <CardItem key={i} item={item} index={i} showTitlePlate={true} />
               ))}
-            </div>
-            
-            {/* デスクトップ: ダイヤモンド型配置 */}
-            <div className="hidden md:block">
-              {/* 1段目: 2個 */}
-              <div className="relative z-10 flex justify-center gap-16 mb-2">
-                <CardItem item={services[0]} index={0} showTitlePlate={true} />
-                <CardItem item={services[1]} index={1} showTitlePlate={true} />
-              </div>
-              
-              {/* 2段目: 2個 (左右にずらして配置) */}
-              <div className="relative z-10 flex justify-center gap-80 mb-2">
-                <CardItem item={services[2]} index={2} showTitlePlate={true} />
-                <CardItem item={services[3]} index={3} showTitlePlate={true} />
-              </div>
-              
-              {/* 3段目: 2個 */}
-              <div className="relative z-10 flex justify-center gap-16">
-                <CardItem item={services[4]} index={4} showTitlePlate={true} />
-                <CardItem item={services[5]} index={5} showTitlePlate={true} />
-              </div>
             </div>
           </div>
 
