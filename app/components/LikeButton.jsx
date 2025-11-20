@@ -19,50 +19,67 @@ export default function LikeButton({ postId, initialLikes = 0 }) {
     const likedPosts = JSON.parse(localStorage.getItem("likedPosts") || "[]");
     const alreadyLiked = likedPosts.includes(postId);
 
+    // オプティミスティックUI更新: 即座にUIを更新
     if (alreadyLiked) {
       // いいね取り消し
-      setIsLoading(true);
-      try {
-        const res = await fetch("/api/likes", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ postId, action: "unlike" }),
-        });
+      setLikes(likes - 1);
+      setIsLiked(false);
+      const updated = likedPosts.filter((id) => id !== postId);
+      localStorage.setItem("likedPosts", JSON.stringify(updated));
+    } else {
+      // いいね追加
+      setLikes(likes + 1);
+      setIsLiked(true);
+      likedPosts.push(postId);
+      localStorage.setItem("likedPosts", JSON.stringify(likedPosts));
+    }
 
-        if (res.ok) {
-          const data = await res.json();
-          setLikes(data.likes);
+    // バックグラウンドでAPI呼び出し
+    setIsLoading(true);
+    try {
+      const res = await fetch("/api/likes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          postId, 
+          action: alreadyLiked ? "unlike" : "like" 
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        // サーバーの正確な値で更新
+        setLikes(data.likes);
+      } else {
+        // エラー時はロールバック
+        if (alreadyLiked) {
+          setLikes(likes);
+          setIsLiked(true);
+          likedPosts.push(postId);
+          localStorage.setItem("likedPosts", JSON.stringify(likedPosts));
+        } else {
+          setLikes(likes);
           setIsLiked(false);
           const updated = likedPosts.filter((id) => id !== postId);
           localStorage.setItem("likedPosts", JSON.stringify(updated));
         }
-      } catch (error) {
-        console.error("Unlike failed:", error);
-      } finally {
-        setIsLoading(false);
       }
-    } else {
-      // いいね追加
-      setIsLoading(true);
-      try {
-        const res = await fetch("/api/likes", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ postId, action: "like" }),
-        });
-
-        if (res.ok) {
-          const data = await res.json();
-          setLikes(data.likes);
-          setIsLiked(true);
-          likedPosts.push(postId);
-          localStorage.setItem("likedPosts", JSON.stringify(likedPosts));
-        }
-      } catch (error) {
-        console.error("Like failed:", error);
-      } finally {
-        setIsLoading(false);
+    } catch (error) {
+      console.error("Like operation failed:", error);
+      // エラー時はロールバック
+      if (alreadyLiked) {
+        setLikes(likes);
+        setIsLiked(true);
+        likedPosts.push(postId);
+        localStorage.setItem("likedPosts", JSON.stringify(likedPosts));
+      } else {
+        setLikes(likes);
+        setIsLiked(false);
+        const updated = likedPosts.filter((id) => id !== postId);
+        localStorage.setItem("likedPosts", JSON.stringify(updated));
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
