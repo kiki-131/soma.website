@@ -45,7 +45,10 @@ export default async function BlogDetail({ params }) {
   return (
     <>
       <article className="w-full max-w-4xl mx-auto py-16 px-6 sm:px-8 lg:px-12">
-        <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
+        <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
+        <p className="text-gray-500 text-sm mb-6">
+          {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('ja-JP') : ""}
+        </p>
         {post.eyecatch?.url && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
