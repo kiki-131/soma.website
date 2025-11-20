@@ -76,7 +76,7 @@ export default function ServiceSection() {
 
   const CardItem = ({ item, index, isChallenge, showTitlePlate }) => (
     <motion.div
-      className={`relative flex ${showTitlePlate ? 'flex-row items-start gap-2 md:gap-4 p-2 md:p-4' : 'flex-col items-center text-center p-1 md:p-8'}`}
+      className={`relative flex ${showTitlePlate ? 'flex-row items-center gap-2 md:gap-4 p-2 md:p-4' : 'flex-col items-center text-center p-1 md:p-8'}`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -150,7 +150,7 @@ export default function ServiceSection() {
         )}
       </div>
       {showTitlePlate ? (
-        <div className="flex-1 flex items-center">
+        <div className="flex-1 flex items-center justify-center">
           <p className="text-sm md:text-lg text-gray-600 leading-relaxed">{item.description}</p>
         </div>
       ) : (
