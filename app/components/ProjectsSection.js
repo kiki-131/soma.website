@@ -5,15 +5,16 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const images = [
-  { src: "/images/project1.jpg", amount: "4,173,860円" },
-  { src: "/images/project2.jpg", amount: "4,010,299円" },
-  { src: "/images/project3.jpg", amount: "2,905,473円" },
-  { src: "/images/project4.jpg", amount: "31,859,645円" },
+  { src: "/images/project1.jpg", amount: "4,173,860円", name: "プロジェクトA", achievement: "達成率 417%" },
+  { src: "/images/project2.jpg", amount: "4,010,299円", name: "プロジェクトB", achievement: "達成率 401%" },
+  { src: "/images/project3.jpg", amount: "2,905,473円", name: "プロジェクトC", achievement: "達成率 290%" },
+  { src: "/images/project4.jpg", amount: "31,859,645円", name: "プロジェクトD", achievement: "達成率 3185%" },
 ];
 
 export default function ProjectsSection() {
   const trackRef = useRef(null);
   const [singleWidth, setSingleWidth] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const el = trackRef.current;
@@ -65,24 +66,34 @@ export default function ProjectsSection() {
         <motion.div
           ref={trackRef}
           className="flex"
-          animate={singleWidth ? { x: [0, -singleWidth] } : { x: 0 }}
-          transition={{ repeat: Infinity, duration: 20, ease: "linear", repeatType: "loop" }}
+          animate={singleWidth && !isPaused ? { x: [0, -singleWidth] } : { x: isPaused ? undefined : 0 }}
+          transition={{ repeat: Infinity, duration: 35, ease: "linear", repeatType: "loop" }}
         >
           {images.concat(images).concat(images).map((item, i) => (
             <div
               key={i}
-              className="relative flex-shrink-0 mx-2 md:mx-6 rounded-xl overflow-hidden shadow-xl w-[200px] md:w-[500px]"
+              className="relative flex-shrink-0 mx-2 md:mx-6 rounded-xl overflow-hidden shadow-xl w-[200px] md:w-[500px] group"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              role="article"
+              aria-label={`${item.name} ${item.achievement} ${item.amount}達成`}
             >
               <Image
                 src={item.src}
-                alt={`project-${i}`}
+                alt={`${item.name}の成功事例 ${item.amount}達成`}
                 width={500}
                 height={300}
                 className="w-full h-auto object-contain"
+                loading="lazy"
               />
-              {/* 右下の金額ラベル */}
-              <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 bg-black/60 text-white text-[8px] md:text-2xl px-1.5 md:px-3 py-0.5 md:py-1 rounded-lg">
-                {item.amount}
+              {/* プロジェクト情報（金額・達成率）- 右下に黒色で表示 */}
+              <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 text-right bg-white/90 backdrop-blur-sm px-2 py-1 md:px-3 md:py-2 rounded-lg shadow-lg border border-gray-200">
+                <div className="text-black text-[10px] md:text-2xl font-bold mb-0.5 md:mb-1">
+                  {item.amount}
+                </div>
+                <div className="text-gray-700 text-[8px] md:text-lg font-semibold">
+                  {item.achievement}
+                </div>
               </div>
             </div>
           ))}

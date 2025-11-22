@@ -33,9 +33,9 @@ export default function Header({ scrollToSection }) {
         </div>
 
         {/* デスクトップ：右側ナビ + SNS + ボタン */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-6 h-16">
           {/* ナビゲーション */}
-          <nav className="flex space-x-8">
+          <nav className="flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("Projects")}
               className="text-gray-700 hover:text-blue-400 transition-colors"
@@ -54,11 +54,11 @@ export default function Header({ scrollToSection }) {
             >
               About us
             </button>
-            <Link href="/blog" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-400 transition-colors">Blog</Link>
+            <Link href="/blog" target="_blank" rel="noopener noreferrer" className="flex items-center h-16 text-gray-700 hover:text-blue-400 transition-colors">Blog</Link>
           </nav>
 
           {/* SNSアイコン */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 h-16">
             <a
               href="https://x.com/kaigai_support7"
               target="_blank"
@@ -78,11 +78,10 @@ export default function Header({ scrollToSection }) {
           </div>
 
           {/* Contact button */}
-          <div className="flex flex-col items-center">
-            <span className="text-xs text-gray-500 mb-1">無料相談はこちら</span>
+          <div className="flex items-center h-16">
             <button
               onClick={() => scrollToSection("contact")}
-              className="px-6 py-2 rounded-full text-white font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
+              className="px-4 py-2 rounded-full text-white text-sm font-semibold shadow-md bg-[#0066FF] hover:bg-[#0052CC] transition-all"
             >
               Contact us
             </button>

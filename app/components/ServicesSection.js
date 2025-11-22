@@ -364,10 +364,10 @@ export default function ServiceSection() {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-sm md:text-2xl font-bold text-black mb-0 md:mb-1">初期費用</h3>
+              <h3 className="text-xl md:text-4xl font-extrabold text-black mb-1 md:mb-2">初期費用</h3>
               <div className="mb-0 md:mb-2 leading-none">
-                <span className="text-[120px] md:text-[280px] font-extrabold text-white leading-none">0</span>
-                <span className="text-5xl md:text-[120px] font-extrabold text-white leading-none">円</span>
+                <span className="text-[100px] md:text-[180px] font-extrabold text-white leading-none">0</span>
+                <span className="text-4xl md:text-[100px] font-extrabold text-white leading-none">円</span>
               </div>
               <div className="text-[9px] md:text-xs text-black text-center space-y-0.5 md:space-y-1 mb-2 md:mb-3">
                 <p>*適用には条件がありますのでご相談ください。</p>

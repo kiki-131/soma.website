@@ -24,8 +24,8 @@ export default function AboutUsSection() {
   誰もが手軽に海外展開できる世界を創る
 </div>
 
-        {/* ✅ ② 左揃え & 幅を少し広げた会社紹介文 */}
-        <p className="text-sm md:text-base text-gray-700 max-w-3xl mx-auto leading-relaxed text-left">
+        {/* 会社紹介文 - 中央揃え & max-width: 2xl */}
+        <p className="text-sm md:text-base text-gray-700 max-w-2xl mx-auto leading-relaxed text-center">
           SOMA株式会社は &quot;Solutions for Outbound Market Ambitions&quot;
           （海外市場志向へのソリューション）を企業理念として設立されました。
           この名前には、企業やブランドが国境を越え、
@@ -104,10 +104,11 @@ export default function AboutUsSection() {
           >
             <Image
               src="/images/naito.jpg"
-              alt="CEO"
+              alt="CEO 内藤 拓馬"
               width={400}
-              height={192}
-              className="w-full h-20 md:h-48 object-contain bg-white rounded-lg mb-1 md:mb-4"
+              height={400}
+              className="w-full h-20 md:h-64 object-cover bg-white rounded-lg mb-1 md:mb-4"
+              loading="lazy"
             />
             <h4 className="font-semibold text-[10px] md:text-xl">内藤 拓馬</h4>
             <p className="text-[8px] md:text-base text-gray-500 mb-1 md:mb-2">CEO</p>
@@ -126,10 +127,11 @@ export default function AboutUsSection() {
           >
             <Image
               src="/images/inoue.jpg"
-              alt="COO"
+              alt="COO 井上 龍也"
               width={400}
-              height={192}
-              className="w-full h-20 md:h-48 object-contain bg-white rounded-lg mb-1 md:mb-4"
+              height={400}
+              className="w-full h-20 md:h-64 object-cover bg-white rounded-lg mb-1 md:mb-4"
+              loading="lazy"
             />
             <h4 className="font-semibold text-[10px] md:text-xl">井上 龍也</h4>
             <p className="text-[8px] md:text-base text-gray-500 mb-1 md:mb-2">COO</p>
@@ -146,10 +148,11 @@ export default function AboutUsSection() {
           >
             <Image
               src="/images/takata.jpg"
-              alt="CMO"
+              alt="CMO 高田 翔"
               width={400}
-              height={192}
-              className="w-full h-20 md:h-48 object-contain bg-white rounded-lg mb-1 md:mb-4"
+              height={400}
+              className="w-full h-20 md:h-64 object-cover bg-white rounded-lg mb-1 md:mb-4"
+              loading="lazy"
             />
             <h4 className="font-semibold text-[10px] md:text-xl">高田 翔</h4>
             <p className="text-[8px] md:text-base text-gray-500 mb-1 md:mb-2">CMO</p>

@@ -30,7 +30,34 @@ body {
 
 /* 追加で全体のスタイルをここに書けます */
 body {
-  @apply bg-gray-100 text-gray-800;
+  @apply bg-gray-100 text-gray-900;
+}
+
+/* モバイル最小フォントサイズを10px (0.625rem)に設定 */
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  * {
+    min-font-size: 10px;
+  }
+}
+
+/* タッチターゲットサイズを最低48x48pxに確保 */
+button, a, input, select, textarea {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+/* 小さいボタンの例外 */
+button.btn-sm, a.btn-sm {
+  min-height: 36px;
+  min-width: 36px;
+}
+
+/* グレー色の統一: gray-700とgray-900のみ使用 */
+.text-gray-500, .text-gray-600, .text-gray-800 {
+  @apply text-gray-700;
 }
 
 /* Blog content styling */

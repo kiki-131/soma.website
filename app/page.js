@@ -57,7 +57,7 @@ export default function HomePage() {
           <div className="flex flex-wrap gap-4">
             <button
               onClick={() => scrollToSection("contact")}
-              className="px-6 py-3 rounded-full text-white font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
+              className="px-6 py-3 rounded-full text-white font-semibold shadow-md bg-[#0066FF] hover:bg-[#0052CC] transition-all"
             >
               無料相談を予約する
             </button>
@@ -131,7 +131,7 @@ export default function HomePage() {
       >
         <button
           onClick={() => scrollToSection("contact")}
-          className="px-3 py-1.5 rounded-full text-white text-xs font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
+          className="px-3 py-1.5 rounded-full text-white text-xs font-semibold shadow-md bg-[#0066FF] hover:bg-[#0052CC] transition-all"
         >
           無料相談を予約する
         </button>
