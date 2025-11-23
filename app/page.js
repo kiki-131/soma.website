@@ -139,12 +139,13 @@ export default function HomePage() {
     </div>
   </div>
 </div>
+      {/* About Us Section */}
+      <section id="about-us"><AboutUsSection /></section>
+      
       {/* Services Section (課題→ソリューション + Projects→サポート) */}
       <section id="Services">
         <ServicesSection />
       </section>
-      
-      <section id="about-us"><AboutUsSection /></section>
       <ContactForm />
       {/* Footer sitemap */}
       <footer className="bg-gray-50 mt-12 py-10">

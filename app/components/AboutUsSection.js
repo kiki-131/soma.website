@@ -16,7 +16,7 @@ export default function AboutUsSection() {
 
 
         <h2 className="text-2xl md:text-4xl font-bold mb-4 text-gray-800">
-          About us
+          Our Mission
         </h2>
 
 {/* ✅ ① Missionを追加：About us の後に配置、少し強調 */}
@@ -79,6 +79,7 @@ export default function AboutUsSection() {
         >
           <h3 className="text-sm md:text-2xl font-bold mb-2 md:mb-4 text-gray-800">沿革</h3>
           <ul className="text-[9px] md:text-base text-gray-700 list-disc list-inside space-y-1 md:space-y-2">
+            <li>2019年：サウスオブマーケット合同会社設立</li>
             <li>2025年：SOMA株式会社に社名変更</li>
             <li>2026年：海外展開をDXで実現する、B to B のプラットフォーム「METAEXPO JAPAN」開業（予定）</li>
           </ul>
