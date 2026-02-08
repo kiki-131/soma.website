@@ -6,12 +6,12 @@ import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const images = [
-  { src: "/images/project1.jpg", amount: "4,173,860円", name: "プロジェクトA", achievement: "達成率 834%" },
-  { src: "/images/project2.jpg", amount: "4,010,299円", name: "プロジェクトB", achievement: "達成率 2660%" },
-  { src: "/images/project3.jpg", amount: "2,905,473円", name: "プロジェクトC", achievement: "達成率 2905%" },
-  { src: "/images/project4.jpg", amount: "31,859,645円", name: "プロジェクトD", achievement: "達成率 1061%" },
-  { src: "/images/project5.jpg", amount: "3,394,901円", name: "プロジェクトE", achievement: "達成率 1131%" },
-  { src: "/images/project6.jpg", amount: "3,636,630円", name: "プロジェクトF", achievement: "達成率 1212%" },
+  { src: "/images/project1.jpg", amount: "4,173,860円", name: "プロジェクトA", achievement: "達成率 417%", link: "https://www.kickstarter.com/projects/1428053160/a-cap-for-everyone-and-of-course-for-you-too" },
+  { src: "/images/project2.jpg", amount: "4,010,299円", name: "プロジェクトB", achievement: "達成率 401%", link: "https://www.kickstarter.com/projects/pluspocket/plus-pocket-the-ultimate-backpack-companion" },
+  { src: "/images/project3.jpg", amount: "2,905,473円", name: "プロジェクトC", achievement: "達成率 290%", link: "https://www.kickstarter.com/projects/knifehole/hole-utility-knife-the-ultimate-tool-for-everyday-use" },
+  { src: "/images/project4.jpg", amount: "31,859,645円", name: "プロジェクトD", achievement: "達成率 3185%", link: "https://www.kickstarter.com/projects/obeyme-issyo/new-obey-me-app-coming-soon-support-the-project" },
+  { src: "/images/project5.jpg", amount: "3,394,901円", name: "プロジェクトE", achievement: "達成率 1131%", link: "https://www.kickstarter.com/projects/recoverypad/experience-deep-sleep-with-japanese-onsen-recovery-pad" },
+  { src: "/images/project6.jpg", amount: "3,636,630円", name: "プロジェクトF", achievement: "達成率 1212%", link: "https://www.kickstarter.com/projects/sungran/cloud-blanket-premium-cordless-warmth-anywhere" },
 ];
 
 export default function ProjectsSection() {
@@ -74,12 +74,17 @@ export default function ProjectsSection() {
   const handleSlide = (direction) => {
     if (cardWidth === 0) return;
     
+    // スナップして現在のカードインデックスを特定してから次/前へ移動
     const currentX = x.get();
-    // direction: -1 (prev/left), 1 (next/right)
-    // 左(prev)へ押すと、コンテンツは右へ移動するので x はプラス
-    // 右(next)へ押すと、コンテンツは左へ移動するので x はマイナス
-    const targetX = currentX + (direction === "left" ? cardWidth : -cardWidth);
+    const containerWidth = containerRef.current?.parentElement?.offsetWidth || window.innerWidth;
+    const containerCenter = containerWidth / 2;
     
+    // 現在センターに一番近いカードのindex
+    const currentIndex = Math.round((containerCenter - currentX - cardWidth / 2) / cardWidth);
+
+    const targetIndex = direction === "left" ? currentIndex - 1 : currentIndex + 1;
+    const targetX = containerCenter - (targetIndex * cardWidth + cardWidth / 2);
+
     // アニメーションでスムーズに移動
     animate(x, targetX, {
       type: "spring",
@@ -93,6 +98,37 @@ export default function ProjectsSection() {
            x.set(v - totalWidth);
         }
       }
+    });
+  };
+
+  // 指定のインデックスのカードを中央に持ってくる関数
+  const snapToCard = (index) => {
+    if (!cardWidth || !containerRef.current) return;
+    
+    const containerWidth = containerRef.current.parentElement?.offsetWidth || window.innerWidth;
+    const containerCenter = containerWidth / 2;
+    
+    // 現在のxとの位置関係を考慮して、ターゲット位置を計算
+    // 現在のx値からループ補正を考慮する必要があるが、
+    // ここではシンプルに「現在のx周辺でそのindexに相当する位置」を探す
+    
+    // 現在のxにおける「見かけ上の先頭index」
+    const currentX = x.get();
+    const currentBaseIndex = Math.floor(-currentX / totalWidth) * images.length; 
+    
+    // クリックされたindexは 0 ~ items.length-1 (18枚分)
+    // しかし moveBy で動いている x はマイナス無限へ行くので、
+    // items配列上のindexと、現在のスクロール位置でのindexを合わせる必要がある。
+    
+    // 簡易実装として、「現在見えているそのカード」を中央にする
+    // itemのmap内で呼び出すので、その時の絶対的なindexを使う
+    
+    const targetX = containerCenter - (index * cardWidth + cardWidth / 2);
+    
+    animate(x, targetX, {
+      type: "spring",
+      stiffness: 200,
+      damping: 25,
     });
   };
 
@@ -136,18 +172,18 @@ export default function ProjectsSection() {
         <motion.div
            ref={containerRef}
            style={{ x }}
-           className="flex w-max cursor-grab active:cursor-grabbing"
-           drag="x"
-           dragConstraints={{ left: -totalWidth * 2, right: 0 }} // 簡易的なドラッグ対応
-           onDragStart={() => setIsHovered(true)}
-           onDragEnd={() => setIsHovered(false)}
+           className="flex w-max"
         >
           {items.map((item, i) => (
-            <div
+            <a
               key={i}
-              className="relative flex-shrink-0 mx-2 md:mx-6 rounded-xl overflow-hidden shadow-xl w-[200px] md:w-[500px]"
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative flex-shrink-0 mx-2 md:mx-6 rounded-xl overflow-hidden shadow-xl w-[200px] md:w-[500px] block transition-transform duration-300 hover:scale-105 hover:z-10"
               role="article"
               aria-label={`${item.name} ${item.achievement} ${item.amount}達成`}
+              draggable={false}
             >
               <Image
                 src={item.src}
@@ -166,7 +202,7 @@ export default function ProjectsSection() {
                   {item.achievement}
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </motion.div>
 
