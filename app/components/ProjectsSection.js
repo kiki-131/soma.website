@@ -9,6 +9,8 @@ const images = [
   { src: "/images/project2.jpg", amount: "4,010,299円", name: "プロジェクトB", achievement: "達成率 401%" },
   { src: "/images/project3.jpg", amount: "2,905,473円", name: "プロジェクトC", achievement: "達成率 290%" },
   { src: "/images/project4.jpg", amount: "31,859,645円", name: "プロジェクトD", achievement: "達成率 3185%" },
+  { src: "/images/project5.jpg", amount: "3,394,901円", name: "プロジェクトE", achievement: "達成率 1131%" },
+  { src: "/images/project6.jpg", amount: "3,636,630円", name: "プロジェクトF", achievement: "達成率 1212%" },
 ];
 
 export default function ProjectsSection() {
