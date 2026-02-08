@@ -105,13 +105,13 @@ export default function AboutUsSection() {
           >
             <Image
               src="/images/naito.jpg"
-              alt="CEO 内藤 拓馬"
+              alt="CEO Takuma Naito"
               width={400}
               height={400}
-              className="w-full h-20 md:h-64 object-cover bg-white rounded-lg mb-1 md:mb-4"
+              className="w-full h-20 md:h-64 object-contain bg-white rounded-lg mb-1 md:mb-4"
               loading="lazy"
             />
-            <h4 className="font-semibold text-[10px] md:text-xl">内藤 拓馬</h4>
+            <h4 className="font-semibold text-[10px] md:text-xl">Takuma Naito</h4>
             <p className="text-[8px] md:text-base text-gray-500 mb-1 md:mb-2">CEO</p>
             {/* ✅ 改行を整理 */}
             <p className="text-gray-700 text-[7px] md:text-sm leading-tight md:leading-relaxed">
@@ -128,13 +128,13 @@ export default function AboutUsSection() {
           >
             <Image
               src="/images/inoue.jpg"
-              alt="COO 井上 龍也"
+              alt="COO Tatsuya Inoue"
               width={400}
               height={400}
-              className="w-full h-20 md:h-64 object-cover bg-white rounded-lg mb-1 md:mb-4"
+              className="w-full h-20 md:h-64 object-contain bg-white rounded-lg mb-1 md:mb-4"
               loading="lazy"
             />
-            <h4 className="font-semibold text-[10px] md:text-xl">井上 龍也</h4>
+            <h4 className="font-semibold text-[10px] md:text-xl">Tatsuya Inoue</h4>
             <p className="text-[8px] md:text-base text-gray-500 mb-1 md:mb-2">COO</p>
             <p className="text-gray-700 text-[7px] md:text-sm leading-tight md:leading-relaxed">
               大学卒業後、英国ケンブリッジへ留学。帰国後はリフォーム業・通信会社での営業を経て独立し、飲食店を経営。
@@ -149,13 +149,13 @@ export default function AboutUsSection() {
           >
             <Image
               src="/images/takata.jpg"
-              alt="CMO 高田 翔"
+              alt="CMO Sho Takata"
               width={400}
               height={400}
-              className="w-full h-20 md:h-64 object-cover bg-white rounded-lg mb-1 md:mb-4"
+              className="w-full h-20 md:h-64 object-contain bg-white rounded-lg mb-1 md:mb-4"
               loading="lazy"
             />
-            <h4 className="font-semibold text-[10px] md:text-xl">高田 翔</h4>
+            <h4 className="font-semibold text-[10px] md:text-xl">Sho Takata</h4>
             <p className="text-[8px] md:text-base text-gray-500 mb-1 md:mb-2">CMO</p>
             <p className="text-gray-700 text-[7px] md:text-sm leading-tight md:leading-relaxed">
               早稲田大学卒業後、大手通信会社でtoC/toB営業を経て、事業戦略企画マネジメントを担当。

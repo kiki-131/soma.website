@@ -28,6 +28,14 @@ body {
 @tailwind components;
 @tailwind utilities;
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
 /* 追加で全体のスタイルをここに書けます */
 body {
   @apply bg-gray-100 text-gray-900;

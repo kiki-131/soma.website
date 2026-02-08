@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaArrowDown } from "react-icons/fa";
+import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 import ProjectsSection from "./ProjectsSection";
 
 export default function ServiceSection() {
@@ -32,7 +33,8 @@ export default function ServiceSection() {
     {
       title: "低リスクなテストマーケティング",
       description: "クラウドファンディングを活用し、大量在庫リスクなしで市場性を検証",
-      image: "/images/service/solution-crowdfunding.png"
+      image: "/images/service/solution-crowdfunding.png",
+      link: "/crowdfunding"
     },
     {
       title: "継続的なサポート",
@@ -149,6 +151,7 @@ export default function ServiceSection() {
           </div>
         )}
       </div>
+
       {showTitlePlate ? (
         <div className="flex-1 flex items-center justify-center">
           <p className="text-sm md:text-lg text-black leading-relaxed">{item.description}</p>
@@ -330,6 +333,21 @@ export default function ServiceSection() {
               opacity="0.6"
             />
           </svg>
+        </div>
+
+        {/* 海外クラファンへのリンク */}
+        <div className="flex justify-center mb-12 relative z-10">
+          <Link 
+            href="/crowdfunding" 
+            className="group relative inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-amber-500 rounded-full text-amber-600 font-bold text-lg shadow-lg hover:bg-amber-50 transition-all duration-300 hover:-translate-y-1"
+          >
+            <span>海外クラファンとは？</span>
+            <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+            <span className="absolute -top-2 -right-2 flex h-4 w-4">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-4 w-4 bg-amber-500"></span>
+            </span>
+          </Link>
         </div>
 
         {/* Projects */}
