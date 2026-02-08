@@ -339,13 +339,12 @@ export default function ServiceSection() {
         <div className="flex justify-center mb-12 relative z-10">
           <Link 
             href="/crowdfunding" 
-            className="group relative inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-amber-500 rounded-full text-amber-600 font-bold text-lg shadow-lg hover:bg-amber-50 transition-all duration-300 hover:-translate-y-1"
+            className="group relative inline-flex items-center justify-center gap-2 px-12 py-6 bg-white border-4 border-amber-500 rounded-full text-amber-600 font-bold text-2xl md:text-3xl shadow-xl hover:bg-amber-50 transition-all duration-300 hover:-translate-y-1"
           >
             <span>海外クラファンとは？</span>
-            <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-            <span className="absolute -top-2 -right-2 flex h-4 w-4">
+            <span className="absolute -top-3 -right-3 flex h-6 w-6">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-4 w-4 bg-amber-500"></span>
+              <span className="relative inline-flex rounded-full h-6 w-6 bg-amber-500"></span>
             </span>
           </Link>
         </div>
