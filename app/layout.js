@@ -14,12 +14,12 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title:
-    "海外クラウドファンディング代行｜Kickstarter/Indiegogo/zeczec支援｜SOMA株式会社",
+    "海外クラファン代行・サポート｜Kickstarter/Indiegogo/zeczec支援のSOMA株式会社",
   description:
-    "海外クラウドファンディングで海外進出を実現。実績多数。戦略・クリエイティブ・広告・物流・法規まで一気通貫。無料相談受付中。",
+    "海外クラファン（海外クラウドファンディング）の代行・サポートならSOMA。Kickstarter、Indiegogo、zeczecなど、世界各国のプラットフォームに対応。戦略立案からページ作成、集客、物流までフルサポートで海外進出を成功へ導きます。",
   openGraph: {
-    title: "海外クラウドファンディング代行｜SOMA株式会社",
-    description: "海外クラウドファンディングで海外進出を実現。実績多数。戦略・クリエイティブ・広告・物流・法規まで一気通貫。無料相談受付中。",
+    title: "海外クラファン代行・サポート｜SOMA株式会社",
+    description: "海外クラファン（海外クラウドファンディング）の代行・サポートならSOMA。Kickstarter、Indiegogo、zeczecなど、世界各国のプラットフォームに対応。戦略立案からページ作成、集客、物流までフルサポートで海外進出を成功へ導きます。",
     url: 'https://www.soma-jp.net',
     siteName: 'SOMA株式会社',
     locale: 'ja_JP',
