@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useAnimationFrame, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const images = [
   { src: "/images/project1.jpg", amount: "4,173,860円", name: "プロジェクトA", achievement: "達成率 417%" },
@@ -14,41 +15,86 @@ const images = [
 ];
 
 export default function ProjectsSection() {
-  const trackRef = useRef(null);
-  const [singleWidth, setSingleWidth] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef(null);
+  const [cardWidth, setCardWidth] = useState(0); // 1枚の幅(margin含む)
+  const [totalWidth, setTotalWidth] = useState(0); // images 1セット分の幅
+  const [isHovered, setIsHovered] = useState(false);
+
+  // MotionValueでX座標を管理
+  const x = useMotionValue(0);
+
+  // 3セット用意して無限スクロールに見せる
+  const items = [...images, ...images, ...images];
 
   useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    // Calculate single set width (first 4 images)
-    const children = el.children;
-    if (children.length === 0) return;
-    
-    let width = 0;
-    // Sum up width of first 4 images (one complete set)
-    for (let i = 0; i < Math.min(4, children.length); i++) {
-      width += children[i].offsetWidth;
-      // Add margin (mx-2 = 8px on each side for mobile, mx-6 = 24px for desktop)
-      const style = window.getComputedStyle(children[i]);
-      width += parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-    }
-    
-    setSingleWidth(width);
-    
-    // Recompute on resize
-    const onResize = () => {
-      let w = 0;
-      for (let i = 0; i < Math.min(4, children.length); i++) {
-        w += children[i].offsetWidth;
-        const style = window.getComputedStyle(children[i]);
-        w += parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-      }
-      setSingleWidth(w);
+    const updateWidth = () => {
+      if (!containerRef.current) return;
+      const firstCard = containerRef.current.children[0];
+      if (!firstCard) return;
+
+      const style = window.getComputedStyle(firstCard);
+      const w = firstCard.offsetWidth;
+      const ml = parseFloat(style.marginLeft);
+      const mr = parseFloat(style.marginRight);
+      const fullCardWidth = w + ml + mr;
+      
+      setCardWidth(fullCardWidth);
+      setTotalWidth(fullCardWidth * images.length);
     };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+
+    updateWidth();
+    // 画像読み込み完了などを待つ必要がある場合もあるが、とりあえずresizeで対応
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
   }, []);
+
+  // アニメーションループ
+  useAnimationFrame((t, delta) => {
+    if (totalWidth === 0) return;
+
+    // ホバー中は自動スクロール停止
+    if (!isHovered) {
+      // 60fpsで約1px進むくらいの速度調整 (deltaは前回フレームからの経過時間ms)
+      // 小さいほど遅い。0.05 * delta くらいで試す
+      const moveBy = -0.05 * delta; 
+      
+      let newX = x.get() + moveBy;
+      
+      // ループ判定
+      // xが -totalWidth (1セット分) より左に行ったら、0に戻す
+      if (newX <= -totalWidth) {
+        newX = 0;
+      }
+      
+      x.set(newX);
+    }
+  });
+
+  // ボタン操作
+  const handleSlide = (direction) => {
+    if (cardWidth === 0) return;
+    
+    const currentX = x.get();
+    // direction: -1 (prev/left), 1 (next/right)
+    // 左(prev)へ押すと、コンテンツは右へ移動するので x はプラス
+    // 右(next)へ押すと、コンテンツは左へ移動するので x はマイナス
+    const targetX = currentX + (direction === "left" ? cardWidth : -cardWidth);
+    
+    // アニメーションでスムーズに移動
+    animate(x, targetX, {
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
+      onUpdate: (v) => {
+        // 移動中もループ境界チェック
+        if (v <= -totalWidth) {
+          x.set(v + totalWidth); // 位置をリセットしてシームレスに
+        } else if (v > 0) {
+           x.set(v - totalWidth);
+        }
+      }
+    });
+  };
 
   return (
     <section
@@ -64,19 +110,42 @@ export default function ProjectsSection() {
         これまでに100件以上の支援実績を持つ経験豊富なチームが、貴社の海外進出をスムーズにサポートします。
       </p>
 
-      <div className="relative w-full overflow-hidden">
-        <motion.div
-          ref={trackRef}
-          className="flex"
-          animate={singleWidth && !isPaused ? { x: [0, -singleWidth] } : { x: isPaused ? undefined : 0 }}
-          transition={{ repeat: Infinity, duration: 35, ease: "linear", repeatType: "loop" }}
+      <div 
+        className="relative w-full overflow-hidden group"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* 左矢印ボタン */}
+        <button
+          onClick={() => handleSlide("left")}
+          className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 p-2 md:p-3 rounded-full shadow-lg backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 disabled:opacity-0 focus:outline-none"
+          aria-label="前のプロジェクト"
         >
-          {images.concat(images).concat(images).map((item, i) => (
+          <FaChevronLeft size={20} />
+        </button>
+
+        {/* 右矢印ボタン */}
+        <button
+          onClick={() => handleSlide("right")}
+          className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 p-2 md:p-3 rounded-full shadow-lg backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 disabled:opacity-0 focus:outline-none"
+          aria-label="次のプロジェクト"
+        >
+          <FaChevronRight size={20} />
+        </button>
+
+        <motion.div
+           ref={containerRef}
+           style={{ x }}
+           className="flex w-max cursor-grab active:cursor-grabbing"
+           drag="x"
+           dragConstraints={{ left: -totalWidth * 2, right: 0 }} // 簡易的なドラッグ対応
+           onDragStart={() => setIsHovered(true)}
+           onDragEnd={() => setIsHovered(false)}
+        >
+          {items.map((item, i) => (
             <div
               key={i}
-              className="relative flex-shrink-0 mx-2 md:mx-6 rounded-xl overflow-hidden shadow-xl w-[200px] md:w-[500px] group"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
+              className="relative flex-shrink-0 mx-2 md:mx-6 rounded-xl overflow-hidden shadow-xl w-[200px] md:w-[500px]"
               role="article"
               aria-label={`${item.name} ${item.achievement} ${item.amount}達成`}
             >
@@ -87,8 +156,8 @@ export default function ProjectsSection() {
                 height={300}
                 className="w-full h-auto object-contain"
                 loading="lazy"
+                draggable={false} // 画像ドラッグ防止
               />
-              {/* プロジェクト情報（金額・達成率）- 右下に黒色で表示 */}
               <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 text-right bg-white/90 backdrop-blur-sm px-2 py-1 md:px-3 md:py-2 rounded-lg shadow-lg border border-gray-200">
                 <div className="text-black text-[10px] md:text-2xl font-bold mb-0.5 md:mb-1">
                   {item.amount}
