@@ -250,13 +250,13 @@ export default function ServiceSection() {
               ))}
             </div>
             <motion.div
-              className="flex justify-center mt-4 md:mt-16"
+              className="flex justify-center mt-6 md:mt-20"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
             >
-              <FaArrowDown className="text-2xl md:text-5xl text-blue-600 animate-bounce" />
+              <FaArrowDown className="text-5xl md:text-8xl text-blue-600 animate-bounce" />
             </motion.div>
           </div>
 
