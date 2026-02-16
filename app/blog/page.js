@@ -66,12 +66,12 @@ export default function BlogPage() {
                 <div className="relative w-32 h-32 mx-auto mb-4">
                   <Image
                     src="/images/naito.jpg"
-                    alt="内藤 拓馬"
+                    alt="Takuma Naito"
                     fill
                     className="rounded-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">内藤 拓馬</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Takuma Naito</h3>
               </div>
               <div className="text-sm text-gray-700 leading-relaxed mb-4">
                 <p className="mb-3">
