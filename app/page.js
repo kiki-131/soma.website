@@ -44,8 +44,9 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-2 leading-tight">SOMA</h2>
 
           {/* Single H1 for the page - split into two explicit lines */}
-          <h1 className="font-extrabold text-gray-900 mb-2 leading-tight text-[clamp(32px,6vw,56px)]">
-            あなたのプロダクトを、<br />世界へ。
+          <h1 className="font-extrabold text-gray-900 mb-2 leading-tight text-[clamp(28px,4.5vw,48px)]">
+            <span className="block whitespace-nowrap">あなたのプロダクトを、</span>
+            <span className="block whitespace-nowrap">世界へ。</span>
           </h1>
 
           {/* Service label */}
@@ -97,7 +98,10 @@ export default function HomePage() {
         className="w-full text-center mb-4"
       >
         <h2 className="text-3xl font-bold text-gray-900 mb-1">SOMA</h2>
-        <h1 className="text-3xl font-extrabold text-gray-900 mb-1 leading-tight">あなたのプロダクトを、<br/>世界へ。</h1>
+        <h1 className="text-3xl font-extrabold text-gray-900 mb-1 leading-tight">
+          <span className="block whitespace-nowrap">あなたのプロダクトを、</span>
+          <span className="block whitespace-nowrap">世界へ。</span>
+        </h1>
         <p className="text-xs font-medium text-[#0066FF] mb-3">海外クラファン × 海外進出支援</p>
       </motion.div>
 
