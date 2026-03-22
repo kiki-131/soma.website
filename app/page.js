@@ -44,13 +44,16 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-2 leading-tight">SOMA</h2>
 
           {/* Single H1 for the page - split into two explicit lines */}
-          <h1 className="font-extrabold text-gray-900 mb-4 leading-tight text-[clamp(32px,6vw,56px)]">
-            海外クラファン×海外進出支援
+          <h1 className="font-extrabold text-gray-900 mb-2 leading-tight text-[clamp(32px,6vw,56px)]">
+            あなたのプロダクトを、<br />世界へ。
           </h1>
+
+          {/* Service label */}
+          <p className="text-sm font-medium text-[#0066FF] mb-4">海外クラファン × 海外進出支援</p>
 
           {/* Subcopy */}
           <p className="text-sm text-gray-600 leading-relaxed mb-6">
-            Kickstarter・Indiegogo・zeczecでの戦略設計〜LP〜広告〜物流〜法規まで、一気通貫で伴走。まずは無料相談30分。
+            Kickstarter・Indiegogo・zeczecを活用したクラウドファンディングから現地進出まで、プロが戦略から実行まで丸ごと伴走します。
           </p>
 
           {/* CTA buttons */}
@@ -93,9 +96,9 @@ export default function HomePage() {
         transition={{ duration: 1.2 }}
         className="w-full text-center mb-4"
       >
-        {/* SOMA 海外クラファン×海外進出支援 */}
         <h2 className="text-3xl font-bold text-gray-900 mb-1">SOMA</h2>
-        <h1 className="text-3xl font-extrabold text-gray-900 mb-4 leading-tight">海外クラファン×<br/>海外進出支援</h1>
+        <h1 className="text-3xl font-extrabold text-gray-900 mb-1 leading-tight">あなたのプロダクトを、<br/>世界へ。</h1>
+        <p className="text-xs font-medium text-[#0066FF] mb-3">海外クラファン × 海外進出支援</p>
       </motion.div>
 
       {/* 画像を中央配置 */}
@@ -120,7 +123,7 @@ export default function HomePage() {
         transition={{ duration: 1.2, delay: 0.2 }}
         className="text-xs text-gray-600 leading-relaxed mb-3 text-center px-2"
       >
-        Kickstarter・Indiegogo・zeczecでの戦略設計〜LP〜広告〜物流〜法規まで、一気通貫で伴走。まずは無料相談30分。
+        Kickstarter・Indiegogo・zeczecを活用したクラウドファンディングから現地進出まで、プロが戦略から実行まで丸ごと伴走します。
       </motion.p>
 
       {/* 無料相談ボタン */}
