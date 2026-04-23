@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from '@next/third-parties/google';
+import SectionBackground from "./components/SectionBackground";
+import Preloader from "./components/Preloader";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -64,6 +66,8 @@ export default function RootLayout({ children }) {
   <link rel="alternate" href="https://www.soma-jp.net/" hrefLang="x-default" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Preloader />
+        <SectionBackground />
         {children}
       </body>
       <GoogleAnalytics gaId="G-S1KMYY7C0B" />

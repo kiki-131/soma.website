@@ -65,7 +65,7 @@ export default function BlogPage() {
               <div className="text-center mb-4">
                 <div className="relative w-32 h-32 mx-auto mb-4">
                   <Image
-                    src="/images/naito.jpg"
+                    src="/images/naito_front.jpg"
                     alt="Takuma Naito"
                     fill
                     className="rounded-full object-cover"
@@ -89,15 +89,6 @@ export default function BlogPage() {
                   className="block text-blue-600 hover:text-blue-800 hover:underline"
                 >
                   🏢 SOMA株式会社
-                </a>
-                <a 
-                  href="https://x.com/kaigai_support7" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors text-sm font-medium"
-                >
-                  <span className="font-bold text-base">𝕏</span>
-                  <span>@kaigai_support7をフォロー</span>
                 </a>
               </div>
             </div>

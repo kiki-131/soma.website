@@ -2,169 +2,210 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import CharByChar from "./CharByChar";
+
+const teamMembers = [
+  {
+    src: "/images/naito_front.jpg",
+    alt: "CEO Takuma Naito",
+    name: "Takuma Naito",
+    role: "CEO",
+    bio: "サンフランシスコの大学でホスピタリティマネジメントを専攻・卒業。米国企業でマネージャーを経験後、帰国しSOMA LLCを設立。クラウドファンディングを活用し、日本と海外を繋ぐサポートを行う。",
+  },
+  {
+    src: "/images/inoue_front.png",
+    alt: "COO Tatsuya Inoue",
+    name: "Tatsuya Inoue",
+    role: "COO",
+    bio: "大学卒業後、英国ケンブリッジへ留学。帰国後はリフォーム業・通信会社での営業を経て独立。サウスオブマーケット合同会社にて海外クラウドファンディング事業の営業責任者を務め、取締役に就任。",
+  },
+  {
+    src: "/images/takata_front.jpg",
+    alt: "CMO Sho Takata",
+    name: "Sho Takata",
+    role: "CMO",
+    bio: "早稲田大学卒業後、大手通信会社でtoC/toB営業を経て事業戦略企画マネジメントを担当。グロービス経営大学院でMBAを取得し、マーケティング・プロモーション責任者として取締役に就任。",
+  },
+];
+
+function SectionLabel({ text, delay = 0 }) {
+  return (
+    <motion.div
+      className="flex items-center gap-4 mb-8"
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay }}
+    >
+      <div className="w-10 h-px bg-[#0066FF]" />
+      <span className="text-[#0066FF] text-xs font-bold tracking-[0.35em] uppercase">
+        {text}
+      </span>
+    </motion.div>
+  );
+}
 
 export default function AboutUsSection() {
   return (
-    <section id="about-us" className="bg-[#FAF9F6] py-20 px-8 md:px-16 font-sans">
-      {/* Vision */}
-      <motion.div
-        className="text-center mb-16"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
+    <section
+      id="about-us"
+      className="bg-white py-28 md:py-40 px-6 md:px-16 overflow-hidden font-sans"
+    >
+      <div className="max-w-5xl mx-auto">
 
+        {/* ─── Mission ─── */}
+        <SectionLabel text="About Us" />
 
-        <h2 className="text-2xl md:text-4xl font-bold mb-4 text-gray-800">
-          Our Mission
-        </h2>
+        <div className="mb-14">
+          <CharByChar
+            lines={["Our", "Mission"]}
+            className="font-extrabold text-gray-900 leading-[0.9]"
+            style={{ fontSize: "clamp(64px, 11vw, 128px)" }}
+          />
+        </div>
 
-{/* ✅ ① Missionを追加：About us の後に配置、少し強調 */}
-<div className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500 font-bold text-xl md:text-5xl p-4">
-  誰もが手軽に海外展開できる世界を創る
-</div>
-
-        {/* 会社紹介文 - 中央揃え & max-width: 2xl */}
-        <p className="text-sm md:text-base text-gray-700 max-w-2xl mx-auto leading-relaxed text-center">
-          SOMA株式会社は &quot;Solutions for Outbound Market Ambitions&quot;
-          （海外市場志向へのソリューション）を企業理念として設立されました。
-          この名前には、企業やブランドが国境を越え、
-          世界市場での成功を目指すためのパートナーとなるという
-          私たちの使命が込められています。
-          <br /><br />
-          グローバル市場への進出は、多くのチャンスを秘めていますが、
-          同時に文化・規制・競争環境など多岐にわたる課題を伴います。
-          SOMA株式会社は、それらの課題を乗り越え、
-          クライアントが自信を持って世界に挑戦できるよう、
-          戦略的かつ実践的なサポートを提供します。
-          <br /><br />
-          さらに近年注目を集めるメタバース分野にも取り組み、
-          デジタル技術を活用した革新的な展示会やイベントを通じて、
-          新しい市場と可能性を開拓しています。
-          リアルとバーチャルの境界を超える取り組みにより、
-          クライアントのグローバルプレゼンスを最大化します。
-          <br /><br />
-          私たちは、企業の志（Ambitions）を実現するための
-          ソリューション（Solutions）を提供し、
-          共に成長し続けるパートナーとして歩みます。
-        </p>
-      </motion.div>
-
-      {/* Company Overview + History */}
-      <div className="grid grid-cols-2 md:flex md:flex-row mb-16 gap-2 md:gap-12">
-        {/* Company Overview */}
         <motion.div
-          className="md:w-1/2 bg-white p-2 md:p-6 rounded-xl shadow-md"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
+          className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500 font-extrabold leading-tight mb-16"
+          style={{ fontSize: "clamp(22px, 4vw, 52px)" }}
+          initial={{ opacity: 0, scale: 0.93 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h3 className="text-sm md:text-2xl font-bold mb-2 md:mb-4 text-gray-800">
-            事業内容
-          </h3>
-          <ul className="text-[9px] md:text-base text-gray-700 list-disc list-inside space-y-1 md:space-y-2">
-            <li>海外進出コンサルティング</li>
-            <li>クラウドファンディング業務委託</li>
-            <li>EC運営代行</li>
-            <li>デジタルマーケティング</li>
-          </ul>
+          誰もが手軽に海外展開できる
+          <br />
+          世界を創る
         </motion.div>
 
-        {/* History */}
-        <motion.div
-          className="md:w-1/2 bg-white p-2 md:p-6 rounded-xl shadow-md"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <h3 className="text-sm md:text-2xl font-bold mb-2 md:mb-4 text-gray-800">沿革</h3>
-          <ul className="text-[9px] md:text-base text-gray-700 list-disc list-inside space-y-1 md:space-y-2">
-            <li>2019年：サウスオブマーケット合同会社設立</li>
-            <li>2025年：SOMA株式会社に社名変更</li>
-            <li>2026年：海外展開をDXで実現する、B to B のプラットフォーム「METAEXPO JAPAN」開業（予定）</li>
-          </ul>
-        </motion.div>
-      </div>
-
-      {/* Team */}
-      <motion.div
-        className="text-center mb-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <h3 className="text-2xl md:text-3xl font-bold mb-8 text-gray-800">
-          Our Team
-        </h3>
-
-        <div className="grid grid-cols-3 md:flex md:flex-row justify-center gap-2 md:gap-8">
-          {/* CEO */}
-          <motion.div
-            className="bg-white rounded-xl shadow-md p-2 md:p-4 max-w-xs"
-            whileHover={{ scale: 1.05 }}
+        {/* 会社説明 2カラム */}
+        <div className="grid md:grid-cols-2 gap-10 mb-28">
+          <motion.p
+            className="text-gray-600 leading-relaxed text-base"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <Image
-              src="/images/naito.jpg"
-              alt="CEO Takuma Naito"
-              width={400}
-              height={400}
-              className="w-full h-20 md:h-64 object-contain bg-white rounded-lg mb-1 md:mb-4"
-              loading="lazy"
-            />
-            <h4 className="font-semibold text-[10px] md:text-xl">Takuma Naito</h4>
-            <p className="text-[8px] md:text-base text-gray-500 mb-1 md:mb-2">CEO</p>
-            {/* ✅ 改行を整理 */}
-            <p className="text-gray-700 text-[7px] md:text-sm leading-tight md:leading-relaxed">
-              サンフランシスコの大学でホスピタリティマネジメントを専攻・卒業。米国企業でマネージャーを経験後、帰国し、
-              コンサルティング会社・ブライダル会社・大手通信会社を経てSOMA LLCを設立。
-              クラウドファンディングを活用し、日本と海外を繋ぐサポートを行う。
-            </p>
+            SOMA株式会社は &quot;Solutions for Outbound Market
+            Ambitions&quot;（海外市場志向へのソリューション）を企業理念として設立されました。
+            この名前には、企業やブランドが国境を越え、世界市場での成功を目指すためのパートナーとなるという私たちの使命が込められています。
+            <br />
+            <br />
+            グローバル市場への進出は、多くのチャンスを秘めていますが、同時に文化・規制・競争環境など多岐にわたる課題を伴います。SOMA株式会社は、それらの課題を乗り越え、クライアントが自信を持って世界に挑戦できるよう、戦略的かつ実践的なサポートを提供します。
+          </motion.p>
+          <motion.p
+            className="text-gray-600 leading-relaxed text-base"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.28 }}
+          >
+            さらに近年注目を集めるメタバース分野にも取り組み、デジタル技術を活用した革新的な展示会やイベントを通じて、新しい市場と可能性を開拓しています。リアルとバーチャルの境界を超える取り組みにより、クライアントのグローバルプレゼンスを最大化します。
+            <br />
+            <br />
+            私たちは、企業の志（Ambitions）を実現するためのソリューション（Solutions）を提供し、共に成長し続けるパートナーとして歩みます。
+          </motion.p>
+        </div>
+
+        {/* ─── 事業内容 / 沿革 ─── */}
+        <div className="grid md:grid-cols-2 gap-6 mb-28">
+          <motion.div
+            className="border border-gray-100 rounded-2xl p-8 hover:shadow-md transition-shadow"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            <h3 className="text-xl font-bold text-gray-900 mb-5">事業内容</h3>
+            <ul className="text-gray-600 space-y-3">
+              {[
+                "海外進出コンサルティング",
+                "クラウドファンディング業務委託",
+                "EC運営代行",
+                "デジタルマーケティング",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#0066FF] flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
-          {/* COO */}
           <motion.div
-            className="bg-white rounded-xl shadow-md p-2 md:p-4 max-w-xs"
-            whileHover={{ scale: 1.05 }}
+            className="border border-gray-100 rounded-2xl p-8 hover:shadow-md transition-shadow"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <Image
-              src="/images/inoue.jpg"
-              alt="COO Tatsuya Inoue"
-              width={400}
-              height={400}
-              className="w-full h-20 md:h-64 object-contain bg-white rounded-lg mb-1 md:mb-4"
-              loading="lazy"
-            />
-            <h4 className="font-semibold text-[10px] md:text-xl">Tatsuya Inoue</h4>
-            <p className="text-[8px] md:text-base text-gray-500 mb-1 md:mb-2">COO</p>
-            <p className="text-gray-700 text-[7px] md:text-sm leading-tight md:leading-relaxed">
-              大学卒業後、英国ケンブリッジへ留学。帰国後はリフォーム業・通信会社での営業を経て独立し、飲食店を経営。
-              その後、サウスオブマーケット合同会社にて海外クラウドファンディング事業の営業責任者を務め、取締役に就任。
-            </p>
-          </motion.div>
-
-          {/* CMO */}
-          <motion.div
-            className="bg-white rounded-xl shadow-md p-2 md:p-4 max-w-xs"
-            whileHover={{ scale: 1.05 }}
-          >
-            <Image
-              src="/images/takata.jpg"
-              alt="CMO Sho Takata"
-              width={400}
-              height={400}
-              className="w-full h-20 md:h-64 object-contain bg-white rounded-lg mb-1 md:mb-4"
-              loading="lazy"
-            />
-            <h4 className="font-semibold text-[10px] md:text-xl">Sho Takata</h4>
-            <p className="text-[8px] md:text-base text-gray-500 mb-1 md:mb-2">CMO</p>
-            <p className="text-gray-700 text-[7px] md:text-sm leading-tight md:leading-relaxed">
-              早稲田大学卒業後、大手通信会社でtoC/toB営業を経て、事業戦略企画マネジメントを担当。
-              グロービス経営大学院でMBAを取得。
-              現在はマーケティング施策およびプロモーション責任者として取締役に就任。
-            </p>
+            <h3 className="text-xl font-bold text-gray-900 mb-5">沿革</h3>
+            <ul className="text-gray-600 space-y-3">
+              {[
+                { year: "2019", text: "サウスオブマーケット合同会社設立" },
+                { year: "2025", text: "SOMA株式会社に社名変更" },
+                {
+                  year: "2026",
+                  text: "B to B プラットフォーム「METAEXPO JAPAN」開業（予定）",
+                },
+              ].map(({ year, text }) => (
+                <li key={year} className="flex items-start gap-3">
+                  <span className="text-[#0066FF] font-bold text-sm mt-0.5 flex-shrink-0">
+                    {year}
+                  </span>
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ul>
           </motion.div>
         </div>
-      </motion.div>
+
+        {/* ─── Team ─── */}
+        <SectionLabel text="Our Team" delay={0.05} />
+
+        <motion.p
+          className="text-gray-500 text-sm mb-14 max-w-lg"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+        >
+          グローバルな経験を持つ専門家チームが、
+          <br />
+          あなたの海外進出を全力でサポートします。
+        </motion.p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {teamMembers.map((member, i) => (
+            <motion.div
+              key={i}
+              className="group"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.14 }}
+              whileHover={{ y: -8 }}
+            >
+              <div className="relative overflow-hidden rounded-2xl mb-4 bg-gray-50 mx-auto" style={{ width: 208, height: 208 }}>
+                <Image
+                  src={member.src}
+                  alt={member.alt}
+                  fill
+                  className="object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex items-baseline gap-3 mb-1">
+                <h4 className="font-bold text-gray-900 text-lg">{member.name}</h4>
+                <span className="text-[#0066FF] text-xs font-bold tracking-widest uppercase">
+                  {member.role}
+                </span>
+              </div>
+              <p className="text-gray-500 text-sm leading-relaxed">{member.bio}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

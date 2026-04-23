@@ -1,214 +1,255 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useAnimationFrame, useMotionValue, useTransform, animate } from "framer-motion";
+import {
+  motion,
+  useAnimationFrame,
+  useMotionValue,
+  animate,
+} from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import CharByChar from "./CharByChar";
 
-const images = [
-  { src: "/images/project1.jpg", amount: "4,173,860円", name: "プロジェクトA", achievement: "達成率 417%", link: "https://www.kickstarter.com/projects/1428053160/a-cap-for-everyone-and-of-course-for-you-too" },
-  { src: "/images/project2.jpg", amount: "4,010,299円", name: "プロジェクトB", achievement: "達成率 401%", link: "https://www.kickstarter.com/projects/pluspocket/plus-pocket-the-ultimate-backpack-companion" },
-  { src: "/images/project3.jpg", amount: "2,905,473円", name: "プロジェクトC", achievement: "達成率 290%", link: "https://www.kickstarter.com/projects/knifehole/hole-utility-knife-the-ultimate-tool-for-everyday-use" },
-  { src: "/images/project4.jpg", amount: "31,859,645円", name: "プロジェクトD", achievement: "達成率 3185%", link: "https://www.kickstarter.com/projects/obeyme-issyo/new-obey-me-app-coming-soon-support-the-project" },
-  { src: "/images/project5.jpg", amount: "3,394,901円", name: "プロジェクトE", achievement: "達成率 1131%", link: "https://www.kickstarter.com/projects/recoverypad/experience-deep-sleep-with-japanese-onsen-recovery-pad" },
-  { src: "/images/project6.jpg", amount: "3,636,630円", name: "プロジェクトF", achievement: "達成率 1212%", link: "https://www.kickstarter.com/projects/sungran/cloud-blanket-premium-cordless-warmth-anywhere" },
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// コンテンツ定義 — ここを編集してコンテンツを差し替えてください
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+const PROJECTS = [
+  {
+    src: "/images/project1.jpg",
+    name: "プロジェクトA",
+    amount: "4,173,860円",
+    achievement: "達成率 417%",
+    link: "https://www.kickstarter.com/projects/1428053160/a-cap-for-everyone-and-of-course-for-you-too",
+  },
+  {
+    src: "/images/project2.jpg",
+    name: "プロジェクトB",
+    amount: "4,010,299円",
+    achievement: "達成率 401%",
+    link: "https://www.kickstarter.com/projects/pluspocket/plus-pocket-the-ultimate-backpack-companion",
+  },
+  {
+    src: "/images/project3.jpg",
+    name: "プロジェクトC",
+    amount: "2,905,473円",
+    achievement: "達成率 290%",
+    link: "https://www.kickstarter.com/projects/knifehole/hole-utility-knife-the-ultimate-tool-for-everyday-use",
+  },
+  {
+    src: "/images/project4.jpg",
+    name: "プロジェクトD",
+    amount: "31,859,645円",
+    achievement: "達成率 3185%",
+    link: "https://www.kickstarter.com/projects/obeyme-issyo/new-obey-me-app-coming-soon-support-the-project",
+  },
+  {
+    src: "/images/project5.jpg",
+    name: "プロジェクトE",
+    amount: "3,394,901円",
+    achievement: "達成率 1131%",
+    link: "https://www.kickstarter.com/projects/recoverypad/experience-deep-sleep-with-japanese-onsen-recovery-pad",
+  },
+  {
+    src: "/images/project6.jpg",
+    name: "プロジェクトF",
+    amount: "3,636,630円",
+    achievement: "達成率 1212%",
+    link: "https://www.kickstarter.com/projects/sungran/cloud-blanket-premium-cordless-warmth-anywhere",
+  },
 ];
+
+const STATS = [
+  { value: "100+", label: "支援実績" },
+  { value: "10", label: "対応プラットフォーム" },
+  { value: "¥0", label: "初期費用" },
+];
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 export default function ProjectsSection() {
   const containerRef = useRef(null);
-  const [cardWidth, setCardWidth] = useState(0); // 1枚の幅(margin含む)
-  const [totalWidth, setTotalWidth] = useState(0); // images 1セット分の幅
+  const [cardWidth, setCardWidth] = useState(0);
+  const [totalWidth, setTotalWidth] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  // MotionValueでX座標を管理
   const x = useMotionValue(0);
-
-  // 3セット用意して無限スクロールに見せる
-  const items = [...images, ...images, ...images];
+  const items = [...PROJECTS, ...PROJECTS, ...PROJECTS];
 
   useEffect(() => {
     const updateWidth = () => {
       if (!containerRef.current) return;
       const firstCard = containerRef.current.children[0];
       if (!firstCard) return;
-
       const style = window.getComputedStyle(firstCard);
       const w = firstCard.offsetWidth;
       const ml = parseFloat(style.marginLeft);
       const mr = parseFloat(style.marginRight);
-      const fullCardWidth = w + ml + mr;
-      
-      setCardWidth(fullCardWidth);
-      setTotalWidth(fullCardWidth * images.length);
+      const full = w + ml + mr;
+      setCardWidth(full);
+      setTotalWidth(full * PROJECTS.length);
     };
-
     updateWidth();
-    // 画像読み込み完了などを待つ必要がある場合もあるが、とりあえずresizeで対応
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  // アニメーションループ
-  useAnimationFrame((t, delta) => {
-    if (totalWidth === 0) return;
-
-    // ホバー中は自動スクロール停止
-    if (!isHovered) {
-      // 60fpsで約1px進むくらいの速度調整 (deltaは前回フレームからの経過時間ms)
-      // 小さいほど遅い。0.05 * delta くらいで試す
-      const moveBy = -0.05 * delta; 
-      
-      let newX = x.get() + moveBy;
-      
-      // ループ判定
-      // xが -totalWidth (1セット分) より左に行ったら、0に戻す
-      if (newX <= -totalWidth) {
-        newX = 0;
-      }
-      
-      x.set(newX);
-    }
+  useAnimationFrame((_, delta) => {
+    if (totalWidth === 0 || isHovered) return;
+    let newX = x.get() - 0.045 * delta;
+    if (newX <= -totalWidth) newX = 0;
+    x.set(newX);
   });
 
-  // ボタン操作
   const handleSlide = (direction) => {
     if (cardWidth === 0) return;
-    
-    // スナップして現在のカードインデックスを特定してから次/前へ移動
     const currentX = x.get();
-    const containerWidth = containerRef.current?.parentElement?.offsetWidth || window.innerWidth;
-    const containerCenter = containerWidth / 2;
-    
-    // 現在センターに一番近いカードのindex
-    const currentIndex = Math.round((containerCenter - currentX - cardWidth / 2) / cardWidth);
-
-    const targetIndex = direction === "left" ? currentIndex - 1 : currentIndex + 1;
-    const targetX = containerCenter - (targetIndex * cardWidth + cardWidth / 2);
-
-    // アニメーションでスムーズに移動
+    const containerWidth =
+      containerRef.current?.parentElement?.offsetWidth || window.innerWidth;
+    const center = containerWidth / 2;
+    const currentIndex = Math.round(
+      (center - currentX - cardWidth / 2) / cardWidth
+    );
+    const targetIndex =
+      direction === "left" ? currentIndex - 1 : currentIndex + 1;
+    const targetX = center - (targetIndex * cardWidth + cardWidth / 2);
     animate(x, targetX, {
       type: "spring",
       stiffness: 300,
       damping: 30,
       onUpdate: (v) => {
-        // 移動中もループ境界チェック
-        if (v <= -totalWidth) {
-          x.set(v + totalWidth); // 位置をリセットしてシームレスに
-        } else if (v > 0) {
-           x.set(v - totalWidth);
-        }
-      }
-    });
-  };
-
-  // 指定のインデックスのカードを中央に持ってくる関数
-  const snapToCard = (index) => {
-    if (!cardWidth || !containerRef.current) return;
-    
-    const containerWidth = containerRef.current.parentElement?.offsetWidth || window.innerWidth;
-    const containerCenter = containerWidth / 2;
-    
-    // 現在のxとの位置関係を考慮して、ターゲット位置を計算
-    // 現在のx値からループ補正を考慮する必要があるが、
-    // ここではシンプルに「現在のx周辺でそのindexに相当する位置」を探す
-    
-    // 現在のxにおける「見かけ上の先頭index」
-    const currentX = x.get();
-    const currentBaseIndex = Math.floor(-currentX / totalWidth) * images.length; 
-    
-    // クリックされたindexは 0 ~ items.length-1 (18枚分)
-    // しかし moveBy で動いている x はマイナス無限へ行くので、
-    // items配列上のindexと、現在のスクロール位置でのindexを合わせる必要がある。
-    
-    // 簡易実装として、「現在見えているそのカード」を中央にする
-    // itemのmap内で呼び出すので、その時の絶対的なindexを使う
-    
-    const targetX = containerCenter - (index * cardWidth + cardWidth / 2);
-    
-    animate(x, targetX, {
-      type: "spring",
-      stiffness: 200,
-      damping: 25,
+        if (v <= -totalWidth) x.set(v + totalWidth);
+        else if (v > 0) x.set(v - totalWidth);
+      },
     });
   };
 
   return (
     <section
       id="Projects"
-      className="relative bg-transparent py-8 md:py-20 px-4 md:px-16 overflow-hidden"
+      className="bg-[#111827] py-24 md:py-36 overflow-hidden"
     >
-      {/* 上部のProjectsタイトル */}
-      <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 text-center text-gray-800">Projects</h2>
+      {/* ヘッダー */}
+      <div className="max-w-5xl mx-auto px-6 md:px-16 mb-16">
+        <motion.div
+          className="flex items-center gap-4 mb-10"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="w-8 h-px bg-[#0066FF]" />
+          <span className="text-[#0066FF] text-xs font-bold tracking-[0.35em] uppercase">
+            Projects
+          </span>
+        </motion.div>
 
-      <p
-        className="text-center text-sm md:text-base text-gray-600 max-w-4xl mx-auto mb-4 md:mb-8 leading-relaxed px-2"
-      >
-        これまでに100件以上の支援実績を持つ経験豊富なチームが、貴社の海外進出をスムーズにサポートします。
-      </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <CharByChar
+            lines={["Our", "Work"]}
+            className="font-extrabold text-white leading-[0.9]"
+            style={{ fontSize: "clamp(56px, 10vw, 112px)" }}
+          />
 
-      <div 
+          {/* 統計 */}
+          <motion.div
+            className="flex gap-10 md:gap-12 mb-2"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+          >
+            {STATS.map(({ value, label }) => (
+              <div key={label} className="text-center">
+                <div className="text-white font-black text-3xl md:text-4xl leading-none mb-1">
+                  {value}
+                </div>
+                <div className="text-white/40 text-xs">{label}</div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        <motion.p
+          className="text-white/40 text-base mt-8 max-w-xl leading-relaxed"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+        >
+          100件以上の支援実績を持つ経験豊富なチームが、
+          貴社の海外進出をスムーズにサポートします。
+        </motion.p>
+      </div>
+
+      {/* カルーセル */}
+      <div
         className="relative w-full overflow-hidden group"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* 左矢印ボタン */}
+        {/* 矢印ボタン */}
         <button
           onClick={() => handleSlide("left")}
-          className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 p-2 md:p-3 rounded-full shadow-lg backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 disabled:opacity-0 focus:outline-none"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm"
           aria-label="前のプロジェクト"
         >
-          <FaChevronLeft size={20} />
+          <FaChevronLeft size={18} />
         </button>
-
-        {/* 右矢印ボタン */}
         <button
           onClick={() => handleSlide("right")}
-          className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 p-2 md:p-3 rounded-full shadow-lg backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 disabled:opacity-0 focus:outline-none"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm"
           aria-label="次のプロジェクト"
         >
-          <FaChevronRight size={20} />
+          <FaChevronRight size={18} />
         </button>
 
-        <motion.div
-           ref={containerRef}
-           style={{ x }}
-           className="flex w-max"
-        >
+        <motion.div ref={containerRef} style={{ x }} className="flex w-max">
           {items.map((item, i) => (
             <a
               key={i}
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative flex-shrink-0 mx-2 md:mx-6 rounded-xl overflow-hidden shadow-xl w-[200px] md:w-[500px] block transition-transform duration-300 hover:scale-105 hover:z-10"
-              role="article"
-              aria-label={`${item.name} ${item.achievement} ${item.amount}達成`}
+              className="relative flex-shrink-0 mx-3 md:mx-4 rounded-2xl overflow-hidden w-[240px] md:w-[440px] block group/card"
               draggable={false}
+              aria-label={`${item.name} ${item.achievement}`}
             >
-              <Image
-                src={item.src}
-                alt={`${item.name}の成功事例 ${item.amount}達成`}
-                width={500}
-                height={300}
-                className="w-full h-auto object-contain"
-                loading="lazy"
-                draggable={false} // 画像ドラッグ防止
-              />
-              <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 text-right bg-white/90 backdrop-blur-sm px-2 py-1 md:px-3 md:py-2 rounded-lg shadow-lg border border-gray-200">
-                <div className="text-black text-[10px] md:text-2xl font-bold mb-0.5 md:mb-1">
-                  {item.amount}
-                </div>
-                <div className="text-gray-700 text-[8px] md:text-lg font-semibold">
-                  {item.achievement}
+              {/* 画像 */}
+              <div className="relative w-full aspect-[4/3] overflow-hidden">
+                <Image
+                  src={item.src}
+                  alt={item.name}
+                  fill
+                  className="object-cover group-hover/card:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  draggable={false}
+                />
+                {/* ダークオーバーレイ */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              </div>
+
+              {/* テキストオーバーレイ */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                <div className="flex items-end justify-between">
+                  <div>
+                    <p className="text-white font-bold text-lg md:text-2xl">
+                      {item.amount}
+                    </p>
+                  </div>
+                  <div className="bg-[#0066FF] text-white text-xs font-bold px-3 py-1 rounded-full">
+                    {item.achievement}
+                  </div>
                 </div>
               </div>
             </a>
           ))}
         </motion.div>
 
-        {/* 左右のグラデーション */}
-        <div className="pointer-events-none absolute top-0 left-0 h-full w-12 md:w-24 bg-gradient-to-r from-gray-200 to-transparent z-10"></div>
-        <div className="pointer-events-none absolute top-0 right-0 h-full w-12 md:w-24 bg-gradient-to-l from-gray-200 to-transparent z-10"></div>
+        {/* 左右グラデーション */}
+        <div className="pointer-events-none absolute top-0 left-0 h-full w-16 md:w-28 bg-gradient-to-r from-[#111827] to-transparent z-10" />
+        <div className="pointer-events-none absolute top-0 right-0 h-full w-16 md:w-28 bg-gradient-to-l from-[#111827] to-transparent z-10" />
       </div>
     </section>
   );

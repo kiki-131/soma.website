@@ -2,150 +2,179 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaTwitter, FaInstagram, FaBars, FaTimes } from "react-icons/fa";
-import { useState } from "react";
+import { FaInstagram, FaBars, FaTimes } from "react-icons/fa";
+import { useState, useEffect } from "react";
+
+const NAV = [
+  { label: "Projects", id: "Projects" },
+  { label: "Services", id: "Services" },
+  { label: "About us", id: "about-us" },
+];
+
+// globals.css の min-height:48px を打ち消す共通スタイル
+const resetMin = { minHeight: 0, minWidth: 0 };
 
 export default function Header({ scrollToSection }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [showCTA, setShowCTA] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+      const projectsEl = document.getElementById("Projects");
+      if (projectsEl) {
+        setShowCTA(window.scrollY + 80 >= projectsEl.offsetTop);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-0 flex items-center justify-between">
-        {/* 左側：ロゴ */}
-        <div className="flex items-center">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            aria-label="トップへ戻る"
-            className="focus:outline-none"
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
+        scrolled ? "bg-[#0A0F1E]/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
+      }`}
+    >
+      {/* ━━ デスクトップ ━━ */}
+      <div className="hidden md:flex items-center h-16 px-8 max-w-7xl mx-auto">
+        {/* ロゴ */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          style={resetMin}
+          className="flex-shrink-0 focus:outline-none mr-8"
+        >
+          <Image
+            src="/images/logo.jpg"
+            alt="SOMA"
+            width={52}
+            height={52}
+            className="h-10 w-auto"
+            priority
+            unoptimized
+          />
+        </button>
+
+        {/* ナビ */}
+        <nav className="flex items-center gap-7 mr-auto">
+          {NAV.map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => scrollToSection(id)}
+              style={resetMin}
+              className="text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors"
+            >
+              {label}
+            </button>
+          ))}
+          <Link
+            href="/blog"
+            style={resetMin}
+            className="text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors"
           >
-            <Image
-              src="/images/logo.jpg"
-              alt="SOMA Logo"
-              width={60}
-              height={60}
-              className="h-16 w-auto cursor-pointer"
-              priority
-              unoptimized
-            />
+            Blog
+          </Link>
+        </nav>
+
+        {/* SNS + CTA */}
+        <div className="flex items-center gap-4">
+          <a
+            href="https://www.instagram.com/soma.japan77/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={resetMin}
+            className="flex items-center text-white/50 hover:text-white transition-colors"
+          >
+            <FaInstagram size={17} />
+          </a>
+
+          <button
+            onClick={() => scrollToSection("contact")}
+            style={{ ...resetMin, opacity: showCTA ? 1 : 0, pointerEvents: showCTA ? "auto" : "none", transition: "opacity 0.6s ease" }}
+            className="flex items-center px-4 py-2 text-sm font-semibold text-white bg-[#0066FF] rounded-full hover:bg-[#0052cc] transition-colors duration-300"
+          >
+            無料相談を予約する
+          </button>
+
+          <button
+            onClick={() => scrollToSection("contact")}
+            style={resetMin}
+            className="flex items-center px-5 py-2 text-sm font-semibold text-white border border-white/25 rounded-full hover:bg-white hover:text-[#0A0F1E] transition-all duration-300"
+          >
+            Contact us
           </button>
         </div>
+      </div>
 
-        {/* デスクトップ：右側ナビ + SNS + ボタン */}
-        <div className="hidden md:flex items-center space-x-6 h-16">
-          {/* ナビゲーション */}
-          <nav className="flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection("Projects")}
-              className="text-gray-700 hover:text-blue-400 transition-colors"
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => scrollToSection("Services")}
-              className="text-gray-700 hover:text-blue-400 transition-colors"
-            >
-              Services
-            </button>
-            <button
-              onClick={() => scrollToSection("about-us")}
-              className="text-gray-700 hover:text-blue-400 transition-colors"
-            >
-              About us
-            </button>
-            <Link href="/blog" target="_blank" rel="noopener noreferrer" className="flex items-center h-16 text-gray-700 hover:text-blue-400 transition-colors">Blog</Link>
-          </nav>
-
-          {/* SNSアイコン */}
-          <div className="flex items-center space-x-4 h-16">
-            <a
-              href="https://x.com/kaigai_support7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-black hover:opacity-80 transition"
-            >
-              <FaTwitter size={24} />
-            </a>
-            <a
-              href="https://www.instagram.com/soma.japan77/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-black hover:opacity-80 transition"
-            >
-              <FaInstagram size={24} />
-            </a>
-          </div>
-
-          {/* Contact button */}
-          <div className="flex items-center h-16">
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="px-4 py-2 rounded-full text-white text-sm font-semibold shadow-md bg-[#0066FF] hover:bg-[#0052CC] transition-all"
-            >
-              Contact us
-            </button>
-          </div>
-        </div>
-
-        {/* モバイル：ハンバーガーメニュー */}
-        <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-gray-700 focus:outline-none">
-            {isMenuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
+      {/* ━━ モバイル ━━ */}
+      <div className="md:hidden flex items-center justify-between h-14 px-5">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          style={resetMin}
+          className="focus:outline-none"
+        >
+          <Image
+            src="/images/logo.jpg"
+            alt="SOMA"
+            width={44}
+            height={44}
+            className="h-8 w-auto"
+            priority
+            unoptimized
+          />
+        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => scrollToSection("contact")}
+            style={{ ...resetMin, opacity: showCTA ? 1 : 0, pointerEvents: showCTA ? "auto" : "none", transition: "opacity 0.6s ease" }}
+            className="flex items-center px-3 py-1.5 text-xs font-semibold text-white bg-[#0066FF] rounded-full"
+          >
+            無料相談を予約する
+          </button>
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            style={resetMin}
+            className="flex items-center text-white focus:outline-none"
+          >
+            {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
           </button>
         </div>
       </div>
 
       {/* モバイルメニュー */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg">
-          <nav className="flex flex-col space-y-4 px-6 py-4">
+      {menuOpen && (
+        <div className="md:hidden bg-[#0A0F1E] border-t border-white/10 px-6 py-6 flex flex-col gap-5">
+          {NAV.map(({ label, id }) => (
             <button
-              onClick={() => { scrollToSection("Projects"); toggleMenu(); }}
-              className="text-left text-gray-700 hover:text-blue-400 transition-colors"
+              key={id}
+              onClick={() => { setMenuOpen(false); setTimeout(() => scrollToSection(id), 50); }}
+              style={resetMin}
+              className="text-left text-white/80 hover:text-white text-base transition-colors"
             >
-              Projects
+              {label}
             </button>
-            <button
-              onClick={() => { scrollToSection("Services"); toggleMenu(); }}
-              className="text-left text-gray-700 hover:text-blue-400 transition-colors"
-            >
-              Services
-            </button>
-            <button
-              onClick={() => { scrollToSection("about-us"); toggleMenu(); }}
-              className="text-left text-gray-700 hover:text-blue-400 transition-colors"
-            >
-              About us
-            </button>
-            <Link href="/blog" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-400 transition-colors">Blog</Link>
-            
-            <div className="flex items-center space-x-4 pt-4">
-              <a
-                href="https://x.com/kaigai_support7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-black hover:opacity-80 transition"
-              >
-                <FaTwitter size={24} />
-              </a>
-              <a
-                href="https://www.instagram.com/soma.japan77/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-black hover:opacity-80 transition"
-              >
-                <FaInstagram size={24} />
-              </a>
-            </div>
-            
-            <button
-              onClick={() => { scrollToSection("contact"); toggleMenu(); }}
-              className="mt-4 px-6 py-2 rounded-full text-white font-semibold shadow-md bg-gradient-to-r from-blue-400 to-red-500 hover:from-blue-500 hover:to-red-600 transition-all"
-            >
-              Contact us
-            </button>
-          </nav>
+          ))}
+          <Link
+            href="/blog"
+            style={resetMin}
+            className="text-white/80 hover:text-white text-base transition-colors"
+            onClick={() => setMenuOpen(false)}
+          >
+            Blog
+          </Link>
+          <div className="flex items-center gap-5 pt-1">
+            <a href="https://www.instagram.com/soma.japan77/" target="_blank" rel="noopener noreferrer" style={resetMin} className="flex items-center text-white/50 hover:text-white transition-colors">
+              <FaInstagram size={20} />
+            </a>
+          </div>
+          <button
+            onClick={() => { setMenuOpen(false); setTimeout(() => scrollToSection("contact"), 50); }}
+            style={resetMin}
+            className="px-6 py-3 text-white font-semibold bg-[#0066FF] rounded-full text-sm"
+          >
+            Contact us
+          </button>
         </div>
       )}
     </header>
