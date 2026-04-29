@@ -57,6 +57,7 @@ export default function RootLayout({ children }) {
         />
   {/* Google Search Console verification */}
   <meta name="google-site-verification" content="dUDQ3flZLVkugl6GHITZ9JnXfFbxcbNCcggPtVkpppQ" />
+  <meta name="google-site-verification" content="c5f6ZdW9gJjqC36izVL3aay5HrmPK_CC1JLAWPiNgi4" />
   {/* Canonical URL for SEO */}
   <link rel="canonical" href="https://www.soma-jp.net/" />
   {/* hreflang alternates: ja is canonical; en and zh-Hant placeholders for future translations */}
