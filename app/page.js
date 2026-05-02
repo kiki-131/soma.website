@@ -266,6 +266,7 @@ export default function HomePage() {
                 { label: "Blog", href: "/blog", external: false },
                 { label: "Contact", href: "#contact" },
                 { label: "プライバシーポリシー", href: "/privacy" },
+                { label: "DX推進方針", href: "/dx" },
               ].map(({ label, href, external }) =>
                 href.startsWith("/") && !href.startsWith("/#") ? (
                   <Link
