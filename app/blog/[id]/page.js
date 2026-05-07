@@ -1,6 +1,15 @@
 import Link from 'next/link';
 import LikeButton from '@/app/components/LikeButton';
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  return {
+    alternates: {
+      canonical: `/blog/${id}`,
+    },
+  };
+}
+
 export default async function BlogDetail({ params }) {
   const { id } = await params;
   const service = process.env.NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN;
