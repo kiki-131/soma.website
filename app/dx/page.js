@@ -4,6 +4,9 @@ import Image from 'next/image';
 export const metadata = {
   title: 'DX推進基本方針｜SOMA株式会社',
   description: 'SOMA株式会社のDX推進基本方針。デジタル技術とデータ活用を通じて、日本企業・地域事業者の海外展開支援の品質向上と業務効率化を推進します。',
+  alternates: {
+    canonical: '/dx',
+  },
 };
 
 export default function DxPage() {

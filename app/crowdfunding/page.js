@@ -5,6 +5,9 @@ import { FaChevronRight, FaCheckCircle } from 'react-icons/fa';
 export const metadata = {
   title: '海外クラウドファンディングとは？主要4プラットフォーム解説｜Kickstarter・Indiegogo・zeczec・MyStartr',
   description: '海外クラウドファンディング（海外クラファン）とは何かを、Kickstarter・Indiegogo・zeczec・MyStartrの4プラットフォームを比較しながら分かりやすく解説。日本のものづくり企業が海外市場をテストする際の選び方のポイントも紹介します。',
+  alternates: {
+    canonical: '/crowdfunding',
+  },
 };
 
 export default function CrowdfundingPage() {

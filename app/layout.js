@@ -19,6 +19,10 @@ export const metadata = {
     "海外クラファン代行・サポート｜Kickstarter/Indiegogo/zeczec支援のSOMA株式会社",
   description:
     "海外クラファン（海外クラウドファンディング）の代行・サポートならSOMA。Kickstarter、Indiegogo、zeczecなど、世界各国のプラットフォームに対応。戦略立案からページ作成、集客、物流までフルサポートで海外進出を成功へ導きます。",
+  metadataBase: new URL('https://www.soma-jp.net'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: "海外クラファン代行・サポート｜SOMA株式会社",
     description: "海外クラファン（海外クラウドファンディング）の代行・サポートならSOMA。Kickstarter、Indiegogo、zeczecなど、世界各国のプラットフォームに対応。戦略立案からページ作成、集客、物流までフルサポートで海外進出を成功へ導きます。",
@@ -58,12 +62,8 @@ export default function RootLayout({ children }) {
   {/* Google Search Console verification */}
   <meta name="google-site-verification" content="dUDQ3flZLVkugl6GHITZ9JnXfFbxcbNCcggPtVkpppQ" />
   <meta name="google-site-verification" content="c5f6ZdW9gJjqC36izVL3aay5HrmPK_CC1JLAWPiNgi4" />
-  {/* Canonical URL for SEO */}
-  <link rel="canonical" href="https://www.soma-jp.net/" />
   {/* hreflang alternates: ja is canonical; en and zh-Hant placeholders for future translations */}
   <link rel="alternate" href="https://www.soma-jp.net/" hrefLang="ja" />
-  <link rel="alternate" href="https://www.soma-jp.net/en/" hrefLang="en" />
-  <link rel="alternate" href="https://www.soma-jp.net/zh-hant/" hrefLang="zh-Hant" />
   <link rel="alternate" href="https://www.soma-jp.net/" hrefLang="x-default" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
