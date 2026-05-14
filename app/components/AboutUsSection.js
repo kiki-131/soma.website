@@ -107,6 +107,66 @@ export default function AboutUsSection() {
           </motion.p>
         </div>
 
+        {/* ─── 会社概要 ─── */}
+        <SectionLabel text="Company" delay={0.05} />
+
+        <motion.div
+          className="mb-28"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          <h3 className="text-2xl font-bold text-gray-900 mb-8">会社概要</h3>
+          <div className="border border-gray-100 rounded-2xl overflow-hidden">
+            {[
+              { label: "会社名", value: "SOMA株式会社" },
+              { label: "所在地", value: "神奈川県横浜市旭区 中希望が丘127-9" },
+              { label: "電話番号", value: "045-567-6969" },
+              {
+                label: "設立",
+                value: (
+                  <>
+                    2019年9月9日
+                    <br />
+                    <span className="text-gray-400 text-sm">（サウスオブマーケット合同会社として設立）</span>
+                  </>
+                ),
+              },
+              {
+                label: "従業員数",
+                value: (
+                  <>
+                    20名
+                    <br />
+                    <span className="text-gray-400 text-sm">（パート・業務委託スタッフ含む）</span>
+                  </>
+                ),
+              },
+              { label: "資本金", value: "777,000円" },
+            ].map(({ label, value }, i) => (
+              <div
+                key={label}
+                className={`flex flex-col sm:flex-row ${
+                  i % 2 === 0 ? "bg-white" : "bg-gray-50"
+                }`}
+              >
+                <div className="sm:w-40 px-6 py-4 font-semibold text-gray-700 text-sm bg-blue-50 sm:bg-transparent border-b sm:border-b-0 sm:border-r border-gray-100 flex items-start sm:items-center">
+                  {label}
+                </div>
+                <div className="flex-1 px-6 py-4 text-gray-600 text-sm leading-relaxed">
+                  {value}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 bg-[#1a3a5c] rounded-xl px-6 py-3 flex items-center justify-center">
+            <p className="text-white text-sm font-medium text-center leading-relaxed">
+              経済産業省「DX認定制度」申請済 ／ デジタル技術を活用した事業推進体制が公的に認められています
+            </p>
+          </div>
+        </motion.div>
+
         {/* ─── 事業内容 / 沿革 ─── */}
         <div className="grid md:grid-cols-2 gap-6 mb-28">
           <motion.div
