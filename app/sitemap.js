@@ -3,11 +3,10 @@ export const revalidate = 3600;
 const BASE_URL = "https://www.soma-jp.net";
 
 const staticPages = [
-  { url: "/", changeFrequency: "weekly", priority: 1.0 },
+  { url: "/", changeFrequency: "daily", priority: 1.0 },
   { url: "/blog", changeFrequency: "daily", priority: 0.9 },
-  { url: "/about", changeFrequency: "monthly", priority: 0.7 },
-  { url: "/service", changeFrequency: "monthly", priority: 0.7 },
-  { url: "/contact", changeFrequency: "monthly", priority: 0.5 },
+  { url: "/crowdfunding", changeFrequency: "weekly", priority: 0.8 },
+  { url: "/dx", changeFrequency: "weekly", priority: 0.8 },
 ];
 
 async function getBlogPosts() {
