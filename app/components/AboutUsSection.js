@@ -162,7 +162,7 @@ export default function AboutUsSection() {
           </div>
           <div className="mt-4 bg-[#1a3a5c] rounded-xl px-6 py-3 flex items-center justify-center">
             <p className="text-white text-sm font-medium text-center leading-relaxed">
-              経済産業省「DX認定制度」申請済 ／ デジタル技術を活用した事業推進体制が公的に認められています
+              経済産業省「DX認定制度」申請済み
             </p>
           </div>
         </motion.div>
