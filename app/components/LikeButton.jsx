@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export default function LikeButton({ postId, initialLikes = 0 }) {
@@ -7,8 +7,8 @@ export default function LikeButton({ postId, initialLikes = 0 }) {
   const [isLiked, setIsLiked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  // ローカルストレージでいいね状態を確認
-  useState(() => {
+  // ローカルストレージでいいね状態を確認（クライアントのみ）
+  useEffect(() => {
     const likedPosts = JSON.parse(localStorage.getItem("likedPosts") || "[]");
     setIsLiked(likedPosts.includes(postId));
   }, [postId]);
