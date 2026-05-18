@@ -34,6 +34,49 @@ export default function FairePage() {
 
   return (
     <div style={{ fontFamily: "var(--font-geist-sans), Arial, sans-serif", background: "#fff", color: "#1a1a1a" }}>
+      <style>{`
+        .faire-nav-links { display: flex; gap: 32px; align-items: center; }
+        .faire-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; padding-top: 68px; position: relative; overflow: hidden; }
+        .faire-hero-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px 80px 60px; background: #fff; position: relative; z-index: 1; }
+        .faire-hero-photo { position: relative; overflow: hidden; background-image: url('/images/faire_hero.jpg'); background-size: cover; background-position: center; min-height: calc(100vh - 68px); }
+        .faire-stats-row { display: flex; gap: 36px; margin-top: 56px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+        .faire-stats-band { display: grid; grid-template-columns: repeat(4, 1fr); }
+        .faire-faire-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+        .faire-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .faire-process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; position: relative; }
+        .faire-process-line { position: absolute; top: 32px; left: 10%; right: 10%; height: 1px; background: #ddd; }
+        .faire-target-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .faire-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .faire-footer { display: flex; justify-content: space-between; align-items: flex-end; }
+        .faire-section { padding: 120px 60px; }
+        .faire-cta-section { padding: 120px 60px; }
+
+        @media (max-width: 768px) {
+          .faire-nav-links { display: none; }
+          .faire-mobile-cta { display: block !important; }
+          .faire-hero { grid-template-columns: 1fr; min-height: auto; }
+          .faire-hero-text { padding: 48px 24px 56px; justify-content: flex-start; }
+          .faire-hero-photo { display: none; }
+          .faire-stats-row { gap: 20px; margin-top: 36px; padding-top: 24px; flex-wrap: wrap; }
+          .faire-stats-band { grid-template-columns: 1fr 1fr; }
+          .faire-stats-band > div { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 36px 24px; }
+          .faire-stats-band > div:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.2) !important; }
+          .faire-stats-band > div:nth-last-child(-n+2) { border-bottom: none; }
+          .faire-faire-grid { grid-template-columns: 1fr; gap: 32px; }
+          .faire-services-grid { grid-template-columns: 1fr; }
+          .faire-process-grid { grid-template-columns: 1fr; gap: 0; }
+          .faire-process-line { display: none; }
+          .faire-process-grid > div { display: flex; gap: 16px; align-items: flex-start; text-align: left; padding: 20px 0; border-bottom: 1px solid #eee; }
+          .faire-process-grid > div:last-child { border-bottom: none; }
+          .faire-process-grid > div > div:first-child { flex-shrink: 0; margin: 0; }
+          .faire-target-grid { grid-template-columns: 1fr; }
+          .faire-form-row { grid-template-columns: 1fr; }
+          .faire-footer { flex-direction: column; gap: 24px; align-items: flex-start; }
+          .faire-section { padding: 72px 24px; }
+          .faire-cta-section { padding: 80px 24px; }
+          nav { padding: 0 20px !important; }
+        }
+      `}</style>
 
       {/* ── NAV ── */}
       <nav style={{
@@ -47,7 +90,7 @@ export default function FairePage() {
           <span style={{ color: "#1a1a1a", fontWeight: 800, fontSize: "18px", letterSpacing: "0.05em" }}>SOMA</span>
           <span style={{ color: "#999", fontSize: "12px", letterSpacing: "0.06em" }}>× Faire</span>
         </Link>
-        <div style={{ display: "flex", gap: "32px", alignItems: "center" }}>
+        <div className="faire-nav-links">
           {[["#about", "Faireとは"], ["#services", "サービス"], ["#process", "流れ"], ["#faq", "FAQ"]].map(([href, label]) => (
             <a key={href} href={href} style={{ color: "#555", fontSize: "13px", letterSpacing: "0.06em", textDecoration: "none", transition: "color 0.2s" }}
               onMouseEnter={e => e.target.style.color = "#0066FF"}
@@ -64,21 +107,18 @@ export default function FairePage() {
             onMouseLeave={e => e.target.style.background = "#0066FF"}
           >無料相談する</a>
         </div>
+        {/* モバイル：CTAのみ */}
+        <a href="#contact" className="faire-mobile-cta" style={{
+          display: "none", background: "#0066FF", color: "white", padding: "9px 20px",
+          borderRadius: "100px", fontSize: "13px", fontWeight: 700,
+          textDecoration: "none", minHeight: "auto",
+        }}>無料相談する</a>
       </nav>
 
       {/* ── HERO ── */}
-      <section id="top" style={{
-        minHeight: "100vh",
-        display: "grid", gridTemplateColumns: "1fr 1fr",
-        paddingTop: "68px", position: "relative", overflow: "hidden",
-      }}>
+      <section id="top" className="faire-hero">
         {/* 左：テキスト */}
-        <div style={{
-          display: "flex", flexDirection: "column", justifyContent: "center",
-          padding: "80px 64px 80px 60px",
-          background: "#fff",
-          position: "relative", zIndex: 1,
-        }}>
+        <div className="faire-hero-text">
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "28px" }}>
             <div style={{ width: "28px", height: "2px", background: "#0066FF", borderRadius: "2px" }} />
             <span style={{ color: "#0066FF", fontSize: "11px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" }}>SOMA × FAIRE — 米国卸販売支援</span>
@@ -107,7 +147,7 @@ export default function FairePage() {
           </div>
 
           {/* Stats */}
-          <div style={{ display: "flex", gap: "36px", marginTop: "56px", paddingTop: "32px", borderTop: "1px solid #f0f0f0" }}>
+          <div className="faire-stats-row">
             {[{ num: "700K+", label: "登録小売店数" }, { num: "$12B", label: "年間流通総額" }, { num: "150+", label: "対応国・地域" }].map(s => (
               <div key={s.num}>
                 <div style={{ fontSize: "28px", fontWeight: 800, color: "#1a1a1a", lineHeight: 1, letterSpacing: "-0.02em" }}>{s.num}</div>
@@ -117,13 +157,8 @@ export default function FairePage() {
           </div>
         </div>
 
-        {/* 右：写真 */}
-        <div style={{
-          position: "relative", overflow: "hidden",
-          backgroundImage: "url('/images/faire_hero.jpg')",
-          backgroundSize: "cover", backgroundPosition: "center",
-          minHeight: "calc(100vh - 68px)",
-        }}>
+        {/* 右：写真（モバイル非表示） */}
+        <div className="faire-hero-photo">
           {/* 左端だけ白にフェード（テキスト側との境界） */}
           <div style={{
             position: "absolute", inset: 0,
@@ -133,7 +168,7 @@ export default function FairePage() {
       </section>
 
       {/* ── WHAT IS FAIRE ── */}
-      <section id="about" style={{ padding: "120px 60px", background: "#f8f7f4" }}>
+      <section id="about" className="faire-section" style={{ background: "#f8f7f4" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
             <div style={{ width: "24px", height: "2px", background: "#0066FF", borderRadius: "2px" }} />
@@ -146,7 +181,7 @@ export default function FairePage() {
             Faireは、世界中のブランドと独立系小売店をつなぐB2B卸売マーケットプレイスです。バイヤーが直接あなたのブランドを発見し、注文が入るまで費用は一切かかりません。
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "start" }}>
+          <div className="faire-faire-grid">
             <div style={{
               background: "#fff", border: "1px solid #e8e8e8",
               borderRadius: "20px", padding: "48px 40px", textAlign: "center",
@@ -187,7 +222,7 @@ export default function FairePage() {
       {/* ── STATS BAND ── */}
       <div style={{ background: "#0066FF" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 60px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+          <div className="faire-stats-band">
             {[
               { num: "700K+", label: "世界中の登録小売店数\n（独立系ブティック・専門店）" },
               { num: "$12B", label: "年間流通総額\n（急速に拡大中）" },
@@ -207,7 +242,7 @@ export default function FairePage() {
       </div>
 
       {/* ── SERVICES ── */}
-      <section id="services" style={{ padding: "120px 60px", background: "#fff" }}>
+      <section id="services" className="faire-section" style={{ background: "#fff" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
             <div style={{ width: "24px", height: "2px", background: "#0066FF", borderRadius: "2px" }} />
@@ -220,7 +255,7 @@ export default function FairePage() {
             アカウント開設から初受注、そして継続的な売上成長まで。米国市場の経験豊富なプロフェッショナルが、一気通貫でサポートします。
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
+          <div className="faire-services-grid">
             {services.map(s => (
               <div key={s.num} style={{
                 background: "#f8f7f4", padding: "36px 32px", borderRadius: "16px",
@@ -247,7 +282,7 @@ export default function FairePage() {
       </section>
 
       {/* ── PROCESS ── */}
-      <section id="process" style={{ padding: "120px 60px", background: "#f8f7f4" }}>
+      <section id="process" className="faire-section" style={{ background: "#f8f7f4" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
             <div style={{ width: "24px", height: "2px", background: "#0066FF", borderRadius: "2px" }} />
@@ -260,8 +295,8 @@ export default function FairePage() {
             初回相談から初受注まで、最短3ヶ月を目標に進行します。
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "16px", position: "relative" }}>
-            <div style={{ position: "absolute", top: "32px", left: "10%", right: "10%", height: "1px", background: "#ddd" }} />
+          <div className="faire-process-grid">
+            <div className="faire-process-line" />
             {steps.map((s, i) => (
               <div key={s.num} style={{ textAlign: "center", position: "relative" }}>
                 <div style={{
@@ -281,7 +316,7 @@ export default function FairePage() {
       </section>
 
       {/* ── TARGET ── */}
-      <section style={{ padding: "120px 60px", background: "#fff" }}>
+      <section className="faire-section" style={{ background: "#fff" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
             <div style={{ width: "24px", height: "2px", background: "#0066FF", borderRadius: "2px" }} />
@@ -290,7 +325,7 @@ export default function FairePage() {
           <h2 style={{ fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 800, color: "#1a1a1a", lineHeight: 1.2, marginBottom: "56px" }}>
             こんなブランドに<br /><span style={{ color: "#0066FF" }}>ぴったりです</span>
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+          <div className="faire-target-grid">
             {[
               { title: "こんなブランドに最適", items: ["米国の小売店に商品を置きたいが、何から始めればよいかわからない", "展示会（NY NOW・アメリカンメード等）に出展したが、継続的なバイヤー獲得に苦戦している", "英語でのコミュニケーションや交渉に不安がある", "日本でECや国内卸は軌道に乗っており、次のステップとして海外展開を考えている", "ライフスタイル・ファッション・アクセサリー・ホームグッズ・食品・コスメ等を取り扱っている", "独自の世界観・ストーリーを持つブランドで、セレクトショップとの相性が高い"] },
               { title: "開始前の確認ポイント", items: ["米国への輸出・発送が可能な商品であること（食品・化粧品等は規制確認が必要）", "卸価格での提供が可能な粗利構造があること（目安：上代の40〜50%が卸価格）", "サンプル提供やスモールロットでの初回対応が可能であること", "英語のブランドコミュニケーション素材（写真・概要等）が準備できること", "継続的な輸出・在庫管理体制を整える意志があること", "3〜6ヶ月の中期目線で取り組める体制があること"] },
@@ -319,7 +354,7 @@ export default function FairePage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section id="faq" style={{ padding: "120px 60px", background: "#f8f7f4" }}>
+      <section id="faq" className="faire-section" style={{ background: "#f8f7f4" }}>
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
             <div style={{ width: "24px", height: "2px", background: "#0066FF", borderRadius: "2px" }} />
@@ -356,8 +391,8 @@ export default function FairePage() {
       </section>
 
       {/* ── CTA / CONTACT ── */}
-      <section id="contact" style={{
-        padding: "120px 60px", background: "#0066FF",
+      <section id="contact" className="faire-cta-section" style={{
+        background: "#0066FF",
         textAlign: "center", position: "relative", overflow: "hidden",
       }}>
         <div style={{ position: "relative", zIndex: 1, maxWidth: "560px", margin: "0 auto" }}>
@@ -377,11 +412,11 @@ export default function FairePage() {
             </div>
           ) : (
             <form onSubmit={e => { e.preventDefault(); setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: "10px", textAlign: "left" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+              <div className="faire-form-row">
                 <input type="text" placeholder="ご担当者名 *" required style={inputStyle} />
                 <input type="text" placeholder="会社名・ブランド名 *" required style={inputStyle} />
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+              <div className="faire-form-row">
                 <input type="email" placeholder="メールアドレス *" required style={inputStyle} />
                 <select style={inputStyle} defaultValue="">
                   <option value="" disabled>お問い合わせ種別</option>
@@ -428,9 +463,8 @@ export default function FairePage() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer style={{
+      <footer className="faire-footer" style={{
         background: "#1a1a1a", padding: "56px 60px 40px",
-        display: "flex", justifyContent: "space-between", alignItems: "flex-end",
       }}>
         <div>
           <Link href="/" style={{ fontSize: "20px", fontWeight: 800, color: "white", textDecoration: "none", letterSpacing: "0.05em" }}>SOMA</Link>
