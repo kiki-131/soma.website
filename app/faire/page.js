@@ -483,7 +483,7 @@ export default function FairePage() {
               {/* Row 2: email + inquiry type */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
                 <input type="email" placeholder="メールアドレス *" required style={inputStyle} />
-                <select style={inputStyle} defaultValue="">
+                <select className="faire-select" style={inputStyle} defaultValue="">
                   <option value="" disabled>お問い合わせ種別</option>
                   <option>海外小売店向け卸売販売について相談したい</option>
                   <option>Faire活用について相談したい</option>

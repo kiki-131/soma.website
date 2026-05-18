@@ -216,3 +216,9 @@ button.btn-sm, a.btn-sm {
 }
 
 /* Services section image crop: container handles translation via inline style on Image */
+
+/* Faire LP: dropdown option colors (native OS dropdown needs explicit bg/color) */
+.faire-select option {
+  background: #1e2d45;
+  color: #ffffff;
+}
