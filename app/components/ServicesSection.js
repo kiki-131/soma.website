@@ -54,6 +54,13 @@ const SOLUTIONS = [
     body: "翻訳・ページ制作・広告運用・顧客対応・発送まで、すべてSOMAが代行。御社はコアビジネスに集中しながら、海外展開を同時進行できます。",
     image: "/images/stock_teamwork.jpg",
   },
+  {
+    number: "05",
+    label: "Faire卸販売支援\n米国小売店への直接販路",
+    body: "北米最大のB2B卸取引プラットフォーム「Faire」を活用し、70万以上の米国小売店へ直接アクセス。初期費用ゼロで米国の棚を獲得します。",
+    link: "/faire",
+    image: "/images/stock_handshake.jpg",
+  },
 ];
 
 
