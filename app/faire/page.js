@@ -127,14 +127,22 @@ export default function FairePage() {
         padding: "0 60px 100px", position: "relative", overflow: "hidden",
         paddingTop: "72px",
       }}>
+        {/* 背景写真 */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "radial-gradient(ellipse 50% 60% at 80% 30%, rgba(0,102,255,0.07) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 10% 80%, rgba(0,102,255,0.04) 0%, transparent 50%)",
+          backgroundImage: "url('/images/faire_hero.jpg')",
+          backgroundSize: "cover", backgroundPosition: "center",
+          opacity: 0.45,
         }} />
+        {/* 左→右フェードアウト（テキスト読みやすく） */}
         <div style={{
-          position: "absolute", inset: 0, opacity: 0.025,
-          backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
+          position: "absolute", inset: 0,
+          background: "linear-gradient(to right, #0A0F1E 40%, rgba(10,15,30,0.7) 65%, rgba(10,15,30,0.2) 100%)",
+        }} />
+        {/* 下→上フェードアウト（テキストエリア） */}
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(to top, #0A0F1E 20%, transparent 60%)",
         }} />
 
         <div style={{ position: "relative", zIndex: 1, maxWidth: "800px" }}>
