@@ -386,7 +386,7 @@ export default function ServicesSection() {
 
           <div className="mb-16">
             <CharByChar
-              lines={["SOMAの", "4つの", "アプローチ"]}
+              lines={["SOMAの", "5つの", "アプローチ"]}
               className="font-extrabold text-white leading-[0.88]"
               style={{ fontSize: "clamp(48px, 9vw, 104px)" }}
             />
