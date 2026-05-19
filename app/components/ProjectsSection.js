@@ -62,8 +62,9 @@ const PROJECTS = [
 
 const STATS = [
   { value: "100+", label: "支援実績" },
-  { value: "5ヶ国+", label: "展開実績国・地域" },
 ];
+
+const PLATFORMS = ["Kickstarter", "Indiegogo", "zeczec", "Faire", "Amazon"];
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -153,7 +154,7 @@ export default function ProjectsSection() {
 
           {/* 統計 */}
           <motion.div
-            className="flex gap-10 md:gap-12 mb-2"
+            className="flex gap-10 md:gap-12 mb-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -166,6 +167,23 @@ export default function ProjectsSection() {
                 </div>
                 <div className="text-white/40 text-xs">{label}</div>
               </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className="flex flex-wrap gap-2 mb-2"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.35 }}
+          >
+            {PLATFORMS.map((name) => (
+              <span
+                key={name}
+                className="text-white/50 text-xs border border-white/15 rounded-full px-3 py-1"
+              >
+                {name}
+              </span>
             ))}
           </motion.div>
         </div>
