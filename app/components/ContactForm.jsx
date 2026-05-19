@@ -119,6 +119,58 @@ export default function ContactForm() {
 
   return (
     <section id="contact" className="w-full bg-gray-50 py-16 px-6">
+
+      {/* 無料相談でわかること */}
+      <div className="max-w-2xl mx-auto mb-10 bg-[#EFF6FF] border border-blue-100 rounded-2xl p-7">
+        <h3 className="text-base font-bold text-[#0066FF] mb-4">無料相談でわかること</h3>
+        <ul className="space-y-2">
+          {[
+            "自社商品がKickstarter・Indiegogo・zeczecに向いているか",
+            "どの国・地域からテストすべきか",
+            "想定できる支援額・客単価・広告費の目安",
+            "クラファン後に越境EC・Faire・代理店展開へ進める可能性",
+            "初期費用0円プランの対象になるか",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
+              <span className="text-[#0066FF] font-bold mt-0.5">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 初期費用0円プランの内訳 */}
+      <div className="max-w-2xl mx-auto mb-10 bg-white border border-gray-100 rounded-2xl p-7 shadow-sm">
+        <h3 className="text-base font-bold text-gray-900 mb-1">初期費用0円プランについて</h3>
+        <p className="text-xs text-gray-500 mb-4">成果報酬型のため、クラウドファンディング達成金額の5〜20％が報酬となります。</p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="bg-gray-50">
+                <th className="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-100">項目</th>
+                <th className="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-100">初期費用0円プラン</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["戦略設計・プラットフォーム選定", "含む"],
+                ["ページ構成案・コピーライティング", "含む"],
+                ["翻訳・英語対応", "条件により含む"],
+                ["広告費", "実費"],
+                ["動画・画像制作", "内容により別途"],
+                ["物流費・関税", "実費"],
+                ["成果報酬", "支援総額の5〜20％"],
+              ].map(([item, value], i) => (
+                <tr key={item} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                  <td className="px-3 py-2 text-gray-700 border border-gray-100">{item}</td>
+                  <td className={`px-3 py-2 border border-gray-100 font-medium ${value === "含む" ? "text-[#0066FF]" : "text-gray-600"}`}>{value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl p-8">
         {!isConfirm ? (
           <>

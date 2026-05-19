@@ -16,9 +16,9 @@ import "./globals.css";
 // ヒーロー コンテンツ — ここを編集してください
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 const HERO = {
-  eyebrow: "海外クラファン × 海外進出支援",
+  eyebrow: "海外クラウドファンディング × 海外進出支援",
   headline: "あなたのプロダクトを、\n世界へ。",
-  body: "Kickstarter・Indiegogo・zeczecを活用したクラウドファンディングから現地進出まで、プロが戦略から実行まで丸ごと伴走します。",
+  body: "Kickstarter・Indiegogo・zeczecで市場の反応を検証し、越境EC・Faire卸販売・海外代理店開拓まで一気通貫で支援します。",
   cta: "無料相談を予約する",
   images: ["/images/top1.jpg", "/images/top2.jpg"],
 };
