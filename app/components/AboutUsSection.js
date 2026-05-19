@@ -100,7 +100,7 @@ export default function AboutUsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.28 }}
           >
-            さらに近年注目を集めるメタバース分野にも取り組み、デジタル技術を活用した革新的な展示会やイベントを通じて、新しい市場と可能性を開拓しています。リアルとバーチャルの境界を超える取り組みにより、クライアントのグローバルプレゼンスを最大化します。
+            海外クラウドファンディングを入口に、Faire卸販売・越境EC・現地代理店開拓まで一気通貫で支援。クライアントが自信を持って世界市場に挑戦できるよう、戦略設計から実行まで伴走します。
             <br />
             <br />
             私たちは、企業の志（Ambitions）を実現するためのソリューション（Solutions）を提供し、共に成長し続けるパートナーとして歩みます。
@@ -143,7 +143,6 @@ export default function AboutUsSection() {
                   </>
                 ),
               },
-              { label: "資本金", value: "777,000円" },
             ].map(({ label, value }, i) => (
               <div
                 key={label}
@@ -204,10 +203,6 @@ export default function AboutUsSection() {
               {[
                 { year: "2019", text: "サウスオブマーケット合同会社設立" },
                 { year: "2025", text: "SOMA株式会社に社名変更" },
-                {
-                  year: "2026",
-                  text: "B to B プラットフォーム「METAEXPO JAPAN」開業（予定）",
-                },
               ].map(({ year, text }) => (
                 <li key={year} className="flex items-start gap-3">
                   <span className="text-[#0066FF] font-bold text-sm mt-0.5 flex-shrink-0">
