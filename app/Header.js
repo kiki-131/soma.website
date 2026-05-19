@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram, FaBars, FaTimes } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 
 const NAV = [
@@ -88,6 +89,15 @@ export default function Header({ scrollToSection }) {
           >
             <FaInstagram size={17} />
           </a>
+          <a
+            href="https://x.com/kaigai_support7"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={resetMin}
+            className="flex items-center text-white/50 hover:text-white transition-colors"
+          >
+            <FaXTwitter size={17} />
+          </a>
 
           <button
             onClick={() => scrollToSection("contact")}
@@ -166,6 +176,9 @@ export default function Header({ scrollToSection }) {
           <div className="flex items-center gap-5 pt-1">
             <a href="https://www.instagram.com/soma.japan77/" target="_blank" rel="noopener noreferrer" style={resetMin} className="flex items-center text-white/50 hover:text-white transition-colors">
               <FaInstagram size={20} />
+            </a>
+            <a href="https://x.com/kaigai_support7" target="_blank" rel="noopener noreferrer" style={resetMin} className="flex items-center text-white/50 hover:text-white transition-colors">
+              <FaXTwitter size={20} />
             </a>
           </div>
           <button
