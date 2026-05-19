@@ -362,7 +362,7 @@ export default function ServicesSection() {
             <CharByChar
               lines={["その壁を、", "SOMAが", "一緒に越えます。"]}
               className="text-white font-extrabold leading-[1.0]"
-              style={{ fontSize: "clamp(36px, 6.5vw, 80px)" }}
+              style={{ fontSize: "clamp(48px, 9vw, 104px)" }}
             />
           </div>
           <motion.p
