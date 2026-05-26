@@ -58,6 +58,20 @@ const PROJECTS = [
     achievement: "達成率 1212%",
     link: "https://www.kickstarter.com/projects/sungran/cloud-blanket-premium-cordless-warmth-anywhere",
   },
+  {
+    src: "/images/project7.jpg",
+    name: "プロジェクトG",
+    amount: "11,343,806円",
+    achievement: "達成率 2269%",
+    link: "https://www.kickstarter.com/projects/tholl/tholl-full-metal-5-blade-razor-with-magnetic-swap",
+  },
+  {
+    src: "/images/project8.jpg",
+    name: "プロジェクトH",
+    amount: "1,946,940円",
+    achievement: "達成率 649%",
+    link: "https://www.kickstarter.com/projects/scientifictowel/scientific-towel-healing-noto-with-japanese-innovation",
+  },
 ];
 
 const STATS = [
