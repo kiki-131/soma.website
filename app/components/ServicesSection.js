@@ -31,7 +31,7 @@ const CHALLENGES = [
 const SOLUTIONS = [
   {
     number: "01",
-    label: "海外クラファン支援\nクラウドファンディングでリスクゼロのテスト販売",
+    label: "海外クラファン支援\nクラウドファンディングで在庫リスクを抑えたテスト販売",
     body: "Kickstarter・Indiegogo・zeczecを活用し、在庫を持たずに市場の反応を確認。売れると分かってから本格展開するため、初期リスクを最小化できます。",
     link: "/crowdfunding",
     image: "/images/stock_crowdfunding.jpg",
@@ -47,7 +47,6 @@ const SOLUTIONS = [
     number: "03",
     label: "越境EC運営支援\n自社ECで海外販路拡大",
     body: "自社ECサイトの構築・運営を代行し、海外の顧客へ直接販売。クラファンで得た実績とファンを土台に、継続的な売上をつくる仕組みを整えます。",
-    linkPending: true,
     image: "/images/stock_teamwork.jpg",
   },
 ];
