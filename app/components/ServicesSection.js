@@ -31,35 +31,24 @@ const CHALLENGES = [
 const SOLUTIONS = [
   {
     number: "01",
-    label: "戦略立案・市場調査",
-    body: "現地市場のデータを分析し、ターゲット・訴求・プライシングを設計。「なんとなく海外展開」ではなく、勝ち筋を明確にしてから動きます。",
-    image: "/images/naito_strategy2.jpg",
-  },
-  {
-    number: "02",
-    label: "クラウドファンディングで\nリスクゼロのテスト販売",
+    label: "海外クラファン支援\nクラウドファンディングでリスクゼロのテスト販売",
     body: "Kickstarter・Indiegogo・zeczecを活用し、在庫を持たずに市場の反応を確認。売れると分かってから本格展開するため、初期リスクを最小化できます。",
     link: "/crowdfunding",
     image: "/images/stock_crowdfunding.jpg",
   },
   {
-    number: "03",
-    label: "現地パートナー\nネットワーク",
-    body: "SNS運用・現地PR・物流まで、SOMAが持つ現地パートナーネットワークをそのまま活用。ゼロから探す時間とコストを大幅に削減します。",
-    image: "/images/stock_handshake.jpg",
-  },
-  {
-    number: "04",
-    label: "ワンストップ実行支援",
-    body: "翻訳・ページ制作・広告運用・顧客対応・発送まで、すべてSOMAが代行。御社はコアビジネスに集中しながら、海外展開を同時進行できます。",
-    image: "/images/stock_teamwork.jpg",
-  },
-  {
-    number: "05",
+    number: "02",
     label: "Faire卸販売支援\n米国小売店への直接販路",
     body: "北米最大のB2B卸取引プラットフォーム「Faire」を活用し、70万以上の米国小売店へ直接アクセス。初期費用ゼロで米国の棚を獲得します。",
     link: "/faire",
     image: "/images/stock_handshake.jpg",
+  },
+  {
+    number: "03",
+    label: "越境EC運営支援\n自社ECで海外販路拡大",
+    body: "自社ECサイトの構築・運営を代行し、海外の顧客へ直接販売。クラファンで得た実績とファンを土台に、継続的な売上をつくる仕組みを整えます。",
+    linkPending: true,
+    image: "/images/stock_teamwork.jpg",
   },
 ];
 
@@ -79,61 +68,6 @@ function SectionLabel({ text, light = false }) {
       <span className={`text-xs font-bold tracking-[0.35em] uppercase ${light ? "text-[#0066FF]" : "text-[#0066FF]"}`}>
         {text}
       </span>
-    </motion.div>
-  );
-}
-
-// 初期費用¥0 グロー＋パルスボックス
-function CostBox() {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <motion.div
-      className="relative border rounded-2xl p-10 md:p-16 text-center mb-20 cursor-default overflow-hidden"
-      style={{
-        borderColor: isHovered ? "rgba(0,102,255,0.5)" : "rgba(255,255,255,0.1)",
-        transition: "border-color 0.4s ease, box-shadow 0.4s ease",
-        boxShadow: isHovered
-          ? "0 0 40px rgba(0,102,255,0.2), 0 0 80px rgba(0,102,255,0.08), inset 0 0 40px rgba(0,102,255,0.06)"
-          : "none",
-      }}
-      initial={{ opacity: 0, scale: 0.96 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* 背景グロー */}
-      <motion.div
-        className="absolute inset-0 rounded-2xl pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at center, rgba(0,102,255,0.12) 0%, transparent 70%)" }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-      />
-
-      <p className="text-white/30 text-xs tracking-widest uppercase mb-6">Cost Structure</p>
-      <div className="flex items-end justify-center gap-3 mb-4">
-        <span className="text-white font-extrabold text-2xl md:text-3xl">初期費用</span>
-        <motion.span
-          className="font-black leading-none"
-          style={{ fontSize: "clamp(80px, 14vw, 160px)" }}
-          animate={isHovered
-            ? { scale: [1, 1.06, 1], color: ["#ffffff", "#4d9eff", "#ffffff"] }
-            : { scale: 1, color: "#ffffff" }
-          }
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-        >
-          ¥0
-        </motion.span>
-      </div>
-      <p className="text-white/45 text-sm mb-2">
-        成果報酬として集まった支援金の{" "}
-        <span className="text-white font-bold">5％〜20％</span> を手数料としていただきます
-      </p>
-      <p className="text-white/25 text-xs">
-        ※適用には条件があります。広告・プロモーション費用は別途。
-      </p>
     </motion.div>
   );
 }
@@ -229,14 +163,18 @@ function SolutionCards() {
               <p className="text-gray-500 text-xs leading-relaxed mb-3">
                 {item.body}
               </p>
-              {item.link && (
+              {item.link ? (
                 <Link
                   href={item.link}
                   className="inline-flex items-center gap-1.5 text-[#0066FF] text-xs font-semibold"
                 >
                   詳しく見る <span>→</span>
                 </Link>
-              )}
+              ) : item.linkPending ? (
+                <span className="inline-flex items-center gap-1.5 text-[#0066FF]/60 text-xs font-semibold cursor-default">
+                  詳しくはこちら <span>→</span>
+                </span>
+              ) : null}
             </motion.div>
           </motion.div>
         </motion.div>
@@ -277,14 +215,18 @@ function MobileSolutionCards() {
           >
             <div className="pb-5 pl-14 pr-2">
               <p className="text-white/60 text-sm leading-relaxed">{item.body}</p>
-              {item.link && (
+              {item.link ? (
                 <Link
                   href={item.link}
                   className="inline-flex items-center gap-1.5 text-[#0066FF] text-xs font-semibold mt-3"
                 >
                   詳しく見る <span>→</span>
                 </Link>
-              )}
+              ) : item.linkPending ? (
+                <span className="inline-flex items-center gap-1.5 text-[#0066FF]/60 text-xs font-semibold mt-3 cursor-default">
+                  詳しくはこちら <span>→</span>
+                </span>
+              ) : null}
             </div>
           </motion.div>
         </motion.div>
@@ -386,7 +328,7 @@ export default function ServicesSection() {
 
           <div className="mb-16">
             <CharByChar
-              lines={["SOMAの", "5つの", "アプローチ"]}
+              lines={["SOMAの", "3つの", "アプローチ"]}
               className="font-extrabold text-white leading-[0.88]"
               style={{ fontSize: "clamp(48px, 9vw, 104px)" }}
             />
@@ -399,9 +341,6 @@ export default function ServicesSection() {
           <div className="md:hidden">
             <MobileSolutionCards />
           </div>
-
-          {/* 初期費用0円 */}
-          <CostBox />
 
         </div>
       </section>

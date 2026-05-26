@@ -291,6 +291,23 @@ export default function CrowdfundingPage() {
             </div>
         </section>
 
+        {/* 初期費用¥0 */}
+        <section className="mb-16">
+            <div className="bg-slate-900 rounded-2xl p-10 md:p-16 text-center">
+                <p className="text-white/40 text-xs tracking-widest uppercase mb-6">Cost Structure</p>
+                <div className="flex items-end justify-center gap-3 mb-4">
+                    <span className="text-white font-extrabold text-2xl md:text-3xl">初期費用</span>
+                    <span className="text-white font-black leading-none" style={{ fontSize: 'clamp(80px, 14vw, 160px)' }}>¥0</span>
+                </div>
+                <p className="text-white/60 text-sm md:text-base mb-2">
+                    成果報酬として集まった支援金の <span className="text-white font-bold">5％〜20％</span> を手数料としていただきます
+                </p>
+                <p className="text-white/30 text-xs">
+                    ※適用には条件があります。広告・プロモーション費用は別途。
+                </p>
+            </div>
+        </section>
+
         {/* CTA / Footer */}
         <section className="text-center py-12 border-t">
             <h2 className="text-2xl font-bold mb-6">詳しい相談・具体的な支援内容について</h2>
