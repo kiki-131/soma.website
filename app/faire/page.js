@@ -5,6 +5,50 @@ import Link from "next/link";
 export default function FairePage() {
   const [openFaq, setOpenFaq] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (sending) return;
+    const fd = new FormData(e.currentTarget);
+    const name = (fd.get("name") || "").toString().trim();
+    const company = (fd.get("company") || "").toString().trim();
+    const email = (fd.get("email") || "").toString().trim();
+    const topic = (fd.get("topic") || "").toString().trim();
+    const category = (fd.get("category") || "").toString().trim();
+    const experience = (fd.get("experience") || "").toString().trim();
+    const detail = (fd.get("detail") || "").toString().trim();
+
+    const message = [
+      "【Faire LP からのお問い合わせ】",
+      topic ? `お問い合わせ種別: ${topic}` : null,
+      category ? `商品カテゴリ: ${category}` : null,
+      experience ? `Faireのご経験: ${experience}` : null,
+      "",
+      detail || "（ご相談内容の記入なし）",
+    ].filter((v) => v !== null).join("\n");
+
+    setSending(true);
+    try {
+      const res = await fetch("/api/sendMail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, company, message }),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || json.ok === false) {
+        console.error("send failed", json);
+        alert("送信に失敗しました。お手数ですが時間をおいて再度お試しください。");
+        return;
+      }
+      setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      alert("送信中にエラーが発生しました。通信環境をご確認のうえ再度お試しください。");
+    } finally {
+      setSending(false);
+    }
+  };
 
   const faqs = [
     { q: "Faireへの出品に初期費用はかかりますか？", a: "Faire自体への出品・掲載は無料です。売上が発生した際にFaireの手数料が引かれる仕組みです。SOMAの支援サービスは別途ご相談のうえ、プランによって費用が発生します。まずは無料相談でご状況をお聞かせください。" },
@@ -411,14 +455,14 @@ export default function FairePage() {
               <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.8)" }}>2営業日以内にご連絡いたします。</div>
             </div>
           ) : (
-            <form onSubmit={e => { e.preventDefault(); setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: "10px", textAlign: "left" }}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "10px", textAlign: "left" }}>
               <div className="faire-form-row">
-                <input type="text" placeholder="ご担当者名 *" required style={inputStyle} />
-                <input type="text" placeholder="会社名・ブランド名 *" required style={inputStyle} />
+                <input type="text" name="name" placeholder="ご担当者名 *" required style={inputStyle} />
+                <input type="text" name="company" placeholder="会社名・ブランド名 *" required style={inputStyle} />
               </div>
               <div className="faire-form-row">
-                <input type="email" placeholder="メールアドレス *" required style={inputStyle} />
-                <select style={inputStyle} defaultValue="">
+                <input type="email" name="email" placeholder="メールアドレス *" required style={inputStyle} />
+                <select name="topic" style={inputStyle} defaultValue="">
                   <option value="" disabled>お問い合わせ種別</option>
                   <option>海外小売店向け卸売販売について相談したい</option>
                   <option>Faire活用について相談したい</option>
@@ -426,7 +470,7 @@ export default function FairePage() {
                   <option>その他</option>
                 </select>
               </div>
-              <select style={inputStyle} defaultValue="">
+              <select name="category" style={inputStyle} defaultValue="">
                 <option value="" disabled>商品カテゴリを選択してください</option>
                 <option>ファッション・アパレル</option>
                 <option>アクセサリー・ジュエリー</option>
@@ -438,22 +482,23 @@ export default function FairePage() {
                 <option>アート・クラフト</option>
                 <option>その他</option>
               </select>
-              <select style={inputStyle} defaultValue="">
+              <select name="experience" style={inputStyle} defaultValue="">
                 <option value="" disabled>Faireのご経験を教えてください</option>
                 <option>Faireを知らなかった</option>
                 <option>知っているが未登録</option>
                 <option>登録済み・未受注</option>
                 <option>登録済み・受注経験あり</option>
               </select>
-              <textarea placeholder="ご相談内容・現状を簡単にお知らせください（任意）" rows={3} style={{ ...inputStyle, resize: "vertical", minHeight: "auto" }} />
-              <button type="submit" style={{
+              <textarea name="detail" placeholder="ご相談内容・現状を簡単にお知らせください（任意）" rows={3} style={{ ...inputStyle, resize: "vertical", minHeight: "auto" }} />
+              <button type="submit" disabled={sending} style={{
                 background: "#1a1a1a", color: "white", border: "none",
                 padding: "18px", borderRadius: "100px", fontSize: "14px", fontWeight: 700,
-                letterSpacing: "0.06em", cursor: "pointer", transition: "all 0.2s", minHeight: "auto",
+                letterSpacing: "0.06em", cursor: sending ? "not-allowed" : "pointer", transition: "all 0.2s", minHeight: "auto",
+                opacity: sending ? 0.7 : 1,
               }}
-                onMouseEnter={e => { e.target.style.background = "#000"; e.target.style.transform = "translateY(-2px)"; }}
+                onMouseEnter={e => { if (!sending) { e.target.style.background = "#000"; e.target.style.transform = "translateY(-2px)"; } }}
                 onMouseLeave={e => { e.target.style.background = "#1a1a1a"; e.target.style.transform = "translateY(0)"; }}
-              >無料相談を申し込む →</button>
+              >{sending ? "送信中..." : "無料相談を申し込む →"}</button>
               <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.6)", textAlign: "center", margin: 0 }}>
                 通常2営業日以内にご返信いたします。情報は厳重に管理し、第三者に提供することはありません。
               </p>
