@@ -47,6 +47,7 @@ const SOLUTIONS = [
     number: "03",
     label: "越境EC運営支援\n自社ECで海外販路拡大",
     body: "自社ECサイトの構築・運営を代行し、海外の顧客へ直接販売。クラファンで得た実績とファンを土台に、継続的な売上をつくる仕組みを整えます。",
+    link: "/cross-border-ec",
     image: "/images/stock_teamwork.jpg",
   },
 ];
