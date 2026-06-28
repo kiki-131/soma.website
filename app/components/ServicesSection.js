@@ -342,6 +342,33 @@ export default function ServicesSection() {
             <MobileSolutionCards />
           </div>
 
+          {/* 初期費用 ¥0 */}
+          <motion.div
+            className="bg-[#0d1526] border border-white/10 rounded-2xl p-10 md:p-16 text-center"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-white/40 text-xs tracking-[0.3em] uppercase mb-6">Cost Structure</p>
+            <div className="flex items-end justify-center gap-3 mb-5">
+              <span className="text-white font-extrabold text-2xl md:text-3xl">初期費用</span>
+              <span className="text-white font-black leading-none" style={{ fontSize: "clamp(72px, 13vw, 150px)" }}>¥0</span>
+            </div>
+            <p className="text-white/60 text-sm md:text-base mb-3">
+              成果報酬型を中心に、初期費用¥0でスタートできます。
+            </p>
+            <p className="text-white/35 text-xs leading-relaxed max-w-xl mx-auto">
+              ※料金・条件は海外クラウドファンディング・Faire卸販売・越境ECなど、支援内容によって異なります。詳しくは各サービスページをご覧いただくか、お気軽にお問い合わせください。
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-7">
+              <Link href="/crowdfunding" className="text-[#0066FF] text-xs font-semibold hover:underline">海外クラファン →</Link>
+              <Link href="/faire" className="text-[#0066FF] text-xs font-semibold hover:underline">Faire卸販売 →</Link>
+              <Link href="/cross-border-ec" className="text-[#0066FF] text-xs font-semibold hover:underline">越境EC →</Link>
+              <a href="#contact" className="text-white/70 text-xs font-semibold hover:text-white transition-colors">お問い合わせ →</a>
+            </div>
+          </motion.div>
+
         </div>
       </section>
     </>
