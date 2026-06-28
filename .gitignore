@@ -42,3 +42,8 @@ next-env.d.ts
 
 .vercel
 .env*.local
+
+# local-only / editor temp
+/.claude/
+public/*.xlsx
+public/~$*

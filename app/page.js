@@ -7,6 +7,7 @@ import Header from "./Header";
 import ProjectsSection from "./components/ProjectsSection";
 import ServicesSection from "./components/ServicesSection";
 import AboutUsSection from "./components/AboutUsSection";
+import PartnersSection from "./components/PartnersSection";
 import BlogSection from "./components/BlogSection";
 import ContactForm from "./components/ContactForm";
 import MediaSection from "./components/MediaSection";
@@ -225,6 +226,11 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━ ABOUT US ━━━━━━━━━━━━━━━━━━━━ */}
       <div data-bg="#FFFFFF">
         <AboutUsSection />
+      </div>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━ PARTNERS ━━━━━━━━━━━━━━━━━━━━ */}
+      <div data-bg="#F8F9FA">
+        <PartnersSection />
       </div>
 
       {/* ━━━━━━━━━━━━━━━━━━━━ BLOG ━━━━━━━━━━━━━━━━━━━━ */}
