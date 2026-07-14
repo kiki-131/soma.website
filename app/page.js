@@ -11,6 +11,7 @@ import PartnersSection from "./components/PartnersSection";
 import BlogSection from "./components/BlogSection";
 import ContactForm from "./components/ContactForm";
 import MediaSection from "./components/MediaSection";
+import FeaturedVideoSection from "./components/FeaturedVideoSection";
 import "./globals.css";
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -210,6 +211,11 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━ MEDIA ━━━━━━━━━━━━━━━━━━━━ */}
       <div data-bg="#060810">
         <MediaSection />
+      </div>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━ FEATURED VIDEO ━━━━━━━━━━━━━━━━━━━━ */}
+      <div data-bg="#060810">
+        <FeaturedVideoSection />
       </div>
 
       {/* ━━━━━━━━━━━━━━━━━━━━ PROJECTS ━━━━━━━━━━━━━━━━━━━━ */}
