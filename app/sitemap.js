@@ -1,4 +1,4 @@
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 const BASE_URL = "https://www.soma-jp.net";
 
@@ -20,7 +20,7 @@ async function getBlogPosts() {
       `https://${service}.microcms.io/api/v1/blogs?limit=100`,
       {
         headers: { "X-MICROCMS-API-KEY": key },
-        next: { revalidate: 3600 },
+        next: { revalidate: 86400, tags: ["blogs"] },
       }
     );
     if (!res.ok) return [];

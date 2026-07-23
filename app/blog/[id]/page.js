@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import LikeButton from '@/app/components/LikeButton';
 
-export const revalidate = 60;
+// オンデマンド再生成（/api/revalidate）を主軸にし、時間ベースは保険として1日に延長
+export const revalidate = 86400;
 
 async function getPost(id) {
   const service = process.env.NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN;
@@ -11,7 +12,7 @@ async function getPost(id) {
     `https://${service}.microcms.io/api/v1/blogs/${id}`,
     {
       headers: { "X-MICROCMS-API-KEY": key },
-      next: { revalidate: 60 },
+      next: { revalidate: 86400, tags: ["blogs"] },
     }
   );
   if (!res.ok) return null;
@@ -26,7 +27,7 @@ async function getOtherPosts(currentId) {
     `https://${service}.microcms.io/api/v1/blogs?limit=6`,
     {
       headers: { "X-MICROCMS-API-KEY": key },
-      next: { revalidate: 60 },
+      next: { revalidate: 86400, tags: ["blogs"] },
     }
   );
   if (!res.ok) return [];

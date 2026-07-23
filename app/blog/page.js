@@ -1,6 +1,7 @@
 import BlogListClient from "./BlogListClient";
 
-export const revalidate = 60;
+// オンデマンド再生成（/api/revalidate）を主軸にし、時間ベースは保険として1日に延長
+export const revalidate = 86400;
 
 export const metadata = {
   title: "ブログ | SOMA株式会社",
@@ -18,7 +19,7 @@ async function getPosts() {
       `https://${service}.microcms.io/api/v1/blogs?limit=100`,
       {
         headers: { "X-MICROCMS-API-KEY": key },
-        next: { revalidate: 60 },
+        next: { revalidate: 86400, tags: ["blogs"] },
       }
     );
     if (!res.ok) return [];
