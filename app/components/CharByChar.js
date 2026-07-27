@@ -47,7 +47,7 @@ export default function CharByChar({
     >
       <Tag className={className} style={style}>
         {lines.map((line, li) => (
-          <span key={li} className="block overflow-hidden leading-[inherit]">
+          <span key={li} className="block overflow-hidden leading-[inherit] whitespace-nowrap">
             {[...line].map((char, ci) => (
               <motion.span
                 key={ci}

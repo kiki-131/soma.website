@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
       "@type": "ContactPoint",
       "contactType": "customer support",
       "areaServed": "JP",
-      "availableLanguage": "Japanese"
+      "availableLanguage": ["Japanese", "English"]
     }
   };
 
@@ -62,8 +62,9 @@ export default function RootLayout({ children }) {
   {/* Google Search Console verification */}
   <meta name="google-site-verification" content="dUDQ3flZLVkugl6GHITZ9JnXfFbxcbNCcggPtVkpppQ" />
   <meta name="google-site-verification" content="c5f6ZdW9gJjqC36izVL3aay5HrmPK_CC1JLAWPiNgi4" />
-  {/* hreflang alternates: ja is canonical; en and zh-Hant placeholders for future translations */}
+  {/* hreflang alternates: ja is canonical; en now points to the /en homepage; zh-Hant remains a placeholder for future translation */}
   <link rel="alternate" href="https://www.soma-jp.net/" hrefLang="ja" />
+  <link rel="alternate" href="https://www.soma-jp.net/en" hrefLang="en" />
   <link rel="alternate" href="https://www.soma-jp.net/" hrefLang="x-default" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

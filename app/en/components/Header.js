@@ -72,20 +72,21 @@ export default function Header({ scrollToSection }) {
           <Link
             href="/blog"
             style={resetMin}
-            className="text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors"
+            className="inline-flex items-baseline gap-1 text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors"
           >
             Blog
+            <span className="text-white/35 text-[10px] font-normal tracking-wide">(JP)</span>
           </Link>
         </nav>
 
         {/* 言語切替 + SNS + CTA */}
         <div className="flex items-center gap-4">
           <Link
-            href="/en"
+            href="/"
             style={resetMin}
             className="text-white/40 hover:text-white/70 text-xs font-normal tracking-wide transition-colors"
           >
-            English
+            日本語
           </Link>
           <span className="w-px h-3 bg-white/15" />
           <a
@@ -112,7 +113,7 @@ export default function Header({ scrollToSection }) {
             style={{ ...resetMin, opacity: showCTA ? 1 : 0, pointerEvents: showCTA ? "auto" : "none", transition: "opacity 0.6s ease" }}
             className="flex items-center px-4 py-2 text-sm font-semibold text-white bg-[#0066FF] rounded-full hover:bg-[#0052cc] transition-colors duration-300"
           >
-            無料相談を予約する
+            Book a Free Consultation
           </button>
 
           <button
@@ -148,7 +149,7 @@ export default function Header({ scrollToSection }) {
             style={{ ...resetMin, opacity: showCTA ? 1 : 0, pointerEvents: showCTA ? "auto" : "none", transition: "opacity 0.6s ease" }}
             className="flex items-center px-3 py-1.5 text-xs font-semibold text-white bg-[#0066FF] rounded-full"
           >
-            無料相談を予約する
+            Free Consultation
           </button>
           <button
             onClick={() => setMenuOpen((v) => !v)}
@@ -176,18 +177,19 @@ export default function Header({ scrollToSection }) {
           <Link
             href="/blog"
             style={resetMin}
-            className="text-white/80 hover:text-white text-base transition-colors"
+            className="inline-flex items-baseline gap-1 text-white/80 hover:text-white text-base transition-colors"
             onClick={() => setMenuOpen(false)}
           >
             Blog
+            <span className="text-white/40 text-[10px] font-normal tracking-wide">(JP)</span>
           </Link>
           <Link
-            href="/en"
+            href="/"
             style={resetMin}
             className="text-white/40 hover:text-white/70 text-sm font-normal transition-colors"
             onClick={() => setMenuOpen(false)}
           >
-            English
+            日本語
           </Link>
           <div className="flex items-center gap-5 pt-1">
             <a href="https://www.instagram.com/soma.japan77/" target="_blank" rel="noopener noreferrer" style={resetMin} className="flex items-center text-white/50 hover:text-white transition-colors">
