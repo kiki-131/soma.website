@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Header from "./Header";
@@ -310,6 +311,16 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* VIDGET 動画プレイヤー（提供: ディープラボ株式会社）。
+          元の設置指示は「</body>直前」だが、本サイトはNext.jsのためトップページ末尾に配置。
+          afterInteractive = ハイドレーション後に読み込み（初期表示を阻害しない）。
+          意図的にトップページのみ。/en・各LP・ブログには入れない。 */}
+      <Script
+        src="https://player.shortify-app.com/player.js"
+        data-player="jpar8gzsmwpp"
+        strategy="afterInteractive"
+      />
     </>
   );
 }
