@@ -9,6 +9,7 @@ const staticPages = [
   { url: "/crowdfunding", changeFrequency: "weekly", priority: 0.8 },
   { url: "/cross-border-ec", changeFrequency: "weekly", priority: 0.8 },
   { url: "/faire", changeFrequency: "weekly", priority: 0.8 },
+  { url: "/japan-matcha-select", changeFrequency: "weekly", priority: 0.8 },
   { url: "/dx", changeFrequency: "weekly", priority: 0.8 },
 ];
 

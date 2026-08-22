@@ -118,14 +118,14 @@ function OwnerCell({ owner, detail }) {
       <span
         className={
           isCaseByCase
-            ? "inline-block text-white/60 text-xs font-semibold border border-white/25 rounded-full px-3 py-1"
-            : "block text-[#7db3ff] font-bold text-sm mb-1.5"
+            ? "inline-block text-ink-300 text-xs font-semibold border border-deep-700 rounded-full px-3 py-1"
+            : "block text-accent-400 font-semibold text-sm mb-1.5"
         }
       >
-        {isCaseByCase ? `◇ ${owner}` : owner}
+        {isCaseByCase ? owner : owner}
       </span>
       {detail && (
-        <span className="block text-white/70 text-sm leading-relaxed">
+        <span className="block text-white/80 text-sm leading-relaxed">
           {detail}
         </span>
       )}
@@ -139,8 +139,8 @@ export default function WhatWeDoSection() {
       {/* ── 対応表（ダーク継続） ── */}
       <section
         id="what-we-do"
-        data-bg="#0A0F1E"
-        className="bg-[#0A0F1E] pt-4 pb-24 md:pb-32 px-6 md:px-16 scroll-mt-20"
+        data-bg="#0D1A24"
+        className="bg-deep-900 px-6 md:px-10 lg:px-16 pt-4 pb-[96px] md:pb-[144px] scroll-mt-20"
       >
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -150,14 +150,14 @@ export default function WhatWeDoSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="w-8 h-px bg-[#0066FF]" />
-            <span className="text-[#7db3ff] text-xs font-bold tracking-[0.35em] uppercase">
+            <div className="w-8 h-px bg-accent-600" />
+            <span className="text-accent-400 text-xs font-semibold tracking-[0.08em] uppercase">
               What we actually do
             </span>
           </motion.div>
 
           <motion.p
-            className="text-white text-lg md:text-2xl font-bold leading-relaxed max-w-3xl mb-14"
+            className="text-white text-lg md:text-2xl font-semibold leading-relaxed max-w-3xl mb-14"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -168,17 +168,17 @@ export default function WhatWeDoSection() {
           </motion.p>
 
           {/* デスクトップ: テーブル */}
-          <div className="hidden md:block border border-white/15 rounded-2xl overflow-hidden">
+          <div className="hidden md:block border border-deep-700 rounded-none overflow-hidden">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-white/[0.06]">
-                  <th scope="col" className="text-left px-5 py-4 text-white/50 text-[10px] font-bold tracking-[0.2em] uppercase w-16">
+                <tr className="bg-deep-800">
+                  <th scope="col" className="text-left px-5 py-4 text-ink-300 text-[10px] font-semibold tracking-[0.08em] uppercase w-16">
                     #
                   </th>
-                  <th scope="col" className="text-left px-5 py-4 text-white/50 text-[10px] font-bold tracking-[0.2em] uppercase w-[46%]">
+                  <th scope="col" className="text-left px-5 py-4 text-ink-300 text-[10px] font-semibold tracking-[0.08em] uppercase w-[46%]">
                     The requirement
                   </th>
-                  <th scope="col" className="text-left px-5 py-4 text-white/50 text-[10px] font-bold tracking-[0.2em] uppercase">
+                  <th scope="col" className="text-left px-5 py-4 text-ink-300 text-[10px] font-semibold tracking-[0.08em] uppercase">
                     Who does it
                   </th>
                 </tr>
@@ -190,20 +190,20 @@ export default function WhatWeDoSection() {
                   return (
                     <tr
                       key={`${row.group}-${row.number}-${i}`}
-                      className={`${isNewGroup ? "border-t-2 border-[#0066FF]/40" : "border-t border-white/10"}`}
+                      className={`${isNewGroup ? "border-t-2 border-accent-600/40" : "border-t border-deep-700"}`}
                     >
                       <th
                         scope="row"
-                        className="align-top px-5 py-5 text-left text-[#7db3ff] font-black text-sm"
+                        className="align-top px-5 py-5 text-left text-accent-400 font-medium text-sm"
                       >
                         {row.number}
                         {isNewGroup && (
-                          <span className="block text-white/60 text-[9px] font-bold tracking-[0.15em] uppercase mt-1.5">
+                          <span className="block text-ink-300 text-[9px] font-semibold tracking-[0.08em] uppercase mt-1.5">
                             {GROUP_LABEL[row.group]}
                           </span>
                         )}
                       </th>
-                      <td className="align-top px-5 py-5 text-white/85 text-sm leading-relaxed">
+                      <td className="align-top px-5 py-5 text-white/80 text-sm leading-relaxed">
                         {row.requirement}
                       </td>
                       <td className="align-top px-5 py-5">
@@ -224,24 +224,24 @@ export default function WhatWeDoSection() {
               return (
                 <div key={`${row.group}-${row.number}-${i}`}>
                   {isNewGroup && (
-                    <p className="text-[#7db3ff] text-[10px] font-bold tracking-[0.25em] uppercase mt-7 mb-3">
+                    <p className="text-accent-400 text-[10px] font-semibold tracking-[0.08em] uppercase mt-7 mb-3">
                       {GROUP_LABEL[row.group]}
                     </p>
                   )}
                   <div
-                    className={`border rounded-xl p-5 ${
+                    className={`border rounded-none p-5 ${
                       row.owner === CASE_BY_CASE
-                        ? "border-white/20 bg-white/[0.02]"
-                        : "border-[#0066FF]/30 bg-white/[0.04]"
+                        ? "border-deep-700 bg-deep-800"
+                        : "border-accent-600/30 bg-deep-800"
                     }`}
                   >
-                    <p className="text-white/55 text-xs leading-relaxed mb-3">
-                      <span className="text-[#7db3ff] font-black mr-2">
+                    <p className="text-ink-300 text-xs leading-relaxed mb-3">
+                      <span className="text-accent-400 font-medium mr-2">
                         {row.number}
                       </span>
                       {row.requirement}
                     </p>
-                    <div className="pt-3 border-t border-white/10">
+                    <div className="pt-3 border-t border-deep-700">
                       <OwnerCell owner={row.owner} detail={row.detail} />
                     </div>
                   </div>
@@ -252,14 +252,13 @@ export default function WhatWeDoSection() {
 
           {/* ◇注記 — 曖昧さを誤魔化さずに明言することが、断定する競合との差別化になる */}
           <motion.div
-            className="mt-8 border border-white/20 rounded-2xl p-7 md:p-9 bg-white/[0.03]"
+            className="mt-8 border border-deep-700 rounded-none p-7 md:p-9 bg-deep-800"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-white/75 text-sm md:text-base leading-relaxed mb-4">
-              <span className="text-[#7db3ff] font-bold mr-2" aria-hidden="true">◇</span>
+            <p className="text-white/80 text-sm md:text-base leading-relaxed mb-4">
               Those last four do not have one answer, and we are not going to
               pretend they do. The right structure changes with the product, the
               certifications involved and what you already have in place, so it
@@ -278,10 +277,10 @@ export default function WhatWeDoSection() {
       {/* ── SCOPE OF WORK（ここでライトへ） ── */}
       <section
         data-bg="#FFFFFF"
-        className="bg-white py-24 md:py-32 px-6 md:px-16"
+        className="bg-paper-0 px-6 md:px-10 lg:px-16 py-[96px] md:py-[144px]"
       >
         <div className="max-w-5xl mx-auto">
-          <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-10">
+          <p className="text-[11px] font-semibold tracking-[0.08em] uppercase text-ink-500 mb-10">
             Scope of work
           </p>
 
@@ -294,10 +293,10 @@ export default function WhatWeDoSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
               >
-                <h3 className="text-gray-900 font-bold text-base mb-3 leading-snug">
+                <h3 className="text-ink-900 font-semibold text-base mb-3 leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-ink-700 text-sm leading-relaxed">
                   {item.body}
                 </p>
               </motion.div>
@@ -313,10 +312,9 @@ export default function WhatWeDoSection() {
           >
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-7 py-4 bg-[#0066FF] text-white font-bold text-sm rounded-full hover:bg-[#0052cc] transition-colors"
+              className="inline-flex items-center gap-2 px-7 py-4 bg-accent-600 text-white font-semibold text-sm rounded-[2px] hover:bg-accent-500 transition-colors"
             >
               Check if my product qualifies
-              <span aria-hidden="true">→</span>
             </a>
           </motion.div>
         </div>

@@ -1,65 +1,101 @@
 "use client";
-import { motion } from "framer-motion";
+import Reveal from "./Reveal";
 
-// ヒーロー直下に置く帯。記号だけで商材の自己判定を完結させ、
-// 対象外の読者（薬機法アウト商材）にここで帰ってもらう。
-// ✗ を隠さないことがこの帯の存在意義（＝断る会社であることの初期証明）。
-const READY = ["EDC & Tools", "Outdoor", "Stationery", "Bags", "Kitchen"];
-const POSSIBLE = ["Wireless (Wi-Fi / BT)", "AC-powered · Li-ion", "Food & Beverage"];
-const DECLINED = ["Cosmetics", "Supplements", "Beauty & medical devices"];
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// ヒーロー直下の帯。商材の自己判定をここで完結させ、
+// 対象外の読者（薬機法アウト商材）には早い段階で帰ってもらう。
+// 「断る会社である」ことを最初に示すブロックでもあるので、不可も隠さない。
+//
+// ★ ✓ ▲ ✗ の文字記号は使わない。あれは Markdown の語彙であって
+//   グラフィックの語彙ではなく、そのまま「AIの出力」に見える。
+//   ここでは可否を「行頭の罫の色」と「文字の濃度」で表している。
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-function Row({ mark, markClass, items }) {
+const TIERS = [
+  {
+    key: "ready",
+    rule: "bg-ink-900",
+    text: "text-ink-900",
+    legend: "ready to go",
+    items: ["EDC & Tools", "Outdoor", "Stationery", "Bags", "Kitchen"],
+  },
+  {
+    key: "possible",
+    rule: "bg-accent-600",
+    text: "text-ink-700",
+    legend: "possible, needs certification & lead time",
+    items: ["Wireless (Wi-Fi / BT)", "AC-powered · Li-ion", "Food & Beverage"],
+  },
+  {
+    key: "declined",
+    rule: "bg-paper-300",
+    text: "text-ink-400",
+    legend: "not in phase 1",
+    items: ["Cosmetics", "Supplements", "Beauty & medical devices"],
+  },
+];
+
+// mt-[0.62em] で罫が1行目の x-height の中央に来る
+function Rule({ className }) {
   return (
-    <div className="flex items-start gap-3">
-      <span className={`font-bold text-base leading-6 flex-shrink-0 ${markClass}`} aria-hidden="true">
-        {mark}
-      </span>
-      <ul className="flex flex-wrap gap-x-5 gap-y-1.5">
-        {items.map((item) => (
-          <li key={item} className="text-gray-700 text-sm md:text-[15px] leading-6">
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <span
+      className={`mt-[0.62em] h-px w-5 shrink-0 ${className}`}
+      aria-hidden="true"
+    />
   );
 }
 
 export default function ProductFitStrip() {
   return (
     <section
-      data-bg="#F8F9FA"
-      className="bg-[#F8F9FA] border-y border-gray-200 py-10 px-6 md:px-16"
+      data-bg="#FAF9F7"
+      className="bg-paper-50 border-y border-paper-200 px-6 md:px-10 lg:px-16 py-[48px] md:py-[64px]"
     >
-      <motion.div
-        className="max-w-5xl mx-auto"
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
-        <h2 className="text-[#0066FF] text-[11px] font-bold tracking-[0.3em] uppercase mb-5">
+      <Reveal className="max-w-[1080px] mx-auto">
+        <h2 className="font-display text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.08em] text-ink-500 mb-8">
           What we take to Japan — Phase 1
         </h2>
 
-        <div className="space-y-3">
-          <Row mark="✓" markClass="text-[#0066FF]" items={READY} />
-          <Row mark="▲" markClass="text-amber-600" items={POSSIBLE} />
-          <Row mark="✗" markClass="text-gray-500" items={DECLINED} />
+        <div className="space-y-4">
+          {TIERS.map((tier) => (
+            <div key={tier.key} className="flex items-start gap-4">
+              <Rule className={tier.rule} />
+              <ul className="flex flex-wrap gap-x-6 gap-y-2">
+                {tier.items.map((item) => (
+                  <li
+                    key={item}
+                    className={`text-[15px] leading-6 ${tier.text}`}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div className="mt-6 pt-5 border-t border-gray-200 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-500">
-          <span><span className="text-[#0066FF] font-bold">✓</span> ready to go</span>
-          <span><span className="text-amber-600 font-bold">▲</span> possible, needs certification &amp; lead time</span>
-          <span><span className="text-gray-500 font-bold">✗</span> not in phase 1</span>
+        <div className="mt-9 pt-6 border-t border-paper-200 flex flex-wrap items-center gap-x-8 gap-y-3">
+          {TIERS.map((tier) => (
+            <span
+              key={tier.key}
+              className="flex items-center gap-2.5 text-[13px] text-ink-500"
+            >
+              <span className={`h-px w-5 ${tier.rule}`} aria-hidden="true" />
+              {tier.legend}
+            </span>
+          ))}
+
           <a
             href="#eligibility"
-            className="ml-auto text-[#0066FF] font-semibold hover:underline"
+            className="group ml-auto flex items-center gap-3 text-[13px] font-semibold text-ink-900"
           >
-            See the full breakdown →
+            <span className="border-b border-paper-300 pb-0.5 transition-colors group-hover:border-ink-900">
+              See the full breakdown
+            </span>
+            <span className="rule-grow" aria-hidden="true" />
           </a>
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

@@ -42,7 +42,7 @@ export default function Header({ scrollToSection }) {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-        scrolled ? "bg-[#0A0F1E]/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
+        scrolled ? "bg-deep-900/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
       }`}
     >
       {/* ━━ デスクトップ ━━ */}
@@ -51,7 +51,7 @@ export default function Header({ scrollToSection }) {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={resetMin}
-          className="flex-shrink-0 mr-8 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0F1E]"
+          className="flex-shrink-0 mr-8 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-deep-900"
           aria-label="Back to top"
         >
           <Image
@@ -72,7 +72,7 @@ export default function Header({ scrollToSection }) {
               key={id}
               onClick={() => scrollToSection(id)}
               style={resetMin}
-              className="text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
+              className="text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500"
             >
               {label}
             </button>
@@ -84,7 +84,7 @@ export default function Header({ scrollToSection }) {
           <Link
             href="/"
             style={resetMin}
-            className="text-white/60 hover:text-white text-xs font-normal tracking-wide transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
+            className="text-ink-300 hover:text-white text-xs font-normal tracking-wide transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500"
           >
             日本語
           </Link>
@@ -97,7 +97,7 @@ export default function Header({ scrollToSection }) {
               pointerEvents: showCTA ? "auto" : "none",
               transition: "opacity 0.6s ease",
             }}
-            className="flex items-center px-5 py-2 text-sm font-semibold text-white bg-[#0066FF] rounded-full hover:bg-[#0052cc] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0F1E]"
+            className="flex items-center px-5 py-2 text-sm font-semibold text-white bg-accent-600 rounded-[2px] hover:bg-accent-500 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-deep-900"
           >
             Free Eligibility Check
           </button>
@@ -109,7 +109,7 @@ export default function Header({ scrollToSection }) {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={resetMin}
-          className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
+          className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500"
           aria-label="Back to top"
         >
           <Image
@@ -125,7 +125,7 @@ export default function Header({ scrollToSection }) {
         <button
           onClick={() => setMenuOpen((v) => !v)}
           style={{ ...resetMin, minHeight: 44, minWidth: 44 }}
-          className="flex items-center justify-center text-white rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
+          className="flex items-center justify-center text-white rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
         >
@@ -135,7 +135,7 @@ export default function Header({ scrollToSection }) {
 
       {/* モバイルメニュー */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0A0F1E] border-t border-white/10 px-6 py-4 flex flex-col">
+        <div className="md:hidden bg-deep-900 border-t border-deep-700 px-6 py-4 flex flex-col">
           {NAV.map(({ label, id }) => (
             <button
               key={id}
@@ -143,14 +143,14 @@ export default function Header({ scrollToSection }) {
                 setMenuOpen(false);
                 setTimeout(() => scrollToSection(id), 50);
               }}
-              className="text-left text-white/80 hover:text-white text-base transition-colors py-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
+              className="text-left text-white/80 hover:text-white text-base transition-colors py-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500"
             >
               {label}
             </button>
           ))}
           <Link
             href="/"
-            className="text-white/60 hover:text-white text-sm font-normal transition-colors py-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
+            className="text-ink-300 hover:text-white text-sm font-normal transition-colors py-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500"
             onClick={() => setMenuOpen(false)}
           >
             日本語
@@ -161,7 +161,7 @@ export default function Header({ scrollToSection }) {
               setTimeout(() => scrollToSection("contact"), 50);
             }}
             style={resetMin}
-            className="mt-3 px-6 py-3.5 text-white font-semibold bg-[#0066FF] rounded-full text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
+            className="mt-3 px-6 py-3.5 text-white font-semibold bg-accent-600 rounded-[2px] text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500"
           >
             Free Eligibility Check
           </button>

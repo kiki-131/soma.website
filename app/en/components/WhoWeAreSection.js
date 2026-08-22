@@ -1,4 +1,5 @@
 "use client";
+import { LuArrowUpRight } from "react-icons/lu";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -47,7 +48,7 @@ export default function WhoWeAreSection() {
     <section
       id="about"
       data-bg="#FFFFFF"
-      className="bg-white py-24 md:py-36 px-6 md:px-16 scroll-mt-20"
+      className="bg-paper-0 px-6 md:px-10 lg:px-16 pt-[132px] pb-[132px] md:pt-[200px] md:pb-[200px] scroll-mt-20"
     >
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -57,8 +58,8 @@ export default function WhoWeAreSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="w-8 h-px bg-[#0066FF]" />
-          <span className="text-[#0066FF] text-xs font-bold tracking-[0.35em] uppercase">
+          <div className="w-8 h-px bg-accent-600" />
+          <span className="text-accent-600 text-xs font-semibold tracking-[0.08em] uppercase">
             Who you&apos;d be working with
           </span>
         </motion.div>
@@ -71,7 +72,7 @@ export default function WhoWeAreSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="relative w-[200px] h-[200px] flex-shrink-0 rounded-2xl overflow-hidden bg-gray-50 mx-auto sm:mx-0">
+          <div className="relative w-[200px] h-[200px] flex-shrink-0 rounded-none overflow-hidden bg-paper-50 mx-auto sm:mx-0">
             <Image
               src="/images/naito_front.jpg"
               alt="Takuma Naito, CEO of SOMA Inc."
@@ -82,18 +83,18 @@ export default function WhoWeAreSection() {
           </div>
 
           <div className="flex-1">
-            <h3 className="font-extrabold text-gray-900 text-2xl mb-1">
+            <h3 className="font-display font-medium text-ink-900 leading-[1.02] tracking-[-0.026em] mb-2" style={{ fontSize: "clamp(32px, 4.4vw, 60px)" }}>
               Takuma Naito
             </h3>
-            <p className="text-[#0066FF] text-xs font-bold tracking-widest uppercase mb-5">
+            <p className="text-accent-600 text-xs font-semibold tracking-widest uppercase mb-5">
               CEO, SOMA Inc.
             </p>
-            <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-4">
+            <p className="text-ink-700 text-sm md:text-base leading-relaxed mb-4">
               Graduated in Hospitality Management from a university in San
               Francisco, worked as a manager at a U.S. company, then returned to
               Japan and founded SOMA.
             </p>
-            <p className="text-gray-900 text-sm md:text-base leading-relaxed font-medium">
+            <p className="text-ink-900 text-sm md:text-base leading-relaxed font-medium">
               He handles overseas clients himself, in English. No interpreter, no
               lag between your question and the answer.
             </p>
@@ -102,19 +103,19 @@ export default function WhoWeAreSection() {
 
         {/* 一人称ステートメント */}
         <motion.blockquote
-          className="border-l-4 border-[#0066FF] pl-7 py-2 mb-20"
+          className="border-l-4 border-accent-600 pl-7 py-2 mb-20"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-gray-800 text-base md:text-lg leading-relaxed mb-4">
+          <p className="text-ink-800 text-base md:text-lg leading-relaxed mb-4">
             &ldquo;I spent enough years in the States to know how a product
             person there thinks about a launch. I&apos;ve since sat through
             enough Japanese platform reviews to know which of those instincts get
             you rejected here.
           </p>
-          <p className="text-gray-800 text-base md:text-lg leading-relaxed">
+          <p className="text-ink-800 text-base md:text-lg leading-relaxed">
             Most of what I do is translating between those two things — and most
             of it isn&apos;t language.&rdquo;
           </p>
@@ -127,16 +128,16 @@ export default function WhoWeAreSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-6">
+          <p className="text-[11px] font-semibold tracking-[0.08em] uppercase text-ink-500 mb-6">
             What we&apos;ve actually done
           </p>
-          <p className="text-gray-800 text-base md:text-lg leading-relaxed mb-8">
+          <p className="text-ink-800 text-base md:text-lg leading-relaxed mb-8">
             The same team has run more than 100 crowdfunding campaigns on
             overseas platforms — Kickstarter, Indiegogo and zeczec. Eight of them
             are still live on Kickstarter, comments and all.
           </p>
 
-          <p className="text-gray-500 text-sm font-semibold mb-4">
+          <p className="text-ink-500 text-sm font-semibold mb-4">
             Verify for yourself:
           </p>
           <ul className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 mb-20">
@@ -146,9 +147,10 @@ export default function WhoWeAreSection() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#0066FF] text-sm font-semibold hover:underline"
+                  className="text-accent-600 text-sm font-semibold hover:underline"
                 >
-                  ↗ Campaign {String(i + 1).padStart(2, "0")}
+                  Campaign {String(i + 1).padStart(2, "0")}
+                  <LuArrowUpRight className="inline-block size-[12px] ml-1 shrink-0 opacity-60" aria-hidden="true" />
                   <span className="sr-only">
                     {" "}
                     on Kickstarter (opens in a new tab)
@@ -167,27 +169,27 @@ export default function WhoWeAreSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-6">
+          <p className="text-[11px] font-semibold tracking-[0.08em] uppercase text-ink-500 mb-6">
             We are a real company in Japan
           </p>
-          <p className="text-gray-800 text-base md:text-lg leading-relaxed mb-8">
+          <p className="text-ink-800 text-base md:text-lg leading-relaxed mb-8">
             Remember the floor under all six requirements — a business name, an
             address in Japan, a phone number in Japan.{" "}
-            <span className="font-bold text-gray-900">Here is ours.</span>
+            <span className="font-semibold text-ink-900">Here is ours.</span>
           </p>
 
-          <dl className="border border-gray-200 rounded-2xl overflow-hidden">
+          <dl className="border border-paper-200 rounded-none overflow-hidden">
             {COMPANY.map(({ label, value }, i) => (
               <div
                 key={label}
                 className={`flex flex-col sm:flex-row ${
-                  i % 2 === 0 ? "bg-white" : "bg-[#F8F9FA]"
+                  i % 2 === 0 ? "bg-white" : "bg-paper-50"
                 }`}
               >
-                <dt className="sm:w-52 px-6 py-4 font-semibold text-gray-700 text-sm border-b sm:border-b-0 sm:border-r border-gray-100 flex items-center">
+                <dt className="sm:w-52 px-6 py-4 font-semibold text-ink-700 text-sm border-b sm:border-b-0 sm:border-r border-paper-200 flex items-center">
                   {label}
                 </dt>
-                <dd className="flex-1 px-6 py-4 text-gray-600 text-sm leading-relaxed">
+                <dd className="flex-1 px-6 py-4 text-ink-700 text-sm leading-relaxed">
                   {value}
                 </dd>
               </div>

@@ -1,5 +1,46 @@
 @import "tailwindcss";
 
+/* ══════════════════════════════════════════════════════════════
+   英語版 (/en) 専用のデザイントークン
+
+   すべて新規名のため、日本語サイトの既存クラスには一切影響しない。
+   ★ --font-sans や --color-gray-* を上書きしないこと（JP側が巻き込まれる）。
+   適用は app/en/en.css の .en-scope 内に閉じている。
+   ══════════════════════════════════════════════════════════════ */
+@theme {
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-body:    var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-quote:   var(--font-newsreader), Georgia, "Times New Roman", serif;
+
+  /* Paper: ライト面。青みグレーではなく、わずかに黄みを含む「紙」 */
+  --color-paper-0:   #FFFFFF;
+  --color-paper-50:  #FAF9F7;
+  --color-paper-100: #F2F0EC;
+  --color-paper-200: #E4E0D9;
+  --color-paper-300: #CFCAC1;
+
+  /* Ink: テキスト。純黒ではなく青緑みを帯びた黒 */
+  --color-ink-900: #14202A;
+  --color-ink-800: #24333F;
+  --color-ink-700: #33434F;
+  --color-ink-500: #5C6B76;
+  --color-ink-400: #85939C;
+  --color-ink-300: #B4BEC5;
+
+  /* Deep: ダーク面 */
+  --color-deep-900: #0D1A24;
+  --color-deep-800: #142430;
+  --color-deep-700: #1E3341;
+
+  /* Accent: 朱。有彩色はこれだけ */
+  --color-accent-600: #B8451F;
+  --color-accent-500: #D45426;
+  --color-accent-400: #E4633A;
+  --color-accent-100: #F0D9CD;
+  --color-accent-50:  #FBF2ED;
+}
+
+
 /* スムーズスクロール */
 html {
   scroll-behavior: smooth;

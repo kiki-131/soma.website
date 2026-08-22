@@ -1,0 +1,84 @@
+/* ══════════════════════════════════════════════════════════════
+   英語版 (/en) 専用スタイル
+
+   globals.css には日本語サイトのための指定が3つ入っており、
+   欧文専用の /en ではいずれも害になる。ここでスコープを切って解除する。
+   .en-scope (詳細度 0-1-0) が body / 要素セレクタ (0-0-1) に勝つ。
+
+     1. body { font-family: Arial } … layout.js で読み込んだ書体が効かない
+     2. a, button, input { min-height:48px } … 本文中のリンクが48px角になる
+     3. .text-gray-500|600|800 → gray-700 … グレー階調が1色に潰れる
+        ※これは詳細度が同値なので上書きに頼らない。
+          /en では text-gray-* を使わず ink-* トークンを使うことで回避している。
+   ══════════════════════════════════════════════════════════════ */
+
+.en-scope {
+  font-family: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  color: var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+/* 見出しは Archivo。太さではなく字幅と大きさで強さを作る */
+.en-scope :is(h1, h2, h3, h4),
+.en-scope .font-display {
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-variation-settings: "wdth" 100;
+}
+
+/* ヒーローと大きな数字だけ、幅を広げて張力を出す */
+.en-scope .font-display-x {
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-variation-settings: "wdth" 118;
+}
+.en-scope .font-display-xx {
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-variation-settings: "wdth" 125;
+}
+
+/* 法令原文の引用のみセリフ。書体の切り替えだけで「他人の文章」だと示す */
+.en-scope .font-quote {
+  font-family: var(--font-newsreader), Georgia, "Times New Roman", serif;
+}
+
+/* globals.css の 48px 強制を解除し、押すものにだけ付け直す */
+.en-scope :is(a, button, input, select, textarea) {
+  min-height: 0;
+  min-width: 0;
+}
+.en-scope :is(a, button).tap {
+  min-height: 48px;
+}
+.en-scope :is(input, select, textarea) {
+  min-height: 52px;
+}
+
+/* 影は使わない。参考にした D2C ブランドサイトはいずれもカードに影を落としていない */
+.en-scope :is(.shadow, .shadow-sm, .shadow-md, .shadow-lg, .shadow-xl) {
+  box-shadow: none;
+}
+
+/* CTAの罫線がホバーで伸びる（矢印記号の代わり） */
+.en-scope .rule-grow {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.en-scope .group:hover .rule-grow {
+  width: 36px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .en-scope *,
+  .en-scope *::before,
+  .en-scope *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

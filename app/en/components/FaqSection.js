@@ -61,7 +61,7 @@ function FaqItem({ item, index, isOpen, onToggle }) {
   const buttonId = `faq-button-${index}`;
 
   return (
-    <div className="border-b border-gray-200">
+    <div className="border-b border-paper-200">
       <h3>
         <button
           id={buttonId}
@@ -69,13 +69,13 @@ function FaqItem({ item, index, isOpen, onToggle }) {
           aria-expanded={isOpen}
           aria-controls={panelId}
           onClick={onToggle}
-          className="w-full flex items-start justify-between gap-6 text-left py-6 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0066FF] rounded"
+          className="w-full flex items-start justify-between gap-6 text-left py-6 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 rounded"
         >
-          <span className="text-gray-900 font-bold text-base md:text-lg leading-snug group-hover:text-[#0066FF] transition-colors">
+          <span className="text-ink-900 font-semibold text-base md:text-lg leading-snug group-hover:text-accent-600 transition-colors">
             {item.q}
           </span>
           <span
-            className="flex-shrink-0 text-[#0066FF] text-xl leading-none mt-0.5 select-none"
+            className="flex-shrink-0 text-accent-600 text-xl leading-none mt-0.5 select-none"
             aria-hidden="true"
           >
             {isOpen ? "−" : "+"}
@@ -90,7 +90,7 @@ function FaqItem({ item, index, isOpen, onToggle }) {
         hidden={!isOpen}
         className="pb-7 pr-10"
       >
-        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+        <p className="text-ink-700 text-sm md:text-base leading-relaxed">
           {item.a}
         </p>
       </div>
@@ -114,8 +114,8 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      data-bg="#F8F9FA"
-      className="bg-[#F8F9FA] py-24 md:py-36 px-6 md:px-16 scroll-mt-20"
+      data-bg="#FAF9F7"
+      className="bg-paper-50 px-6 md:px-10 lg:px-16 py-[72px] md:py-[96px] scroll-mt-20"
     >
       <script
         type="application/ld+json"
@@ -130,8 +130,8 @@ export default function FaqSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="w-8 h-px bg-[#0066FF]" />
-          <span className="text-[#0066FF] text-xs font-bold tracking-[0.35em] uppercase">
+          <div className="w-8 h-px bg-accent-600" />
+          <span className="text-accent-600 text-xs font-semibold tracking-[0.08em] uppercase">
             Questions we get
           </span>
         </motion.div>
@@ -139,12 +139,12 @@ export default function FaqSection() {
         <div className="mb-12">
           <WordByWord
             lines={["Questions we get", "before the first call."]}
-            className="font-extrabold text-gray-900 leading-[1.1]"
-            style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
+            className="font-semibold text-ink-900 leading-[1.16] tracking-[-0.014em]"
+            style={{ fontSize: "clamp(22px, 2.2vw, 30px)" }}
           />
         </div>
 
-        <div className="border-t border-gray-200">
+        <div className="border-t border-paper-200">
           {FAQS.map((item, i) => (
             <FaqItem
               key={item.q}

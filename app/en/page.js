@@ -15,7 +15,9 @@ import ProcessSection from "./components/ProcessSection";
 import WhoWeAreSection from "./components/WhoWeAreSection";
 import FaqSection from "./components/FaqSection";
 import EligibilityForm from "./components/EligibilityForm";
+import Reveal from "./components/Reveal";
 import "../globals.css";
+import "./en.css";
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // /en — 海外メーカー向け「日本のクラウドファンディング出品代行」LP
@@ -129,7 +131,7 @@ export default function EnHomePage() {
   };
 
   return (
-    <>
+    <div className="en-scope">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
@@ -140,8 +142,8 @@ export default function EnHomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━ S1 HERO ━━━━━━━━━━━━━━━━━━━━ */}
       <div
         ref={heroRef}
-        data-bg="#0A0F1E"
-        className="relative overflow-hidden bg-[#060810]"
+        data-bg="#0D1A24"
+        className="relative overflow-hidden bg-deep-900"
         style={{ minHeight: "100svh" }}
       >
         <div className="absolute inset-0 select-none">
@@ -157,8 +159,8 @@ export default function EnHomePage() {
               className="object-cover object-center"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#060810] via-[#060810]/75 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#060810]/60 via-transparent to-[#060810]/80" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0D1A24] via-[#0D1A24]/75 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0D1A24]/60 via-transparent to-[#0D1A24]/80" />
           </motion.div>
 
           {/* モバイル: 全面背景 */}
@@ -170,7 +172,7 @@ export default function EnHomePage() {
               className="object-cover object-center"
               priority
             />
-            <div className="absolute inset-0 bg-[#060810]/85" />
+            <div className="absolute inset-0 bg-deep-900/85" />
           </div>
         </div>
 
@@ -188,20 +190,20 @@ export default function EnHomePage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <div className="w-10 h-px bg-[#0066FF] flex-shrink-0" />
-            <span className="text-[#7db3ff] text-[10px] md:text-[11px] font-bold tracking-[0.3em] uppercase">
+            <div className="w-10 h-px bg-accent-600 flex-shrink-0" />
+            <span className="text-accent-400 text-[10px] md:text-[11px] font-semibold tracking-[0.08em] uppercase">
               {HERO.eyebrow}
             </span>
           </motion.div>
 
           <h1
-            className="text-white font-black leading-[1.08] mb-9"
-            style={{ fontSize: "clamp(28px, 4.2vw, 56px)" }}
+            className="font-display-x text-white font-medium leading-[0.98] tracking-[-0.032em] mb-9"
+            style={{ fontSize: "clamp(38px, 5.6vw, 78px)" }}
           >
             {HERO.h1.map((line, i) => (
               <motion.span
                 key={i}
-                className={`block ${i === 0 ? "" : "text-white/85"}`}
+                className={`block ${i === 0 ? "" : "text-white/80"}`}
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.15 + i * 0.12, ease: "easeOut" }}
@@ -218,7 +220,7 @@ export default function EnHomePage() {
             transition={{ duration: 0.9, delay: 0.5 }}
           >
             {HERO.body.map((line, i) => (
-              <p key={i} className="text-white/70 text-sm md:text-base leading-[1.8]">
+              <p key={i} className="text-white/80 text-sm md:text-base leading-[1.8]">
                 {line}
               </p>
             ))}
@@ -232,16 +234,17 @@ export default function EnHomePage() {
           >
             <button
               onClick={() => scrollToSection("contact")}
-              className="px-7 py-4 bg-[#0066FF] text-white font-bold text-sm rounded-full hover:bg-[#0052cc] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060810] focus-visible:ring-[#4d94ff]"
+              className="px-7 py-4 bg-accent-600 text-white font-semibold text-sm rounded-[2px] hover:bg-accent-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1A24] focus-visible:ring-accent-500"
             >
               {HERO.cta}
             </button>
 
             <button
               onClick={() => scrollToSection("eligibility")}
-              className="text-white/60 text-sm font-medium hover:text-white transition-colors text-left"
+              className="text-ink-300 text-sm font-medium hover:text-white transition-colors text-left"
             >
-              Can my product even go? <span aria-hidden="true">→</span>
+              Can my product even go?
+              <span className="rule-grow" aria-hidden="true" />
             </button>
           </motion.div>
 
@@ -256,8 +259,8 @@ export default function EnHomePage() {
               "No Japanese entity needed to start",
               "Reply within 1 business day (JST)",
             ].map((item) => (
-              <li key={item} className="flex items-center gap-2.5 text-white/60 text-xs md:text-sm">
-                <span className="text-[#7db3ff] font-bold" aria-hidden="true">✓</span>
+              <li key={item} className="flex items-center gap-2.5 text-ink-300 text-xs md:text-sm">
+                <span className="h-px w-4 shrink-0 bg-white/45" aria-hidden="true" />
                 {item}
               </li>
             ))}
@@ -299,7 +302,7 @@ export default function EnHomePage() {
       <EligibilityForm />
 
       {/* ━━━━━━━━ S13 FOOTER ━━━━━━━━ */}
-      <footer data-bg="#0A0F1E" className="bg-[#0A0F1E] py-16 px-6 md:px-16">
+      <footer data-bg="#0D1A24" className="bg-deep-900 px-6 md:px-10 lg:px-16 py-[72px] md:py-[96px]">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-12">
             <div>
@@ -312,14 +315,14 @@ export default function EnHomePage() {
               />
               {/* 旧タグライン "Japanese products, to the world." は
                   本ページと方向が正反対のため差し替えている */}
-              <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+              <p className="text-ink-300 text-sm leading-relaxed max-w-xs">
                 The Japanese side of your launch.
                 <br />
                 Handled in Japan, in Japanese.
               </p>
             </div>
 
-            <nav className="grid grid-cols-2 gap-x-14 gap-y-3 text-white/60 text-sm">
+            <nav className="grid grid-cols-2 gap-x-14 gap-y-3 text-ink-300 text-sm">
               <a href="#why-japan" className="hover:text-white transition-colors">Why Japan</a>
               <a href="#requirements" className="hover:text-white transition-colors">Requirements</a>
               <a href="#what-we-do" className="hover:text-white transition-colors">What we do</a>
@@ -335,23 +338,23 @@ export default function EnHomePage() {
             </nav>
           </div>
 
-          <div className="border-t border-white/10 mt-14 pt-8">
-            <p className="text-white/55 text-xs leading-relaxed mb-2">
+          <div className="border-t border-deep-700 mt-14 pt-8">
+            <p className="text-ink-300 text-xs leading-relaxed mb-2">
               SOMA Inc. · 127-9 Naka-Kibogaoka, Asahi-ku, Yokohama, Kanagawa
               241-0825, Japan · +81 45-567-6969
             </p>
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-              <Link href="/privacy" className="text-white/50 hover:text-white text-xs transition-colors">
+              <Link href="/privacy" className="text-ink-300 hover:text-white text-xs transition-colors">
                 Privacy Policy{" "}
-                <span className="text-white/50 text-[10px]">(JP)</span>
+                <span className="text-ink-300 text-[10px]">(JP)</span>
               </Link>
-              <span className="text-white/55 text-xs">
+              <span className="text-ink-300 text-xs">
                 © {new Date().getFullYear()} SOMA Inc. All rights reserved.
               </span>
             </div>
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }

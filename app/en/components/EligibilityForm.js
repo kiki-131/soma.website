@@ -75,19 +75,21 @@ const INITIAL = {
 
 // 入力欄は16px以上でないと iOS Safari が自動ズームしてレイアウトが崩れる
 const inputClass =
-  "w-full border border-gray-300 rounded-lg px-3.5 py-2.5 text-base text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#0066FF] focus:border-transparent";
+  "w-full h-[52px] bg-transparent rounded-none border-0 border-b border-paper-300 px-0 " +
+  "text-base text-ink-900 placeholder:text-ink-400 " +
+  "focus:outline-none focus:border-ink-900 focus:ring-0 transition-colors";
 
 function Field({ id, label, error, children, hint }) {
   return (
     <div>
-      <label htmlFor={id} className="block mb-1.5 font-semibold text-sm text-gray-800">
+      <label htmlFor={id} className="block mb-1.5 font-semibold text-sm text-ink-800">
         {label}
       </label>
-      {hint && <p className="text-xs text-gray-500 mb-1.5">{hint}</p>}
+      {hint && <p className="text-xs text-ink-500 mb-1.5">{hint}</p>}
       {children}
       {error && (
-        <p id={`${id}-error`} className="mt-1.5 text-sm text-red-700 flex items-start gap-1.5">
-          <span aria-hidden="true">⚠</span>
+        <p id={`${id}-error`} className="mt-1.5 text-sm text-accent-600 flex items-start gap-1.5">
+          <span aria-hidden="true"></span>
           {error}
         </p>
       )}
@@ -98,7 +100,7 @@ function Field({ id, label, error, children, hint }) {
 function RadioGroup({ name, legend, options, value, onChange, error }) {
   return (
     <fieldset>
-      <legend className="mb-2.5 font-semibold text-sm text-gray-800">{legend}</legend>
+      <legend className="mb-2.5 font-semibold text-sm text-ink-800">{legend}</legend>
       <div className="flex flex-wrap gap-2">
         {options.map((opt) => {
           const id = `${name}-${opt.replace(/\W+/g, "-")}`;
@@ -116,10 +118,10 @@ function RadioGroup({ name, legend, options, value, onChange, error }) {
               />
               <label
                 htmlFor={id}
-                className={`block cursor-pointer rounded-full border px-4 py-2.5 text-sm transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-[#0066FF] ${
+                className={`block cursor-pointer rounded-[2px] border px-4 py-3 text-[14px] transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-accent-600 ${
                   selected
-                    ? "bg-[#0066FF] border-[#0066FF] text-white font-semibold"
-                    : "bg-white border-gray-300 text-gray-700 hover:border-[#0066FF]"
+                    ? "bg-ink-900 border-ink-900 text-paper-0 font-semibold"
+                    : "bg-transparent border-paper-300 text-ink-700 hover:border-ink-900"
                 }`}
               >
                 {opt}
@@ -129,8 +131,8 @@ function RadioGroup({ name, legend, options, value, onChange, error }) {
         })}
       </div>
       {error && (
-        <p className="mt-2 text-sm text-red-700 flex items-start gap-1.5">
-          <span aria-hidden="true">⚠</span>
+        <p className="mt-2 text-sm text-accent-600 flex items-start gap-1.5">
+          <span aria-hidden="true"></span>
           {error}
         </p>
       )}
@@ -265,14 +267,14 @@ export default function EligibilityForm() {
   // ── 送信完了 ──
   if (sent) {
     return (
-      <section id="contact" data-bg="#FFFFFF" className="bg-white py-24 md:py-32 px-6 md:px-16 scroll-mt-20">
+      <section id="contact" data-bg="#FFFFFF" className="bg-deep-900 px-6 md:px-10 lg:px-16 pt-[132px] pb-[120px] md:pt-[200px] md:pb-[160px] scroll-mt-20">
         <div className="max-w-2xl mx-auto">
           <div
             role="status"
             aria-live="polite"
-            className="border-2 border-[#0066FF] rounded-2xl p-8 md:p-10 bg-[#F5F9FF]"
+            className="border-t-[3px] border-accent-600 pt-10"
           >
-            <h2 className="font-extrabold text-gray-900 text-2xl mb-3">
+            <h2 className="font-medium text-ink-900 text-2xl mb-3">
               Thanks. Here&apos;s what happens next.
             </h2>
             <ol className="mt-7 space-y-6">
@@ -282,10 +284,10 @@ export default function EligibilityForm() {
                 "A written Fit Review: category, regulation, what a launch would require, and our honest read on whether it's worth doing.",
               ].map((text, i) => (
                 <li key={i} className="flex gap-4">
-                  <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-[#0066FF] text-white text-xs font-black">
+                  <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-[2px] bg-accent-600 text-white text-xs font-medium">
                     {i + 1}
                   </span>
-                  <p className="text-gray-700 text-sm md:text-base leading-relaxed pt-0.5">
+                  <p className="text-ink-700 text-sm md:text-base leading-relaxed pt-0.5">
                     {text}
                   </p>
                 </li>
@@ -298,7 +300,7 @@ export default function EligibilityForm() {
   }
 
   return (
-    <section id="contact" data-bg="#FFFFFF" className="bg-white py-24 md:py-32 px-6 md:px-16 scroll-mt-20">
+    <section id="contact" data-bg="#FFFFFF" className="bg-deep-900 px-6 md:px-10 lg:px-16 pt-[132px] pb-[120px] md:pt-[200px] md:pb-[160px] scroll-mt-20">
       <div className="max-w-2xl mx-auto" id="eligibility-form-top">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -306,31 +308,31 @@ export default function EligibilityForm() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-extrabold text-gray-900 leading-[1.15] mb-5" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
+          <h2 className="font-medium text-ink-900 leading-[1.02] tracking-[-0.026em] mb-5" style={{ fontSize: "clamp(32px, 4.4vw, 60px)" }}>
             Start with the eligibility check.
           </h2>
-          <p className="text-gray-600 text-base leading-relaxed mb-8">
+          <p className="text-ink-700 text-base leading-relaxed mb-8">
             Tell us what the product is and what&apos;s inside it. You&apos;ll
             get a straight read on whether it can go to Japan, what it would
             need, and whether we think it should.
           </p>
 
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 mb-10 text-sm font-semibold text-gray-700">
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 mb-10 text-sm font-semibold text-ink-700">
             <li>We reply within one business day (JST).</li>
             <li>We work in English.</li>
             <li>No sales call.</li>
           </ul>
         </motion.div>
 
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-9 shadow-sm">
+        <div className="border-t border-paper-300 pt-10">
           {/* ステップ表示 */}
           <div className="flex items-center gap-3 mb-8">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0066FF]">
+            <span className="text-xs font-semibold tracking-widest uppercase text-accent-600">
               Step {step} of 2
             </span>
-            <div className="flex-1 h-1 bg-gray-100 rounded-full overflow-hidden">
+            <div className="flex-1 h-1 bg-paper-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#0066FF] transition-all duration-500"
+                className="h-full bg-accent-600 transition-all duration-500"
                 style={{ width: step === 1 ? "50%" : "100%" }}
               />
             </div>
@@ -338,7 +340,7 @@ export default function EligibilityForm() {
 
           {step === 1 ? (
             <div className="space-y-6">
-              <p className="font-bold text-gray-900 text-lg">About you</p>
+              <p className="font-semibold text-ink-900 text-lg">About you</p>
 
               <Field id="name" label="Your name" error={errors.name}>
                 <input
@@ -440,21 +442,20 @@ export default function EligibilityForm() {
               <button
                 type="button"
                 onClick={goToStep2}
-                className="w-full py-3.5 px-5 rounded-full bg-[#0066FF] text-white font-bold text-sm hover:bg-[#0052cc] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#0066FF]"
+                className="w-full py-3.5 px-5 rounded-[2px] bg-accent-600 text-white font-semibold text-sm hover:bg-accent-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-600"
               >
-                Next — about the product →
-              </button>
+                Next — about the product</button>
             </div>
           ) : (
             <div className="space-y-8">
-              <p className="font-bold text-gray-900 text-lg">About the product</p>
+              <p className="font-semibold text-ink-900 text-lg">About the product</p>
 
               {/* 複数選択 */}
               <fieldset>
-                <legend className="mb-1 font-semibold text-sm text-gray-800">
+                <legend className="mb-1 font-semibold text-sm text-ink-800">
                   What&apos;s inside your product?
                 </legend>
-                <p className="text-xs text-gray-500 mb-3">Select all that apply.</p>
+                <p className="text-xs text-ink-500 mb-3">Select all that apply.</p>
                 <div className="space-y-2">
                   {CONTENTS.map((item) => {
                     const id = `content-${item.value.replace(/\W+/g, "-")}`;
@@ -470,29 +471,29 @@ export default function EligibilityForm() {
                         />
                         <label
                           htmlFor={id}
-                          className={`block cursor-pointer rounded-xl border px-4 py-3 transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-[#0066FF] ${
+                          className={`block cursor-pointer border-b px-0 py-4 transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-accent-600 ${
                             checked
-                              ? "border-[#0066FF] bg-[#F5F9FF]"
-                              : "border-gray-300 bg-white hover:border-[#0066FF]/60"
+                              ? "border-ink-900"
+                              : "border-paper-200 hover:border-ink-400"
                           }`}
                         >
                           <span className="flex items-start gap-3">
                             <span
-                              className={`flex-shrink-0 mt-0.5 w-4 h-4 rounded border flex items-center justify-center text-[10px] font-bold ${
+                              className={`flex-shrink-0 mt-0.5 w-4 h-4 rounded border flex items-center justify-center text-[10px] font-semibold ${
                                 checked
-                                  ? "bg-[#0066FF] border-[#0066FF] text-white"
-                                  : "border-gray-400 text-transparent"
+                                  ? "bg-accent-600 border-accent-600 text-white"
+                                  : "border-ink-400 text-transparent"
                               }`}
                               aria-hidden="true"
                             >
                               ✓
                             </span>
                             <span>
-                              <span className="block text-sm text-gray-900 font-medium">
+                              <span className="block text-sm text-ink-900 font-medium">
                                 {item.value}
                               </span>
                               {item.hint && (
-                                <span className="block text-[11px] text-gray-500 mt-0.5">
+                                <span className="block text-[11px] text-ink-500 mt-0.5">
                                   {item.hint}
                                 </span>
                               )}
@@ -504,8 +505,8 @@ export default function EligibilityForm() {
                   })}
                 </div>
                 {errors.contents && (
-                  <p className="mt-2 text-sm text-red-700 flex items-start gap-1.5">
-                    <span aria-hidden="true">⚠</span>
+                  <p className="mt-2 text-sm text-accent-600 flex items-start gap-1.5">
+                    <span aria-hidden="true"></span>
                     {errors.contents}
                   </p>
                 )}
@@ -586,11 +587,11 @@ export default function EligibilityForm() {
                     className="mt-1 w-4 h-4"
                     aria-required="true"
                   />
-                  <span className="text-sm text-gray-700 leading-relaxed">
+                  <span className="text-sm text-ink-700 leading-relaxed">
                     I&apos;ve read the{" "}
                     <button
                       type="button"
-                      className="underline text-[#0066FF] font-medium"
+                      className="underline text-accent-600 font-medium"
                       onClick={(e) => {
                         e.preventDefault();
                         setIsPrivacyOpen(true);
@@ -603,8 +604,8 @@ export default function EligibilityForm() {
                   </span>
                 </label>
                 {errors.agree && (
-                  <p className="mt-2 text-sm text-red-700 flex items-start gap-1.5">
-                    <span aria-hidden="true">⚠</span>
+                  <p className="mt-2 text-sm text-accent-600 flex items-start gap-1.5">
+                    <span aria-hidden="true"></span>
                     {errors.agree}
                   </p>
                 )}
@@ -614,7 +615,7 @@ export default function EligibilityForm() {
                 <div
                   role="alert"
                   aria-live="assertive"
-                  className="border border-red-300 bg-red-50 rounded-xl p-4 text-sm text-red-800 leading-relaxed"
+                  className="border border-accent-600 bg-accent-50 rounded-none p-4 text-sm text-accent-600 leading-relaxed"
                 >
                   {submitError}
                 </div>
@@ -624,7 +625,7 @@ export default function EligibilityForm() {
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="sm:w-auto px-6 py-3.5 rounded-full border border-gray-300 text-gray-700 font-semibold text-sm hover:border-gray-400 transition-colors"
+                  className="sm:w-auto px-6 py-3.5 rounded-[2px] border border-paper-300 text-ink-700 font-semibold text-sm hover:border-ink-400 transition-colors"
                 >
                   ← Back
                 </button>
@@ -632,10 +633,10 @@ export default function EligibilityForm() {
                   type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className={`flex-1 py-3.5 px-5 rounded-full text-white font-bold text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#0066FF] ${
+                  className={`flex-1 py-3.5 px-5 rounded-[2px] text-white font-semibold text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-600 ${
                     isSubmitting
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-[#0066FF] hover:bg-[#0052cc]"
+                      ? "bg-ink-400 cursor-not-allowed"
+                      : "bg-accent-600 hover:bg-accent-500"
                   }`}
                 >
                   {isSubmitting ? "Sending…" : "Send my eligibility check"}

@@ -6,10 +6,10 @@ export default function PrivacyPolicyModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-2xl shadow-xl max-w-3xl w-full p-8 overflow-y-auto max-h-[90vh]">
-        <h3 className="text-2xl font-bold text-gray-800 mb-6">Privacy Policy</h3>
+      <div className="bg-white rounded-none shadow-xl max-w-3xl w-full p-8 overflow-y-auto max-h-[90vh]">
+        <h3 className="text-2xl font-semibold text-ink-900 mb-6">Privacy Policy</h3>
 
-        <div className="space-y-6 text-gray-700 text-base">
+        <div className="space-y-6 text-ink-700 text-base">
           <section>
             <h4 className="text-xl font-semibold mb-2">Purpose of Use of Information</h4>
             <p>We use the information we collect for the following purposes:</p>
@@ -86,7 +86,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }) {
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-gradient-to-r from-blue-500 to-red-500 transition"
+            className="px-4 py-2 bg-accent-600 text-white rounded-[2px] hover:bg-accent-500 transition"
           >
             Close
           </button>

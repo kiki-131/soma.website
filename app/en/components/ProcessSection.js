@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import WordByWord from "./WordByWord";
 
@@ -70,8 +71,8 @@ export default function ProcessSection() {
   return (
     <section
       id="process"
-      data-bg="#F8F9FA"
-      className="bg-[#F8F9FA] py-24 md:py-36 px-6 md:px-16 scroll-mt-20"
+      data-bg="#FAF9F7"
+      className="bg-paper-50 px-6 md:px-10 lg:px-16 py-[96px] md:py-[144px] scroll-mt-20"
     >
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -81,8 +82,8 @@ export default function ProcessSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="w-8 h-px bg-[#0066FF]" />
-          <span className="text-[#0066FF] text-xs font-bold tracking-[0.35em] uppercase">
+          <div className="w-8 h-px bg-accent-600" />
+          <span className="text-accent-600 text-xs font-semibold tracking-[0.08em] uppercase">
             How it works
           </span>
         </motion.div>
@@ -93,13 +94,24 @@ export default function ProcessSection() {
               "Six steps. We're honest about",
               "which ones we can put a clock on.",
             ]}
-            className="font-extrabold text-gray-900 leading-[1.15]"
-            style={{ fontSize: "clamp(26px, 3.6vw, 46px)" }}
+            className="font-medium text-ink-900 leading-[1.08] tracking-[-0.020em]"
+            style={{ fontSize: "clamp(27px, 3.2vw, 42px)" }}
           />
         </div>
 
         {/* 縦タイムライン（常時展開） */}
-        <ol className="relative border-l-2 border-gray-200 ml-4 md:ml-6">
+        <div className="relative w-full aspect-[21/9] overflow-hidden mb-16 -mx-6 md:-mx-10 lg:-mx-16 w-auto">
+          <Image
+            src="/images/packing_hands.jpg"
+            alt="Hands packing a parcel for dispatch"
+            fill
+            className="object-cover object-center [filter:saturate(0.86)_contrast(1.05)_brightness(0.98)]"
+            sizes="100vw"
+            loading="lazy"
+          />
+        </div>
+
+        <ol className="relative border-l-2 border-paper-200 ml-4 md:ml-6">
           {STEPS.map((step, i) => (
             <motion.li
               key={step.number}
@@ -111,45 +123,45 @@ export default function ProcessSection() {
             >
               {/* 番号ドット */}
               <span
-                className="absolute -left-[15px] top-0 flex items-center justify-center w-7 h-7 rounded-full bg-[#0066FF] text-white text-[11px] font-black"
+                className="absolute -left-[15px] top-0 flex items-center justify-center w-7 h-7 rounded-[2px] bg-accent-600 text-white text-[11px] font-medium"
                 aria-hidden="true"
               >
                 {step.number}
               </span>
 
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-4">
-                <h3 className="font-extrabold text-gray-900 text-lg md:text-xl">
+                <h3 className="font-medium text-ink-900 text-lg md:text-xl">
                   {step.title}
                 </h3>
                 <span
-                  className={`text-xs font-bold px-3 py-1 rounded-full ${
+                  className={`text-xs font-semibold px-3 py-1 rounded-full ${
                     step.durationHighlight
-                      ? "bg-[#0066FF] text-white"
-                      : "bg-gray-200 text-gray-600"
+                      ? "bg-accent-600 text-white"
+                      : "bg-paper-200 text-ink-700"
                   }`}
                 >
                   {step.duration}
                 </span>
               </div>
 
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-6">
+              <p className="text-ink-700 text-sm md:text-base leading-relaxed mb-6">
                 {step.body}
               </p>
 
-              <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-4 border-t border-gray-200 pt-5">
+              <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-4 border-t border-paper-200 pt-5">
                 <div>
-                  <dt className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 mb-2">
+                  <dt className="text-[10px] font-semibold tracking-[0.08em] uppercase text-ink-500 mb-2">
                     You
                   </dt>
-                  <dd className="text-gray-700 text-sm leading-relaxed">
+                  <dd className="text-ink-700 text-sm leading-relaxed">
                     {step.you}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#0066FF] mb-2">
+                  <dt className="text-[10px] font-semibold tracking-[0.08em] uppercase text-accent-600 mb-2">
                     Us
                   </dt>
-                  <dd className="text-gray-700 text-sm leading-relaxed">
+                  <dd className="text-ink-700 text-sm leading-relaxed">
                     {step.us}
                   </dd>
                 </div>
@@ -167,10 +179,9 @@ export default function ProcessSection() {
         >
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-7 py-4 bg-[#0066FF] text-white font-bold text-sm rounded-full hover:bg-[#0052cc] transition-colors"
+            className="inline-flex items-center gap-2 px-7 py-4 bg-accent-600 text-white font-semibold text-sm rounded-[2px] hover:bg-accent-500 transition-colors"
           >
             Start with step 1 — it&apos;s free
-            <span aria-hidden="true">→</span>
           </a>
         </motion.div>
       </div>
