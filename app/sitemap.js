@@ -5,7 +5,10 @@ const BASE_URL = "https://www.soma-jp.net";
 const staticPages = [
   { url: "/", changeFrequency: "daily", priority: 1.0 },
   { url: "/blog", changeFrequency: "daily", priority: 0.9 },
+  { url: "/en", changeFrequency: "weekly", priority: 0.9 },
   { url: "/crowdfunding", changeFrequency: "weekly", priority: 0.8 },
+  { url: "/cross-border-ec", changeFrequency: "weekly", priority: 0.8 },
+  { url: "/faire", changeFrequency: "weekly", priority: 0.8 },
   { url: "/dx", changeFrequency: "weekly", priority: 0.8 },
 ];
 

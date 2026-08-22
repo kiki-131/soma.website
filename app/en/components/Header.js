@@ -2,14 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaInstagram, FaBars, FaTimes } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
+// ナビ項目は「読者の疑問」の順に並べる。
+// 2番目に Services ではなく Requirements を置いているのは意図的で、
+// 競合のナビには存在しない項目名のため、ナビだけで差別化が伝わる。
 const NAV = [
-  { label: "Projects", id: "Projects" },
-  { label: "Services", id: "Services" },
-  { label: "About us", id: "about-us" },
+  { label: "Why Japan", id: "why-japan" },
+  { label: "Requirements", id: "requirements" },
+  { label: "Platforms", id: "platforms" },
+  { label: "Process", id: "process" },
+  { label: "About", id: "about" },
 ];
 
 // globals.css の min-height:48px を打ち消す共通スタイル
@@ -23,11 +27,14 @@ export default function Header({ scrollToSection }) {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
-      const projectsEl = document.getElementById("Projects");
-      if (projectsEl) {
-        setShowCTA(window.scrollY + 80 >= projectsEl.offsetTop);
+      // 商材適合の帯(S1.5)を通過してからCTAを出す。
+      // ヒーロー直下でいきなり追いかけると押しの強い営業に見えるため。
+      const anchor = document.getElementById("why-japan");
+      if (anchor) {
+        setShowCTA(window.scrollY + 80 >= anchor.offsetTop);
       }
     };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -44,7 +51,8 @@ export default function Header({ scrollToSection }) {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={resetMin}
-          className="flex-shrink-0 focus:outline-none mr-8"
+          className="flex-shrink-0 mr-8 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0F1E]"
+          aria-label="Back to top"
         >
           <Image
             src="/images/logo.jpg"
@@ -57,71 +65,41 @@ export default function Header({ scrollToSection }) {
           />
         </button>
 
-        {/* ナビ */}
+        {/* ナビ（再訪ユーザーにとっての目次として機能させる） */}
         <nav className="flex items-center gap-7 mr-auto">
           {NAV.map(({ label, id }) => (
             <button
               key={id}
               onClick={() => scrollToSection(id)}
               style={resetMin}
-              className="text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors"
+              className="text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
             >
               {label}
             </button>
           ))}
-          <Link
-            href="/blog"
-            style={resetMin}
-            className="inline-flex items-baseline gap-1 text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors"
-          >
-            Blog
-            <span className="text-white/35 text-[10px] font-normal tracking-wide">(JP)</span>
-          </Link>
         </nav>
 
-        {/* 言語切替 + SNS + CTA */}
+        {/* 言語切替 + CTA（CTAは1つだけ。2種類同時表示は選択負荷になるため統合） */}
         <div className="flex items-center gap-4">
           <Link
             href="/"
             style={resetMin}
-            className="text-white/40 hover:text-white/70 text-xs font-normal tracking-wide transition-colors"
+            className="text-white/60 hover:text-white text-xs font-normal tracking-wide transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
           >
             日本語
           </Link>
           <span className="w-px h-3 bg-white/15" />
-          <a
-            href="https://www.instagram.com/soma.japan77/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={resetMin}
-            className="flex items-center text-white/50 hover:text-white transition-colors"
-          >
-            <FaInstagram size={17} />
-          </a>
-          <a
-            href="https://x.com/kaigai_support7"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={resetMin}
-            className="flex items-center text-white/50 hover:text-white transition-colors"
-          >
-            <FaXTwitter size={17} />
-          </a>
-
           <button
             onClick={() => scrollToSection("contact")}
-            style={{ ...resetMin, opacity: showCTA ? 1 : 0, pointerEvents: showCTA ? "auto" : "none", transition: "opacity 0.6s ease" }}
-            className="flex items-center px-4 py-2 text-sm font-semibold text-white bg-[#0066FF] rounded-full hover:bg-[#0052cc] transition-colors duration-300"
+            style={{
+              ...resetMin,
+              opacity: showCTA ? 1 : 0,
+              pointerEvents: showCTA ? "auto" : "none",
+              transition: "opacity 0.6s ease",
+            }}
+            className="flex items-center px-5 py-2 text-sm font-semibold text-white bg-[#0066FF] rounded-full hover:bg-[#0052cc] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0F1E]"
           >
-            Book a Free Consultation
-          </button>
-
-          <button
-            onClick={() => scrollToSection("contact")}
-            style={resetMin}
-            className="flex items-center px-5 py-2 text-sm font-semibold text-white border border-white/25 rounded-full hover:bg-white hover:text-[#0A0F1E] transition-all duration-300"
-          >
-            Contact us
+            Free Eligibility Check
           </button>
         </div>
       </div>
@@ -131,7 +109,8 @@ export default function Header({ scrollToSection }) {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={resetMin}
-          className="focus:outline-none"
+          className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
+          aria-label="Back to top"
         >
           <Image
             src="/images/logo.jpg"
@@ -143,68 +122,48 @@ export default function Header({ scrollToSection }) {
             unoptimized
           />
         </button>
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => scrollToSection("contact")}
-            style={{ ...resetMin, opacity: showCTA ? 1 : 0, pointerEvents: showCTA ? "auto" : "none", transition: "opacity 0.6s ease" }}
-            className="flex items-center px-3 py-1.5 text-xs font-semibold text-white bg-[#0066FF] rounded-full"
-          >
-            Free Consultation
-          </button>
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            style={resetMin}
-            className="flex items-center text-white focus:outline-none"
-          >
-            {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
-          </button>
-        </div>
+        <button
+          onClick={() => setMenuOpen((v) => !v)}
+          style={{ ...resetMin, minHeight: 44, minWidth: 44 }}
+          className="flex items-center justify-center text-white rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+        </button>
       </div>
 
       {/* モバイルメニュー */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0A0F1E] border-t border-white/10 px-6 py-6 flex flex-col gap-5">
+        <div className="md:hidden bg-[#0A0F1E] border-t border-white/10 px-6 py-4 flex flex-col">
           {NAV.map(({ label, id }) => (
             <button
               key={id}
-              onClick={() => { setMenuOpen(false); setTimeout(() => scrollToSection(id), 50); }}
-              style={resetMin}
-              className="text-left text-white/80 hover:text-white text-base transition-colors"
+              onClick={() => {
+                setMenuOpen(false);
+                setTimeout(() => scrollToSection(id), 50);
+              }}
+              className="text-left text-white/80 hover:text-white text-base transition-colors py-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
             >
               {label}
             </button>
           ))}
           <Link
-            href="/blog"
-            style={resetMin}
-            className="inline-flex items-baseline gap-1 text-white/80 hover:text-white text-base transition-colors"
-            onClick={() => setMenuOpen(false)}
-          >
-            Blog
-            <span className="text-white/40 text-[10px] font-normal tracking-wide">(JP)</span>
-          </Link>
-          <Link
             href="/"
-            style={resetMin}
-            className="text-white/40 hover:text-white/70 text-sm font-normal transition-colors"
+            className="text-white/60 hover:text-white text-sm font-normal transition-colors py-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
             onClick={() => setMenuOpen(false)}
           >
             日本語
           </Link>
-          <div className="flex items-center gap-5 pt-1">
-            <a href="https://www.instagram.com/soma.japan77/" target="_blank" rel="noopener noreferrer" style={resetMin} className="flex items-center text-white/50 hover:text-white transition-colors">
-              <FaInstagram size={20} />
-            </a>
-            <a href="https://x.com/kaigai_support7" target="_blank" rel="noopener noreferrer" style={resetMin} className="flex items-center text-white/50 hover:text-white transition-colors">
-              <FaXTwitter size={20} />
-            </a>
-          </div>
           <button
-            onClick={() => { setMenuOpen(false); setTimeout(() => scrollToSection("contact"), 50); }}
+            onClick={() => {
+              setMenuOpen(false);
+              setTimeout(() => scrollToSection("contact"), 50);
+            }}
             style={resetMin}
-            className="px-6 py-3 text-white font-semibold bg-[#0066FF] rounded-full text-sm"
+            className="mt-3 px-6 py-3.5 text-white font-semibold bg-[#0066FF] rounded-full text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d94ff]"
           >
-            Contact us
+            Free Eligibility Check
           </button>
         </div>
       )}
