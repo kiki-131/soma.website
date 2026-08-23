@@ -135,7 +135,7 @@ export default function FairePage() {
           <span style={{ color: "#999", fontSize: "12px", letterSpacing: "0.06em" }}>× Faire</span>
         </Link>
         <div className="faire-nav-links">
-          {[["#about", "Faireとは"], ["#services", "サービス"], ["#process", "流れ"], ["#faq", "FAQ"]].map(([href, label]) => (
+          {[["#about", "Faireとは"], ["#services", "サービス"], ["#process", "流れ"], ["#faq", "FAQ"], ["/crowdfunding", "海外クラファン"], ["/cross-border-ec", "越境EC"]].map(([href, label]) => (
             <a key={href} href={href} style={{ color: "#555", fontSize: "13px", letterSpacing: "0.06em", textDecoration: "none", transition: "color 0.2s" }}
               onMouseEnter={e => e.target.style.color = "#0066FF"}
               onMouseLeave={e => e.target.style.color = "#555"}

@@ -12,6 +12,14 @@ const NAV = [
   { label: "About us", id: "about-us" },
 ];
 
+// サービスLPへの直接リンク。トップページのServicesSection内カードにも同じ3件があるが、
+// スクロールなしでヘッダーから直接到達できるようにし、内部リンクの経路を増やす。
+const SERVICE_LINKS = [
+  { label: "クラファン", href: "/crowdfunding" },
+  { label: "Faire", href: "/faire" },
+  { label: "越境EC", href: "/cross-border-ec" },
+];
+
 // globals.css の min-height:48px を打ち消す共通スタイル
 const resetMin = { minHeight: 0, minWidth: 0 };
 
@@ -39,12 +47,12 @@ export default function Header({ scrollToSection }) {
       }`}
     >
       {/* ━━ デスクトップ ━━ */}
-      <div className="hidden md:flex items-center h-16 px-8 max-w-7xl mx-auto">
+      <div className="hidden md:flex items-center h-16 px-5 lg:px-8 max-w-7xl mx-auto">
         {/* ロゴ */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={resetMin}
-          className="flex-shrink-0 focus:outline-none mr-8"
+          className="flex-shrink-0 focus:outline-none mr-5 lg:mr-8"
         >
           <Image
             src="/images/logo.jpg"
@@ -58,7 +66,7 @@ export default function Header({ scrollToSection }) {
         </button>
 
         {/* ナビ */}
-        <nav className="flex items-center gap-7 mr-auto">
+        <nav className="flex items-center gap-3.5 lg:gap-7 mr-auto">
           {NAV.map(({ label, id }) => (
             <button
               key={id}
@@ -68,6 +76,16 @@ export default function Header({ scrollToSection }) {
             >
               {label}
             </button>
+          ))}
+          {SERVICE_LINKS.map(({ label, href }) => (
+            <Link
+              key={href}
+              href={href}
+              style={resetMin}
+              className="text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors"
+            >
+              {label}
+            </Link>
           ))}
           <Link
             href="/blog"
@@ -172,6 +190,17 @@ export default function Header({ scrollToSection }) {
             >
               {label}
             </button>
+          ))}
+          {SERVICE_LINKS.map(({ label, href }) => (
+            <Link
+              key={href}
+              href={href}
+              style={resetMin}
+              className="text-left text-white/80 hover:text-white text-base transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              {label}
+            </Link>
           ))}
           <Link
             href="/blog"

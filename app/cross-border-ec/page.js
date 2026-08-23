@@ -132,7 +132,7 @@ export default function CrossBorderEcPage() {
           <span style={{ color: "#999", fontSize: "12px", letterSpacing: "0.06em" }}>× 越境EC</span>
         </Link>
         <div className="ec-nav-links">
-          {[["#about", "越境ECとは"], ["#services", "サービス"], ["#process", "流れ"], ["#faq", "FAQ"]].map(([href, label]) => (
+          {[["#about", "越境ECとは"], ["#services", "サービス"], ["#process", "流れ"], ["#faq", "FAQ"], ["/crowdfunding", "海外クラファン"], ["/faire", "Faire"]].map(([href, label]) => (
             <a key={href} href={href} style={{ color: "#555", fontSize: "13px", letterSpacing: "0.06em", textDecoration: "none", transition: "color 0.2s" }}
               onMouseEnter={e => e.target.style.color = "#0066FF"}
               onMouseLeave={e => e.target.style.color = "#555"}

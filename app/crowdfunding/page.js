@@ -25,12 +25,20 @@ export default function CrowdfundingPage() {
               className="h-16 w-auto"
             />
           </Link>
-          <a 
-            href="https://www.soma-jp.net/#contact/" 
-            className="text-sm font-bold text-blue-700 hover:text-blue-900 flex items-center"
-          >
-            お問い合わせ <FaChevronRight className="ml-1" />
-          </a>
+          <div className="flex items-center gap-5">
+            <Link href="/faire" className="hidden sm:inline text-sm font-medium text-slate-600 hover:text-blue-700">
+              Faire卸販売
+            </Link>
+            <Link href="/cross-border-ec" className="hidden sm:inline text-sm font-medium text-slate-600 hover:text-blue-700">
+              越境EC
+            </Link>
+            <a
+              href="https://www.soma-jp.net/#contact/"
+              className="text-sm font-bold text-blue-700 hover:text-blue-900 flex items-center"
+            >
+              お問い合わせ <FaChevronRight className="ml-1" />
+            </a>
+          </div>
         </div>
       </header>
 
