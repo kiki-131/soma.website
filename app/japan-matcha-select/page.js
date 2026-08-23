@@ -20,10 +20,21 @@ import { useEffect, useRef, useState } from "react";
 const FAIRE_URL = "https://www.faire.com/";
 
 // 画像は public/images/japan-matcha-select/ に置く。
-// 現在は抹茶色のSVGプレースホルダー。本番写真(WebP)に差し替えたら
-// ここを "webp" に変え、jms.css の .final の背景URLの拡張子も合わせる。
-const IMG_EXT = "svg";
-const img = (name) => `/images/japan-matcha-select/${name}.${IMG_EXT}`;
+// 現在はUnsplash（Unsplash License / 商用可・帰属表示不要）の写真をWebP化したもの。
+// 出典URLは public/images/japan-matcha-select/README.txt に記録している。
+// 自社撮影の写真に差し替える場合は、同じファイル名で上書きし、
+// 下の DIMENSIONS の実寸を更新すること（ズレるとレイアウトシフトが起きる）。
+const img = (name) => `/images/japan-matcha-select/${name}.webp`;
+
+// 各画像の実寸。width / height 属性に入れて読み込み前の領域を確保する
+const DIMENSIONS = {
+  "hero-matcha": [1067, 1600],
+  "ceremonial-matcha": [900, 1200],
+  "cafe-matcha": [800, 1200],
+  "culinary-matcha": [1200, 686],
+  "retail-matcha": [1200, 857],
+  "japanese-tea-field": [1600, 1200],
+};
 
 const NAV_LINKS = [
   { href: "#about", label: "About" },
@@ -37,7 +48,7 @@ const PRODUCTS = [
   {
     n: "01",
     image: "ceremonial-matcha",
-    alt: "Premium ceremonial-grade Japanese matcha",
+    alt: "A tea ceremony host preparing ceremonial-grade matcha in a traditional Japanese room",
     title: "Ceremonial Matcha",
     body: "Premium-grade matcha ideal for traditional preparation, specialty tea shops, and premium retail.",
     fit: "Tea Shops / Premium Retail / Gifts",
@@ -45,7 +56,7 @@ const PRODUCTS = [
   {
     n: "02",
     image: "cafe-matcha",
-    alt: "Japanese matcha prepared for café lattes",
+    alt: "A matcha latte with latte art served in a café",
     title: "Café & Latte Matcha",
     body: "Balanced matcha designed for cafés, restaurants, matcha lattes, smoothies, and desserts.",
     fit: "Cafés / Restaurants / Beverage Shops",
@@ -53,7 +64,7 @@ const PRODUCTS = [
   {
     n: "03",
     image: "culinary-matcha",
-    alt: "Culinary Japanese matcha powder for baking and desserts",
+    alt: "A matcha dessert with matcha powder, prepared for pastry and confectionery use",
     title: "Culinary Matcha",
     body: "Matcha suitable for baking, confectionery, desserts, food production, and commercial recipes.",
     fit: "Bakeries / Food Brands / Restaurants",
@@ -61,7 +72,7 @@ const PRODUCTS = [
   {
     n: "04",
     image: "retail-matcha",
-    alt: "Consumer-ready Japanese matcha products for retail",
+    alt: "Consumer-ready Japanese matcha packaging on a retail display",
     title: "Retail Matcha Products",
     body: "Consumer-ready Japanese matcha products designed for retail shelves and gifting.",
     fit: "Retailers / Gift Stores / E-commerce",
@@ -318,9 +329,9 @@ export default function JapanMatchaSelectPage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={img("hero-matcha")}
-                alt="Ceremonial matcha in a Japanese tea bowl with a bamboo whisk"
-                width="1600"
-                height="1200"
+                alt="Hands whisking matcha in a Japanese tea bowl with a bamboo whisk"
+                width={DIMENSIONS["hero-matcha"][0]}
+                height={DIMENSIONS["hero-matcha"][1]}
                 fetchPriority="high"
               />
               <span>
@@ -397,8 +408,8 @@ export default function JapanMatchaSelectPage() {
                   <img
                     src={img(product.image)}
                     alt={product.alt}
-                    width="900"
-                    height="1125"
+                    width={DIMENSIONS[product.image][0]}
+                    height={DIMENSIONS[product.image][1]}
                     loading="lazy"
                   />
                   <div>
@@ -420,9 +431,9 @@ export default function JapanMatchaSelectPage() {
             <img
               className="reveal"
               src={img("japanese-tea-field")}
-              alt="Green tea fields in Japan where matcha leaves are cultivated"
-              width="1200"
-              height="900"
+              alt="Tea fields beneath Mount Fuji in Japan, where matcha leaves are cultivated"
+              width={DIMENSIONS["japanese-tea-field"][0]}
+              height={DIMENSIONS["japanese-tea-field"][1]}
               loading="lazy"
             />
             <div className="reveal">
@@ -570,20 +581,34 @@ export default function JapanMatchaSelectPage() {
           </div>
         </section>
 
-        {/* ── 日本の生産者向け ── */}
+        {/* ── 日本の生産者向け ──
+            このブロックだけは読者が日本の茶農家・メーカーなので日本語を併記する。
+            ページ全体は lang="en" のため、和文には lang="ja" を明示する
+            （読み上げ・ブラウザ翻訳が英語として処理されるのを防ぐ）。 */}
         <section className="producer">
           <div className="container reveal">
             <div>
               <p className="eyebrow">Partnerships in Japan</p>
               <h2>For Japanese Matcha Producers</h2>
+              <p className="ja ja--title" lang="ja">
+                日本の抹茶生産者・メーカーの皆様へ
+              </p>
               <p>
                 Are you a Japanese matcha producer interested in expanding overseas? Japan
                 Matcha Select supports Japanese producers seeking international wholesale
                 opportunities.
               </p>
+              <p className="ja" lang="ja">
+                海外への販路開拓をお考えの抹茶の生産者・メーカー様を、Japan Matcha
+                Select が支援しています。海外バイヤーへのご紹介から卸取引まで、
+                まずはお気軽にご相談ください。
+              </p>
             </div>
             <a href="https://www.soma-jp.net/#contact">
               Partner With Japan Matcha Select →
+              <span className="ja" lang="ja">
+                パートナーシップのご相談はこちら
+              </span>
             </a>
           </div>
         </section>
