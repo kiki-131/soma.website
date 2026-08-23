@@ -257,7 +257,13 @@ export default function JapanMatchaSelectPage() {
       <header className="header">
         <div className="container header__inner">
           <a className="logo" href="#top" aria-label="Japan Matcha Select home">
-            Japan Matcha Select
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/japan-matcha-select/logo-full.webp"
+              alt="Japan Matcha Select"
+              width="900"
+              height="717"
+            />
           </a>
           <button
             className="menu"

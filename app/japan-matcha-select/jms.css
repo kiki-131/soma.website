@@ -180,6 +180,17 @@ body:has(.jms-scope) {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+/* ヘッダーのロゴだけ画像（フッターは引き続き文字ロゴ）。
+   82pxのヘッダーの中で上下に余白が残る高さに固定し、幅は比率のまま追従させる */
+.jms-scope .header .logo {
+  display: flex;
+  align-items: center;
+}
+.jms-scope .header .logo img {
+  width: auto;
+  height: 52px;
+  background: none;
+}
 .jms-scope .nav {
   display: flex;
   gap: 26px;
