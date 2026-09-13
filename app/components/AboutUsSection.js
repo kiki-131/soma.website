@@ -122,7 +122,7 @@ export default function AboutUsSection() {
             {[
               { label: "会社名", value: "SOMA株式会社" },
               { label: "所在地", value: "神奈川県横浜市旭区 中希望が丘127-9" },
-              { label: "電話番号", value: "045-567-6969" },
+              { label: "電話番号", value: "050-5367-5744" },
               {
                 label: "設立",
                 value: (

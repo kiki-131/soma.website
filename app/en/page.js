@@ -341,7 +341,7 @@ export default function EnHomePage() {
           <div className="border-t border-deep-700 mt-14 pt-8">
             <p className="text-ink-300 text-xs leading-relaxed mb-2">
               SOMA Inc. · 127-9 Naka-Kibogaoka, Asahi-ku, Yokohama, Kanagawa
-              241-0825, Japan · +81 45-567-6969
+              241-0825, Japan · +81 50-5367-5744
             </p>
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
               <Link href="/privacy" className="text-ink-300 hover:text-white text-xs transition-colors">

@@ -38,7 +38,7 @@ const COMPANY = [
     label: "Address in Japan",
     value: "127-9 Naka-Kibogaoka, Asahi-ku, Yokohama, Kanagawa 241-0825, Japan",
   },
-  { label: "Phone in Japan", value: "+81 45-567-6969" },
+  { label: "Phone in Japan", value: "+81 50-5367-5744" },
   { label: "Founded", value: "September 9, 2019" },
   { label: "Team", value: "20 (including part-time and contract staff)" },
 ];
