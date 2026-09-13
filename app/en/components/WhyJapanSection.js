@@ -72,14 +72,15 @@ export default function WhyJapanSection() {
       data-bg="#FFFFFF"
       className="bg-paper-0 scroll-mt-20"
     >
-      {/* 日本の小売の棚。「あなたの製品がここに並ぶ」を写真で言う。
-          角丸も影も付けず、左右を裁ち落として面として置く */}
+      {/* 洗練された日本の生活雑貨店。「あなたの製品がこの空気感の店に並ぶ」を写真で言う。
+          角丸も影も付けず、左右を裁ち落として面として置く。
+          AI生成画像（ChatGPT/DALL-E）。明るくミニマルなトーンを保つため色調補正フィルタは付けない */}
       <div className="relative w-full h-[42vh] min-h-[280px] md:h-[56vh] overflow-hidden">
         <Image
-          src="/images/retail_shelf_japan.jpg"
-          alt="A shelf in a Japanese store, packed with products and Japanese price tags"
+          src="/images/zakka_shelf_japan.jpg"
+          alt="A Japanese woman examining a handmade ceramic bowl on a light wood shelf in a bright, uncluttered lifestyle goods shop in Japan"
           fill
-          className="object-cover object-center [filter:saturate(0.86)_contrast(1.05)_brightness(0.98)]"
+          className="object-cover object-center"
           sizes="100vw"
           loading="lazy"
         />
