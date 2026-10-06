@@ -430,9 +430,9 @@ export default function EligibilityForm() {
                   aria-describedby={errors.category ? "category-error" : undefined}
                   className={inputClass}
                 >
-                  <option value="">Select one…</option>
+                  <option value="" className="bg-white text-ink-900">Select one…</option>
                   {CATEGORIES.map((c) => (
-                    <option key={c} value={c}>
+                    <option key={c} value={c} className="bg-white text-ink-900">
                       {c}
                     </option>
                   ))}
