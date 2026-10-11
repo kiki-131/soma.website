@@ -6,7 +6,7 @@
 
   Usage:
     npm i dotenv
-    node test-smtp.js
+    node scripts/test-smtp.js   (リポジトリのルートで実行する。.env.local を相対パスで読むため)
 */
 // Load .env.local explicitly (your Next.js env file). If you prefer .env, change the path.
 require('dotenv').config({ path: '.env.local' });
