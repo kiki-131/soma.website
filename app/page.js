@@ -112,7 +112,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: d(0) }}
           >
             <div className="w-10 h-px bg-[#0066FF]" />
-            <span className="text-[#0066FF] text-[11px] font-bold tracking-[0.4em] uppercase">
+            <span className="text-[#4D94FF] text-[11px] font-bold tracking-[0.4em] uppercase">
               {HERO.eyebrow}
             </span>
           </motion.div>
@@ -152,7 +152,7 @@ export default function HomePage() {
 
           {/* サブコピー */}
           <motion.p
-            className="text-white/45 text-sm md:text-base leading-[1.9] mb-12 max-w-md"
+            className="text-white/60 text-sm md:text-base leading-[1.9] mb-12 max-w-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: d(1.2) }}
@@ -184,7 +184,7 @@ export default function HomePage() {
 
             <motion.button
               onClick={() => scrollToSection("Projects")}
-              className="text-white/40 text-sm font-medium hover:text-white/80 transition-colors flex items-center gap-2"
+              className="text-white/60 text-sm font-medium hover:text-white transition-colors flex items-center gap-2"
               whileHover={{ x: 4 }}
             >
               実績を見る <span>→</span>
@@ -203,7 +203,7 @@ export default function HomePage() {
               animate={{ scaleY: [0.3, 1, 0.3], opacity: [0.3, 1, 0.3] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             />
-            <span className="text-white/20 text-[10px] tracking-[0.4em] uppercase">Scroll</span>
+            <span className="text-white/50 text-[10px] tracking-[0.4em] uppercase">Scroll</span>
           </motion.div>
         </motion.div>
 
@@ -263,7 +263,7 @@ export default function HomePage() {
                 height={100}
                 className="h-16 w-auto mb-4 opacity-90"
               />
-              <p className="text-white/30 text-xs leading-relaxed max-w-xs">
+              <p className="text-white/60 text-xs leading-relaxed max-w-xs">
                 Solutions for Outbound Market Ambitions.
                 <br />
                 日本のプロダクトを世界へ。
@@ -305,7 +305,7 @@ export default function HomePage() {
           </div>
 
           <div className="border-t border-white/10 mt-12 pt-8">
-            <p className="text-white/20 text-xs text-center">
+            <p className="text-white/50 text-xs text-center">
               © {new Date().getFullYear()} SOMA株式会社. All rights reserved.
             </p>
           </div>

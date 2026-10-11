@@ -46,8 +46,10 @@ export default function Header({ scrollToSection }) {
         scrolled ? "bg-[#0A0F1E]/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
       }`}
     >
-      {/* ━━ デスクトップ ━━ */}
-      <div className="hidden md:flex items-center h-16 px-5 lg:px-8 max-w-7xl mx-auto">
+      {/* ━━ デスクトップ ━━
+          ナビ項目が多く、1280px未満では「About us」「クラファン」などが2行に折り返して崩れるため、
+          ハンバーガー表示への切り替えを md(768px) ではなく xl(1280px) にしている。 */}
+      <div className="hidden xl:flex items-center h-16 px-5 lg:px-8 max-w-7xl mx-auto">
         {/* ロゴ */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -72,7 +74,7 @@ export default function Header({ scrollToSection }) {
               key={id}
               onClick={() => scrollToSection(id)}
               style={resetMin}
-              className="text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors"
+              className="text-white/75 hover:text-white whitespace-nowrap text-sm font-medium tracking-wide transition-colors"
             >
               {label}
             </button>
@@ -82,7 +84,7 @@ export default function Header({ scrollToSection }) {
               key={href}
               href={href}
               style={resetMin}
-              className="text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors"
+              className="text-white/75 hover:text-white whitespace-nowrap text-sm font-medium tracking-wide transition-colors"
             >
               {label}
             </Link>
@@ -90,7 +92,7 @@ export default function Header({ scrollToSection }) {
           <Link
             href="/blog"
             style={resetMin}
-            className="text-white/75 hover:text-white text-sm font-medium tracking-wide transition-colors"
+            className="text-white/75 hover:text-white whitespace-nowrap text-sm font-medium tracking-wide transition-colors"
           >
             Blog
           </Link>
@@ -101,7 +103,7 @@ export default function Header({ scrollToSection }) {
           <Link
             href="/en"
             style={resetMin}
-            className="text-white/40 hover:text-white/70 text-xs font-normal tracking-wide transition-colors"
+            className="text-white/65 hover:text-white whitespace-nowrap text-xs font-normal tracking-wide transition-colors"
           >
             English
           </Link>
@@ -128,7 +130,7 @@ export default function Header({ scrollToSection }) {
           <button
             onClick={() => scrollToSection("contact")}
             style={{ ...resetMin, opacity: showCTA ? 1 : 0, pointerEvents: showCTA ? "auto" : "none", transition: "opacity 0.6s ease" }}
-            className="flex items-center px-4 py-2 text-sm font-semibold text-white bg-[#0066FF] rounded-full hover:bg-[#0052cc] transition-colors duration-300"
+            className="flex items-center whitespace-nowrap px-4 py-2 text-sm font-semibold text-white bg-[#0066FF] rounded-full hover:bg-[#0052cc] transition-colors duration-300"
           >
             無料相談を予約する
           </button>
@@ -136,7 +138,7 @@ export default function Header({ scrollToSection }) {
           <button
             onClick={() => scrollToSection("contact")}
             style={resetMin}
-            className="flex items-center px-5 py-2 text-sm font-semibold text-white border border-white/25 rounded-full hover:bg-white hover:text-[#0A0F1E] transition-all duration-300"
+            className="flex items-center whitespace-nowrap px-5 py-2 text-sm font-semibold text-white border border-white/25 rounded-full hover:bg-white hover:text-[#0A0F1E] transition-all duration-300"
           >
             Contact us
           </button>
@@ -144,7 +146,7 @@ export default function Header({ scrollToSection }) {
       </div>
 
       {/* ━━ モバイル ━━ */}
-      <div className="md:hidden flex items-center justify-between h-14 px-5">
+      <div className="xl:hidden flex items-center justify-between h-14 px-5">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={resetMin}
@@ -180,7 +182,7 @@ export default function Header({ scrollToSection }) {
 
       {/* モバイルメニュー */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0A0F1E] border-t border-white/10 px-6 py-6 flex flex-col gap-5">
+        <div className="xl:hidden bg-[#0A0F1E] border-t border-white/10 px-6 py-6 flex flex-col gap-5">
           {NAV.map(({ label, id }) => (
             <button
               key={id}
@@ -213,7 +215,7 @@ export default function Header({ scrollToSection }) {
           <Link
             href="/en"
             style={resetMin}
-            className="text-white/40 hover:text-white/70 text-sm font-normal transition-colors"
+            className="text-white/65 hover:text-white text-sm font-normal transition-colors"
             onClick={() => setMenuOpen(false)}
           >
             English
