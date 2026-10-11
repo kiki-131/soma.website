@@ -62,7 +62,8 @@ export async function POST(req) {
         if (!forwardRes.ok) {
           const bodyText = await forwardRes.text().catch(() => '<unreadable>');
           console.error('External mailer returned error', forwardRes.status, bodyText);
-          return new Response(JSON.stringify({ ok: false, error: 'external_mailer_failed', status: forwardRes.status, body: bodyText }), { status: 500 });
+          // 外部メーラーの応答本文は、内部情報を含みうるためクライアントには返さない（上のログで確認する）
+          return new Response(JSON.stringify({ ok: false, error: 'external_mailer_failed', status: forwardRes.status }), { status: 500 });
         }
 
         console.log('External mailer accepted request');
@@ -123,6 +124,14 @@ export async function POST(req) {
 
         // Try a fallback: some servers prefer LOGIN authMethod or different TLS options.
         try {
+          // この予備経路は TLS 証明書の検証を無効にするため、通信の盗聴・改ざんに弱い。
+          // 既定では従来どおり動かす（本番の送信を止めないため）が、使われたときは必ず警告を出す。
+          // Vercel のログに下の警告が出ていなければ、予備経路は使われていないので、
+          // SMTP_STRICT_TLS=true を設定して無効化できる。
+          if (process.env.SMTP_STRICT_TLS === 'true') {
+            throw verifyErr; // 予備経路を使わず、下の SendGrid 予備経路 / エラー応答へ進む
+          }
+          console.warn('[SECURITY] SMTP fallback with tls.rejectUnauthorized=false is being used. If the primary connection works, set SMTP_STRICT_TLS=true to disable this fallback.');
           console.log('Attempting fallback verify: authMethod=LOGIN, tls.rejectUnauthorized=false');
           const fallback = createTransport({ authMethod: 'LOGIN', tls: { rejectUnauthorized: false } });
           await fallback.verify();
@@ -136,7 +145,9 @@ export async function POST(req) {
           if (SENDGRID_API_KEY) {
             console.log('Attempting SendGrid fallback because SMTP failed');
             try {
-              const SENDGRID_FROM = process.env.SENDGRID_FROM || process.env.MAIL_FROM || 'no-reply@example.com';
+              // 送信元が未設定のときにダミーのドメインから送らない（届かない・なりすまし扱いを防ぐ）
+              const SENDGRID_FROM = process.env.SENDGRID_FROM || process.env.MAIL_FROM;
+              if (!SENDGRID_FROM) throw new Error('SENDGRID_FROM / MAIL_FROM is not set');
               const SENDGRID_TO = process.env.SENDGRID_TO || process.env.MAIL_TO || smtpUser;
               const payload = {
                 personalizations: [{ to: [{ email: SENDGRID_TO }], subject }],
@@ -192,10 +203,11 @@ export async function POST(req) {
 
     // Fallback to SendGrid if configured
     const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-    const SENDGRID_FROM = process.env.SENDGRID_FROM || 'no-reply@your-domain.com';
+    // 送信元が未設定のときにダミーのドメインから送らない
+    const SENDGRID_FROM = process.env.SENDGRID_FROM || process.env.MAIL_FROM;
     const SENDGRID_TO = process.env.SENDGRID_TO || process.env.MAIL_TO || 'info@soma-jp.net';
 
-    if (!SENDGRID_API_KEY) {
+    if (!SENDGRID_API_KEY || !SENDGRID_FROM) {
       console.error('no mailer configured');
       return new Response(JSON.stringify({ ok: false, error: 'mailer not configured' }), { status: 500 });
     }
@@ -233,7 +245,8 @@ export async function POST(req) {
     return new Response(JSON.stringify({ ok: true }), { status: 200 });
   } catch (err) {
     console.error(err);
-    return new Response(JSON.stringify({ ok: false, error: String(err) }), { status: 500 });
+    // 例外の中身は内部情報を含みうるため、クライアントにはそのまま返さない（上のログで確認する）
+    return new Response(JSON.stringify({ ok: false, error: 'internal_error' }), { status: 500 });
   }
 }
 
