@@ -50,15 +50,11 @@ export default function PrivacyPolicyModal({ isOpen, onClose }) {
             <ul className="list-disc pl-6 mt-2 space-y-1">
               <li>
                 <strong>Google Analytics</strong><br />
-                Used to collect and analyze user access logs. It uses cookies to gather traffic data, but this data does not include personally identifiable information.
+                Used to collect and analyze user access logs. It uses cookies to gather traffic data, but this data does not include personally identifiable information. Its use may also involve communication with Google servers, including advertising-related domains. You can opt out with Google&apos;s Google Analytics Opt-out Browser Add-on.
               </li>
               <li>
                 <strong>Google Search Console</strong><br />
                 Used to analyze our site&apos;s search performance to help improve our services. No personally identifiable information is collected.
-              </li>
-              <li>
-                <strong>Google reCAPTCHA</strong><br />
-                Used to prevent unauthorized access and spam. Data collected by this tool is handled in accordance with Google&apos;s Privacy Policy.
               </li>
             </ul>
           </section>

@@ -65,14 +65,15 @@ export default function PrivacyPolicyModal({ isOpen, onClose }) {
               <li>法律で認められる場合</li>
             </ul>
 
-            <h2 className="text-xl font-semibold mt-8 mb-2 text-gray-800">アクセス解析ツールの利用</h2>
+            <h2 className="text-xl font-semibold mt-8 mb-2 text-gray-800">アクセス解析ツール・外部サービスの利用</h2>
             <p className="mb-4 text-gray-700">
               当社では、サービスの改善および安全管理のために以下のツールを利用しています。
             </p>
             <ul className="list-disc pl-6 mb-4 text-gray-700">
               <li><strong>Google Analytics</strong>：個人を特定しないアクセスログを解析</li>
               <li><strong>Google Search Console</strong>：検索パフォーマンス解析用</li>
-              <li><strong>Google reCAPTCHA</strong>：不正アクセス・スパム防止</li>
+              <li><strong>動画プレイヤー（VIDGET／ディープラボ株式会社）</strong>：トップページの動画表示。提供元のサーバーとの通信が発生します</li>
+              <li><strong>YouTube（Google）</strong>：トップページの動画の埋め込み表示</li>
             </ul>
 
             <h2 className="text-xl font-semibold mt-8 mb-2 text-gray-800">プライバシーポリシーの変更</h2>

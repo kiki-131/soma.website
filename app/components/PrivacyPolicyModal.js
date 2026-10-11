@@ -46,19 +46,23 @@ export default function PrivacyPolicyModal({ isOpen, onClose }) {
           </section>
 
           <section>
-            <h4 className="text-xl font-semibold mb-2">アクセス解析ツールの利用</h4>
+            <h4 className="text-xl font-semibold mb-2">アクセス解析ツール・外部サービスの利用</h4>
             <ul className="list-disc pl-6 mt-2 space-y-1">
               <li>
                 <strong>Google Analytics</strong><br />
-                ユーザーのアクセスログを収集・解析するために使用します。Cookieを利用してトラフィックデータを収集しますが、個人を特定する情報は含まれません。
+                ユーザーのアクセスログを収集・解析するために使用します。Cookieを利用してトラフィックデータを収集しますが、個人を特定する情報は含まれません。ご利用に伴い、Googleの広告関連ドメインを含むサーバーへ通信が発生する場合があります。収集を望まない場合は、Googleが提供する「Google アナリティクス オプトアウト アドオン」で無効にできます。
               </li>
               <li>
                 <strong>Google Search Console</strong><br />
                 当サイトの検索パフォーマンスを分析し、サービスの改善に役立てるために使用します。個人を特定する情報は収集されません。
               </li>
               <li>
-                <strong>Google reCAPTCHA</strong><br />
-                不正アクセスやスパム防止のために使用します。ツールによって収集されるデータはGoogleのプライバシーポリシーに基づいて管理されます。
+                <strong>動画プレイヤー（VIDGET／ディープラボ株式会社）</strong><br />
+                トップページに表示する動画プレイヤーです。ページを表示すると、提供元のサーバーとの間で通信が発生し、IPアドレスなどの情報が送信される場合があります。取扱いは提供元の定めに従います。
+              </li>
+              <li>
+                <strong>YouTube（Google）</strong><br />
+                トップページの動画を埋め込み表示するために使用します。動画の表示・再生時にGoogleとの間で通信が発生し、Cookie等が利用される場合があります。
               </li>
             </ul>
           </section>

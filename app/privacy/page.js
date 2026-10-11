@@ -126,21 +126,25 @@ export default function PrivacyPage() {
         <section className="mb-16">
           <div className="flex items-center gap-4 mb-8">
             <span className="text-[#0066FF] text-xs font-bold tracking-widest uppercase">04</span>
-            <h2 className="text-lg font-bold tracking-tight text-[#0A0F1E]">アクセス解析ツールの利用</h2>
+            <h2 className="text-lg font-bold tracking-tight text-[#0A0F1E]">アクセス解析ツール・外部サービスの利用</h2>
           </div>
           <div className="space-y-8">
             {[
               {
                 title: 'Google Analytics',
-                body: 'ユーザーのアクセスログを収集・解析するために使用します。Cookieを利用してトラフィックデータを収集しますが、個人を特定する情報は含まれません。',
+                body: 'ユーザーのアクセスログを収集・解析するために使用します。Cookieを利用してトラフィックデータを収集しますが、個人を特定する情報は含まれません。ご利用に伴い、Googleの広告関連ドメインを含むサーバーへ通信が発生する場合があります。収集を望まない場合は、Googleが提供する「Google アナリティクス オプトアウト アドオン」で無効にできます。',
               },
               {
                 title: 'Google Search Console',
                 body: '当サイトの検索パフォーマンスを分析し、サービスの改善に役立てるために使用します。個人を特定する情報は収集されません。',
               },
               {
-                title: 'Google reCAPTCHA',
-                body: '不正アクセスやスパム防止のために使用します。ツールによって収集されるデータはGoogleのプライバシーポリシーに基づいて管理されます。',
+                title: '動画プレイヤー（VIDGET／ディープラボ株式会社）',
+                body: 'トップページに表示する動画プレイヤーです。ページを表示すると、提供元のサーバーとの間で通信が発生し、IPアドレスなどの情報が送信される場合があります。取扱いは提供元の定めに従います。',
+              },
+              {
+                title: 'YouTube（Google）',
+                body: 'トップページの動画を埋め込み表示するために使用します。動画の表示・再生時にGoogleとの間で通信が発生し、Cookie等が利用される場合があります。',
               },
             ].map((item, i) => (
               <div key={i} className="flex gap-6">
