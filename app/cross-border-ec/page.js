@@ -77,7 +77,7 @@ export default function CrossBorderEcPage() {
   ];
 
   return (
-    <div style={{ fontFamily: "var(--font-geist-sans), Arial, sans-serif", background: "#fff", color: "#1a1a1a" }}>
+    <div style={{ fontFamily: "var(--font-geist-sans), Arial, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, sans-serif", background: "#fff", color: "#1a1a1a" }}>
       <style>{`
         .ec-nav-links { display: flex; gap: 32px; align-items: center; }
         .ec-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; padding-top: 68px; position: relative; overflow: hidden; }

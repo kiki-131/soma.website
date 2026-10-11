@@ -1,59 +1,17 @@
-import { Geist, Geist_Mono, Archivo, Instrument_Sans, Newsreader, Cormorant_Garamond, Manrope } from "next/font/google";
+import { Geist } from "next/font/google";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import SectionBackground from "./components/SectionBackground";
 import Preloader from "./components/Preloader";
 import "./globals.css";
 
+// 全ページ共通で使うのは Geist だけ。
+// 英語版 (/en) と Japan Matcha Select 専用の書体は、それぞれのレイアウトで読み込む
+// （ここで読み込むと、日本語トップなど使わないページでも毎回プリロードされるため）。
+//   /en                  : app/en/layout.js
+//   /japan-matcha-select : app/japan-matcha-select/layout.js
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-
-// ── 英語版 (/en) 専用の書体 ──
-// 日本語サイトは globals.css の body 指定に従うため、ここで変数を定義しても影響しない。
-// 実際の適用は app/en/en.css の .en-scope 内に閉じている。
-const archivo = Archivo({
-  subsets: ["latin"],
-  axes: ["wdth"], // 可変幅軸。太さではなく字幅で見出しの強さを作る
-  display: "swap",
-  variable: "--font-archivo",
-});
-
-const instrumentSans = Instrument_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-instrument",
-});
-
-// ── Japan Matcha Select (/japan-matcha-select) 専用の書体 ──
-// 見出しに Cormorant Garamond、本文に Manrope。
-// 適用は app/japan-matcha-select/jms.css の .jms-scope 内に閉じているため、
-// ここで変数を定義しても他ページの見た目は変わらない。
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  display: "swap",
-  variable: "--font-cormorant",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-manrope",
-});
-
-// 法令原文の引用にのみ使う。書体の切り替えだけで「他人が書いた文章」だと示す
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  axes: ["opsz"],
-  display: "swap",
-  variable: "--font-newsreader",
 });
 
 export const metadata = {
@@ -97,10 +55,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ja">
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -118,7 +72,7 @@ export default function RootLayout({ children }) {
     そのURLと / を結ぶこと。
   */}
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} ${instrumentSans.variable} ${newsreader.variable} ${cormorant.variable} ${manrope.variable} antialiased`}>
+      <body className={`${geistSans.variable} antialiased`}>
         <Preloader />
         <SectionBackground />
         {children}

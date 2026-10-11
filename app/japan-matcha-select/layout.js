@@ -1,4 +1,22 @@
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./jms.css";
+
+// ── Japan Matcha Select (/japan-matcha-select) 専用の書体 ──
+// 見出しに Cormorant Garamond、本文に Manrope。
+// ルートの app/layout.js ではなくここで読み込むことで、他のページでプリロードしない。
+// 変数は下の <div> に付けるため、このページ配下にだけ届く（適用は jms.css の .jms-scope 内）。
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+  variable: "--font-cormorant",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-manrope",
+});
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // Japan Matcha Select (/japan-matcha-select) のメタデータ。
@@ -106,7 +124,7 @@ export default function JapanMatchaSelectLayout({ children }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {children}
+      <div className={`${cormorant.variable} ${manrope.variable}`}>{children}</div>
     </>
   );
 }
