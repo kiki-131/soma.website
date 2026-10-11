@@ -45,9 +45,13 @@ export default function CharByChar({
       whileInView="show"
       viewport={{ once: true }}
     >
-      <Tag className={className} style={style}>
+      {/* 各行は overflow-hidden で「下から現れる」演出をしているが、行の高さ(leading)を
+          0.88〜1.0 と詰めているため、日本語の「プ」の半濁点などが枠の上下にはみ出して切れる。
+          そこで行の枠を py で上下に 0.1em 広げ、同じ量の負マージンで打ち消して、行間は変えない。
+          負マージンは隣り合う行どうしで相殺されるため、h2 を縦の flex にして相殺を防いでいる。 */}
+      <Tag className={className} style={{ display: "flex", flexDirection: "column", ...style }}>
         {lines.map((line, li) => (
-          <span key={li} className="block overflow-hidden leading-[inherit] whitespace-nowrap">
+          <span key={li} className="block overflow-hidden leading-[inherit] whitespace-nowrap py-[0.1em] -my-[0.1em]">
             {[...line].map((char, ci) => (
               <motion.span
                 key={ci}
