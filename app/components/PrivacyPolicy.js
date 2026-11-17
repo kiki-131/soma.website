@@ -72,7 +72,6 @@ export default function PrivacyPolicyModal({ isOpen, onClose }) {
             <ul className="list-disc pl-6 mb-4 text-gray-700">
               <li><strong>Google Analytics</strong>：個人を特定しないアクセスログを解析</li>
               <li><strong>Google Search Console</strong>：検索パフォーマンス解析用</li>
-              <li><strong>動画プレイヤー（VIDGET／ディープラボ株式会社）</strong>：トップページの動画表示。提供元のサーバーとの通信が発生します</li>
               <li><strong>YouTube（Google）</strong>：トップページの動画の埋め込み表示</li>
             </ul>
 
