@@ -151,7 +151,7 @@ export default function FairePage() {
           .faire-cases-grid { grid-template-columns: 1fr; }
           .faire-case-body { padding: 24px 20px 28px; }
           .faire-process-grid { grid-template-columns: 1fr; gap: 0; }
-          .faire-process-line { display: none; }
+          .faire-process-grid > .faire-process-line { display: none; }
           .faire-process-grid > div { display: flex; gap: 16px; align-items: flex-start; text-align: left; padding: 20px 0; border-bottom: 1px solid #eee; }
           .faire-process-grid > div:last-child { border-bottom: none; }
           .faire-process-grid > div > div:first-child { flex-shrink: 0; margin: 0; }
