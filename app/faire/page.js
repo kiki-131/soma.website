@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function FairePage() {
   const [openFaq, setOpenFaq] = useState(null);
@@ -76,6 +77,37 @@ export default function FairePage() {
     { num: "05", title: "継続的な売上拡大", text: "データ分析・改善・新バイヤー開拓を継続。安定した卸収益基盤の構築を目指します。" },
   ];
 
+  // ── 出店事例（Faireショップ）──
+  // ここを編集して事例を追加・差し替えできます。image は public/images/faire-cases/ の正方形の商品写真（Faireの各ショップページの画像。ブランドの了承済み）。
+  // 掲載内容は、Faireの各ショップページ（2026-11-20時点のスクリーンショット）で確認できた範囲のみ。商品名は表記のまま。
+  // 日本製・日本発・販売先・数量などの主張は、確認できるまで書かない（原産国の誤認を招く表現を避けるため）。
+  const cases = [
+    {
+      image: "/images/faire-cases/tomigaya.jpg",
+      name: "TOMIGAYA Letterpress",
+      category: "活版印刷のカード・文具",
+      text: "活版印刷のグリーティングカードのほか、ノートなどの文具を扱うFaireショップです。",
+      products: ["TYPEFACE NOTEBOOK – Gill sans", "365 Find Your Day – Letterpress Birthday Card Starter Kit", "Season's Greetings – Letterpress Greeting Card"],
+      url: "https://tomigayaletterpress.faire.com",
+    },
+    {
+      image: "/images/faire-cases/matcha.jpg",
+      name: "Japan Matcha Select",
+      category: "抹茶",
+      text: "バリスタ向けの抹茶を扱うFaireショップです。",
+      products: ["Barista Matcha Ceremonial Blend", "Barista Matcha Premium Blend"],
+      url: "https://japanmatchaselect.faire.com",
+    },
+    {
+      image: "/images/faire-cases/immerse.jpg",
+      name: "immersejapan",
+      category: "爪切り（足の爪のケア）",
+      text: "爪切りを扱うFaireショップです。",
+      products: ["SilkyClipper45 | Easier Toenail Care - 80-Unit Case", "SilkyClipper | Effortless Clipping - 80-Unit Case"],
+      url: "https://immersejapan.faire.com",
+    },
+  ];
+
   return (
     <div style={{ fontFamily: "var(--font-geist-sans), Arial, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo, sans-serif", background: "#fff", color: "#1a1a1a" }}>
       <style>{`
@@ -87,6 +119,14 @@ export default function FairePage() {
         .faire-stats-band { display: grid; grid-template-columns: repeat(4, 1fr); }
         .faire-faire-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
         .faire-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .faire-cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .faire-case-card { display: flex; flex-direction: column; background: #fff; border: 1px solid #e8e8e8; border-radius: 16px; padding: 0; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.3s; }
+        .faire-case-body { display: flex; flex-direction: column; flex: 1; padding: 28px 32px 32px; }
+        .faire-case-card:hover, .faire-case-card:focus-visible { box-shadow: 0 8px 40px rgba(0,0,0,0.1); transform: translateY(-4px); }
+        .faire-case-card:focus-visible { outline: 3px solid #0066FF; outline-offset: 3px; }
+        .faire-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+        #cases { scroll-margin-top: 68px; }
+        @media (prefers-reduced-motion: reduce) { .faire-case-card { transition: none; } .faire-case-card:hover, .faire-case-card:focus-visible { transform: none; } }
         .faire-process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; position: relative; }
         .faire-process-line { position: absolute; top: 32px; left: 10%; right: 10%; height: 1px; background: #ddd; }
         .faire-target-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -108,6 +148,8 @@ export default function FairePage() {
           .faire-stats-band > div:nth-last-child(-n+2) { border-bottom: none; }
           .faire-faire-grid { grid-template-columns: 1fr; gap: 32px; }
           .faire-services-grid { grid-template-columns: 1fr; }
+          .faire-cases-grid { grid-template-columns: 1fr; }
+          .faire-case-body { padding: 24px 20px 28px; }
           .faire-process-grid { grid-template-columns: 1fr; gap: 0; }
           .faire-process-line { display: none; }
           .faire-process-grid > div { display: flex; gap: 16px; align-items: flex-start; text-align: left; padding: 20px 0; border-bottom: 1px solid #eee; }
@@ -135,7 +177,7 @@ export default function FairePage() {
           <span style={{ color: "#999", fontSize: "12px", letterSpacing: "0.06em" }}>× Faire</span>
         </Link>
         <div className="faire-nav-links">
-          {[["#about", "Faireとは"], ["#services", "サービス"], ["#process", "流れ"], ["#faq", "FAQ"], ["/crowdfunding", "海外クラファン"], ["/cross-border-ec", "越境EC"]].map(([href, label]) => (
+          {[["#about", "Faireとは"], ["#cases", "出店事例"], ["#services", "サービス"], ["#process", "流れ"], ["#faq", "FAQ"], ["/crowdfunding", "海外クラファン"], ["/cross-border-ec", "越境EC"]].map(([href, label]) => (
             <a key={href} href={href} style={{ color: "#555", fontSize: "13px", letterSpacing: "0.06em", textDecoration: "none", transition: "color 0.2s" }}
               onMouseEnter={e => e.target.style.color = "#0066FF"}
               onMouseLeave={e => e.target.style.color = "#555"}
@@ -284,6 +326,52 @@ export default function FairePage() {
           </div>
         </div>
       </div>
+
+      {/* ── CASES（出店事例）── */}
+      <section id="cases" className="faire-section" aria-labelledby="cases-heading" style={{ background: "#f8f7f4" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+            <div style={{ width: "24px", height: "2px", background: "#0066FF", borderRadius: "2px" }} />
+            <span style={{ color: "#0052CC", fontSize: "12px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" }}>Case Studies</span>
+          </div>
+          <h2 id="cases-heading" style={{ fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 800, color: "#1a1a1a", lineHeight: 1.2, marginBottom: "16px" }}>
+            Faireで展開中の<br /><span style={{ color: "#0066FF" }}>出店事例</span>
+          </h2>
+          <p style={{ fontSize: "15px", color: "#666", lineHeight: 2, maxWidth: "520px", marginBottom: "56px" }}>
+            SOMAがFaireへの出店支援や、小売店への営業をお手伝いしているブランドの、実際のショップです。各ページもあわせてご覧ください。
+          </p>
+
+          <div className="faire-cases-grid">
+            {cases.map((c, i) => (
+              <a
+                key={c.name}
+                href={c.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="faire-case-card"
+                aria-labelledby={`case-${i}-name case-${i}-cta`}
+              >
+                <Image src={c.image} alt="" width={432} height={432} style={{ width: "100%", height: "auto", aspectRatio: "4 / 3", objectFit: "cover", display: "block", background: "#f1efe9" }} />
+                <div className="faire-case-body">
+                <span style={{ color: "#0052CC", fontSize: "12px", fontWeight: 700, letterSpacing: "0.1em", display: "block", marginBottom: "10px" }}>{c.category}</span>
+                <h3 id={`case-${i}-name`} lang="en" style={{ fontSize: "17px", fontWeight: 700, color: "#1a1a1a", margin: "0 0 10px", lineHeight: 1.5 }}>{c.name}</h3>
+                <div style={{ fontSize: "13px", color: "#666", lineHeight: 1.9, marginBottom: "16px" }}>{c.text}</div>
+                <ul role="list" style={{ listStyle: "none", padding: 0, margin: "0 0 24px", display: "flex", flexDirection: "column", gap: "6px" }}>
+                  {c.products.map(p => (
+                    <li key={p} style={{ fontSize: "13px", color: "#666", display: "flex", gap: "8px", alignItems: "flex-start", lineHeight: 1.6 }}>
+                      <span aria-hidden="true" style={{ color: "#0066FF", flexShrink: 0, fontWeight: 700 }}>—</span><span lang="en">{p}</span>
+                    </li>
+                  ))}
+                </ul>
+                <span id={`case-${i}-cta`} style={{ marginTop: "auto", color: "#0066FF", fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em" }}>
+                  Faireで見る<span aria-hidden="true"> ↗</span><span className="faire-sr-only">（新しいタブで開きます）</span>
+                </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── SERVICES ── */}
       <section id="services" className="faire-section" style={{ background: "#fff" }}>
